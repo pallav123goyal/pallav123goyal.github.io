@@ -11,7 +11,7 @@ header
       position: fixed;            /** Fixed header relative to browser window. **/
       width: 100%;
       z-index: 1000;              /** Header above other elements when scrolling. **/
-      background-color: #ffffff;  /** Header gets white background,. **/
+      background-color: #0d2084;  /** Header gets white background,. **/
       text-align: center;         /** Centers nav bar. **/
       white-space: nowrap;        /** Header element don't wrap. **/
       }
