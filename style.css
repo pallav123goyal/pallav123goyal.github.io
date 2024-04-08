@@ -131,7 +131,7 @@ ul
 }
 
 a:link, a:hover, a:visited, a:visited:hover
-      {color: rgb(10,13,0);
+      {color: rgb(140,13,0);
         text-decoration: none;}
 
 /*Links under hover get background.*/
