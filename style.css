@@ -62,7 +62,7 @@ nav ul  /** List inside nav bar. **/
               border: 0;
               padding: 20;
               
-					background-color: #0d2084;
+					background-color: #FFF4F4;
               position: relative;     
               list-style: none;       /** Suppresses bullets. **/
               display: inline-table;  /** This isn't supported in IE before version 8. **/
