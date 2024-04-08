@@ -1,0 +1,6 @@
+. Open Cyberduck.
+. Click on Open Connection. (May need to connect to/disconnect from the UChicago VPN.)
+. Make sure you are connecting to SFTP.
+. Enter math.uchicago.edu for Server. Port is 22.
+. Enter login credentials.
+. Whenever you add a new file, you need to change its permissions by going to Info. Code is 755.

@@ -1,0 +1,139 @@
+#hp
+{
+	float: right;    
+	margin: 0 0 0 15px;
+}
+
+header
+    {margin: 0;
+      border: 0;
+      padding: 0;
+      position: fixed;            /** Fixed header relative to browser window. **/
+      width: 100%;
+      z-index: 1000;              /** Header above other elements when scrolling. **/
+      background-color: #ffffff;  /** Header gets white background,. **/
+      text-align: center;         /** Centers nav bar. **/
+      white-space: nowrap;        /** Header element don't wrap. **/
+      }
+h1
+            {margin: 5px;
+              border: 0;
+              padding: 4px 0 0;
+              font-size: 25pt;
+              font-family: 'Lucida Grande',Verdana,sans-serif;
+              font-weight: bold;
+              }
+              
+h4
+    {margin: 40px 0 0;
+      border: 0;
+      padding: 0;}
+
+h4:first-of-type
+    {margin: 0;}
+
+/** The title of the page. **/
+h2  /** H2s inside of a header. **/
+            {margin: 5px;
+              border: 0;
+              padding: 4px 0 0;
+              font-size: 17pt;
+              font-family: 'Lucida Grande',Verdana,sans-serif;
+              font-weight: lighter;}
+              
+h3  /** H#s inside of body. **/
+            {margin: 0px;
+              border: 0;
+              padding: 4px 0 0;
+              font-size: 14pt;
+              font-family: 'Lucida Grande',Verdana,sans-serif;
+              font-weight: bolder;}
+
+
+/** The navigation bar. **/
+nav
+            {margin: 0;
+              border: 0;
+              padding: 20;}
+
+/** Anything that is a menu in nav. **/
+nav ul  /** List inside nav bar. **/
+            {margin: auto;
+              border: 0;
+              padding: 20;
+              
+					background-color: #FFF4F4;
+              position: relative;     
+              list-style: none;       /** Suppresses bullets. **/
+              display: inline-table;  /** This isn't supported in IE before version 8. **/
+              vertical-align: bottom; /** Forces the main navigation bar to the bottom of the nav. **/}
+
+/** Anything that is an entry in nav. **/
+nav ul li  /** Li's that are in a ul which is inside of a nav. **/
+            {float: left;
+              margin: 0 45px;
+              border: 0;
+              padding: 0;}
+
+/** Links in the main navigation bar. **/
+nav ul a  /** Links that are in a ul which is in a nav. **/
+            {
+            	
+               color: black;
+               margin: 0;
+               border: 0;
+               border-radius: 5px;
+               padding: 2px 5px;
+               display: block;
+               font-size: 15pt;
+               font-family: 'Lucida Grande',Verdana,sans-serif;
+               font-weight: normal;
+      		}
+      		
+ li a.active {
+	text-decoration: underline;
+}
+               
+/** Actual content **/
+#content
+    {
+    	margin: 0 auto;
+      border: 0;
+      padding: 200px 0px 0px;
+      width: 70%;
+      min-width: 300px;
+      max-width: 700px;
+      text-align: left;
+      position: relative;
+      display: block;
+      font-size: 12pt;
+      font-family: 'Lucida Grande',Verdana,sans-serif;
+      font-weight: lighter;}
+
+body
+{
+  margin: 70px;
+  margin-top: 30px;
+  padding:10px;
+  font: 15px 'Lucida Grande',Verdana,sans-serif;
+  line-height:200%;
+}
+
+p
+{
+	margin-left: 37px;
+	color: black;
+}
+ul
+{
+	margin-left: 15px;
+	color: black;
+}
+
+a:link, a:hover, a:visited, a:visited:hover
+      {color: rgb(140,13,0);
+        text-decoration: none;}
+
+/*Links under hover get background.*/
+a:hover, a:visited:hover
+      {background-color: #EAECEE;}
