@@ -11,7 +11,7 @@ header
       position: fixed;            /** Fixed header relative to browser window. **/
       width: 100%;
       z-index: 1000;              /** Header above other elements when scrolling. **/
-      background-color: #0d2084;  /** Header gets white background,. **/
+      background-color: #ffffff;  /** Header gets white background,. **/
       text-align: center;         /** Centers nav bar. **/
       white-space: nowrap;        /** Header element don't wrap. **/
       }
@@ -62,7 +62,7 @@ nav ul  /** List inside nav bar. **/
               border: 0;
               padding: 20;
               
-					background-color: #FFF4F4;
+					background-color: #0d2084;
               position: relative;     
               list-style: none;       /** Suppresses bullets. **/
               display: inline-table;  /** This isn't supported in IE before version 8. **/
