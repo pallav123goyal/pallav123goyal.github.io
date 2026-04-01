@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 1 - Introduction to Multiple Integrals</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 1: Motivation and Introduction to Multiple Integrals</h3>
+
+    <h4>1. Motivation: Calculating Volume</h4>
+    <p>To understand the need for multiple integrals, we start by looking at how we compute the volume of known shapes, such as a sphere of radius \(r\).</p>
+
+    <div class="visual-desc">
+        Visual Description: A coordinate system showing a circle centered at the origin with the equation \(x^2 + y^2 = r^2\). The upper half of the circle is highlighted in red, representing the function \(y = \sqrt{r^2 - x^2}\). The points \((-r, 0)\) and \((r, 0)\) are marked on the x-axis.
+    </div>
+
+    <div class="example">
+        <h5>Example: Volume of a Sphere via Disk Method</h5>
+        <p>Consider a circle of radius \(r\) centered at the origin:</p>
+        <p>\[x^2 + y^2 = r^2\]</p>
+        <p>By solving for \(y\), the equation for the upper semi-circle (the red part) is:</p>
+        <p>\[y = \sqrt{r^2 - x^2} = f(x)\]</p>
+        <p>We can rotate this curve around the x-axis and use the disk method to find the volume.</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <div class="steps">
+                <p>1. Set up the integral for the disk method:</p>
+                <p>\[\text{Volume} = \int_{-r}^{r} \pi [f(x)]^2 dx\]</p>
+                <p>2. Substitute \(f(x)\):</p>
+                <p>\[= \pi \int_{-r}^{r} (r^2 - x^2) dx\]</p>
+                <p>3. Evaluate the integral:</p>
+                <p>\[= \pi \left[ r^2x - \frac{x^3}{3} \right]_{-r}^{r}\]</p>
+                <p>4. Result:</p>
+                <p>\[= \frac{4\pi r^3}{3}\]</p>
+            </div>
+        </div>
+    </div>
+
+    <h4>2. Arbitrary Shapes and Physics Applications</h4>
+    <p>What if we need to compute the volume of more arbitrary or irregular shapes, like the radius of the Earth? This leads us to consider averages. We might guess that we need to compute the average distance of all points on the surface from a fixed point.</p>
+    
+    <p>In physics, we see similar complexities. For two point particles at a distance \(s\), the gravitational force is given by:</p>
+    <p>\[F = \frac{k}{s^2}\]</p>
+    <p>where \(k\) is a constant. However, if we have non-point objects, calculating the force between them requires integrating over their entire mass distributions.</p>
+
+    <h3>Introduction to Multiple Integrals</h3>
+
+    <h4>Generalizing the Single Integral</h4>
+    <p>In single-variable calculus, given a function \(y = f(x)\), the integral \(\int_{a}^{b} f(x) dx\) is defined as the area under the curve between \(x = a\) and \(x = b\).</p>
+
+    <div class="visual-desc">
+        Visual Description: A standard 2D graph with a curve \(y = f(x)\). The area between the curve and the x-axis from \(x = a\) to \(x = b\) is shaded, representing the integral.
+    </div>
+
+    <p>We wish to generalize this concept to multivariable functions, such as \(f(x, y) = x^2 + y^2 + 1\). In this case, the function represents a surface above the \(XY\)-plane.</p>
+
+    <div class="visual-desc">
+        Visual Description: A 3D coordinate system showing a surface (the graph of \(z = f(x, y)\)) suspended over a region \(R\) in the \(XY\)-plane. A vertical line connects a point in the region \(R\) to the surface.
+    </div>
+
+    <h4>Defining the Double Integral</h4>
+    <p>Our goal is to define the double integral \(\iint_R f(x, y) dA\), where \(R\) is a region in the \(XY\)-plane.</p>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> Given a function \(f(x, y)\) and a region \(R\), the double integral</p>
+        <p>\[\iint_R f(x, y) dA\]</p>
+        <p>is the <strong>volume</strong> enclosed between the surface \(z = f(x, y)\) and the \(XY\)-plane over the region \(R\).</p>
+        <ul>
+            <li><strong>\(R\)</strong> is the domain of integration.</li>
+            <li><strong>\(f(x, y)\)</strong> represents the height of infinitesimal cuboids.</li>
+            <li><strong>\(dA\)</strong> represents the area of the base of these cuboids.</li>
+        </ul>
+    </div>
+
+    <h4>Intuition and Riemann Sums</h4>
+    <p>Just as we approximate the area under a curve using thin rectangular strips, we can approximate the volume under a surface using <strong>cuboids</strong>.</p>
+    <p>The volume of a single cuboid is given by:</p>
+    <p>\[\text{Volume} = l \times b \times h\]</p>
+    <p>By chopping the region \(R\) into many small rectangles with area \(dA\) and multiplying by the height \(f(x, y)\), we create a <strong>Riemann sum</strong> that approximates the total volume.</p>
+
+    <div class="example">
+        <h5>Example 1: Integral of a Constant Function</h5>
+        <p>Let \(f(x, y) = k\) for some constant \(k\). Let the region \(R\) be a rectangle defined by \(R = [a, b] \times [c, d]\).</p>
+        
+        <div class="visual-desc">
+            Visual Description: A 2D plot of the \(XY\)-plane showing a shaded rectangular region \(R\). The rectangle is bounded by vertical lines \(x = a\) and \(x = b\), and horizontal lines \(y = c\) and \(y = d\).
+        </div>
+
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>The graph of \(f(x, y) = k\) is a plane parallel to the \(XY\)-plane at height \(k\).</p>
+            <p>The integral \(\iint_R f(x, y) dA\) is equal to the volume of a cuboid with height \(k\) and base area determined by the rectangle \(R\).</p>
+            <div class="steps">
+                <p>1. Area of the base \(R\) = \((b - a)(d - c)\).</p>
+                <p>2. Height = \(k\).</p>
+                <p>3. Thus, \(\iint_R k dA = k(b - a)(d - c)\).</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
