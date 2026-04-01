@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 1 - Introduction to Geometry</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        b { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 1: Introduction to Geometry</h3>
+
+    <p>The word geometry is derived from the Greek words <i>geo</i> (meaning "rocks" or "earth") and <i>metria</i> (meaning "measurement").</p>
+
+    <h4>Euclid: The Father of Geometry</h4>
+    <p>Euclid was an ancient Greek geometer known for his foundational book, the <i>Elements</i>. He defined geometry as the study of shapes that can be constructed using only a straightedge and a compass.</p>
+
+    <div class="definition">
+        <p><b>Definition:</b> A straightedge is a device used for drawing straight lines without any measurement markings.</p>
+        <p><b>Definition:</b> A compass is a device used for drawing circles with a given center and radius.</p>
+    </div>
+
+    <h4>Geometric Fundamentals</h4>
+    <p>Using these tools, we can construct points, lines (including segments and rays), circles, arcs, and angles.</p>
+
+    <div class="definition">
+        <p><b>Definition:</b> An angle is the region between two intersecting lines, segments, or rays.</p>
+    </div>
+
+    <p>Angles are measured in degrees or radians. A full circle consists of \(360^\circ\) or \(2\pi\) radians.</p>
+
+    <div class="important">
+        <p><b>Recall:</b> 1 radian is the angle where the arc length is equal to the radius. The circumference of a circle with radius \(r\) is given by \(C = 2\pi r\).</p>
+    </div>
+
+    <h3>Euclid's Axioms</h3>
+    <p>Euclid's goal was to start with basic "obviously true" statements called axioms and prove theorems using them.</p>
+
+    <div class="theorem">
+        <p><b>Theorem: Euclid's Axioms</b></p>
+        <ol>
+            <li>It is possible to draw a unique straight line through any two points.</li>
+            <li>It's always possible to extend a segment indefinitely.</li>
+            <li>It's possible to draw a circle with any center and any radius.</li>
+            <li>Any two right angles (\(90^\circ = \frac{\pi}{2}\) radians) are equal to each other.</li>
+            <li>The parallel axiom.</li>
+        </ol>
+    </div>
+
+    <p>Euclid used these to prove theorems: formally proved or logically deduced properties about objects based on known facts.</p>
+
+    <h3>Proposition 1: Equilateral Triangle Construction</h3>
+    <div class="definition">
+        <p><b>Definition:</b> An equilateral triangle is a triangle with all sides equal.</p>
+    </div>
+
+    <div class="example">
+        <h5>Example: Constructing an Equilateral Triangle</h5>
+        <p><b>Given:</b> Points \(A\) and \(B\). Draw an equilateral triangle where one side is \(AB\).</p>
+
+                <div class="visual-desc">
+            <b>Visual Description:</b> The diagram shows two circles. Circle \(O_1\) is centered at \(A\) and passes through \(B\). Circle \(O_2\) is centered at \(B\) and passes through \(A\). The intersection of these circles is labeled point \(C\). A triangle is formed by connecting \(A\), \(B\), and \(C\).
+        </div>
+
+        <div class="solution">
+            <p><b>Goal:</b> Show that \(|AB| = |BC| = |CA|\).</p>
+            <p><b>Proof:</b></p>
+            <ol>
+                <li>\(AB\) and \(AC\) are both radii of circle \(O_1\), so \(|AB| = |AC|\).</li>
+                <li>\(AB\) and \(BC\) are both radii of circle \(O_2\), so \(|AB| = |BC|\).</li>
+                <li>Since both equal \(|AB|\), then \(|AB| = |BC| = |CA|\).</li>
+            </ol>
+            <p>Therefore, triangle \(ABC\) is equilateral.</p>
+        </div>
+    </div>
+    
+    <div class="definition">
+<p><b>Definition:</b> A regular polygon is a polygon that is equiangular (all angles are equal in measure) and equilateral (all sides have the same length).</p>
+</div>
+
+</body>
+</html>
