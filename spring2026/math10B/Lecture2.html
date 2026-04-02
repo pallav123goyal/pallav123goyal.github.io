@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecture 2 - Iterated Integrals</title>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <title>MA 261 - Lecture 2: Iterated Integrals</title>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js">
+    </script>
     <script>
         window.MathJax = {
             tex: {
@@ -22,10 +24,12 @@
         h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
         h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
         .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
         .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
-        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
-        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
         .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
     </style>
 </head>
 <body>
@@ -33,65 +37,90 @@
     <h3>Lecture 2: Iterated Integrals</h3>
 
     <div class="important">
-        <strong>Recall:</strong> Given a function \(f(x,y)\) and a region \(R\) in the \(xy\)-plane, the multiple integral \(\iint_{R} f(x,y) \, dA\) is the volume enclosed below the graph of \(z = f(x,y)\) and above the \(xy\)-plane surrounded by the region \(R\).
+        <strong>Recall:</strong> Given a function \(f(x,y)\) and a region \(R\) in the \(xy\)-plane, the multiple integral \(\iint_{R}f(x,y) \, dA\) represents the volume enclosed below the graph of \(z=f(x,y)\) and above the \(xy\)-plane surrounded by the region \(R\).
     </div>
 
-    <h3>Volume Examples over Rectangular Regions</h3>
+    <h4>Volume and Cross-Sections</h4>
 
     <div class="example">
-        <h5>Example 1</h5>
-        <p>Compute \(\iint_{R} f(x,y) \, dA\) where \(f(x,y) = 1 - x\) and \(R = [0,1] \times [0,1]\).</p>
-        <p>Note that the region \(R\) is a square with vertices \((0,0)\), \((0,1)\), \((1,0)\), and \((1,1)\).</p>
+        <h5>Example 1: Geometric Approach</h5>
+        <p>Compute \(\iint_{R}f(x,y) \, dA\) where \(f(x,y) = 1-x\) and \(R = [0,1] \times [0,1]\).</p>
+        
+        <div class="visual-desc">
+            <strong>Visual Description:</strong> The region \(R\) is a square in the \(xy\)-plane with vertices at (0,0), (0,1), (1,0), and (1,1). In 3D space, the function \(z = 1-x\) represents a plane that intersects the \(z\)-axis at 1 and the \(x\)-axis at 1, forming a triangular prism over the square region \(R\).
+        </div>
+
+        <div class="solution">
+            <p>We can think of this volume as half of a unit cube. Thus, the volume is:</p>
+            \[ \text{Volume} = \frac{1}{2} \]
+            <p>Alternatively, using the area of the triangular base multiplied by the length in the \(y\)-direction:</p>
+            \[ \text{Volume} = \left( \frac{1}{2} \times 1 \right) \times 1 = \frac{1}{2} \]
+        </div>
     </div>
 
-    <div class="visual-desc">
-        <strong>Visual Description:</strong> In 3D space, the function \(f(x,y) = 1 - x\) represents the plane \(z + x = 1\). Over the unit square in the \(xy\)-plane, this forms a triangular prism. The surface starts at height \(z=1\) along the \(y\)-axis and slopes down to \(z=0\) at \(x=1\).
+    <div class="theorem">
+        <strong>Cavalieri's Principle:</strong> If we know the area of the cross-sections of a solid in a specific direction, we can integrate that area function to compute the total volume.
     </div>
-
-    <div class="solution">
-        <h5>Solution</h5>
-        <p>The integral represents the volume of a triangular prism, which is half of a unit cube.</p>
-        \[ \text{Volume} = \frac{1}{2} \]
-    </div>
-
-    <h3>Iterated Integrals and Fubini's Theorem</h3>
-
-    <p>To compute these integrals without relying on geometry, we use iterated integrals. For a rectangular region \(R = [a,b] \times [c,d]\), we can integrate with respect to one variable at a time.</p>
 
     <div class="example">
-        <h5>Example 2: Iterated Computation</h5>
-        <p>Compute \(\int_{0}^{1} \int_{0}^{1} (1-x) \, dy \, dx\).</p>
+        <h5>Example 2: Integration by Cross-Section</h5>
+        <p>Suppose the area of a cross-section at any given \(x\) is \(A(x) = x^2 + 2\) for \(-1 \le x \le 4\). Compute the volume.</p>
+        <div class="solution">
+            \[ \text{Volume} = \int_{-1}^{4} (x^2 + 2) \, dx \]
+            \[ = \left[ \frac{x^3}{3} + 2x \right]_{-1}^{4} \]
+            \[ = \left( \frac{64}{3} + 8 \right) - \left( \frac{-1}{3} - 2 \right) = \frac{95}{3} \]
+        </div>
     </div>
 
-    <div class="solution">
-        <h5>Step-by-Step Solution</h5>
-        <p>First, we evaluate the inner integral with respect to \(y\), treating \(x\) as a constant:</p>
-        \[ \int_{0}^{1} (1-x) \, dy = [y - xy]_{0}^{1} = (1 - x) \]
-        <p>Next, we integrate the result with respect to \(x\):</p>
-        \[ \int_{0}^{1} (1-x) \, dx = \left[ x - \frac{x^2}{2} \right]_{0}^{1} = 1 - \frac{1}{2} = \frac{1}{2} \]
-    </div>
+    <h3>Iterated Integrals over Rectangular Regions</h3>
 
-    <h3>Calculating Volume via Cross-Sections</h3>
+    <p>To compute a double integral \(\iint_{R}f(x,y) \, dA\), we find the area of a cross-section at a given \(x\) by integrating with respect to \(y\), then integrate that result with respect to \(x\).</p>
 
     <div class="example">
-        <h5>Example 3</h5>
-        <p>Compute the volume under \(f(x,y) = x^2 + y^2 + 1\) over the rectangular region \(R = [0,1] \times [0,2]\).</p>
+        <h5>Example 3: Setting up the Iterated Integral</h5>
+        <p>Compute the volume for \(f(x,y) = 1-x\) over \(R = [0,1] \times [0,1]\).</p>
+        <div class="solution">
+            <p>For a fixed \(x\), the area of the cross-section is \(\int_{0}^{1} (1-x) \, dy\). The total volume is:</p>
+            \[ \text{Volume} = \int_{0}^{1} \left( \int_{0}^{1} (1-x) \, dy \right) \, dx \]
+            \[ = \int_{0}^{1} [y - xy]_{0}^{1} \, dx \]
+            \[ = \int_{0}^{1} (1-x) \, dx = \left[ x - \frac{x^2}{2} \right]_{0}^{1} = \frac{1}{2} \]
+        </div>
     </div>
 
-    <div class="solution">
-        <h5>Step 1: Find the Area of Cross-Section</h5>
-        <p>For a given \(y\), the area of the cross-section in the \(x\)-direction is:</p>
-        \[ A(y) = \int_{0}^{1} (x^2 + y^2 + 1) \, dx \]
-        \[ A(y) = \left[ \frac{x^3}{3} + y^2x + x \right]_{0}^{1} = \frac{1}{3} + y^2 + 1 = y^2 + \frac{4}{3} \]
+    <div class="example">
+        <h5>Example 4: Changing the Order of Integration</h5>
+        <p>Compute \(\iint_{R} (x^2 + y^2 + 1) \, dA\) over \(R = [0,1] \times [0,2]\).</p>
+        <div class="solution">
+            <p><strong>Step 1:</strong> Find the area of cross-section for a given \(y\):</p>
+            \[ A(y) = \int_{0}^{1} (x^2 + y^2 + 1) \, dx = \left[ \frac{x^3}{3} + y^2x + x \right]_{0}^{1} = y^2 + \frac{4}{3} \]
+            <p><strong>Step 2:</strong> Integrate the cross-sectional area over the range of \(y\):</p>
+            \[ \text{Volume} = \int_{0}^{2} \left( y^2 + \frac{4}{3} \right) \, dy = \left[ \frac{y^3}{3} + \frac{4y}{3} \right]_{0}^{2} = \frac{8}{3} + \frac{8}{3} = \frac{16}{3} \]
+        </div>
+    </div>
 
-        <h5>Step 2: Integrate Cross-Sections for Volume</h5>
-        \[ \text{Volume} = \int_{0}^{2} \left( y^2 + \frac{4}{3} \right) \, dy \]
-        \[ \text{Volume} = \left[ \frac{y^3}{3} + \frac{4y}{3} \right]_{0}^{2} = \frac{8}{3} + \frac{8}{3} = \frac{16}{3} \]
+    <div class="theorem">
+        <strong>Fubini's Theorem:</strong> If \(f(x,y)\) is a continuous function on a rectangular region \(R\), then the order of integration does not matter:
+        \[ \iint_{R} f(x,y) \, dA = \int_{a}^{b} \int_{c}^{d} f(x,y) \, dy \, dx = \int_{c}^{d} \int_{a}^{b} f(x,y) \, dx \, dy \]
     </div>
 
     <div class="important">
-        <strong>Key Takeaway:</strong> If we had worked with cross-sections in the \(x\)-direction (integrating \(y\) first), we would get the same volume!
-        \[ \int_{0}^{1} \int_{0}^{2} (x^2 + y^2 + 1) \, dy \, dx = \frac{16}{3} \]
+        <strong>Important Remark:</strong> Depending on the function \(f(x,y)\) and the region \(R\), it might be significantly easier to integrate in one order than the other.
+    </div>
+
+    <h4>Integration over General Regions</h4>
+
+    <div class="example">
+        <h5>Example 5: Region between lines</h5>
+        <p>Integrate \(f(x,y) = xy\) over the region enclosed by \(y = 2x+3\), \(y = x-5\), \(x = 0\), and \(x = 2\).</p>
+        <div class="visual-desc">
+            <strong>Visual Description:</strong> The region is bounded vertically by two linear functions: an upper line \(y = 2x+3\) and a lower line \(y = x-5\), between the vertical boundaries \(x = 0\) and \(x = 2\).
+        </div>
+        <div class="solution">
+            \[ \int_{0}^{2} \int_{x-5}^{2x+3} xy \, dy \, dx = \int_{0}^{2} \left[ \frac{xy^2}{2} \right]_{x-5}^{2x+3} \, dx \]
+            \[ = \int_{0}^{2} \frac{x}{2} \left( (2x+3)^2 - (x-5)^2 \right) \, dx \]
+            \[ = \int_{0}^{2} \frac{x}{2} (3x^2 + 22x - 16) \, dx = \int_{0}^{2} \left( \frac{3x^3}{2} + 11x^2 - 8x \right) \, dx \]
+            \[ = \left[ \frac{3x^4}{8} + \frac{11x^3}{3} - 4x^2 \right]_{0}^{2} = 6 + \frac{88}{3} - 16 = \frac{58}{3} \]
+        </div>
     </div>
 
 </body>
