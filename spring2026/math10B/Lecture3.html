@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 261 - Lecture 3: Integrating over Non-Rectangular Regions</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 3: Integrating over Non-Rectangular Regions</h3>
+
+    <div class="example">
+        <h5>Example 1: Integration over a Rectangular Region</h5>
+        <p>Integrate the function \(f(x,y) = x^2 + y\) on the rectangular region with vertices \((0,0)\), \((3,0)\), \((0,2)\), and \((3,2)\).</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A graph showing a shaded rectangular region in the first quadrant of the xy-plane. The rectangle is bounded by the x-axis from \(x=0\) to \(x=3\) and the y-axis from \(y=0\) to \(y=2\). The four corners are explicitly labeled at their respective coordinates.</p>
+    </div>
+
+    <div class="solution">
+        <p>In a rectangular region, the bounds for \(x\) and \(y\) are independent of each other. We can define the limits as:</p>
+        <p>\[0 \le x \le 3\]</p>
+        <p>\[0 \le y \le 2\]</p>
+        <p>The double integral is set up as follows:</p>
+        <p>\[\int_{0}^{3} \int_{0}^{2} (x^2 + y) \, dy \, dx\]</p>
+        <p>First, we integrate with respect to \(y\):</p>
+        <p>\[= \int_{0}^{3} \left[ x^2y + \frac{y^2}{2} \right]_{y=0}^{y=2} \, dx\]</p>
+        <p>\[= \int_{0}^{3} (2x^2 + 2) \, dx\]</p>
+        <p>Finally, we integrate with respect to \(x\):</p>
+        <p>\[= \left[ \frac{2x^3}{3} + 2x \right]_{x=0}^{x=3} = 18 + 6 = 24\]</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Integration over a Triangular Region</h5>
+        <p>Integrate \(f(x,y) = x^2 + y\) over the triangular region with vertices \((0,0)\), \((3,0)\), and \((0,2)\).</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A graph showing a triangular region bounded by the y-axis, the x-axis, and a downward-sloping line connecting the points \((0,2)\) and \((3,0)\). A vertical strip is shown within the triangle to illustrate that for a fixed value of \(x\), the range of \(y\) values starts at \(y=0\) and ends at the boundary line.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Important:</strong> Unlike rectangular regions, the bounds for \(y\) now depend upon the value of \(x\).</p>
+    </div>
+
+    <div class="solution">
+        <p>Let \(L\) be the line joining \((0,2)\) and \((3,0)\). We find the equation of line \(L\):</p>
+        <p>\[\frac{y - 2}{x - 0} = -\frac{2}{3} \implies y = -\frac{2}{3}x + 2\]</p>
+        <p>For any \(x\) such that \(0 \le x \le 3\), the bounds for \(y\) are:</p>
+        <p>\[0 \le y \le -\frac{2}{3}x + 2\]</p>
+        <p>We set up the integral:</p>
+        <p>\[\int_{0}^{3} \int_{0}^{-\frac{2}{3}x+2} (x^2 + y) \, dy \, dx\]</p>
+        <p>\[= \int_{0}^{3} \left[ x^2y + \frac{y^2}{2} \right]_{y=0}^{y=-\frac{2}{3}x+2} \, dx\]</p>
+        <p>Evaluating the inner limits results in the integrand:</p>
+        <p>\[x^2\left(-\frac{2}{3}x + 2\right) + \frac{1}{2}\left(-\frac{2}{3}x + 2\right)^2 = -\frac{2x^3}{3} + \frac{20x^2}{9} - \frac{4}{3}x + 2\]</p>
+        <p>Now, integrating with respect to \(x\):</p>
+        <p>\[\int_{0}^{3} \left( -\frac{2x^3}{3} + \frac{20x^2}{9} - \frac{4}{3}x + 2 \right) \, dx = \left[ -\frac{x^4}{6} + \frac{20x^3}{27} - \frac{2}{3}x^2 + 2x \right]_{0}^{3} = \frac{13}{2}\]</p>
+    </div>
+
+    <h4>Alternative Approach: Changing the Order of Integration</h4>
+    <p>We could also have solved this problem by letting \(y\) be the independent variable and having \(x\) depend on \(y\). Starting from the equation of the boundary line:</p>
+    <p>\[y = -\frac{2}{3}x + 2 \implies \frac{2}{3}x = 2 - y \implies x = -\frac{3}{2}(y - 2)\]</p>
+    <p>For any \(y\) such that \(0 \le y \le 2\), the bounds for \(x\) are \(0 \le x \le -\frac{3}{2}(y-2)\). The integral becomes:</p>
+    <p>\[\int_{0}^{2} \int_{0}^{-\frac{3}{2}(y-2)} (x^2 + y) \, dx \, dy\]</p>
+
+    <div class="example">
+        <h5>Example 3: Computing a Double Integral over a Triangular Region</h5>
+        <p>Given \(f(x,y) = x + y\), compute the integral over the triangular region \(R\) bound by \((0,0)\), \((1,1)\), and \((2,0)\).</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A triangle with a horizontal base on the x-axis from \(x=0\) to \(x=2\) and a peak at the point \((1,1)\). The left edge is the line \(y=x\) and the right edge is the line \(y=2-x\).</p>
+    </div>
+
+    <div class="solution">
+        <p>One approach is to split region \(R\) into two smaller triangles divided at \(x=1\). The boundaries are defined by line \(L_1\) (\(y=x\)) and \(L_2\) (\(y=2-x\)). The integral is the sum of two parts:</p>
+        <p>\[\int_{0}^{1} \int_{0}^{x} (x + y) \, dy \, dx + \int_{1}^{2} \int_{0}^{2-x} (x + y) \, dy \, dx\]</p>
+        <p>Another approach is to treat \(y\) as the independent variable. Here, \(0 \le y \le 1\). For a fixed \(y\), the bounds for \(x\) are found by solving the boundary equations for \(x\):</p>
+        <p>Left boundary: \(x = y\)</p>
+        <p>Right boundary: \(x = 2 - y\)</p>
+        <p>The integral becomes:</p>
+        <p>\[\int_{0}^{1} \int_{y}^{2-y} (x + y) \, dx \, dy\]</p>
+        <p>\[= \int_{0}^{1} \left[ \frac{x^2}{2} + xy \right]_{x=y}^{x=2-y} \, dy\]</p>
+        <p>\[= \int_{0}^{1} (2 - 2y^2) \, dy = \left[ 2y - \frac{2y^3}{3} \right]_{0}^{1} = \frac{4}{3}\]</p>
+    </div>
+
+<div class="definition">
+        <h5>Definition: Area via Double Integration</h5>
+        <p>The area of a region \(R\) in the xy-plane is given by the double integral of the constant function 1 over that region:</p>
+        \[\text{Area}(R) = \iint_{R} 1 \, dA\]
+    </div>
+
+    <div class="example">
+        <h5>Example 4</h5>
+        <p>Compute the area of the triangular region \(R\) from Example 3.</p>
+    </div>
+
+    <div class="solution">
+        <p>Using horizontal strips as before:</p>
+        \[\text{Area}(R) = \int_{0}^{1} \int_{y}^{2-y} 1 \, dx \, dy\]
+        \[= \int_{0}^{1} [x]_{y}^{2-y} \, dy = \int_{0}^{1} (2-y - y) \, dy\]
+        \[= \int_{0}^{1} (2 - 2y) \, dy = [2y - y^2]_{0}^{1} = 2 - 1 = 1\]
+    </div>
+
+</body>
+</html>
