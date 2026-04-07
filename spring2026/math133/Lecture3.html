@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 3 - Perpendicular and Parallel Lines</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 3: Perpendicular and Parallel Lines</h3>
+
+    <div class="important">
+        <p><strong>Recall:</strong> Euclidean geometry is the study of shapes that can be constructed using a straightedge and compass.</p>
+    </div>
+
+    <h4>Euclid's Axioms</h4>
+    <ol>
+        <li>Any two points can be connected by a line.</li>
+        <li>Segments can be extended infinitely.</li>
+        <li>Construct circles of any radius with any center.</li>
+        <li>Can measure angles.</li>
+        <li>Parallel axiom.</li>
+    </ol>
+
+    <h3>Perpendicular Lines</h3>
+
+    <div class="visual-desc">
+        Visual Description: A geometric construction of a perpendicular bisector. A horizontal line segment \(AB\) is shown with a midpoint \(E\). Two circles (or arcs) centered at \(A\) and \(B\) with radius \(|AB|\) intersect at points \(C\) (above) and \(D\) (below). A vertical line segment \(CD\) passes through the midpoint \(E\).
+    </div>
+
+    <div class="example">
+        <h5>Review: Construction of the Mid-point</h5>
+        <p>Last time, we showed that \(E\) is the mid-point of \(AB\) by proving the congruence \(\triangle ACE \cong \triangle BCE\). This congruence provides additional information:</p>
+        <ul>
+            <li>\(\angle ACE = \angle BCE\)</li>
+            <li>\(\angle AEC = \angle BEC\)</li>
+        </ul>
+        <p>Since \(\angle AEC + \angle BEC = \pi\) (as they form a straight line), it follows that \(\angle AEC = \angle BEC = \frac{\pi}{2}\). Thus, \(CE\) is perpendicular to \(AB\) (\(CE \perp AB\)).</p>
+    </div>
+
+    <div class="definition">
+        <p><strong>Definition: Perpendicular Bisector</strong><br>
+        A line (like \(CD\)) is a perpendicular bisector of a segment \(AB\) if it both bisects the segment and is perpendicular to it.</p>
+    </div>
+
+    <div class="steps">
+        <h5>Construction 1: Perpendicular to a line through a point \(A\) on the line</h5>
+        <p><strong>Given:</strong> A line \(L\) and a point \(A\) on \(L\).</p>
+        <ol>
+            <li>Draw a circle centered at \(A\) with any radius.</li>
+            <li>Identify points \(B\) and \(C\) where the circle intersects line \(L\).</li>
+            <li>Since \(AB\) and \(AC\) are radii, \(|AB| = |AC|\), making \(A\) the midpoint of \(BC\).</li>
+            <li>Construct the perpendicular bisector of \(BC\) using the previous method. This line will pass through \(A\) and be perpendicular to \(L\).</li>
+        </ol>
+    </div>
+
+    <div class="steps">
+        <h5>Construction 2: Perpendicular to a line through a point \(A\) not on the line</h5>
+        <p><strong>Given:</strong> A line \(L\) and a point \(A\) not on \(L\).</p>
+        <ol>
+            <li>Draw a circle with center \(A\) and a radius large enough to intersect \(L\) at two points, \(B\) and \(C\).</li>
+            <li>Draw the perpendicular bisector of \(BC\).</li>
+        </ol>
+        The following proposition shows that the perpendicular bisector of BC passes through A, and is thus the required perpendicular line.
+    </div>
+
+    <div class="theorem">
+        <p><strong>Proposition:</strong> A point \(P\) lies on the perpendicular bisector of \(BC\) if and only if \(|PB| = |PC|\).</p>
+    </div>
+
+    <div class="solution">
+        <h5>Proof of Proposition</h5>
+        <p><strong>Part 1:</strong> Assume \(P\) lies on the perpendicular bisector of \(BC\). Let \(M\) be the midpoint. In \(\triangle BMP\) and \(\triangle CMP\):</p>
+        <ul>
+            <li>\(|MP| = |MP|\) (Common side)</li>
+            <li>\(\angle BMP = \angle CMP = \frac{\pi}{2}\) (By definition of perpendicular)</li>
+            <li>\(|BM| = |CM|\) (By definition of midpoint)</li>
+        </ul>
+        <p>By SAS congruence, \(\triangle BMP \cong \triangle CMP\), therefore \(|PB| = |PC|\).</p>
+
+        <p><strong>Part 2:</strong> Suppose \(|PB| = |PC|\). Let \(M\) be the midpoint of \(BC\). In \(\triangle BMP\) and \(\triangle CMP\):</p>
+        <ul>
+            <li>\(|BM| = |CM|\) (Midpoint)</li>
+            <li>\(|PB| = |PC|\) (Assumption)</li>
+            <li>\(\angle PBC = \angle PCB\) (Isosceles triangle property)</li>
+        </ul>
+        <p>By SAS, \(\triangle BMP \cong \triangle CMP\). Thus \(\angle BMP = \angle CMP\). Since they sum to \(\pi\), each is \(\frac{\pi}{2}\), meaning \(PM \perp BC\).</p>
+    </div>
+
+    <h3>Parallel Lines</h3>
+
+    <div class="definition">
+        <p><strong>Definition: Parallel Lines</strong><br>
+        Two lines \(L\) and \(L'\) are said to be parallel (\(L \parallel L'\)) if they do not intersect.</p>
+    </div>
+
+    <div class="steps">
+        <h5>Construction 3: Draw a line parallel to \(L\) passing through point \(A\)</h5>
+        <ol>
+            <li>Draw a perpendicular line \(L'\) to \(L\) passing through \(A\) (using Construction 2).</li>
+            <li>Draw a perpendicular line \(L''\) to \(L'\) passing through \(A\) (using Construction 1).</li>
+            <li>The resulting line \(L''\) is parallel to \(L\) (hopefully!)</li>
+        </ol>
+        To justify the last line above, we need Euclid's parallel axiom, which we are going to discuss now.
+    </div>
+
+    <div class="theorem">
+        <p><strong>Proposition: Vertically Opposite Angles</strong><br>
+        Vertically opposite angles are equal. If two lines intersect forming angles \(\alpha, \beta, \gamma, \delta\) around the intersection point, then \(\alpha = \gamma\) and \(\beta = \delta\).</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Proof:</strong> As the angles \(\alpha\) and \(\beta\) form a straight line, \(\alpha + \beta = \pi\), so \(\alpha = \pi - \beta\). Similarly, \(\beta + \gamma = \pi\), so \(\gamma = \pi - \beta\). Therefore, \(\alpha = \gamma\). The proof that \(\beta=\delta\) is similar.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Euclid's Parallel Axiom (5th Axiom):</strong> If a line \(M\) intersects two lines \(L\) and \(L'\) and makes interior angles on one side together less than two right angles, then the lines \(L\) and \(L'\) must intersect on that side.</p>
+    </div>
+
+</body>
+</html>
