@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 1</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+    </style>
+</head>
+<body>
+
+    <h3>Math 10B - Quiz 1: Double Integrals</h3>
+
+    <div class="example">
+        <h4>Problem 1</h4>
+        <p>(4 points) Evaluate the double integral:</p>
+        <p>\[\iint_{R}(x^{2}y+xy+2)dA\]</p>
+        <p>where \(R\) is the region \([0,1] \times [0,2]\).</p>
+    </div>
+
+    <div class="solution">
+        <h5>Solution for Problem 1</h5>
+        <p>We set up the double integral over the rectangular region \(R\) with limits \(x \in [0,1]\) and \(y \in [0,2]\):</p>
+        <p>\[\int_{0}^{1} \int_{0}^{2} (x^{2}y + xy + 2) \, dy \, dx\]</p>
+        <p>First, we integrate with respect to \(y\):</p>
+        <p>\[\int_{0}^{1} \left[ \frac{1}{2}x^2y^2 + \frac{1}{2}xy^2 + 2y \right]_{0}^{2} \, dx\]</p>
+        <p>Plugging in the limits for \(y\):</p>
+        <p>\[\int_{0}^{1} \left( \frac{1}{2}x^2(4) + \frac{1}{2}x(4) + 2(2) \right) \, dx = \int_{0}^{1} (2x^2 + 2x + 4) \, dx\]</p>
+        <p>Now, we integrate with respect to \(x\):</p>
+        <p>\[\left[ \frac{2}{3}x^3 + x^2 + 4x \right]_{0}^{1} = \frac{2}{3}(1) + (1)^2 + 4(1) = \frac{2}{3} + 1 + 4 = \frac{2}{3} + \frac{15}{3} = \frac{17}{3}\]</p>
+        <p><strong>The value of the integral is \(\frac{17}{3}\).</strong></p>
+    </div>
+
+    <div class="example">
+        <h4>Problem 2</h4>
+        <p>Consider the solid enclosed between the graph of \(f(x,y)=y+1\) and the \(xy\)-plane lying above the triangular region whose vertices are \((-2,0)\), \((0,1)\) and \((2,0)\).</p>
+        
+        <div class="visual-desc">
+            Visual Description: The region of integration is a triangle in the xy-plane. The base lies on the x-axis from x = -2 to x = 2. The peak of the triangle is at (0, 1). The left boundary is the line y = 1/2x + 1, and the right boundary is the line y = -1/2x + 1.
+        </div>
+
+        <p><strong>(a)</strong> (3 points) Write down a double integral that computes the volume of this solid.</p>
+        <p><strong>(b)</strong> (3 points) Evaluate the above integral to compute the volume of the described solid.</p>
+    </div>
+
+    <div class="solution">
+        <h5>Solution for Problem 2</h5>
+        <p><strong>Part (a): Setting up the Integral</strong></p>
+        <p>The volume \(V\) is given by the double integral of the function over the region \(D\). The boundaries of the triangle are \(y = 0\) (bottom), \(y = \frac{1}{2}x + 1\) (left side), and \(y = -\frac{1}{2}x + 1\) (right side). It is easier to set this up as a Type II region where \(y\) goes from \(0\) to \(1\), and \(x\) goes from the left line to the right line.</p>
+        <p>Solving for \(x\): Left line is \(x = 2y - 2\); Right line is \(x = 2 - 2y\).</p>
+        <p>The integral is: \[V = \int_{0}^{1} \int_{2y-2}^{2-2y} (y+1) \, dx \, dy\]</p>
+
+        <p><strong>Part (b): Evaluation</strong></p>
+        <p>Integrate with respect to \(x\):</p>
+        <p>\[\int_{0}^{1} \left[ (y+1)x \right]_{2y-2}^{2-2y} \, dy = \int_{0}^{1} (y+1)((2-2y) - (2y-2)) \, dy\]</p>
+        <p>Simplify the integrand:</p>
+        <p>\[\int_{0}^{1} (y+1)(4-4y) \, dy = 4 \int_{0}^{1} (1+y)(1-y) \, dy = 4 \int_{0}^{1} (1 - y^2) \, dy\]</p>
+        <p>Final integration with respect to \(y\):</p>
+        <p>\[4 \left[ y - \frac{1}{3}y^3 \right]_{0}^{1} = 4(1 - \frac{1}{3}) = 4(\frac{2}{3}) = \frac{8}{3}\]</p>
+        <p><strong>The volume of the solid is \(\frac{8}{3}\) cubic units.</strong></p>
+    </div>
+
+</body>
+</html>
