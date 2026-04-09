@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA 261 - Lecture 4: Swapping the Order of Integration and Triple Integrals</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {
+                load: ['output/chtml', '[tex]/tex-chtml-full']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border-left: 5px solid #28a745; border-radius: 8px; margin: 15px 0; }
+        .example { background-color: #f8f9fa; padding: 15px; border-left: 5px solid #007bff; border-radius: 8px; margin: 15px 0; border: 1px solid #6c757d; }
+        .important { background-color: #d1ecf1; padding: 15px; border-left: 5px solid #17a2b8; border-radius: 8px; margin: 15px 0; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        th { background-color: #e9ecef; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 4: Swapping the Order of Integration</h3>
+    
+    <p>In multivariable calculus, it is often useful to change the order of integration in a double integral to simplify the computation. This process requires re-evaluating the boundaries of the integration domain.</p>
+
+    <div class="example">
+        <h5>Example 1: Linear Boundaries</h5>
+        <p>Express the following double integral by swapping the order of integration:</p>
+        \[ \int_{0}^{8} \int_{y/2}^{4} xy \, dx \, dy \]
+        
+        <div class="visual-desc">
+            <strong>Visual Description of Domain:</strong> The domain of integration is a triangle in the first quadrant of the xy-plane. It is bounded by the y-axis from \(y=0\) to \(y=8\), the vertical line \(x=4\), and the line \(x=y/2\) (or \(y=2x\)). The region is shaded between the line \(y=2x\) and the vertical line \(x=4\).
+        </div>
+
+        <div class="solution">
+            <strong>Step-by-Step Solution:</strong>
+            <div class="steps">
+                <ol>
+                    <li><strong>Identify Current Bounds:</strong> The original bounds are \(0 \le y \le 8\) and \(\frac{y}{2} \le x \le 4\).</li>
+                    <li><strong>Determine New Bounds:</strong> To switch the order, we treat \(x\) as the independent variable. Looking at the domain, \(x\) ranges from \(0\) to \(4\).</li>
+                    <li><strong>Find Functional Bounds:</strong> For a fixed \(x\), the value of \(y\) ranges from the x-axis (\(y=0\)) up to the line \(y=2x\).</li>
+                    <li><strong>Rewrite Integral:</strong> The resulting integral is:
+                        \[ \int_{0}^{4} \int_{0}^{2x} xy \, dy \, dx \]
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Trigonometric Integration</h5>
+        <p>Evaluate the following integral by swapping the order of integration:</p>
+        \[ \int_{0}^{1} \int_{y}^{1} \sin(x^2) \, dx \, dy \]
+        
+        <div class="important">
+            <strong>Warning:</strong> The function \(\sin(x^2)\) cannot be integrated with respect to \(x\) using elementary methods. Swapping the order is mandatory here.
+        </div>
+
+        <div class="visual-desc">
+            <strong>Visual Description:</strong> The region is a triangle bounded by \(y=0\), \(x=1\), and the diagonal line \(y=x\). The integration originally goes horizontally from \(x=y\) to \(x=1\).
+        </div>
+
+        <div class="solution">
+            <strong>Solution:</strong>
+            <p>By switching the order, the bounds become \(0 \le x \le 1\) and \(0 \le y \le x\). The integral becomes:</p>
+            \[ \int_{0}^{1} \int_{0}^{x} \sin(x^2) \, dy \, dx \]
+            <p>Since \(\sin(x^2)\) is constant with respect to \(y\):</p>
+            \[ \int_{0}^{1} [y \sin(x^2)]_{y=0}^{y=x} \, dx = \int_{0}^{1} x \sin(x^2) \, dx \]
+            <p>Using u-substitution with \(u = x^2\) and \(du = 2x \, dx\):</p>
+            \[ \frac{1}{2} \int_{0}^{1} \sin(u) \, du = \frac{1}{2} [-\cos(u)]_{0}^{1} = \frac{1}{2}(1 - \cos(1)) \]
+        </div>
+    </div>
+
+    <h3>Triple Integrals</h3>
+    
+    <p>Triple integrals extend the concept of integration to three dimensions. While single integrals represent area under a curve and double integrals represent volume under a surface, triple integrals are performed over a three-dimensional domain \(R\).</p>
+
+    <div class="definition">
+        <strong>Motivation:</strong> We never really need to plot the four-dimensional function itself; we only need to visualize and plot the <strong>domain of integration</strong> in 3D space.
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Integration over a Rectangular Box</h5>
+        <p>Integrate \(f(x,y,z) = xyz^2\) over the region \(R = [0,1] \times [0,2] \times [0,3]\).</p>
+        
+        <div class="visual-desc">
+            <strong>Visual Description:</strong> The domain is a rectangular prism (box) aligned with the axes. It extends from 0 to 1 on the x-axis, 0 to 2 on the y-axis, and 0 to 3 on the z-axis.
+        </div>
+
+        <div class="solution">
+            <strong>Calculation:</strong>
+            \[ \int_{0}^{1} \int_{0}^{3} \int_{0}^{2} xyz^2 \, dy \, dz \, dx \]
+            \[ = \int_{0}^{1} \int_{0}^{3} \left[ \frac{xyz^2 y^2}{2} \right]_{y=0}^{y=2} \, dz \, dx \]
+            \[ = \int_{0}^{1} \int_{0}^{3} 2xz^2 \, dz \, dx = \int_{0}^{1} [ \frac{2}{3}xz^3 ]_{0}^{3} \, dx \]
+            \[ = \int_{0}^{1} 18x \, dx = [9x^2]_{0}^{1} = 9 \]
+        </div>
+    </div>
+
+</body>
+</html>
