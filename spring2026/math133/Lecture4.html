@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics - Lecture 4: Euclid's Parallel Axiom and its Converse</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {load: ['output/chtml', 'ui/menu']}
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        th { background-color: #e9ecef; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 4: Euclid's Parallel Axiom and its Converse</h3>
+
+    <p>Last time, we explored geometric constructions, specifically how to draw a perpendicular line to a given line \(L\) from a point \(P\) regardless of whether \(P\) lies on \(L\) or not. Building on these techniques, we began our exploration of parallel lines.</p>
+
+    <h4>Euclid's Parallel Axiom (The Fifth Postulate)</h4>
+
+    <div class="theorem">
+        <p><strong>Theorem:</strong> If a line \(M\) (a transversal) crosses two lines \(L\) and \(L'\) such that the interior angles on the same side sum to less than two right angles (\(180^\circ\) or \(\pi\)), then the lines \(L\) and \(L'\) will eventually meet on that side of the transversal.</p>
+        <p>In mathematical notation, if \(\alpha + \beta < \pi\), then \(L\) and \(L'\) intersect on the side where those angles are located.</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A diagram shows two nearly parallel lines, \(L\) and \(L'\), being intersected by a transversal line \(M\). On the right side of the transversal, the interior angle between \(M\) and \(L\) is labeled \(\alpha\), and the interior angle between \(M\) and \(L'\) is labeled \(\beta\). The lines \(L\) and \(L'\) are shown slanting slightly toward each other on the right, indicating they will intersect at some distant point \(P\) where \(\alpha + \beta < \pi\).</p>
+    </div>
+
+    <h4>Consequences of the Parallel Axiom</h4>
+    <p>If we assume that \(L\) and \(L'\) are parallel (\(L \parallel L'\)), the axiom implies that the sum of the interior angles on one side cannot be less than \(\pi\). By extending this logic to both sides of the transversal, we can deduce the following:</p>
+
+    <div class="important">
+        <p><strong>Corollary:</strong> If \(L \parallel L'\), then the interior angles on the same side must sum exactly to \(\pi\). That is, \(\alpha + \beta = \pi\) and \(\gamma + \delta = \pi\).</p>
+    </div>
+
+    <div class="steps">
+        <h5>Logical Derivation:</h5>
+        <ol>
+            <li>Suppose \(L \parallel L'\). By the parallel axiom, \(\alpha + \beta \ge \pi\) and \(\gamma + \delta \ge \pi\).</li>
+            <li>Summing these gives \(\alpha + \gamma + \beta + \delta \ge 2\pi\).</li>
+            <li>Since \(\alpha + \gamma = \pi\) and \(\beta + \delta = \pi\) (as they form straight lines), the sum is exactly \(2\pi\).</li>
+            <li>Therefore, the original inequalities must be equalities: \(\alpha + \beta = \pi\).</li>
+        </ol>
+    </div>
+
+    <h3>Angle Relationships and Congruency</h3>
+
+    <p>Before moving to the formal proofs, we must be able to identify the relationships between angles formed when a transversal \(M\) intersects two parallel lines \(L\) and \(L'\).</p>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A diagram shows two horizontal parallel lines, \(L\) (top) and \(L'\) (bottom), intersected by a diagonal transversal line \(M\) slanting downwards from left to right. This creates eight distinct angles, labeled as follows:</p>
+        <ul>
+            <li><strong>At line \(L\):</strong> The bottom-left interior angle is \(\alpha'\) and the bottom-right interior angle is \(\alpha\).</li>
+            <li><strong>At line \(L'\):</strong> The top-left interior angle is \(\beta'\), the top-right interior angle is \(\beta\) and the bottom-right exterior angle is \(\gamma\).</li>
+        </ul>
+        <p>Vertical lines and arcs indicate which angles are equal (vertically opposite) or supplementary (forming a straight line).</p>
+    </div>
+
+    <div class="example">
+        <p><strong>Question:</strong> Given that \(L \parallel L'\), determine which of the following statements are correct based on the diagram:</p>
+        <ol>
+            <li>\(\alpha' = \beta\)</li>
+            <li>\(\gamma = \beta'\)</li>
+            <li>\(\alpha = \gamma\)</li>
+            <li>\(\alpha=\beta\) </li>
+            <li>\(\gamma=\alpha'\)</li>
+            <li>\(\alpha + \beta = \pi\)</li>
+        </ol>
+    </div>
+
+    <div class="solution">
+        <h5>Solution and Explanations:</h5>
+        <ul>
+            <li><strong>1) True:</strong> \(\alpha+\beta=\pi\) by the above corollary and \(\alpha+\alpha'=\pi\) as the angles form a straight line. Thus, \(\beta=\alpha'\).</li>
+            <li><strong>2) True:</strong> \(\gamma\) and \(\beta'\) are equal as they are vertically opposite angles.</li>
+            <li><strong>3) True:</strong> \(\alpha+\beta=\pi\) by the above corollary and \(\beta+\gamma=\pi\) as the angles form a straight line. Thus, \(\alpha=\gamma\).</li>
+            <li><strong>6) True:</strong> This is true by the corollary above.</li>
+        </ul>
+        
+        4) and 5) are false, since depending upon how the lines are constructed, one of the angles in the pair could be acute and one could be obtuse, implying that they aren't necessarily equal.
+    </div>
+    
+    
+    <div class="definition">
+        <p><strong>Definition:</strong> When a transversal intersects two lines:</p>
+        <ul>
+            <li><strong>Corresponding Angles:</strong> Angles in the same relative position at each intersection (e.g., \(\alpha\) and \(\tau\)).</li>
+            <li><strong>Alternate Interior/Opposite Angles:</strong> Angles on opposite sides of the transversal and between the two lines (e.g., \(\alpha\) and \(\beta'\)).</li>
+        </ul>
+    </div>
+
+    <h4>Congruence Theorems</h4>
+    <p>Recall that triangles are congruent if they satisfy the <strong>SAS (Side-Angle-Side)</strong> theorem. We now introduce the <strong>ASA (Angle-Side-Angle)</strong> theorem.</p>
+
+    <div class="theorem">
+        <p><strong>Theorem (ASA):</strong> Two triangles are congruent if two angles and the included side of one triangle are equal to the corresponding two angles and included side of the other triangle.</p>
+        <p>If \(|AB| = |PQ|\), \(\angle A = \angle P\), and \(\angle B = \angle Q\), then \(\Delta ABC \cong \Delta PQR\).</p>
+    </div>
+    
+    <div class="theorem">
+    A consequence of the above congruence theorem is another related theorem:
+        <p><strong>Theorem (AAS):</strong> If two angles and a non-included side of one triangle are equal to the corresponding two angles and non-included side of another triangle, then the triangles are congruent.</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> Two triangles, \(\Delta ABC\) and \(\Delta DEF\), are shown. Two angles in the first triangle (\(\alpha\) and \(\beta\)) are marked equal to two angles in the second (\(\alpha'\) and \(\beta'\)). However, the equal side length is not the side between the angles, but rather the side opposite to one of the angles.</p>
+    </div>
+
+    <div class="solution">
+        <h5>Derivation of AAS from ASA:</h5>
+        <ol>
+            <li>Suppose we have two triangles where two angles and a non-included side are equal.</li>
+            <li>By the <strong>Angle Sum Theorem</strong> (proven below), the third angle in any triangle is uniquely determined by the first two: \(\text{Angle}_3 = \pi - (\text{Angle}_1 + \text{Angle}_2)\).</li>
+            <li>Since two pairs of angles are equal, the third pair must also be equal.</li>
+            <li>With all three angles now known to be equal, we can use the original side length to satisfy the <strong>ASA (Angle-Side-Angle)</strong> condition.</li>
+            <li>Therefore, AAS is a valid criterion for congruence.</li>
+        </ol>
+    </div>
+
+    <h3>The Converse to Euclid's Fifth Axiom</h3>
+
+    <div class="theorem">
+        <p><strong>Converse Theorem:</strong> If a transversal crosses two lines such that the interior angles sum to \(\pi\) (\(\alpha + \beta = \pi\)), then the lines are parallel (\(L \parallel L'\)).</p>
+    </div>
+
+    <div class="solution">
+        <h5>Proof by Contradiction:</h5>
+        <ol>
+            <li>Assume \(\alpha + \beta = \pi\) but lines \(L\) and \(L'\) are <em>not</em> parallel.</li>
+            <li>If they are not parallel, they must intersect at some point \(P\) on the right.</li>
+            <li>By constructing a symmetric point \(P'\) on the left and applying the <strong>ASA Theorem</strong>, we can show that the lines would also have to intersect at \(P'\).</li>
+            <li>Since two distinct lines cannot intersect at two different points (\(P\) and \(P'\)), we reach a contradiction.</li>
+            <li>Therefore, the lines must be parallel: \(L \parallel L'\).</li>
+        </ol>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A proof diagram shows two lines \(L\) and \(L'\) intersected by a transversal at points \(A\) and \(B\). The interior angles are \(\alpha\) and \(\beta\). To the right, the lines converge at a point \(P\), forming a triangle \(\Delta ABP\). The proof suggests that a mirror-image triangle \(\Delta BAP'\) would exist on the left, which is impossible for straight lines.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Modern Version of the Parallel Axiom (Playfair's Axiom):</strong> Given a line \(L\) and a point \(P\) not on \(L\), there exists a unique line passing through \(P\) that is parallel to \(L\).</p>
+    </div>
+
+<h3>The Angle Sum Theorem</h3>
+
+    <p>A fundamental result in Euclidean geometry is that the interior angles of any triangle must sum to a constant value. We can prove this using the Parallel Axiom.</p>
+
+    <div class="theorem">
+        <p><strong>Theorem (Angle Sum Theorem):</strong> The sum of the interior angles of a triangle is exactly \(\pi\) (or \(180^\circ\)).</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A diagram shows a triangle with vertices \(A\), \(B\), and \(C\). A auxiliary line \(L\) is drawn through vertex \(C\) such that it is parallel to the opposite side \(AB\). This creates two alternate interior angle pairs: \(\alpha\) at vertex \(A\) is equal to an angle \(\alpha'\) at vertex \(C\), and \(\beta\) at vertex \(B\) is equal to an angle \(\beta'\) at vertex \(C\). All three angles at \(C\) (\(\alpha', \gamma, \beta'\)) lie on the straight line \(L\).</p>
+    </div>
+
+    <div class="solution">
+        <h5>Proof of the Sum Theorem:</h5>
+        <ol>
+            <li>Let \(\triangle ABC\) have interior angles \(\alpha, \beta,\) and \(\gamma\).</li>
+            <li>Construct a line \(L\) through vertex \(C\) such that \(L \parallel AB\).</li>
+            <li>By the properties of parallel lines (specifically alternate interior angles), the angle \(\alpha'\) formed between side \(AC\) and line \(L\) is equal to \(\alpha\). Similarly, the angle \(\beta'\) formed between side \(BC\) and line \(L\) is equal to \(\beta\).</li>
+            <li>Since \(\alpha', \gamma,\) and \(\beta'\) together form the straight line \(L\), their sum is \(\pi\):
+                \[ \alpha' + \gamma + \beta' = \pi \]
+            </li>
+            <li>Substituting our equalities (\(\alpha' = \alpha\) and \(\beta' = \beta\)), we arrive at:
+                \[ \alpha + \beta + \gamma = \pi \]
+            </li>
+        </ol>
+    </div>
+
+    <h3>Introduction to Parallelograms</h3>
+
+    <p>By applying our understanding of parallel lines and transversals, we can now formally define one of the most important quadrilaterals in geometry.</p>
+
+    <div class="definition">
+        <p><strong>Definition (Parallelogram):</strong> A parallelogram is a quadrilateral in which both pairs of opposite sides are parallel.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Key Takeaway:</strong> Because the opposite sides are parallel, the interior angles of a parallelogram follow the rules we derived earlier. Specifically, any two adjacent angles are supplementary (sum to \(\pi\)), and opposite angles are congruent.</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A quadrilateral \(ABCD\) is shown where side \(AB\) is parallel to side \(CD\), and side \(BC\) is parallel to side \(DA\). Arrows on the lines indicate these parallel pairings.</p>
+    </div>
+</body>
+</html>
