@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 2</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {load: ['output/chtml', '[tex]/ams']}
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+
+    <h3>Math 10B - Quiz 2: Spring 2026</h3>
+
+    <div class="example">
+        <h4>Problem 1 (4 points)</h4>
+        <p>Compute the following integral: \[ \int_{0}^{1}\int_{\sqrt{y}}^{1} \cos(x^{3}) \, dx \, dy \]</p>
+        <p><strong>Warning:</strong> The function \( \cos(x^{3}) \) is hard to integrate with respect to \( x \). Consider changing the order of integration.</p>
+    </div>
+
+    <div class="solution">
+        <h5>Solution to Problem 1</h5>
+        <div class="visual-desc">
+            Description of the region of integration: The original bounds are \( \sqrt{y} \le x \le 1 \) and \( 0 \le y \le 1 \). This describes a region in the first quadrant of the xy-plane bounded by the parabola \( y = x^2 \), the vertical line \( x = 1 \), and the horizontal line \( y = 0 \).
+        </div>
+        <div class="steps">
+            <p><strong>Step 1: Change the order of integration.</strong> By observing the region, we can see that if we integrate with respect to \( y \) first, the bounds for \( y \) go from 0 up to the curve \( y = x^2 \), and \( x \) ranges from 0 to 1.</p>
+            <p>The new integral is: \[ \int_{0}^{1}\int_{0}^{x^2} \cos(x^3) \, dy \, dx \]</p>
+            
+            <p><strong>Step 2: Evaluate the inner integral.</strong> Integrating with respect to \( y \): \[ \int_{0}^{x^2} \cos(x^3) \, dy = [y \cos(x^3)]_{0}^{x^2} = x^2 \cos(x^3) \]</p>
+            
+            <p><strong>Step 3: Evaluate the outer integral.</strong> Now we integrate with respect to \( x \) using substitution. Let \( u = x^3 \), then \( du = 3x^2 \, dx \), or \( \frac{1}{3}du = x^2 \, dx \). The bounds change from \( [0, 1] \) to \( [0^3, 1^3] = [0, 1] \).</p>
+            <p>\[ \frac{1}{3} \int_{0}^{1} \cos(u) \, du = \frac{1}{3} [\sin(u)]_{0}^{1} = \frac{1}{3} (\sin(1) - \sin(0)) \]</p>
+            <p><strong>Final Answer:</strong> \( \frac{1}{3} \sin(1) \)</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h4>Problem 2 (6 points)</h4>
+        <p>Find the volume of the region enclosed between the planes \( x=0 \), \( y=0 \), \( z=0 \), \( z=4 \), and \( x+y=6 \).</p>
+        <div class="important">
+            <strong>Hint:</strong> Draw a picture of the xy-plane to visualize the base of the solid.
+        </div>
+    </div>
+
+    <div class="solution">
+        <h5>Solution to Problem 2</h5>
+        <div class="visual-desc">
+            Description of the region: The base of the solid in the xy-plane is a right triangle with vertices at (0,0), (6,0), and (0,6), bounded by the axes and the line \( y = 6 - x \). The height of the solid is constant at \( z = 4 \).
+        </div>
+        <div class="steps">
+            <p><strong>Step 1: Set up the double integral.</strong> The volume \( V \) of a solid with height \( z = f(x, y) \) over a region \( R \) is given by \( \iint_R f(x, y) \, dA \). Here, \( f(x, y) = 4 \).</p>
+            
+            <p><strong>Step 2: Determine integration bounds.</strong> Using the triangular base:
+                <ul>
+                    <li>\( x \) ranges from 0 to 6.</li>
+                    <li>For a fixed \( x \), \( y \) ranges from 0 to \( 6 - x \).</li>
+                </ul>
+            </p>
+            
+            <p><strong>Step 3: Calculate the volume.</strong>
+                \[ V = \int_{0}^{6} \int_{0}^{6-x} 4 \, dy \, dx \]
+                \[ V = \int_{0}^{6} [4y]_{0}^{6-x} \, dx = \int_{0}^{6} 4(6-x) \, dx \]
+                \[ V = \int_{0}^{6} (24 - 4x) \, dx = [24x - 2x^2]_{0}^{6} \]
+                \[ V = (24 \cdot 6 - 2 \cdot 6^2) - 0 = 144 - 72 = 72 \]
+            </p>
+            <p><strong>Alternative Method:</strong> Since the height is constant, the volume is simply the Area of the Base multiplied by the Height. Area = \( \frac{1}{2} \cdot 6 \cdot 6 = 18 \). Volume = \( 18 \cdot 4 = 72 \).</p>
+            <p><strong>Final Answer:</strong> 72 cubic units</p>
+        </div>
+    </div>
+
+</body>
+</html>
