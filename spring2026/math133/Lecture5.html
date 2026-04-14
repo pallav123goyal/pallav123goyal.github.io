@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 5 - Areas and Pythagoras Theorem</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 5: Areas and Pythagoras Theorem</h3>
+
+    <p>In this lecture, we explore the concept of area as defined in Euclid's <em>Elements</em> and proceed to a formal proof of the Pythagoras Theorem. We build upon the fifth axiom and its converse discussed in previous sessions.</p>
+
+    <h4>Fundamental Definitions of Area</h4>
+    <p>In the <em>Elements</em>, the area of a rectangle is defined as the product of its dimensions: \( \text{Area} = \text{length} \times \text{breadth} \).</p>
+
+    <div class="important">
+        <strong>Remark:</strong> In the context of Euclid's <em>Elements</em>, two shapes are considered "equal" if their areas are equal, even if their geometric configurations differ.
+    </div>
+
+    <div class="definition">
+        <strong>Definition: Triangle Height and Area</strong><br>
+        Given a triangle \( ABC \), the height with respect to a base \( AB \) is the length of the perpendicular dropped from vertex \( C \) to the line containing \( AB \). The area of \( \triangle ABC \) is calculated as:
+        \[ \text{Area of } \triangle ABC = \frac{1}{2} |AB| \cdot |CH| \]
+        where \( |CH| \) is the height.
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description: Triangle Heights</strong><br>
+        The lecture notes illustrate two cases for a triangle's height. In the first, an acute triangle \( ABC \) has a height \( CH \) where \( H \) lies between \( A \) and \( B \) on the base. In the second, an obtuse triangle \( ABC \) has vertex \( B \) shifted such that the height \( CH \) falls outside the triangle, with \( H \) located on the extension of line segment \( AB \).
+    </div>
+
+    <p>Once the area of a triangle is established, the area of any polygon can be computed through the process of triangulation.</p>
+
+    <h4>Pythagoras Theorem</h4>
+    <div class="theorem">
+        <strong>Theorem: Pythagoras Theorem</strong><br>
+        In a right-angled triangle \( ABC \) where \( \angle C = 90^\circ \), the sum of the squares of the legs is equal to the square of the hypotenuse \( AB \):
+        \[ |AC|^2 + |BC|^2 = |AB|^2 \quad \text{or} \quad a^2 + b^2 = c^2 \]
+       .
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description: Geometric Representation of Pythagoras Theorem</strong><br>
+        The diagram shows a right triangle \( ABC \) with a square constructed on each of its three sides. A large square is built on the hypotenuse \( AB \), and two smaller squares are built on sides \( AC \) and \( BC \). A vertical altitude is drawn from the right angle vertex \( C \) to the hypotenuse \( AB \) and extended through the large square, dividing it into two rectangles.
+    </div>
+
+    <h3>Proof of the Theorem</h3>
+    <p>To prove the theorem, we demonstrate that the area of the square on side \( AC \) (denoted \( ACYX \)) is equal to the area of the rectangle formed within the large square on the side of \( A \) (denoted \( H'FAH \)). By symmetry, the same logic applies to the square on side \( BC \).</p>
+
+    <div class="steps">
+        <h5>Step 1: Equivalence of \( \triangle AXC \) and \( \triangle AXB \)</h5>
+        <p>The area of \( \triangle AXC = \frac{1}{2} |AX| \cdot |AC| \). We construct a perpendicular \( BZ \) to \( AX \). Since \( AX \parallel CY \) (as \( AXYC \) is a square) and \( ZB \parallel AC \) (both perpendicular to \( AX \)), the figure \( ZACB \) is a parallelogram. Therefore, \( |AC| = |BZ| \), which implies:</p>
+        \[ \text{Area of } \triangle AXC = \text{Area of } \triangle AXB \]
+       .
+
+        <h5>Step 2: Congruence of \( \triangle AXB \) and \( \triangle ACF \)</h5>
+        <p>Comparing triangles \( ACF \) and \( AXB \):</p>
+        <ul>
+            <li>\( |AC| = |AX| \) (sides of a square).</li>
+            <li>\( |AF| = |AB| \) (sides of a larger square).</li>
+            <li>\( \angle CAF = \angle XAB \) (both are \( 90^\circ + \angle BAC \)).</li>
+        </ul>
+        <p>By the Side-Angle-Side (SAS) postulate, \( \triangle ACF \cong \triangle AXB \), thus their areas are equal.</p>
+
+        <h5>Step 3: Equivalence of \( \triangle ACF \) and \( \triangle AHF \)</h5>
+        <p>The area of \( \triangle AHF = \frac{1}{2} |AF| \cdot |AH| \). By constructing a perpendicular \( CT \) to \( AF \), we find that \( AHCT \) is a parallelogram, meaning \( |AH| = |CT| \). Thus:</p>
+        \[ \text{Area of } \triangle ACF = \text{Area of } \triangle AHF \]
+       .
+    </div>
+
+    <div class="solution">
+        <strong>Conclusion:</strong><br>
+        By combining these steps, we show that the area of the square on \( AC \) is exactly twice the area of \( \triangle AXC \), which equals twice the area of \( \triangle AHF \), which is the area of the rectangle \( H'FA'H \).
+    </div>
+
+</body>
+</html>
