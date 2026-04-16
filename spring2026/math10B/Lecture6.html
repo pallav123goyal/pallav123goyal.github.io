@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 6: Geometry of 2-D Maps</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 6: Substitution and the Geometry of 2-D Maps</h3>
+
+    <div class="important">
+        <strong>Theme:</strong> Exploring how substitutions in integration require a "correction factor" determined by the geometry of the transformation.
+    </div>
+
+    <h4>Review of Substitution in Single and Multiple Variables</h4>
+
+    <div class="example">
+        <h5>Example 1: Single Variable Substitution</h5>
+        <p>Integrate the following expression:</p>
+        \[\int_{0}^{\sqrt{\pi}/2} x \cos(x^2) dx\]
+        
+        <div class="solution">
+            <div class="steps">
+                <strong>Step 1: Perform the substitution.</strong><br>
+                Let \(u = x^2\), which implies \(du = 2x dx\).
+            </div>
+            <div class="steps">
+                <strong>Step 2: Update the limits of integration.</strong><br>
+                When \(x = 0\), \(u = 0^2 = 0\).<br>
+                When \(x = \sqrt{\pi}/2\), \(u = (\sqrt{\pi}/2)^2 = \pi/4\). (Note: The handwritten notes indicate \(\pi/2\) as a calculated limit for a slightly different boundary).
+            </div>
+            <div class="steps">
+                <strong>Step 3: Evaluate the integral.</strong><br>
+                \[\int_{0}^{\pi/2} x \cos(u) \frac{du}{2x} = \int_{0}^{\pi/2} \frac{1}{2} \cos(u) du\]
+                \[= \left[ \frac{1}{2} \sin(u) \right]_{u=0}^{u=\pi/2} = \frac{1}{2}(1) - 0 = \frac{1}{2}\]
+            </div>
+        </div>
+        <p>In this problem, we needed a <strong>correction factor</strong> of \(2x\) when replacing \(dx\) by \(du\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Double Integral over a Parallelogram</h5>
+        <p>Integrate \(f(x,y) = xy\) over the parallelogram with vertices \((0,0), (1,1), (1,4),\) and \((2,5)\).</p>
+        
+        <div class="visual-desc">
+            <strong>Visual Description:</strong> A parallelogram in the \(xy\)-plane. The bottom-left vertex is at the origin \((0,0)\). The rightward edge follows the line \(y=x\) up to \((1,1)\). From \((1,1)\), the shape extends up to \((2,5)\). The leftward edge connects \((0,0)\) to \((1,4)\), and the top edge connects \((1,4)\) to \((2,5)\).
+        </div>
+
+        <div class="solution">
+            <p>First, we determine the equations of the boundary lines:</p>
+            <ul>
+                <li><strong>Line I:</strong> Connects \((0,0)\) to \((1,4)\). Equation: \(y = 4x\)</li>
+                <li><strong>Line II:</strong> Connects \((1,4)\) to \((2,5)\). Slope is \(\frac{5-4}{2-1} = 1\). Point-slope form: \(y-4 = 1(x-1) \implies y = x+3\)</li>
+                <li><strong>Line III:</strong> Connects \((1,1)\) to \((2,5)\). Equation: \(y = 4x - 3\)</li>
+                <li><strong>Line IV:</strong> Connects \((0,0)\) to \((1,1)\). Equation: \(y = x\)</li>
+            </ul>
+
+            <p>Using standard vertical slicing, the region must be split into two integrals based on the \(x\)-intervals:</p>
+            <p>For \(0 \le x \le 1\), the boundaries are \(x \le y \le 4x\).</p>
+            <p>For \(1 \le x \le 2\), the boundaries are \(4x-3 \le y \le x+3\).</p>
+
+            <p>The resulting integral is:</p>
+            \[\int_{0}^{1} \int_{x}^{4x} xy \, dy \, dx + \int_{1}^{2} \int_{4x-3}^{x+3} xy \, dy \, dx\]
+        </div>
+    </div>
+
+    <p>A more efficient approach to the above problem involves transforming the coordinates to simplify the region of integration. By observing the boundary equations, we can define new variables:</p>
+    
+    <div class="steps">
+        <strong>Alternative Approach:</strong><br>
+        The boundaries can be rewritten as:
+        <ul>
+            <li>\(y - 4x = 0\) and \(y - 4x = -3\)</li>
+            <li>\(y - x = 3\) and \(y - x = 0\)</li>
+        </ul>
+        Let \(u = y - 4x\) and \(v = y - x\). This maps the parallelogram to a simple rectangle in the \(uv\)-plane defined by \(-3 \le u \le 0\) and \(0 \le v \le 3\).
+    </div>
+
+    <div class="important">
+        <strong>Key Concept:</strong> When we replace \(dx \, dy\) with \(du \, dv\), we may require a <strong>correction factor</strong> to account for how the transformation stretches or shrinks the area.
+    </div>
+    
+    <h4>One-Dimensional Perspective</h4>
+    <div class="example">
+        <h5>Example 1: Linear Transformation</h5>
+        <p>Consider \(f(x) = 2x\) on the interval \([0, 3]\). Let \(u = f(x)\).</p>
+        <div class="visual-desc">
+            A mapping from the x-axis (interval 0 to 3) to the u-axis. The point 0 maps to 0, and the point 3 maps to 6.
+        </div>
+        <p>The function \(f(x)\) takes the interval \([0, 3]\) and stretches it to \([0, 6]\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Non-Linear Transformation</h5>
+        <p>Consider \(u = g(x) = x^2\) on the interval \([0, 3]\). This transformation takes \([0, 3]\) to \([0, 9]\)</p>
+    </div>
+
+    <h4>Two-Dimensional Perspective</h4>
+    <div class="example">
+        <h5>Example 3: Stretching Factors</h5>
+        <p>Let \(f(x, y) = (2x, 3y)\) on the region \([0, 1] \times [0, 1]\). Let \((u, v) = f(x, y)\).</p>
+        <p>In this case, \(f(x, y)\) stretches the horizontal variable by a factor of 2 and the vertical variable by a factor of 3.</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 4: Rotation and Stretching</h5>
+        <p>Let \((u, v) = g(x, y) = (x+y, x-y)\).</p>
+        <p>This transformation \(g(x, y)\) rotates the plane by \(45^\circ\) and stretches the region by a factor of \(\sqrt{2}\).</p>
+        <div class="visual-desc">
+            The unit square in the xy-plane is transformed into a diamond shape in the uv-plane with vertices at (0,0), (1,1), (2,0), and (1,-1).
+        </div>
+    </div>
+
+    <h3>Formal Definitions</h3>
+    
+    <div class="definition">
+        <h5>Definition: One-to-One (Injective)</h5>
+        <p>Given a function \(f: A \to B\), we say it is <strong>one-to-one</strong> if no two distinct inputs in \(A\) give the same output in \(B\).</p>
+        <p>Mathematically: If \(f(p) = f(q)\), then \(p = q\).</p>
+    </div>
+
+    <div class="definition">
+        <h5>Definition: Onto (Surjective)</h5>
+        <p>Given a function \(f: A \to B\), we say it is <strong>onto</strong> if every element \(b \in B\) can be obtained as an output for some input \(a \in A\).</p>
+    </div>
+
+    <h3>Examples of Mappings</h3>
+
+    <div class="example">
+        <h5>Problem 1: \(f(x) = 3x + 5\) on \([0, 2]\)</h5>
+        <p>Let \(A = [0, 2]\) and \(B = [5, 11]\). Is \(f\) one-to-one? Is \(f\) onto? </p>
+        
+        <div class="solution">
+            <p><strong>One-to-one check:</strong> Suppose \(f(p) = f(q)\).<br>
+            \(3p + 5 = 3q + 5 \implies 3p = 3q \implies p = q\).<br>
+            Thus, \(f\) is <strong>one-to-one</strong>.</p>
+            
+            <p><strong>Onto check:</strong> Given \(p \in [5, 11]\), find \(q\) such that \(f(q) = p\).<br>
+            \(3q + 5 = p \implies 3q = p - 5 \implies q = \frac{p-5}{3}\).<br>
+            Since \(q\) exists in \([0, 2]\) for every \(p\), \(f\) is <strong>onto</strong>.</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Problem 2: Square Function on \([-1, 1]\)</h5>
+        <p>Consider \(g(x) = x^2\) where \(g: [-1, 1] \to [-1, 1]\).</p>
+        
+        <div class="solution">
+            <p><strong>One-to-one check:</strong> \(g(1) = 1^2 = 1\) and \(g(-1) = (-1)^2 = 1\).<br>
+            Since \(g(1) = g(-1)\) but \(1 \neq -1\), \(g\) is <strong>not one-to-one</strong>.</p>
+            
+            <p><strong>Onto check:</strong> There is no \(p \in [-1, 1]\) such that \(g(p) = -1\).<br>
+            Thus, \(g\) is <strong>not onto</strong>.</p>
+        </div>
+    </div>
+
+    <div class="important">
+        <p>Note: If we change the codomain of \(g(x) = x^2\) to be \([0, 1]\), the function becomes <strong>onto</strong>, though it remains not one-to-one.</p>
+    </div>
+    
+    <div class="example">
+        <h5>Example 4: 2nd Order Mapping Analysis</h5>
+        <p>Consider the function \(f: \mathbb{R}^2 \longrightarrow \mathbb{R}^2\) defined by:</p>
+        <p>\[f(x, y) = (x+y, x-y)\]</p>
+        <p>We want to determine if this function is one-to-one and onto.</p>
+
+        <div class="solution">
+            <p><strong>Is \(f(x, y)\) One-to-One?</strong></p>
+            <p>Suppose we have two inputs \((p, q)\) and \((r, s)\) such that \(f(p, q) = f(r, s)\). This implies:</p>
+            <p>\[(p+q, p-q) = (r+s, r-s)\]</p>
+            <p>This gives us a system of equations:</p>
+            <ol>
+                <li>\(p + q = r + s\)</li>
+                <li>\(p - q = r - s\)</li>
+            </ol>
+            <p>Adding the equations: \(2p = 2r \implies p = r\).<br>
+            Subtracting the equations: \(2q = 2s \implies q = s\).</p>
+            <p>Since \((p, q) = (r, s)\), the function f is one-to-one.</p>
+
+            <p><strong>Is \(f(x, y)\) Onto?</strong></p>
+            <p>Given any point \((u, v)\) in the codomain, can we find \((x, y)\) such that \(f(x, y) = (u, v)\)?</p>
+            <p>We solve the system:</p>
+            <ul>
+                <li>\(x + y = u\)</li>
+                <li>\(x - y = v\)</li>
+            </ul>
+            <p>Solving for \(x\) and \(y\):<br>
+            \(x = \frac{u + v}{2}\) and \(y = \frac{u - v}{2}\).</p>
+            <p>Since we can find an input for any output, the function f is onto.</p>
+        </div>
+    </div>
+
+</body>
+</html>
