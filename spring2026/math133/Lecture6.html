@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 6 - Thales' Theorem</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 6:Thales' Theorem</h3>
+
+    <div class="important">
+        <strong>Recall:</strong> Given \(\Delta ABC\), its height with respect to the base \(BC\) is the length of the perpendicular from vertex \(A\) to the line containing \(BC\).
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> A triangle labeled ABC. From vertex A, a dashed vertical line drops down to the base BC, meeting it at a right angle at point H. This segment AH represent the height.
+    </div>
+
+    <p>The area of a triangle is calculated as:</p>
+    \[\text{Area of } \Delta ABC = \frac{1}{2} |BC| |AH|\]
+
+    <h4>Warm-up Exercise</h4>
+    <p>Suppose we have a line \(PQ\) that is parallel to the base \(BC\) of a triangle. We want to investigate the relationship between the areas of triangles formed with these segments.</p>
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> A triangle ABC with a line segment PQ inside it such that PQ is parallel to BC. Dashed perpendicular lines H'B and HC are drawn from points B and C up to the line containing PQ.
+    </div>
+
+    <div class="example">
+        <h5>Problem Statement</h5>
+        <p>Suppose \(PQ \parallel BC\). Is the area of \(\Delta PQB\) equal to the area of \(\Delta PQC\)?</p>
+    </div>
+
+    <div class="solution">
+        <h5>Solution</h5>
+        <p>First, we define the areas using the common base \(PQ\):</p>
+        <ul>
+            <li>\(\text{Area of } \Delta PQC = \frac{1}{2} |PQ| |CH|\)</li>
+            <li>\(\text{Area of } \Delta PQB = \frac{1}{2} |PQ| |BH'|\)</li>
+        </ul>
+        <p>Hence, the areas will be equal if \(|CH| = |BH'|\). Note that because \(PQ \parallel BC\), the segment \(HH'\) is parallel to \(BC\). Also, \(BH'\) and \(CH\) are perpendicular to the same line, implying they are parallel to each other. By the converse of Euclid's 5th Axiom, \(\angle BH'H + \angle CHH' = 180^\circ\).</p>
+        <p>Therefore, \(BH'HC\) is a parallelogram, which implies \(|BH'| = |CH|\). We conclude that the areas are indeed equal.</p>
+    </div>
+
+    <h4>Ratios of Areas</h4>
+    <p>Consider the same situation considered above. Is the area of \(\Delta PQA\) equal to the area of \(\Delta PQB\)?</p>
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> Triangle ABC with a segment PQ. A height line is drawn from vertex Q to the line containing the side AB.
+    </div>
+
+    <p>Using base \(AP\) for \(\Delta PQA\) and base \(BP\) for \(\Delta PQB\), both triangles share the same height from vertex \(Q\) to the line \(AB\). Let this height be \(h\).</p>
+    <ul>
+        <li>\(\text{Area of } \Delta PQA = \frac{1}{2} |AP| \cdot h\)</li>
+        <li>\(\text{Area of } \Delta PQB = \frac{1}{2} |BP| \cdot h\)</li>
+    </ul>
+
+    <p>For these areas to be equal, we must have \(|AP| = |BP|\), meaning \(P\) must be the midpoint of \(AB\). If not, these areas won't be equal in general. However, we can establish a useful ratio:</p>
+    <div class="important">
+        \[\frac{\text{Area of } \Delta APQ}{\text{Area of } \Delta BPQ} = \frac{|AP|}{|BP|}\]
+    </div>
+
+    <h3>Thales' Theorem</h3>
+    <div class="theorem">
+        <strong>Theorem:</strong> A line parallel to one side of a triangle divides the other two sides into proportional line segments.
+    </div>
+
+    <p>Given \(\Delta ABC\) where a line \(L\) is parallel to \(BC\) and intersects \(AB\) at \(P\) and \(AC\) at \(Q\), then:</p>
+    \[\frac{|AP|}{|PB|} = \frac{|AQ|}{|QC|}\]
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> Triangle ABC with segment PQ parallel to BC. Point P lies on AB and point Q lies on AC. The theorem states the ratio of the split segments on the left side (AP/PB) equals the ratio on the right side (AQ/QC).
+    </div>
+    
+    <h3>Proof of Thales' Theorem</h3>
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> A triangle ABC with a line segment PQ parallel to BC. Auxiliary lines connect point P to C and point Q to B, forming two triangles (PBQ and QCP) inside the larger triangle.
+    </div>
+
+    <p>We want to show that if \(PQ \parallel BC\), then \(\frac{|AP|}{|PB|} = \frac{|AQ|}{|QC|}\).</p>
+
+    <div class="solution">
+        <h5>Step-by-Step Proof</h5>
+        <p>1. First, we establish the ratio of areas for triangles sharing the same altitude. From our earlier warm-up, we know:</p>
+        \[\frac{\text{Area of } \Delta APQ}{\text{Area of } \Delta BPQ} = \frac{|AP|}{|PB|}\]
+        
+        <p>2. Similarly, considering the side \(AC\) as the base and the shared height from point \(P\):</p>
+        \[\frac{\text{Area of } \Delta AQP}{\text{Area of } \Delta CQP} = \frac{|AQ|}{|QC|}\]
+        
+        <p>3. Now, recall our warm-up result: if \(PQ \parallel BC\), then the areas of the two triangles formed on the parallel base are equal:</p>
+        \[\text{Area of } \Delta BPQ = \text{Area of } \Delta CPQ\]
+        
+        <p>4. Since the numerators (\(\text{Area of } \Delta APQ\)) and denominators are equal, the ratios must be equal:</p>
+        \[\frac{|AP|}{|PB|} = \frac{|AQ|}{|QC|}\]
+    </div>
+
+    <h4>Alternative Ratios (Corollary)</h4>
+    <p>A slight modification of the theorem allows us to compare the segments to the full length of the sides.</p>
+
+    <div class="theorem">
+        <strong>Theorem:</strong> Suppose \(PQ \parallel BC\). Show that \(\frac{|AB|}{|AP|} = \frac{|AC|}{|AQ|}\).
+    </div>
+
+    <div class="solution">
+        <h5>Proof</h5>
+        <p>We start by manipulating the Left Hand Side (LHS):</p>
+        \[LHS = \frac{|AB|}{|AP|} = \frac{|AP| + |PB|}{|AP|} = \frac{|AP|}{|AP|} + \frac{|PB|}{|AP|} = 1 + \frac{|PB|}{|AP|}\]
+        
+        <p>Now, we manipulate the Right Hand Side (RHS):</p>
+        \[RHS = \frac{|AC|}{|AQ|} = \frac{|AQ| + |QC|}{|AQ|} = \frac{|AQ|}{|AQ|} + \frac{|QC|}{|AQ|} = 1 + \frac{|QC|}{|AQ|}\]
+        
+        <p>By the original Thales' Theorem, we know that \(\frac{|PB|}{|AP|} = \frac{|QC|}{|AQ|}\). Therefore, \(LHS = RHS\), and we have established the whole-side proportion:</p>
+        \[\frac{|AB|}{|AP|} = \frac{|AC|}{|AQ|}\]
+    </div>
+
+    <h3>Converse to Thales' Theorem</h3>
+
+    <div class="theorem">
+        <strong>Theorem:</strong> If a line cuts two sides of a triangle in the same ratio, then the line is parallel to the third side.
+    </div>
+
+    <p>Suppose \(\frac{|AP|}{|PB|} = \frac{|AQ|}{|QC|}\). Is it true that \(PQ \parallel BC\)?</p>
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> Triangle ABC with a segment PQ. A second, dashed segment PQ' is drawn from P to a different point Q' on AC to facilitate a proof by contradiction.
+    </div>
+
+    <div class="solution">
+        <h5>Proof by Contradiction</h5>
+        <p>Suppose \(PQ\) is <strong>not</strong> parallel to \(BC\). Then we can construct a line through point \(P\) that <em>is</em> parallel to \(BC\). Let this line intersect \(AC\) at a point \(Q'\).</p>
+        
+        <p>Because \(PQ' \parallel BC\) by construction, we can apply Thales' Theorem:</p>
+        \[\frac{|AP|}{|PB|} = \frac{|AQ'|}{|Q'C|}\]
+        
+        <p>However, our initial assumption was that:</p>
+        \[\frac{|AP|}{|PB|} = \frac{|AQ|}{|QC|}\]
+        
+        <p>This implies that \(\frac{|AQ'|}{|Q'C|} = \frac{|AQ|}{|QC|}\). For these two ratios to be identical for points \(Q\) and \(Q'\) on the same segment \(AC\), it must be that \(Q = Q'\). Therefore, the line \(PQ\) is identical to the parallel line \(PQ'\), proving that \(PQ \parallel BC\).</p>
+    </div>
+
+</body>
+</html>
