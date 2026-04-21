@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 3</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {load: ['output/chtml', 'ui/menu']}
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        b { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h3>Math 10B - Quiz 3 (Spring 2026)</h3>
+
+   <main>
+        <section>
+            <div class="container example">
+                <p><strong>Problem 1:</strong> (4 points) Set up a triple integral to compute the volume of the region enclosed by \(x=0\), \(y=2\), \(x-y=0\), \(z=x^2+y^2\), and \(x+y-z+4=0\). (You don't have to evaluate it.)</p>
+            </div>
+            <div class="worked-solution">
+                <p><strong>Solution:</strong> To find the volume, we identify the bounds for each variable. The region in the \(xy\)-plane is bounded by \(x=0\), \(y=2\), and the line \(y=x\). For the vertical bounds, we rewrite the plane equation as \(z = x+y+4\). Since the paraboloid \(z = x^2+y^2\) is the lower surface in this specific region, the setup is:</p>
+                \[ V = \int_{0}^{2} \int_{0}^{y} \int_{x^2+y^2}^{x+y+4} dz \, dx \, dy \]
+            </div>
+        </section>
+
+        <section>
+            <div class="container example">
+                <p><strong>Problem 2:</strong> (2 points) Describe the region enclosed by the sphere \(x^2+y^2+z^2=1\) in the first octant using spherical coordinates. That is, indicate the ranges for \(\rho\), \(\theta\), and \(\phi\).</p>
+            </div>
+            <div class="worked-solution">
+                <p><strong>Solution:</strong> In spherical coordinates, the unit sphere is defined by \(\rho = 1\). The "first octant" restriction limits our angles to the positive axes.</p>
+                <ul>
+                    <li>Radius: \(0 \le \rho \le 1\)</li>
+                    <li>Azimuthal angle (in \(xy\)-plane): \(0 \le \theta \le \frac{\pi}{2}\)</li>
+                    <li>Polar angle (from positive \(z\)-axis): \(0 \le \phi \le \frac{\pi}{2}\)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="container example">
+                <p><strong>Problem 3:</strong> (4 points) Consider the region \(R\) enclosed between the circles \(x^2+y^2=4\) and \(x^2+y^2=9\) in the first quadrant. Set up an integral to compute \(\iint_{R} x \, dA\) in polar coordinates and evaluate it.</p>
+            </div>
+            <div class="container important">
+                <p><strong>Warning:</strong> Don't forget the correction factor \(r\) that you need to multiply by when integrating with polar coordinates (\(dA = r \, dr \, d\theta\)).</p>
+            </div>
+            <div class="worked-solution">
+                <p><strong>Solution:</strong> In polar coordinates, the region \(R\) is bounded by \(r=2\) and \(r=3\), with \(\theta\) ranging from \(0\) to \(\frac{\pi}{2}\). Substituting \(x = r\cos\theta\):</p>
+                \[ \int_{0}^{\pi/2} \int_{2}^{3} (r\cos\theta) r \, dr \, d\theta \]
+                <p>Evaluating the radial part first:</p>
+                \[ \int_{2}^{3} r^2 \, dr = \left[ \frac{1}{3}r^3 \right]_{2}^{3} = \frac{27}{3} - \frac{8}{3} = \frac{19}{3} \]
+                <p>Then the angular part:</p>
+                \[ \int_{0}^{\pi/2} \cos\theta \, d\theta = [\sin\theta]_{0}^{\pi/2} = 1 \]
+                <p>The final value is \(\frac{19}{3} \times 1 = \frac{19}{3}\).</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
