@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 7 - Arithmetic via Geometry</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+
+   <h3>Lecture 7: Arithmetic via Geometry</h3>
+
+<h4>Review of Thales' Theorem</h4>
+<p>We begin by recalling <strong>Thales' Theorem</strong>, which establishes a fundamental relationship between parallel lines and proportional segments in triangles.</p>
+
+<div class="theorem">
+    <strong>Theorem: Thales' Theorem</strong>
+    <p>In a triangle \(ABC\), if a line parallel to side \(AB\) intersects sides \(AC\) and \(BC\) at points \(P\) and \(Q\) respectively, then the segments are proportional:</p>
+    \[\frac{|CP|}{|AP|} = \frac{|CQ|}{|BQ|}\]
+    <p><strong>Conversely:</strong> If \(\frac{|CP|}{|AP|} = \frac{|CQ|}{|BQ|}\), then the line \(PQ\) is parallel to \(AB\) (\(PQ \parallel AB\)).</p>
+</div>
+
+<div class="visual-desc">
+    <strong>Visual Description:</strong> A triangle \(ABC\) with a horizontal base \(AB\). A line segment \(PQ\) is drawn inside the triangle parallel to \(AB\), where \(P\) lies on side \(AC\) and \(Q\) lies on side \(BC\). Arrows on lines \(PQ\) and \(AB\) indicate they are parallel.
+</div>
+
+<hr>
+
+<h4>Similar Triangles</h4>
+<p>Our main goal is to perform arithmetic operations using geometric constructions. This discussion starts with the concept of similar triangles.</p>
+
+<div class="definition">
+    <strong>Definition: Similar Triangles</strong>
+    <p>Two triangles \(\Delta ABC\) and \(\Delta A'B'C'\) are <strong>similar</strong> (\(\Delta ABC \sim \Delta A'B'C'\)) if their corresponding angles are equal:</p>
+    <ul>
+        <li>\(\angle A = \angle A'\)</li>
+        <li>\(\angle B = \angle B'\)</li>
+        <li>\(\angle C = \angle C'\)</li>
+    </ul>
+    <p><strong>Remark:</strong> By the angle sum theorem, we only need to verify that two angles are equal for similarity; the third will automatically be equal.</p>
+</div>
+
+<div class="theorem">
+    <strong>Proposition: Proportionality of Sides</strong>
+    <p>If \(\Delta ABC \sim \Delta A'B'C'\), then their corresponding sides are proportional:</p>
+    \[\frac{|AB|}{|BC|} = \frac{|A'B'|}{|B'C'|}, \quad \frac{|BC|}{|AC|} = \frac{|B'C'|}{|A'C'|}, \quad \text{and} \quad \frac{|AC|}{|AB|} = \frac{|A'C'|}{|A'B'|}\]
+</div>
+
+<h5>Proof of Proportionality</h5>
+<div class="solution">
+    <p>Superimpose \(\Delta A'B'C'\) onto \(\Delta ABC\) such that the angle at \(A\) coincides with \(A'\). Let the new positions of \(B'\) and \(C'\) lie on sides \(AB\) and \(AC\) respectively.</p>
+    <p>Since \(\angle AB'C' = \beta\), the supplementary angle \(\angle C'B'B = \pi - \beta\). The sum of interior angles on the same side of the transversal \(AB\) is \((\pi - \beta) + \beta = \pi\). By the converse of Euclid's 5th axiom, \(BC \parallel B'C'\).</p>
+    <p>Applying Thales' Theorem to these parallel lines, we find that the sides are proportional.</p>
+</div>
+
+<hr>
+
+<h4>Arithmetic Operations using Line Segments</h4>
+<p>We can use geometric constructions to perform addition and subtraction of lengths.</p>
+
+<div class="example">
+    <strong>Example: Constructing \(|CD| + |AB|\) and \(|CD| - |AB|\)</strong>
+    <h5>Steps for Construction:</h5>
+    <div class="steps">
+        <ol>
+            <li>Join points \(A\) and \(C\).</li>
+            <li>Draw a line parallel to \(AC\) through point \(B\).</li>
+            <li>Draw a line parallel to \(AB\) through point \(C\).</li>
+            <li>Label the intersection of these two lines as \(X\). The figure \(ACXB\) is a parallelogram, so \(|AB| = |CX|\).</li>
+            <li>Extend the line \(CD\) on both sides.</li>
+            <li>Draw a circle centered at \(C\) with radius \(|CX|\) (which equals \(|AB|\)).</li>
+            <li>Let this circle intersect the line \(CD\) at points \(E\) and \(F\).</li>
+        </ol>
+    </div>
+    <h5>Results:</h5>
+    <p>The resulting segments represent the arithmetic operations:</p>
+    <ul>
+        <li><strong>Subtraction:</strong> \(|DE| = |CD| - |CE| = |CD| - |AB|\)</li>
+        <li><strong>Addition:</strong> \(|DF| = |CD| + |CF| = |CD| + |AB|\)</li>
+    </ul>
+</div>
+
+<div class="visual-desc">
+    <strong>Visual Description:</strong> A construction showing a parallelogram \(ACXB\) used to "copy" the length of \(AB\) onto a line containing \(CD\). A circle centered at \(C\) with radius \(|AB|\) marks points \(E\) and \(F\) on the extended line \(CD\), creating segments of length \(|CD| - |AB|\) and \(|CD| + |AB|\).
+</div>
+
+<hr>
+
+<h4>Dividing a Segment into \(n\) Equal Parts</h4>
+<div class="example">
+    <strong>Construction Procedure</strong>
+    <p>Given a line segment \(AB\), we can divide it into \(n\) equal parts using Thales' Theorem.</p>
+    <div class="steps">
+        <ol>
+            <li>Draw an auxiliary line \(L\) through point \(A\) at any angle.</li>
+            <li>Pick a point \(A_1\) on line \(L\) and mark off points \(A_2, A_3, \dots, A_n\) such that \(|AA_1| = |A_1A_2| = \dots = |A_{n-1}A_n|\).</li>
+            <li>Connect the final point \(A_n\) to point \(B\).</li>
+            <li>Draw lines through each point \(A_i\) parallel to segment \(A_nB\), intersecting the original segment \(AB\) at points \(B_1, B_2, \dots\).</li>
+        </ol>
+    </div>
+    <p>By Thales' Theorem, since the segments on line \(L\) are equal (\(1:1:1\dots\)), the corresponding segments on \(AB\) must also be equal: \(|AB_1| = |B_1B_2| = \dots\).</p>
+</div>
+
+<div class="visual-desc">
+    <strong>Visual Description:</strong> A line segment \(AB\) with an auxiliary line extending from \(A\) at an upward angle. The auxiliary line has \(n\) equally spaced marks \(A_1\) through \(A_n\). Parallel dashed lines connect these marks to the original segment \(AB\), dividing it into equal sections \(B_1, B_2, \dots\).
+</div>
+
+<hr>
+
+    <h4>Remark on Angle Trisection</h4>
+    <p>While we have established methods for bisecting any given angle using a compass and straightedge, the problem of <strong>angle trisection</strong> is more complex.</p>
+
+    <div class="important">
+        <strong>Important: The Trisection Problem</strong>
+        <p>It is a famous result in geometry that it is <strong>impossible</strong> to trisect a general angle using only a compass and a straightedge. While specific angles (like 90&deg;) can be trisected into 30&deg; increments, a general method for any arbitrary angle does not exist within the constraints of Euclidean constructions.</p>
+    </div>
