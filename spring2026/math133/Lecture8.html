@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 8 - Arithmetic via Geometry II</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 8: Arithmetic via Geometry II</h3>
+
+    <p>In the previous lecture, we established the foundations of geometric arithmetic. Specifically, we learned how to:</p>
+    <ul>
+        <li>Add and subtract line segments.</li>
+        <li>Divide a line segment into equal parts.</li>
+    </ul>
+    <p>Today, we will extend these concepts to multiplication, division, and the construction of square roots geometrically.</p>
+
+    <h3>Multiplication of Lengths</h3>
+    
+    <p><strong>Goal:</strong> Given line segments of lengths \(|AB|\) and \(|CD|\), construct a line segment whose length is \(|AB| \cdot |CD|\).</p>
+    
+    <div class="important">
+        <p><strong>Important:</strong> To define multiplication geometrically, we must first choose a reference line segment of length \(1\). All multiplications are relative to this unit length.</p>
+    </div>
+
+    <div class="steps">
+        <h5>Steps for Multiplication:</h5>
+        <ol>
+            <li>Construct a triangle \(\triangle PQR\) such that the side \(|PQ| = |AB|\) and the base \(|PR| = 1\).</li>
+            <li>Extend the base \(PR\) to a point \(S\) such that the extended segment \(|RS| = |CD|\).</li>
+            <li>Draw a line passing through \(S\) that is parallel to the segment \(RQ\). Suppose this parallel line intersects the extension of \(PQ\) at a point \(T\).</li>
+        </ol>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A triangle \(PQR\) forms the base geometry. The base \(PR\) (length 1) is extended linearly to the right to a point \(S\) (forming segment \(RS\) of length \(|CD|\)). The left side \(PQ\) (length \(|AB|\)) is extended upwards to a point \(T\). A dashed line connects \(Q\) to \(R\), and another dashed line connects \(T\) to \(S\). The arrows on \(QR\) and \(TS\) indicate that these two lines are parallel. This configuration creates two similar nested triangles: \(\triangle PQR\) and \(\triangle PTS\).</p>
+    </div>
+
+    <div class="theorem">
+        <p><strong>Theorem (Thales' Theorem):</strong> Because the line \(TS\) is parallel to \(QR\), Thales's theorem (or similar triangles) guarantees that the ratio of the corresponding segments is preserved:</p>
+        \[\frac{|PR|}{|RS|} = \frac{|PQ|}{|QT|}\]
+        <p>Substituting our known constructed lengths into the ratio:</p>
+        \[\frac{1}{|CD|} = \frac{|AB|}{|QT|}\]
+        <p>By cross-multiplying, we solve for \(|QT|\), which gives us our desired product:</p>
+        \[|QT| = |AB| \cdot |CD|\]
+    </div>
+
+    <h3>Division of Lengths</h3>
+    
+    <p><strong>Question:</strong> Can we use a similar construction to divide lengths and construct \(\frac{|AB|}{|CD|}\)?</p>
+
+    <div class="steps">
+        <h5>Steps for Division:</h5>
+        <ol>
+            <li>Construct a triangle \(\triangle PQR\) such that the side \(|PQ| = |AB|\) and the base \(|PR| = |CD|\).</li>
+            <li>Extend the base \(PR\) to a point \(S\) such that the extended segment \(|RS| = 1\).</li>
+            <li>Draw a line through \(S\) parallel to \(RQ\), intersecting the extension of \(PQ\) at a point \(T\).</li>
+        </ol>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> Similar to the multiplication diagram, a primary triangle \(PQR\) is drawn. Here, the side \(|PQ| = |AB|\) and the base \(|PR| = |CD|\). The base is extended to \(S\) such that \(|RS| = 1\). The side \(PQ\) is extended to \(T\). Dashed lines indicate that the segment \(QR\) is parallel to \(TS\).</p>
+    </div>
+
+    <p>By applying Thales' theorem again, we establish the proportionality:</p>
+    \[\frac{|PR|}{|RS|} = \frac{|PQ|}{|QT|}\]
+    <p>Substituting the specific lengths for division gives:</p>
+    \[\frac{|CD|}{1} = \frac{|AB|}{|QT|}\]
+    <p>Rearranging the equation to solve for the unknown segment \(|QT|\) yields:</p>
+    \[|QT| = \frac{|AB|}{|CD|}\]
+
+    <div class="important">
+        <p><strong>Remark:</strong> Starting with a line segment of length \(1\), we can add it to itself repeatedly to construct all positive integers. Subsequently, using this division construction, we can construct all positive rational numbers \(\frac{p}{q}\) (where \(p\) and \(q\) are integers).</p>
+    </div>
+
+    <h3>Irrational Numbers and Square Roots</h3>
+    
+    <p>Since we can construct all rational numbers, a natural question arises: <em>What about irrational numbers like \(\sqrt{2}\), \(\pi\), or \(e\)?</em></p>
+
+    <div class="definition">
+        <p><strong>Key Fact:</strong> \(1^2 + 1^2 = (\sqrt{2})^2\)</p>
+        <p>By the Pythagorean theorem, we can construct \(\sqrt{2}\) as the hypotenuse of a right-angled triangle where both legs have a length of \(1\).</p>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A right-angled triangle consisting of a vertical leg of length 1, a horizontal leg of length 1, and a hypotenuse labeled \(\sqrt{2}\). The intersection of the two legs is marked with a standard square right-angle symbol.</p>
+    </div>
+
+    <p><strong>Question:</strong> What about \(\sqrt{3}\)? In general, can we construct \(\sqrt{n}\)? More generally, can we construct \(\sqrt{\frac{p}{q}}\)?</p>
+
+    <p>We can answer this using a sequential construction approach based on the relationship \(1^2 + (\sqrt{2})^2 = (\sqrt{3})^2\):</p>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A right-angled triangle with a vertical leg of length 1, a horizontal leg of length \(\sqrt{2}\), and a hypotenuse labeled \(\sqrt{3}\). The intersection of the legs is marked with a right-angle symbol.</p>
+    </div>
+
+    <p>We can generalize this process recursively to find the square root of any integer, as demonstrated in the following table:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Target Construction</th>
+                <th>Using Leg 1</th>
+                <th>Using Leg 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>\(\sqrt{4}\)</td>
+                <td>\(\sqrt{3}\)</td>
+                <td>\(1\)</td>
+            </tr>
+            <tr>
+                <td>\(\sqrt{5}\)</td>
+                <td>\(\sqrt{4}\)</td>
+                <td>\(1\)</td>
+            </tr>
+            <tr>
+                <td>\(\sqrt{6}\)</td>
+                <td>\(\sqrt{5}\)</td>
+                <td>\(1\)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Finally, once we can construct \(\sqrt{p}\) and \(\sqrt{q}\) independently, we can use our geometric division method to obtain \(\sqrt{\frac{p}{q}}\).</p>
+
+    <h3>Efficient Construction of Square Roots</h3>
+    
+    <p>While the recursive method works for integers, it is slow. We will now show a highly efficient method to construct the square root of <em>any</em> constructible length.</p>
+    
+    <p><strong>Goal:</strong> Given any line segment of length \(l\) and a unit segment of length \(1\), construct \(\sqrt{l}\).</p>
+
+    <div class="steps">
+        <h5>Construction Steps:</h5>
+        <ol>
+            <li>Draw a horizontal line segment \(AB\) containing a point \(H\) such that the sub-segment \(|AH| = l\) and the sub-segment \(|HB| = 1\).</li>
+            <li>Find the midpoint \(M\) of the entire segment \(AB\). Draw a semicircle with center \(M\) and radius \(|AM|\).</li>
+            <li>Draw a line perpendicular to \(AB\) passing through the point \(H\). Let \(C\) be the intersection of this perpendicular line with the semicircle.</li>
+            <li>Construct the right triangle \(\triangle ACB\) by connecting points \(A\) to \(C\) and \(B\) to \(C\). Note that \(CH\) is the height with respect to the hypotenuse \(AB\).</li>
+        </ol>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A horizontal line segment \(AB\) acts as the diameter of a semicircle arcing over it. The midpoint of \(AB\) is labeled \(M\). A point \(H\) sits on \(AB\) to the right of \(M\), dividing \(AB\) into segment \(AH\) (length \(l\)) and \(HB\) (length \(1\)). A dashed perpendicular line rises from \(H\) to meet the semicircle at point \(C\). Lines connect \(A\) to \(C\) and \(C\) to \(B\), forming a large inscribed triangle \(\triangle ACB\). The angle at \(C\) (\(\angle ACB\)) is marked as a right angle (\(90^\circ\)). The angles where the altitude \(CH\) meets \(AB\) (\(\angle AHC\) and \(\angle CHB\)) are also marked as right angles. Angle \(\angle CAH\) is denoted as \(\alpha\), and \(\angle ACH\) is denoted as \(90^\circ - \alpha\).</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Proof of Construction:</strong></p>
+        <p>By Thales's theorem for circles, any angle inscribed in a semicircle is a right angle. Therefore, \(\angle ACB = 90^\circ\).</p>
+        <p>Furthermore, the two smaller internal triangles \(\triangle AHC\) and \(\triangle CHB\) are similar (\(\triangle AHC \sim \triangle CHB\)). This geometric similarity is established because:</p>
+        <ul>
+            <li>\(\angle AHC = \angle CHB = 90^\circ\)</li>
+            <li>\(\angle CAH = \angle BCH = \alpha\) (since both are complementary to \(\angle ACH\))</li>
+        </ul>
+        <p>Because the corresponding sides of similar triangles are proportional, we can write:</p>
+        \[\frac{|AH|}{|HC|} = \frac{|CH|}{|HB|}\]
+        <p>Cross-multiplying gives the geometric mean theorem:</p>
+        \[|CH|^2 = |AH| \cdot |HB|\]
+        <p>Substitute the known lengths (\(|AH| = l\) and \(|HB| = 1\)):</p>
+        \[|CH|^2 = l \cdot 1 = l\]
+        <p>Therefore, the length of the altitude is exactly the square root of \(l\):</p>
+        \[|CH| = \sqrt{l}\]
+    </div>
+
+    <h3>Conclusion: Constructible Numbers and Polygons</h3>
+    
+    <p>Given any lengths, we can geometrically construct their addition, subtraction, multiplication, division, and square roots using only a compass and straightedge.</p>
+
+    <div class="example">
+        <h5>Example: Constructing a Regular Pentagon</h5>
+        <p>Through trigonometric derivation, it is known that \(\sin(18^\circ) = \frac{\sqrt{5}-1}{4}\). Because this expression only involves rational numbers and square roots, it can be constructed using our established geometric rules. The interior angle of a regular 5-gon (pentagon) is:</p>
+        \[\frac{3 \times 180^\circ}{5} = 108^\circ = 90^\circ + 18^\circ\]
+        <p>Since \(18^\circ\) is constructible, and \(90^\circ\) is easily constructible, an angle of \(108^\circ\) can be constructed. Therefore, regular 5-gons can be constructed.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Summary of Constructibility:</strong></p>
+        <ul>
+            <li>We can construct a regular \(n\)-gon whenever all odd prime factors of \(n\) are Fermat primes (primes of the form \(2^{2^k}+1\) for some integer \(k\)).</li>
+            <li>For all such \(n\), we can construct the angle \(\frac{2\pi}{n}\).</li>
+            <li>You can construct a square having the exact same area as any given polygon (this is known as squaring the polygon).</li>
+        </ul>
+    </div>
+
+    <div class="warning">
+        <p><strong>Impossible Constructions:</strong></p>
+        <p>Because compass and straightedge constructions are limited to solving linear and quadratic equations (and their combinations), certain ancient geometric problems are impossible:</p>
+        <ul>
+            <li>We <strong>cannot</strong> trisect angles in general (requires solving irreducible cubic equations).</li>
+            <li>We <strong>cannot</strong> construct cube roots in general (e.g., "doubling the cube" is impossible).</li>
+        </ul>
+    </div>
+
+</body>
+</html>
