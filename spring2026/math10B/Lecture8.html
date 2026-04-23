@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 8 - Jacobian and Change of Variables</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Review: Spherical Coordinates</h3>
+    <p>In the previous lecture, we introduced spherical coordinates \((r, \phi, \theta)\). The relationship between Cartesian and spherical coordinates is defined by the following conversion formulas:</p>
+    <ul>
+        <li>Distance from origin: \(r = \sqrt{x^2 + y^2 + z^2}\)</li>
+        <li>Azimuthal angle: \(\theta = \tan^{-1}\left(\frac{y}{x}\right)\)</li>
+        <li>Polar angle: \(\phi = \cos^{-1}\left(\frac{z}{\sqrt{x^2 + y^2 + z^2}}\right)\)</li>
+    </ul>
+
+    <div class="visual-desc">
+        <strong>Visual Description:</strong> A 3D coordinate system illustrating a point \(P\) with spherical coordinates \((r, \phi, \theta)\). The radius vector \(r\) connects the origin to \(P\). The polar angle \(\phi\) is the angle between the positive \(z\)-axis and the vector \(r\). The azimuthal angle \(\theta\) is the angle in the \(xy\)-plane between the positive \(x\)-axis and the projection of the vector \(r\) onto the plane.
+    </div>
+
+    <p>To convert from spherical back to Cartesian coordinates, we use:</p>
+    <ul>
+        <li>\(x = r \sin\phi \cos\theta\)</li>
+        <li>\(y = r \sin\phi \sin\theta\)</li>
+        <li>\(z = r \cos\phi\)</li>
+    </ul>
+    <p>The standard ranges for these coordinates are \(0 \le r < \infty\), \(0 \le \phi \le \pi\), and \(0 \le \theta < 2\pi\).</p>
+
+    <div class="example">
+        <h5>Example: Visualizing Spherical Equations</h5>
+        <p>Interpret what the following equations represent geometrically:</p>
+        <ol>
+            <li><strong>\(r = 2\):</strong> This represents a sphere with radius 2 centered at the origin.</li>
+            <li><strong>\(\theta = \frac{\pi}{3}\):</strong> This represents a half-plane starting from the \(z\)-axis and making an angle of \(\frac{\pi}{3}\) with the positive \(x\)-axis.</li>
+            <li><strong>\(\phi = \frac{\pi}{3}\):</strong> This represents a cone opening upward along the \(z\)-axis, where the angle between the axis and the side of the cone is \(\frac{\pi}{3}\).</li>
+            <li><strong>The \(xy\)-plane:</strong> In spherical coordinates, the \(xy\)-plane is defined by \(\phi = \frac{\pi}{2}\).</li>
+            <li><strong>The \(xz\)-plane:</strong> This plane is represented by \(\theta = 0\) (for \(x > 0\)) and \(\theta = \pi\) (for \(x < 0\)).</li>
+            <li><strong>The \(yz\)-plane:</strong> This plane is represented by \(\theta = \frac{\pi}{2}\) and \(\theta = \frac{3\pi}{2}\).</li>
+            <li><strong>The \(z\)-axis:</strong> The positive \(z\)-axis is \(\phi = 0\), and the negative \(z\)-axis is \(\phi = \pi\).</li>
+        </ol>
+    </div>
+
+    <h3>Change of Variables and the Jacobian</h3>
+    <p>When changing variables in a double integral, such as moving from Cartesian to polar coordinates, the differential area element changes. In Cartesian coordinates, \(dA = dx \, dy\). In polar coordinates, however, we use \(dA = r \, dr \, d\theta\), where \(r\) acts as a "correction factor."</p>
+
+    <div class="definition">
+        <strong>Definition: The Jacobian:</strong> For a transformation defined by \(x = f(u, v)\) and \(y = g(u, v)\), the Jacobian \(\frac{\partial(x, y)}{\partial(u, v)}\) is the determinant:
+        \[\frac{\partial(x, y)}{\partial(u, v)} = \begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{vmatrix} = \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u}\]
+    </div>
+
+    <div class="theorem">
+        <strong>Theorem: Change of Variables:</strong>
+        \[\iint_{R} f(x, y) \, dx \, dy = \iint_{S} f(x(u, v), y(u, v)) \left| \frac{\partial(x, y)}{\partial(u, v)} \right| \, du \, dv\]
+    </div>
+
+    <div class="example">
+        <h5>Example 1: Integral over a Parallelogram</h5>
+        <p>Evaluate \(\iint_{R} xy \, dA\) where \(R\) is the parallelogram with vertices \((0,0), (1,1), (1,4), (2,5)\).</p>
+        <div class="solution">
+            <p><strong>Step 1: Determine boundary lines.</strong> The parallelogram is bounded by:
+            \[y - x = 0, \quad y - x = 3\]
+            \[y - 4x = 0, \quad y - 4x = -3\]</p>
+            <p><strong>Step 2: Substitute.</strong> Let \(u = y - x\) and \(v = y - 4x\). Thus, \(0 \le u \le 3\) and \(-3 \le v \le 0\).</p>
+            <p><strong>Step 3: Solve for \(x, y\).</strong> 
+            \[x = \frac{u - v}{3}, \quad y = \frac{4u - v}{3}\]</p>
+            <p><strong>Step 4: Compute the Jacobian.</strong>
+            \[\frac{\partial(x, y)}{\partial(u, v)} = \begin{vmatrix} 1/3 & -1/3 \\ 4/3 & -1/3 \end{vmatrix} = -\frac{1}{9} + \frac{4}{9} = \frac{1}{3}\]</p>
+            <p><strong>Step 5: Evaluate the integral.</strong>
+            \[\int_{-3}^{0} \int_{0}^{3} \left(\frac{u - v}{3}\right) \left(\frac{4u - v}{3}\right) \left| \frac{1}{3} \right| \, du \, dv\]</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Area bounded by Curves</h5>
+        <p>Compute the area bounded by \(y = x^2, y = 3x^2, y = x\), and \(y = 2x\).</p>
+        <div class="solution">
+            <p><strong>Step 1: Identify substitutions.</strong> Rewrite the boundaries as:
+            \[\frac{y}{x^2} = 1, \quad \frac{y}{x^2} = 3\]
+            \[\frac{y}{x} = 1, \quad \frac{y}{x} = 2\]</p>
+            <p><strong>Step 2: Choose variables.</strong> Let \(u = \frac{y}{x^2}\) and \(v = \frac{y}{x}\). The limits are \(1 \le u \le 3\) and \(1 \le v \le 2\).</p>
+        </div>
+    </div>
+
+</body>
+</html>
