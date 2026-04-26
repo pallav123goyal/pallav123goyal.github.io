@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Sample Midterm Exam</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {
+                load: ['output/chtml', 'input/tex-full']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>MATH 10B: Sample Midterm Exam</h3>
+
+    <div class="important">
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>The exam is 80 minutes long.</li>
+            <li>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</li>
+            <li>Circle your final answers when relevant.</li>
+            <li>Show all steps in your solutions and make your reasoning clear when asked for an explanation.</li>
+            <li>If you have questions at any point, please raise your hand.</li>
+        </ul>
+    </div>
+
+    <h3>Exam Questions</h3>
+
+    <div class="example">
+        <h4>Question 1</h4>
+        <p>Compute the double integral:</p>
+        <p>\[ \int_{0}^{1}\int_{y}^{1} e^{y/x} \, dx \, dy. \]</p>
+    </div>
+
+    <div class="example">
+        <h4>Question 2</h4>
+        <p>Set up a triple integral to compute the volume enclosed between the surfaces \(x=0\), \(y=0\), \(x+2y=6\), \(z=0\), and \(x+y+z=0\). Evaluate this integral.</p>
+    </div>
+
+    <div class="example">
+        <h4>Question 3</h4>
+        <p>Find the volume of the solid enclosed by the surfaces \(x^2 + y^2 = \frac{1}{5}z^2\) and \(z = 5 + \sqrt{5 - x^2 - y^2}\) above the \(xy\)-plane.</p>
+    </div>
+
+    <div class="example">
+        <h4>Question 4</h4>
+        <p>Evaluate the integral:</p>
+        <p>\[ \iint_{D} xy \, dA \]</p>
+        <p>where \(D\) is the region in the first quadrant bounded by the curves:</p>
+        <ul>
+            <li>\(x^2 + y^2 = 4\)</li>
+            <li>\(x^2 + y^2 = 9\)</li>
+            <li>\(x^2 - y^2 = 1\)</li>
+            <li>\(x^2 - y^2 = 4\).</li>
+        </ul>
+    </div>
+
+</body>
+</html>

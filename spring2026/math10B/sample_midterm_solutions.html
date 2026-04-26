@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Sample Midterm Solutions</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {
+                load: ['output/chtml', 'input/tex-full']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        .example {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .important {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>MATH 10B: Sample Midterm Solutions</h3>
+
+    <div class="important">
+          <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>The exam is 80 minutes long.</li>
+            <li>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</li>
+            <li>Circle your final answers when relevant.</li>
+            <li>Show all steps in your solutions and make your reasoning clear when asked for an explanation.</li>
+            <li>If you have questions at any point, please raise your hand.</li>
+        </ul> </div>
+
+    <div class="example">
+        <h4>Question 1</h4>
+        <p>Compute the double integral:</p>
+        <p>\[ \int_{0}^{1}\int_{y}^{1} e^{y/x} \, dx \, dy .\]</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The inner integral \(\int e^{y/x} \, dx\) is not elementary. We must change the order of integration. The current region is \(0 \le y \le 1\) and \(y \le x \le 1\). This is a triangle with vertices \((0,0), (1,0), (1,1)\).</p>
+        <p>Changing the order to \(dy \, dx\), the bounds become \(0 \le x \le 1\) and \(0 \le y \le x\):</p>
+        <p>\[ \int_{0}^{1} \int_{0}^{x} e^{y/x} \, dy \, dx \]</p>
+        <p>Evaluate the inner integral:</p>
+        <p>\[ \int_{0}^{x} e^{y/x} \, dy = \left[ x e^{y/x} \right]_{y=0}^{y=x} = x(e^1 - e^0) = x(e-1) \]</p>
+        <p>Now evaluate the outer integral:</p>
+        <p>\[ \int_{0}^{1} x(e-1) \, dx = (e-1) \left[ \frac{1}{2}x^2 \right]_{0}^{1} = \frac{e-1}{2}. \]</p>
+    </div>
+
+    <div class="example">
+        <h4>Question 2</h4>
+        <p>Set up a triple integral to compute the volume enclosed between the surfaces \(x=0\), \(y=0\), \(x+2y=6\), \(z=0\), and \(x+y+z=0\). Evaluate this integral.</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+<p><strong>Step 1: Determine the bounds.</strong></p>
+        <p>The region in the \(xy\)-plane is bounded by \(x=0\), \(y=0\), and the line \(x+2y=6\). Solving for \(y\), we get \(y = 3 - \frac{x}{2}\). The \(x\)-intercept of this line is \(x=6\).</p>
+        <p>For the vertical bounds, \(z\) ranges from the plane \(z=0\) to the plane \(z = -x - y\). Note that in the first quadrant where \(x, y \ge 0\), the plane \(z = -x - y\) lies below the \(xy\)-plane.</p>
+
+        <p><strong>Step 2: Set up the integral.</strong></p>
+        <p>\[ V = \int_{0}^{6} \int_{0}^{3 - \frac{x}{2}} \int_{-x-y}^0 \, dz \, dy \, dx \]</p>
+
+        <p><strong>Step 3: Evaluate the integral.</strong></p>
+        <p>Evaluate the inner integral with respect to \(z\):</p>
+        <p>\[ \int_{0}^{x+y} dz = [z]_{-x-y}^{0} = x+y \]</p>
+        
+        <p>Evaluate the middle integral with respect to \(y\):</p>
+        <p>\[ \int_{0}^{3 - \frac{x}{2}} (x+y) \, dy = \left[ xy + \frac{1}{2}y^2 \right]_{0}^{3 - \frac{x}{2}} \]</p>
+        <p>\[ = x\left(3 - \frac{x}{2}\right) + \frac{1}{2}\left(3 - \frac{x}{2}\right)^2 \]</p>
+        <p>\[ = 3x - \frac{x^2}{2} + \frac{1}{2}\left(9 - 3x + \frac{x^2}{4}\right) \]</p>
+        <p>\[ = 3x - \frac{x^2}{2} + \frac{9}{2} - \frac{3x}{2} + \frac{x^2}{8} = \frac{3x}{2} - \frac{3x^2}{8} + \frac{9}{2} \]</p>
+
+        <p>Evaluate the outer integral with respect to \(x\):</p>
+        <p>\[ \int_{0}^{6} \left( \frac{3x}{2} - \frac{3x^2}{8} + \frac{9}{2} \right) \, dx \]</p>
+        <p>\[ = \left[ \frac{3x^2}{4} - \frac{x^3}{8} + \frac{9x}{2} \right]_{0}^{6} \]</p>
+        <p>\[ = \frac{3(36)}{4} - \frac{216}{8} + \frac{9(6)}{2} \]</p>
+        <p>\[ = 27 - 27 + 27 = 27.\]</p>
+    </div>
+
+    <div class="example">
+        <h4>Question 3</h4>
+        <p>Find the volume of the solid enclosed by the surfaces \(x^2 + y^2 = \frac{1}{5}z^2\) and \(z = 5 + \sqrt{5 - x^2 - y^2}\) above the \(xy\)-plane.</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using cylindrical coordinates: \(r^2 = x^2 + y^2\). The surfaces are \(z = \sqrt{5}r\) and \(z = 5 + \sqrt{5 - r^2}\).</p>
+        <p>Find the intersection: \(\sqrt{5}r = 5 + \sqrt{5 - r^2}\). Hence, \(\sqrt{5}r -5 = \sqrt{5 - r^2}\). Squaring both sides, we get \(5r^2+25 - 10\sqrt{5}r = 5-r^2\), which implies that \(6r^2-10\sqrt{5}r+20=0\). Solving for \(r\) shows that \(r = \sqrt{5}\) or \(r = 2\sqrt{5}/3\). However, the latter value of \(r\) doesn't satisfy the equation, so we can ignore it.</p>
+        <p>The volume is the integral over the disk of radius \(\sqrt{5}\):</p>
+        <p>\[ V = \int_{0}^{2\pi} \int_{0}^{\sqrt{5}} \int_{\sqrt{5}r}^{5 + \sqrt{5-r^2}} r \, dz \, dr \, d\theta \]</p>
+        <p>\[ V = 2\pi \int_{0}^{\sqrt{5}} (5r + r\sqrt{5-r^2} - \sqrt{5}r^2) \, dr \]</p>
+        <p>Evaluating this yields: \[ V = 2\pi \left[ \frac{5}{2}r^2 - \frac{1}{3}(5-r^2)^{3/2} - \frac{\sqrt{5}}{3}r^3 \right]_{0}^{\sqrt{5}} = 2\pi \left( \frac{25}{2} + \frac{5\sqrt{5}}{3} - \frac{5\sqrt{5}}{3} \right) = \frac{25\pi}{3}.\]</p>
+    </div>
+
+    <div class="example">
+        <h4>Question 4</h4>
+        <p>Evaluate the integral: \[ \iint_{D} xy \, dA \]</p>
+        <p>where \(D\) is the region in the first quadrant bounded by \(x^2 + y^2 = 4, x^2 + y^2 = 9, x^2 - y^2 = 1, x^2 - y^2 = 4\).</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+<p><strong>Step 1: Define the transformation.</strong></p>
+        <p>Let \(u = x^2 + y^2\) and \(v = x^2 - y^2\). The bounds for the region in the \(uv\)-plane are \(4 \le u \le 9\) and \(1 \le v \le 4\).</p>
+        
+        <p>To compute the Jacobian directly, we first solve for \(x\) and \(y\) in terms of \(u\) and \(v\):</p>
+        <p>Adding the equations: \(2x^2 = u + v \implies x = \sqrt{\frac{u+v}{2}}\)</p>
+        <p>Subtracting the equations: \(2y^2 = u - v \implies y = \sqrt{\frac{u-v}{2}}\)</p>
+
+        <p><strong>Step 2: Compute partial derivatives.</strong></p>
+        <p>\[ \frac{\partial x}{\partial u} = \frac{1}{2} \left( \frac{u+v}{2} \right)^{-1/2} \cdot \frac{1}{2} = \frac{1}{4x} \]</p>
+        <p>\[ \frac{\partial x}{\partial v} = \frac{1}{2} \left( \frac{u+v}{2} \right)^{-1/2} \cdot \frac{1}{2} = \frac{1}{4x} \]</p>
+        <p>\[ \frac{\partial y}{\partial u} = \frac{1}{2} \left( \frac{u-v}{2} \right)^{-1/2} \cdot \frac{1}{2} = \frac{1}{4y} \]</p>
+        <p>\[ \frac{\partial y}{\partial v} = \frac{1}{2} \left( \frac{u-v}{2} \right)^{-1/2} \cdot \left(-\frac{1}{2}\right) = -\frac{1}{4y} \]</p>
+
+        <p><strong>Step 3: Compute the Jacobian determinant \( J = \frac{\partial(x,y)}{\partial(u,v)} \).</strong></p>
+        <p>\[ J = \begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{vmatrix} = \begin{vmatrix} \frac{1}{4x} & \frac{1}{4x} \\ \frac{1}{4y} & -\frac{1}{4y} \end{vmatrix} \]</p>
+        <p>\[ J = \left( \frac{1}{4x} \right) \left( -\frac{1}{4y} \right) - \left( \frac{1}{4x} \right) \left( \frac{1}{4y} \right) = -\frac{1}{16xy} - \frac{1}{16xy} = -\frac{2}{16xy} = -\frac{1}{8xy} \]</p>
+        <p>The absolute value is \( |J| = \frac{1}{8xy} \).</p>
+
+        <p><strong>Step 4: Evaluate the integral.</strong></p>
+        <p>\[ \iint_{D} xy \, dA = \int_{1}^{4} \int_{4}^{9} xy \cdot \left| \frac{1}{8xy} \right| \, du \, dv \]</p>
+        <p>\[ = \frac{1}{8} \int_{1}^{4} \int_{4}^{9} 1 \, du \, dv = \frac{1}{8} [u]_{4}^{9} \cdot [v]_{1}^{4} \]</p>
+        <p>\[ = \frac{1}{8} (5)(3) = \frac{15}{8}. \]</p>
+    </div>
+
+</body>
+</html>
