@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 10 - Distance formula</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            options: {
+                enableAssistiveMml: true
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 10 - Distance formula</h3>
+
+    <p>We begin by recalling the differences between Euclidean and Cartesian geometry. Euclidean geometry is the study of shapes constructed using a straightedge and compass. Cartesian geometry uses algebra and real numbers to define and study geometrical notions.</p>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> In Cartesian geometry, points are uniquely identified by pairs of numbers \( (x, y) \). Lines are sets of points \( (x, y) \) that satisfy an equation of the form \( y = mx + c \) or \( x = a \).</p>
+    </div>
+
+    <p>More generally, lines have equations of the form \( ax + by + c = 0 \) for some real numbers \( a \), \( b \), and \( c \). Given points \( (x_1, y_1) \) and \( (x_2, y_2) \) on a line, its slope \( m \) is defined as:</p>
+    
+    \[ m = \frac{\text{rise}}{\text{run}} = \frac{y_2 - y_1}{x_2 - x_1} \]
+
+    <div class="important">
+        <p><strong>Important:</strong> Two lines are parallel if and only if they have the same slope.</p>
+    </div>
+
+    <h3>Distance between two points</h3>
+
+    <p>Given points \( P = (x_1, y_1) \) and \( Q = (x_2, y_2) \), we can find the distance between them by drawing lines through \( P \) and \( Q \) parallel to the coordinate axes. This construction creates a right triangle \( \triangle PRQ \).</p>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A Cartesian coordinate graph showing point P at (x₁, y₁) and point Q at (x₂, y₂). A right triangle is formed by point R at (x₁, y₂). The horizontal distance RQ is determined by the difference in x-values, and the vertical distance PR is determined by the difference in y-values. A right-angle symbol is marked at point R.</p>
+    </div>
+
+    <p>By the Pythagoras theorem, the square of the distance \( |PQ| \) is the sum of the squares of the legs:</p>
+    
+    \[ |PQ|^2 = |PR|^2 + |RQ|^2 \]
+    \[ |PQ|^2 = (y_1 - y_2)^2 + (x_2 - x_1)^2 \]
+
+    <div class="theorem">
+        <p><strong>Theorem: Distance Formula.</strong> The distance between any two points \( (x_1, y_1) \) and \( (x_2, y_2) \) is given by:</p>
+        \[ |PQ| = \sqrt{(y_1 - y_2)^2 + (x_1 - x_2)^2} \]
+    </div>
+
+    <h3>Equation of a Circle</h3>
+
+    <p>A circle with radius \( r \) and center \( (h, k) \) is defined as the set of all points \( (x, y) \) whose distance from \( (h, k) \) is \( r \). Using the distance formula, we establish:</p>
+
+    \[ \sqrt{(x - h)^2 + (y - k)^2} = r \]
+
+    <p>Squaring both sides provides the standard form equation:</p>
+    
+    \[ (x - h)^2 + (y - k)^2 = r^2 \]
+
+    <p>Notably, if the center is at the origin \( h = k = 0 \), the equation becomes \( x^2 + y^2 = r^2 \). Also note that the equation of a circle is quadratic in both coordinates, unlike the equation of a line which is linear.</p>
+
+    <h3>Mapping Euclidean Axioms to Algebra</h3>
+
+    <p>We can now represent Euclid's axioms using algebraic tools:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Euclidean Axiom</th>
+                <th>Algebraic Criterion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1, 2: Draw and extend lines through any 2 points.</td>
+                <td>Find the equation of a line passing through any two points.</td>
+            </tr>
+            <tr>
+                <td>3: Draw circles with given center and radius.</td>
+                <td>Find the equation of a circle with a given center and radius.</td>
+            </tr>
+            <tr>
+                <td>4: Measure right angles.</td>
+                <td>Compare slopes or identify perpendicularity on the X-axis and Y-axis.</td>
+            </tr>
+            <tr>
+                <td>5: Parallel axiom.</td>
+                <td>Given a point and a slope \( m \), find the equation of a line.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Intersections and Constructibility</h3>
+
+    <p>The intersection of two lines is found by solving a system of linear equations. Intersections involving circles require solving quadratic equations.</p>
+
+    <div class="example">
+        <h5>Example: Intersection of a Circle and a Line</h5>
+        <p>Consider the circle \( x^2 + y^2 = 4 \) and the line \( x + y = 1 \).</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>First, express \( y \) in terms of \( x \): \( y = 1 - x \). Substitute this into the circle equation:</p>
+            \[ x^2 + (1 - x)^2 = 4 \]
+            \[ x^2 + 1 - 2x + x^2 = 4 \]
+            \[ 2x^2 - 2x - 3 = 0 \]
+            <p>Using the quadratic formula:</p>
+            \[ x = \frac{2 \pm \sqrt{2^2 - 4 \cdot (-3) \cdot 2}}{2 \cdot 2} = \frac{2 \pm \sqrt{28}}{4} \]
+            <p>The corresponding \( y \) values can then be found using \( y = 1 - x \).</p>
+        </div>
+    </div>
+
+    <div class="important">
+        <p><strong>Definition: Algebraic criterion for constructibility.</strong> A point \( (x, y) \) can be constructed using a straightedge and compass exactly if \( x \) and \( y \) are obtainable from 1 by \( +, -, \times, \div \) and \( \sqrt{} \).</p>
+    </div>
+
+    <h3>Proof: The Perpendicular Bisector</h3>
+
+    <p><strong>Question:</strong> Given points \( A \) and \( B \), construct all points \( P \) such that \( |PA| = |PB| \).</p>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A construction showing points A and B connected by a dashed line. Point P is located above the midpoint. Dashed lines connect P to A and P to B, with single tick marks indicating equal length. Point p (lower case) is shown on the line segment AB with double tick marks indicating it is the midpoint.</p>
+    </div>
+
+    <p>While this can be proved using SAS congruence, we can provide an alternate proof using coordinates. Let \( A = (a_1, a_2) \), \( B = (b_1, b_2) \), and \( P = (x, y) \).</p>
+
+    <div class="solution">
+        <p><strong>Proof:</strong></p>
+        <p>We start with the distance equality \( |PA| = |PB| \). Using the distance formula:</p>
+        \[ \sqrt{(x - a_1)^2 + (y - a_2)^2} = \sqrt{(x - b_1)^2 + (y - b_2)^2} \]
+        <p>Squaring both sides and expanding:</p>
+        \[ x^2 - 2xa_1 + a_1^2 + y^2 - 2ya_2 + a_2^2 = x^2 - 2xb_1 + b_1^2 + y^2 - 2yb_2 + b_2^2 \]
+        <p>The \( x^2 \) and \( y^2 \) terms cancel out. Collecting like terms on one side:</p>
+        \[ (2b_1 - 2a_1)x + (2b_2 - 2a_2)y + (a_1^2 + a_2^2 - b_1^2 - b_2^2) = 0 \]
+        <p>This is an equation of the form \( ax + by + c = 0 \), which proves the set of points forms a straight line.</p>
+    </div>
+
+    <div class="example">
+        <p><strong>Exercise:</strong> Given lines \( L \) and \( L' \), construct all points \( P \) such that the distances of \( P \) from \( L \) and \( L' \) are equal.</p>
+    </div>
+
+</body>
+</html>
