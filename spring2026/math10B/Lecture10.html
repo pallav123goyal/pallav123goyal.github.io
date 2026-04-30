@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 8 - Jacobian and Change of Variables</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h3> Lecture 10: Path and Line Integrals</h3>
+    
+    <h4>Path Integrals</h4>
+    
+    <div class="box visual-desc">
+        <strong>Graph Description:</strong> A Cartesian coordinate system showing the x and y axes. A curve labeled \( y = f(x) \) is plotted above the x-axis. The area between the x-axis and the curve, bounded by vertical dashed lines at \( x = a \) and \( x = b \), is shaded to represent the area under the curve.
+    </div>
+    
+    <p>The area of the shaded region is given by the integral:</p>
+    \[ \int_{a}^{b} f(x) dx \]
+    
+    <p><strong>Question:</strong> Instead of walking on the x-axis, suppose we follow some other path \( c(t) \). How can we compute the area under a function above our path?</p>
+
+    <div class="box definition">
+        <strong>Definition: Paths in 3-D Space</strong><br>
+        A path in 3-D space is a function \( c: \mathbb{R} \rightarrow \mathbb{R}^3 \). We can think of the input (\( \mathbb{R} \)) as time and the output (\( \mathbb{R}^3 \)) as position.
+    </div>
+
+    <div class="box example">
+        <h5>Examples of Paths</h5>
+        <ol>
+            <li>\( c(t) = (t, 2t^2, t+1) \) where \( 0 \le t \le 1 \).</li>
+            <li>\( c(t) = (\sin t, \cos t, t) \) where \( 0 \le t \le 2\pi \). This path lies on the cylinder \( x^2 + y^2 = 1 \).</li>
+        </ol>
+    </div>
+
+    <div class="box important">
+        <strong>Important Properties</strong><br>
+        <p>Given \( c(t) \), the tangent vector to the curve at any point is given by the derivative \( c'(t) \).</p>
+        <p>The <strong>unit tangent vector</strong> is the tangent vector normalized to a length of 1:</p>
+        \[ \text{Unit tangent vector} = \frac{c'(t)}{||c'(t)||} \]
+        <p><em>Reminder:</em> Given a vector \( \vec{v} = (x, y, z) \), its length is \( ||\vec{v}|| = \sqrt{x^2 + y^2 + z^2} \).</p>
+    </div>
+
+    <div class="box example">
+        <h5>Finding Unit Tangent Vectors</h5>
+        <p>For the previously defined path examples:</p>
+        
+        <div class="box solution">
+            <strong>Solution for Path 1:</strong><br>
+            Given \( c(t) = (t, 2t^2, t+1) \), the tangent vector is \( c'(t) = (1, 4t, 1) \).<br>
+            The length is \( ||c'(t)|| = \sqrt{1^2 + (4t)^2 + 1^2} = \sqrt{2 + 16t^2} \).<br>
+            The unit tangent vector is:
+            \[ \frac{c'(t)}{||c'(t)||} = \left( \frac{1}{\sqrt{2 + 16t^2}}, \frac{4t}{\sqrt{2 + 16t^2}}, \frac{1}{\sqrt{2 + 16t^2}} \right) \]
+        </div>
+
+        <div class="box solution">
+            <strong>Solution for Path 2:</strong><br>
+            Given \( c(t) = (\sin t, \cos t, t) \), the tangent vector is \( c'(t) = (\cos t, -\sin t, 1) \).<br>
+            The length is \( ||c'(t)|| = \sqrt{\cos^2 t + (-\sin t)^2 + 1^2} = \sqrt{1 + 1} = \sqrt{2} \).<br>
+            The unit tangent vector is:
+            \[ \frac{c'(t)}{||c'(t)||} = \left( \frac{\cos t}{\sqrt{2}}, -\frac{\sin t}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) \]
+        </div>
+    </div>
+
+    <h4>Computing Path Integrals</h4>
+    
+    <p>How do we perform the integral of a function \( f \) along a path \( c \)?</p>
+    <p>Along the x-axis, the integral is simply \( \int f(x) dx \). If we walk along \( c(t) \), the integral should be \( \int f(c(t)) d(c(t)) \). We know that the differential is \( d(c(t)) = ||c'(t)|| dt \).</p>
+
+    <div class="box definition">
+        <strong>Definition: Path Integral</strong><br>
+        The path integral of a function \( f \) along a path \( c(t) \) is given by:
+        \[ \int_{c} f \, ds = \int f(c(t)) ||c'(t)|| dt \]
+    </div>
+
+    <div class="box example">
+        <h5>Example 1: Path Integral Computation</h5>
+        <p>Given the function \( f(x,y,z) = x^2 + y^2 + z^2 \) and the path \( c(t) = (\sin t, \cos t, t) \) for \( 0 \le t \le 2\pi \), compute the path integral \( \int_c f \, ds \).</p>
+        
+        <div class="solution">
+            <strong>Solution:</strong><br>
+            First, evaluate the function along the path:
+            \[ f(c(t)) = \sin^2 t + \cos^2 t + t^2 = 1 + t^2 \]
+            Next, find the magnitude of the tangent vector:
+            \[ ||c'(t)|| = ||(\cos t, -\sin t, 1)|| = \sqrt{2} \]
+            Now, set up and compute the integral:
+            \[ \int_{0}^{2\pi} (1 + t^2)\sqrt{2} \, dt = \left[ \sqrt{2}t + \frac{\sqrt{2}t^3}{3} \right]_{0}^{2\pi} = 2\sqrt{2}\pi + \frac{8\sqrt{2}\pi^3}{3} \]
+        </div>
+    </div>
+
+    <div class="box example">
+        <h5>Example 2: Path Integral Setup</h5>
+        <p>Given \( f(x,y,z) = x^2 + y^2 + z^2 \) and \( c(t) = (t, 2t^2, t+1) \) for \( 0 \le t \le 1 \), set up the path integral.</p>
+        <div class="solution">
+            <strong>Solution:</strong><br>
+            The path integral is \( \int f(c(t)) ||c'(t)|| dt \). Substituting the components yields:
+            \[ \int_{0}^{1} \left( t^2 + (2t^2)^2 + (t+1)^2 \right) \sqrt{2 + 16t^2} \, dt \]
+        </div>
+    </div>
+
+    <h4>Line Integrals</h4>
+
+    <div class="box important">
+        <strong>Motivation: Work</strong><br>
+        Recall that work is the product of force and distance: \( W = \vec{F} \cdot \vec{D} = ||\vec{F}|| ||\vec{D}|| \cos \theta \).
+    </div>
+
+    <div class="box visual-desc">
+        <strong>Diagram Description:</strong> Two vectors originating from the same point. Vector \( \vec{F} \) points horizontally to the right, and vector \( \vec{D} \) points diagonally upwards to the right. The angle between the two vectors is labeled \( \theta \).
+    </div>
+
+    <div class="box example">
+        <h5>Example: Constant Force Work Calculation</h5>
+        <p>Given a force vector \( \vec{F} = (1, 1, 1) = \hat{i} + \hat{j} + \hat{k} \) and a displacement vector \( \vec{D} = (2, -3, 4) = 2\hat{i} - 3\hat{j} + 4\hat{k} \), calculate the work done.</p>
+        <div class="solution">
+            <strong>Solution:</strong>
+            \[ \text{Work} = \vec{F} \cdot \vec{D} = (1)(2) + (1)(-3) + (1)(4) = 2 - 3 + 4 = 3 \]
+            <p>We can find the angle between \( \vec{F} \) and \( \vec{D} \) using the dot product formula:</p>
+            \[ \cos \theta = \frac{\vec{F} \cdot \vec{D}}{||\vec{F}|| ||\vec{D}||} \]
+        </div>
+    </div>
+
+    <p>What happens if \( \vec{F} \) and \( \vec{D} \) aren't constant, but depend upon some other variable \( t \)?</p>
+
+    <div class="box visual-desc">
+        <strong>Diagram Description:</strong> A sketch illustrating the transition from a simple rectangular area (Area = length × height) to a line integral, showing a curved, irregular path \( c(t) \) and a varying function curve drawn above it to represent integrating a changing force along a non-linear path.
+    </div>
+
+    <div class="box definition">
+        <strong>Definition: Line Integral of a Vector Field</strong><br>
+        Suppose we have a force applied to a particle moving along a path \( c(t) \). To compute the work, instead of the usual dot product \( \vec{F} \cdot c(t) \), we consider the integral of the dot product over the path:
+        \[ \int_{c} \vec{F} \cdot dc = \int \vec{F}(c(t)) \cdot c'(t) dt \]
+        <p>This expression is the line integral of the vector-valued function \( \vec{F} \) along the curve \( c(t) \).</p>
+    </div>
+
+    <div class="box example">
+        <h5>Example 1: Line Integral Computation</h5>
+        <p>Given a force field \( F(x,y,z) = x^2\hat{i} + yz\hat{j} + x\hat{k} = (x^2, yz, x) \) and a path \( c(t) = (t, 2t, 3t) \) for \( 0 \le t \le 1 \). Compute the line integral of \( F \) along \( c(t) \).</p>
+        <div class="solution">
+            <strong>Solution:</strong><br>
+            First, find the derivative of the path:
+            \[ c'(t) = (1, 2, 3) \]
+            Next, evaluate the force field along the path:
+            \[ F(c(t)) = t^2\hat{i} + (2t)(3t)\hat{j} + t\hat{k} = (t^2, 6t^2, t) \]
+            Now, compute the dot product and integrate:
+            \[ \int_{0}^{1} F(c(t)) \cdot c'(t) \, dt = \int_{0}^{1} \left( t^2(1) + 6t^2(2) + t(3) \right) dt \]
+            \[ = \int_{0}^{1} (13t^2 + 3t) \, dt = \left[ \frac{13t^3}{3} + \frac{3t^2}{2} \right]_{0}^{1} = \frac{13}{3} + \frac{3}{2} = \frac{35}{6} \]
+        </div>
+    </div>
+
+    <h4>Alternative Notation for Line Integrals</h4>
+    
+    <p>When we have a path defined as \( c(t) = (x(t), y(t), z(t)) \), its derivative is \( c'(t) = (x'(t), y'(t), z'(t)) \).</p>
+    <p>For a vector field \( F = (F_1, F_2, F_3) \), the dot product is:</p>
+    \[ F \cdot c'(t) = F_1 x'(t) + F_2 y'(t) + F_3 z'(t) \]
+    
+    <p>The line integral can thus be expanded as:</p>
+    \[ \int_{c} F \cdot dc = \int F_1 x'(t) dt + \int F_2 y'(t) dt + \int F_3 z'(t) dt \]
+    
+    <div class="box important">
+        <strong>Note on Differentials:</strong><br>
+        Since \( x'(t) dt = dx \), \( y'(t) dt = dy \), and \( z'(t) dt = dz \), we can reformulate the line integral as:
+        \[ \int_{c} F \cdot dc = \int F_1 dx + \int F_2 dy + \int F_3 dz \]
+    </div>
+
+    <p>Using this notation, a reformulation of the previous example's question is: Compute \( \int x^2 dx + \int yz dy + \int x dz \) along the curve \( c(t) = (t, 2t, 3t) \) for \( 0 \le t \le 1 \).</p>
+
+    <div class="box example">
+        <h5>Try It Yourself</h5>
+        <p>Compute the line integral:</p>
+        \[ \int \cos z \, dx + \int e^x \, dy + \int e^y \, dz \]
+        <p>along the curve \( (1, t, e^t) \) for \( 0 \le t \le 1 \).</p>
+    </div>
+
+</body>
+</html>
