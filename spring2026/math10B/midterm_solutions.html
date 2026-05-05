@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Midterm Exam Solutions</title>
+    
+    <!-- MathJax for rendering LaTeX math formulas -->
+    <script>
+        window.MathJax = {
+            options: {
+                enableAssistiveMml: true
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .example {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+        }
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        ul { 
+            padding-left: 20px; 
+            margin: 10px 0;
+        }
+        li { margin: 6px 0; }
+        .mjx-chtml { font-size: 1.1em !important; }
+    </style>
+</head>
+<body>
+
+<h3>MATH 10B - Midterm Exam</h3>
+
+<div class="important">
+    <p><strong>Exam Information:</strong></p>
+    <ul>
+        <li><strong>Course:</strong> MATH 10B</li>
+        <li><strong>Institution:</strong> University of California Riverside</li>
+        <li><strong>Date & Time:</strong> May 5th 2026, 8:00 AM - 9:15 AM</li>
+        <li><strong>Instructions:</strong> The exam is 75 minutes long. The maximum score is 100 points. Show all steps in your solutions and make your reasoning clear.</li>
+    </ul>
+</div>
+
+<h4>Exam Questions & Solutions</h4>
+
+<div class="example">
+    <h5>Question 1 (20 points)</h5>
+    <p>Compute the double integral:</p>
+    \[ \int_0^1 \int_{\sqrt{y}}^1 e^{x^3} \, dx \, dy \]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The inner integral with respect to \( x \) cannot be evaluated using elementary functions. Therefore, we must change the order of integration.</p>
+        
+        <p><strong>Step 1: Identify the region of integration</strong></p>
+        <p>The current bounds are \( \sqrt{y} \le x \le 1 \) and \( 0 \le y \le 1 \). This describes a region bounded on the left by the parabola \( x = \sqrt{y} \) (which is \( y = x^2 \)) and on the right by the line \( x = 1 \).</p>
+        
+        <p><strong>Step 2: Change the order to \( dy \, dx \)</strong></p>
+        <p>Looking at the region vertically, for a fixed \( x \), \( y \) ranges from the \( x \)-axis (\( y = 0 \)) up to the parabola (\( y = x^2 \)). The total range for \( x \) is from \( 0 \) to \( 1 \).</p>
+        \[ \int_0^1 \int_0^{x^2} e^{x^3} \, dy \, dx \]
+        
+        <p><strong>Step 3: Evaluate the integral</strong></p>
+        <p>Evaluate the inner integral with respect to \( y \):</p>
+        \[ \int_0^{x^2} e^{x^3} \, dy = [y \cdot e^{x^3}]_0^{x^2} = x^2 e^{x^3} \]
+        
+        <p>Now, evaluate the outer integral with respect to \( x \) using \( u \)-substitution. Let \( u = x^3 \), then \( du = 3x^2 \, dx \), or \( x^2 \, dx = \frac{1}{3}du \):</p>
+        \[ \int_0^1 x^2 e^{x^3} \, dx = \frac{1}{3} \int_0^1 e^u \, du \]
+        \[ = \frac{1}{3} [e^u]_0^1 = \frac{1}{3}(e^1 - e^0) = \frac{e - 1}{3} \]
+        
+        <p><strong>Final Answer: \( \frac{e - 1}{3} \)</strong></p>
+    </div>
+</div>
+<!-- Question 2 -->
+<div class="example">
+    <h5>Question 2 (18 + 7 points)</h5>
+    <p>Set up a triple integral to compute the volume enclosed by the surfaces \( y+x^2=1 \), \( z=1 \), \( y=0 \) and \( z=1-y \). Evaluate the integral.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p><strong>1. Setting up the bounds:</strong></p>
+        <p>In the \(xy\)-plane, the region is bounded by \( y = 1 - x^2 \) and \( y = 0 \). Setting them equal gives \( x = \pm 1 \). So, \( -1 \le x \le 1 \) and \( 0 \le y \le 1 - x^2 \).</p>
+        <p>For \( z \), the volume is bounded below by \( z = 1 - y \) and above by \( z = 1 \).</p>
+        
+        <p><strong>2. Setting up the integral:</strong></p>
+        \[ V = \int_{-1}^1 \int_0^{1-x^2} \int_{1-y}^1 1 \, dz \, dy \, dx \]
+        
+        <p><strong>3. Evaluating the integral:</strong></p>
+        <p>Inner integral (\( z \)):</p>
+        \[ \int_{1-y}^1 dz = [z]_{1-y}^1 = 1 - (1 - y) = y \]
+        <p>Middle integral (\( y \)):</p>
+        \[ \int_0^{1-x^2} y \, dy = \left[ \frac{1}{2}y^2 \right]_0^{1-x^2} = \frac{1}{2}(1 - x^2)^2 = \frac{1}{2}(1 - 2x^2 + x^4) \]
+        <p>Outer integral (\( x \)):</p>
+        \[ \int_{-1}^1 \frac{1}{2}(1 - 2x^2 + x^4) \, dx = \frac{1}{2} \left[ x - \frac{2}{3}x^3 + \frac{1}{5}x^5 \right]_{-1}^1 \]
+        \[ = \frac{1}{2} \left( \left(1 - \frac{2}{3} + \frac{1}{5}\right) - \left(-1 + \frac{2}{3} - \frac{1}{5}\right) \right) = 1 - \frac{2}{3} + \frac{1}{5} \]
+        \[ = \frac{15}{15} - \frac{10}{15} + \frac{3}{15} = \frac{8}{15} \]
+        <p><strong>Final Answer: \( \frac{8}{15} \)</strong></p>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="example">
+    <h5>Question 3 (BONUS) (5 points)</h5>
+    <p>Set up a triple integral for the problem on the previous page swapping the order of integration of the first two variables. (That is, if you set up the integral as \( dx \, dy \, dz \) on the previous page, set it up as \( dy \, dx \, dz \) here.) It is okay if your answer is a sum of two triple integrals.</p>
+    
+<div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>To express the integral in the order \( dy \, dz \, dx \), we look at the projections of the solid onto the coordinate axes and planes, starting with the outermost variable \( x \).</p>
+        
+        <p><strong>1. x-bounds (Outer):</strong></p>
+        <p>As determined in Question 2, the solid exists where the parabolic cylinder \( y = 1 - x^2 \) intersects the plane \( y = 0 \). This occurs between \( x = -1 \) and \( x = 1 \).</p>
+        
+        <p><strong>2. z-bounds (Middle):</strong></p>
+        <p>For a fixed \( x \), we need to find the range of \( z \). The surfaces bounding \( z \) are the planes \( z = 1 - y \) and \( z = 1 \). Since \( y \) ranges from \( 0 \) to \( 1 - x^2 \):</p>
+        <ul>
+            <li>When \( y = 0 \), \( z = 1 - 0 = 1 \).</li>
+            <li>When \( y = 1 - x^2 \), \( z = 1 - (1 - x^2) = x^2 \).</li>
+        </ul>
+        <p>Thus, for a fixed \( x \), \( z \) ranges from \( x^2 \) to \( 1 \).</p>
+        
+        <p><strong>3. y-bounds (Inner):</strong></p>
+        <p>For fixed \( x \) and \( z \), we determine the bounds for \( y \). The lower bound is given by the plane \( z = 1 - y \), which we rewrite as \( y = 1 - z \). The upper bound is the parabolic cylinder \( y = 1 - x^2 \).</p>
+        
+        <p><strong>The integral in the order \( dy \, dz \, dx \):</strong></p>
+        \[ V = \int_{-1}^1 \int_{x^2}^1 \int_{1-z}^{1-x^2} 1 \, dy \, dz \, dx \]
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="example">
+    <h5>Question 4 (25 points)</h5>
+    <p>Evaluate the following integral over the region \( R \) enclosed between the spherical shells \( x^2+y^2+z^2=4 \) and \( x^2+y^2+z^2=9 \) above the \( xy \)-plane:</p>
+    \[ \iiint_R \frac{3}{1+(\sqrt{x^2+y^2+z^2})^3} dV \]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use spherical coordinates: \( x^2 + y^2 + z^2 = \rho^2 \) and \( dV = \rho^2 \sin\phi \, d\rho \, d\phi \, d\theta \).</p>
+        <p><strong>Bounds:</strong></p>
+        <ul>
+            <li>Between spheres of radius 2 and 3: \( 2 \le \rho \le 3 \)</li>
+            <li>Above the xy-plane (\( z \ge 0 \)): \( 0 \le \phi \le \frac{\pi}{2} \)</li>
+            <li>Full rotation around z-axis: \( 0 \le \theta \le 2\pi \)</li>
+        </ul>
+        <p>The integral becomes:</p>
+        \[ \int_0^{2\pi} \int_0^{\pi/2} \int_2^3 \frac{3}{1+\rho^3} \rho^2 \sin\phi \, d\rho \, d\phi \, d\theta \]
+        <p>Because the limits are constants, we can separate the integrals:</p>
+        \[ = \left( \int_0^{2\pi} d\theta \right) \left( \int_0^{\pi/2} \sin\phi \, d\phi \right) \left( \int_2^3 \frac{3\rho^2}{1+\rho^3} \, d\rho \right) \]
+        <p>1. \( \int_0^{2\pi} d\theta = 2\pi \)</p>
+        <p>2. \( \int_0^{\pi/2} \sin\phi \, d\phi = [-\cos\phi]_0^{\pi/2} = 0 - (-1) = 1 \)</p>
+        <p>3. Let \( u = 1 + \rho^3 \), then \( du = 3\rho^2 d\rho \). For \( \rho=2, u=9 \). For \( \rho=3, u=28 \).</p>
+        \[ \int_9^{28} \frac{1}{u} \, du = [\ln|u|]_9^{28} = \ln(28) - \ln(9) = \ln\left(\frac{28}{9}\right) \]
+        <p>Multiplying these together:</p>
+        \[ = 2\pi \cdot 1 \cdot \ln\left(\frac{28}{9}\right) = 2\pi \ln\left(\frac{28}{9}\right) \]
+        <p><strong>Final Answer: \( 2\pi \ln\left(\frac{28}{9}\right) \)</strong></p>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="example">
+    <h5>Question 5 (30 points)</h5>
+    <p>Compute the area enclosed by the curves \( xy=1 \), \( xy=2 \), \( xy^2=1 \) and \( xy^2=2 \) in the first quadrant of the \( xy \)-plane.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use a change of variables to simplify the region. Let:</p>
+        <ul>
+            <li>\( u = xy \) (Bounds: \( 1 \le u \le 2 \))</li>
+            <li>\( v = xy^2 \) (Bounds: \( 1 \le v \le 2 \))</li>
+        </ul>
+        <p>We need the Jacobian \( J = \frac{\partial(x,y)}{\partial(u,v)} \). It's easier to find \( \frac{\partial(u,v)}{\partial(x,y)} \) first:</p>
+        \[ \frac{\partial(u,v)}{\partial(x,y)} = \begin{vmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} \end{vmatrix} = \begin{vmatrix} y & x \\ y^2 & 2xy \end{vmatrix} = (y)(2xy) - (x)(y^2) = xy^2 \]
+        <p>Since \( v = xy^2 \), we have \( \frac{\partial(u,v)}{\partial(x,y)} = v \).</p>
+        <p>The Jacobian of the inverse transformation is \( J = \frac{1}{v} \). Since \( v > 0 \) in the first quadrant, \( |J| = \frac{1}{v} \).</p>
+        <p>The area is:</p>
+        \[ A = \iint_R 1 \, dx \, dy = \iint_S |J| \, du \, dv = \int_1^2 \int_1^2 \frac{1}{v} \, du \, dv \]
+        \[ = \left( \int_1^2 1 \, du \right) \left( \int_1^2 \frac{1}{v} \, dv \right) \]
+        \[ = [u]_1^2 \cdot [\ln|v|]_1^2 = (2 - 1) \cdot (\ln(2) - \ln(1)) = 1 \cdot \ln(2) = \ln(2) \]
+        <p><strong>Final Answer: \( \ln(2) \)</strong></p>
+    </div>
+</div>
+
+</body>
+</html>
