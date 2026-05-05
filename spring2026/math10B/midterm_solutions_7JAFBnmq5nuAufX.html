@@ -219,22 +219,32 @@
     <h5>Question 5 (30 points)</h5>
     <p>Compute the area enclosed by the curves \( xy=1 \), \( xy=2 \), \( xy^2=1 \) and \( xy^2=2 \) in the first quadrant of the \( xy \)-plane.</p>
     
-    <div class="solution">
+<div class="solution">
         <p><strong>Solution:</strong></p>
-        <p>We use a change of variables to simplify the region. Let:</p>
+        <p>We use the change of variables:</p>
         <ul>
-            <li>\( u = xy \) (Bounds: \( 1 \le u \le 2 \))</li>
-            <li>\( v = xy^2 \) (Bounds: \( 1 \le v \le 2 \))</li>
+            <li>\( u = xy \)</li>
+            <li>\( v = xy^2 \)</li>
         </ul>
-        <p>We need the Jacobian \( J = \frac{\partial(x,y)}{\partial(u,v)} \). It's easier to find \( \frac{\partial(u,v)}{\partial(x,y)} \) first:</p>
-        \[ \frac{\partial(u,v)}{\partial(x,y)} = \begin{vmatrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} \end{vmatrix} = \begin{vmatrix} y & x \\ y^2 & 2xy \end{vmatrix} = (y)(2xy) - (x)(y^2) = xy^2 \]
-        <p>Since \( v = xy^2 \), we have \( \frac{\partial(u,v)}{\partial(x,y)} = v \).</p>
-        <p>The Jacobian of the inverse transformation is \( J = \frac{1}{v} \). Since \( v > 0 \) in the first quadrant, \( |J| = \frac{1}{v} \).</p>
-        <p>The area is:</p>
-        \[ A = \iint_R 1 \, dx \, dy = \iint_S |J| \, du \, dv = \int_1^2 \int_1^2 \frac{1}{v} \, du \, dv \]
-        \[ = \left( \int_1^2 1 \, du \right) \left( \int_1^2 \frac{1}{v} \, dv \right) \]
-        \[ = [u]_1^2 \cdot [\ln|v|]_1^2 = (2 - 1) \cdot (\ln(2) - \ln(1)) = 1 \cdot \ln(2) = \ln(2) \]
-        <p><strong>Final Answer: \( \ln(2) \)</strong></p>
+        <p>The region \( S \) in the \( uv \)-plane is defined by \( 1 \le u \le 2 \) and \( 1 \le v \le 2 \).</p>
+
+        <p><strong>Step 1: Express \( x \) and \( y \) in terms of \( u \) and \( v \).</strong></p>
+        <p>Starting with the ratio of the two equations:</p>
+        \[ \frac{v}{u} = \frac{xy^2}{xy} = y \implies y = \frac{v}{u} \]
+        <p>Substitute \( y = \frac{v}{u} \) back into the equation for \( u \):</p>
+        \[ u = x\left(\frac{v}{u}\right) \implies x = \frac{u^2}{v} \]
+
+        <p><strong>Step 2: Compute the Jacobian directly.</strong></p>
+        <p>The Jacobian is given by \( J = \frac{\partial(x,y)}{\partial(u,v)} \):</p>
+        \[ J = \begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{vmatrix} = \begin{vmatrix} \frac{2u}{v} & -\frac{u^2}{v^2} \\ -\frac{v}{u^2} & \frac{1}{u} \end{vmatrix} \]
+        \[ J = \left(\frac{2u}{v}\right)\left(\frac{1}{u}\right) - \left(-\frac{u^2}{v^2}\right)\left(-\frac{v}{u^2}\right) \]
+        \[ J = \frac{2}{v} - \frac{v}{v^2} = \frac{2}{v} - \frac{1}{v} = \frac{1}{v} \]
+
+        <p><strong>Step 3: Evaluate the area integral.</strong></p>
+        \[ A = \iint_R 1 \, dA = \int_1^2 \int_1^2 |J| \, du \, dv = \int_1^2 \int_1^2 \frac{1}{v} \, du \, dv \]
+        \[ A = \left( \int_1^2 1 \, du \right) \left( \int_1^2 \frac{1}{v} \, dv \right) \]
+        \[ A = [u]_1^2 \cdot [\ln|v|]_1^2 = (2-1) \cdot (\ln 2 - \ln 1) = \ln 2 \]
+        <p><strong>Final Answer: \( \ln 2 \)</strong></p>
     </div>
 </div>
 
