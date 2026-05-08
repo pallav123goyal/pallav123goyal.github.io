@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 11 - Line Integrals and Parametrization</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableMenu: false,
+                menuOptions: {
+                    settings: {
+                        assistiveMml: true
+                    }
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 11: Line Integrals and Parametrization</h3>
+
+    <h4>1. Integrating Functions Over Curves</h4>
+    
+    <div class="visual-desc">
+        <p><strong>Graph Description:</strong> A Cartesian coordinate system showing a curve labeled \( f(x) \). The area between the curve and the x-axis, bounded by vertical lines at \( x = a \) and \( x = b \), is shaded with diagonal lines. An arrow points from the shaded region downwards, representing the area under the curve.</p>
+    </div>
+
+    <p>Recall that for a scalar function \( f(x) \), the area under the curve over an interval \( [a, b] \) is given by the standard definite integral:</p>
+    \[ \text{Area} = \int_{a}^{b} f(x) \, dx \]
+
+    <p>If the region of integration is not a simple interval \( [a, b] \), we use a <strong>path integral</strong> to find the area.</p>
+
+    <div class="definition">
+        <p><strong>Definition: Path Integral</strong></p>
+        <p>If the function is a scalar, the path integral along a curve \( c(t) \) is defined as:</p>
+        \[ \int f(c(t)) \|c'(t)\| \, dt \]
+    </div>
+
+    <div class="definition">
+        <p><strong>Definition: Line Integral</strong></p>
+        <p>If the function is vector-valued, we use a line integral. In general, to calculate the work done over a curve \( c(t) \), the line integral is defined as:</p>
+        \[ \int f(c(t)) \cdot c'(t) \, dt \]
+    </div>
+
+    <h4>2. Examples of Line Integrals</h4>
+
+    <div class="example">
+        <h5>Example 1: Computing a Line Integral in 3D Space</h5>
+        <p>Compute the following integral along the curve \( c(t) = (1, t, e^t) \) for \( 0 \le t \le 1 \):</p>
+        \[ \int \cos(z) \, dx + \int e^x \, dy + \int e^y \, dz \]
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>This is the same as computing the line integral of the vector-valued function \( f(x,y,z) = (\cos(z), e^x, e^y) \) along the curve \( c(t) = (1, t, e^t) \).</p>
+            <p>First, we evaluate the function along the curve by substituting \( x=1 \), \( y=t \), and \( z=e^t \):</p>
+            \[ f(c(t)) = (\cos(e^t), e^1, e^t) = (\cos(e^t), e, e^t) \]
+            <p>Next, we compute the derivative of the curve \( c(t) \):</p>
+            \[ c'(t) = (0, 1, e^t) \]
+            <p>We then take the dot product of \( f(c(t)) \) and \( c'(t) \):</p>
+            \[ f(c(t)) \cdot c'(t) = (\cos(e^t))(0) + (e)(1) + (e^t)(e^t) = e + e^{2t} \]
+            <p>Now, we set up and evaluate the integral from \( t=0 \) to \( t=1 \):</p>
+            \[ \int_{0}^{1} (e + e^{2t}) \, dt = \left[ et + \frac{e^{2t}}{2} \right]_{0}^{1} \]
+            \[ = \left( e(1) + \frac{e^2}{2} \right) - \left( 0 + \frac{e^0}{2} \right) = e + \frac{e^2 - 1}{2} \]
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Integrating Over a Closed Curve</h5>
+        
+        <div class="visual-desc">
+            <p><strong>Graph Description:</strong> A Cartesian coordinate system showing a closed loop crossing the x and y axes. This represents an arbitrary closed path, such as the unit circle in the xy-plane.</p>
+        </div>
+
+        <p>Compute the integral of the function \( f(x,y) = y\hat{i} - x\hat{j} \) along the unit circle in the XY-plane.</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>To proceed, we need to express our curve using a single variable. The equation for the unit circle is \( x^2 + y^2 = 1 \).</p>
+            <p>A standard parametrization for this curve is \( c(t) = (\cos(t), \sin(t)) \) for \( 0 \le t \le 2\pi \).</p>
+            <p>Evaluating the function and the derivative of the curve:</p>
+            \[ f(c(t)) = \sin(t)\hat{i} - \cos(t)\hat{j} \]
+            \[ c'(t) = -\sin(t)\hat{i} + \cos(t)\hat{j} \]
+            <p>Taking the dot product gives:</p>
+            \[ f(c(t)) \cdot c'(t) = (\sin(t))(-\sin(t)) + (-\cos(t))(\cos(t)) = -\sin^2(t) - \cos^2(t) = -1 \]
+            <p>So, the line integral over the full circle is:</p>
+            \[ \int_{0}^{2\pi} (-1) \, dt = -2\pi \]
+            
+            <p><strong>What if we chose a different parametrization?</strong></p>
+            <p>Suppose we parametrize the unit circle as \( s(t) = (\cos(2t), \sin(2t)) \) for \( 0 \le t \le \pi \).</p>
+            \[ s'(t) = (-2\sin(2t), 2\cos(2t)) \]
+            \[ f(s(t)) = \sin(2t)\hat{i} - \cos(2t)\hat{j} \]
+            \[ f(s(t)) \cdot s'(t) = -2\sin^2(2t) - 2\cos^2(2t) = -2 \]
+            <p>The integral evaluates to:</p>
+            \[ \int_{0}^{\pi} (-2) \, dt = -2\pi \]
+            <div class="important">
+                <p><strong>Conclusion:</strong> Any choice of parametrization is fine, as long as we walk the curve in the same direction (e.g., anti-clockwise) and cover the exact same path.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Line Integral Along a Multi-Segment Path</h5>
+        <p>Compute the integral \( \int z^2 \, dx + xy \, dz \) along the piecewise path connecting the points \( D(1,0,-1) \) to \( B(2,1,1) \) to \( C(1,1,2) \), and eventually back to the origin \( A(0,0,0) \).</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>We will parametrize the segments of the shape separately. The vector field corresponding to the integral is \( f(x,y,z) = (z^2, 0, xy) \).</p>
+            
+            <div class="steps">
+                <h5>Step 1: Parametrize the line segment from D(1,0,-1) to B(2,1,1)</h5>
+                <p>The direction vector from \( (1,0,-1) \) to \( (2,1,1) \) is:</p>
+                \[ (2,1,1) - (1,0,-1) = \hat{i} + \hat{j} + 2\hat{k} = (1, 1, 2) \]
+                <p>So, the equation of the line segment is \( c(t) = (1,0,-1) + t(1,1,2) = (1+t, t, -1+2t) \) with \( 0 \le t \le 1 \).</p>
+                <p>Plugging this into the function:</p>
+                \[ f(c(t)) = ((-1+2t)^2, 0, t(1+t)) = (1-4t+4t^2, 0, t+t^2) \]
+                <p>Taking the dot product with \( c'(t) = (1, 1, 2) \):</p>
+                \[ f(c(t)) \cdot c'(t) = 1(1-4t+4t^2) + 0 + 2(t+t^2) = 1 - 2t + 6t^2 \]
+                <p>Evaluating the integral for this segment:</p>
+                \[ \int_{0}^{1} (1 - 2t + 6t^2) \, dt = \left[ t - t^2 + 2t^3 \right]_{0}^{1} = 1 - 1 + 2 = 2 \]
+            </div>
+
+            <div class="steps">
+                <h5>Step 2: Parametrize the line segment from B(2,1,1) to C(1,1,2)</h5>
+                <p>The direction vector from \( (2,1,1) \) to \( (1,1,2) \) is:</p>
+                \[ (1,1,2) - (2,1,1) = (-1, 0, 1) \]
+                <p>The equation of the line segment is \( c(t) = (2,1,1) + t(-1, 0, 1) = (2-t, 1, 1+t) \) with \( 0 \le t \le 1 \).</p>
+                <p>Plugging this into the function:</p>
+                \[ f(c(t)) = ((1+t)^2, 0, (2-t)(1)) = (1+2t+t^2, 0, 2-t) \]
+                <p>Taking the dot product with \( c'(t) = (-1, 0, 1) \):</p>
+                \[ f(c(t)) \cdot c'(t) = -1(1+2t+t^2) + 1(2-t) = -1 - 2t - t^2 + 2 - t = 1 - 3t - t^2 \]
+                <p>Evaluating the integral for this segment:</p>
+                \[ \int_{0}^{1} (1 - 3t - t^2) \, dt = \left[ t - \frac{3t^2}{2} - \frac{t^3}{3} \right]_{0}^{1} = 1 - \frac{3}{2} - \frac{1}{3} = -\frac{5}{6} \]
+            </div>
+            
+            <div class="steps">
+                <h5>Step 3: Parametrize the line segment C from C(1,1,2) to A(0,0,0)</h5>
+                <p>The direction vector from \( (1,1,2) \) to the origin \( (0,0,0) \) is:</p>
+                \[ (0,0,0) - (1,1,2) = (-1, -1, -2) \]
+                <p>The equation of the line segment is \( c(t) = (1,1,2) + t(-1, -1, -2) = (1-t, 1-t, 2-2t) \) with \( 0 \le t \le 1 \).</p>
+                <p>Plugging this into the function \( f(x,y,z) = (z^2, 0, xy) \):</p>
+                \[ f(c(t)) = ((2-2t)^2, 0, (1-t)(1-t)) = (4 - 8t + 4t^2, 0, 1 - 2t + t^2) \]
+                <p>Taking the dot product with \( c'(t) = (-1, -1, -2) \):</p>
+                \[ f(c(t)) \cdot c'(t) = -1(4 - 8t + 4t^2) + 0 - 2(1 - 2t + t^2) \]
+                \[ = -4 + 8t - 4t^2 - 2 + 4t - 2t^2 = -6 + 12t - 6t^2 \]
+                <p>Evaluating the integral for this segment:</p>
+                \[ \int_{0}^{1} (-6 + 12t - 6t^2) \, dt = \left[ -6t + 6t^2 - 2t^3 \right]_{0}^{1} = -6 + 6 - 2 = -2 \]
+            </div>
+
+            <div class="steps">
+                <h5>Step 4: Parametrize the line segment D from A(0,0,0) to D(1,0,-1)</h5>
+                <p>The direction vector from \( (0,0,0) \) to \( (1,0,-1) \) is:</p>
+                \[ (1,0,-1) - (0,0,0) = (1, 0, -1) \]
+                <p>The equation of the line segment is \( c(t) = (0,0,0) + t(1, 0, -1) = (t, 0, -t) \) with \( 0 \le t \le 1 \).</p>
+                <p>Plugging this into the function:</p>
+                \[ f(c(t)) = ((-t)^2, 0, t(0)) = (t^2, 0, 0) \]
+                <p>Taking the dot product with \( c'(t) = (1, 0, -1) \):</p>
+                \[ f(c(t)) \cdot c'(t) = 1(t^2) + 0(0) - 1(0) = t^2 \]
+                <p>Evaluating the integral for this segment:</p>
+                \[ \int_{0}^{1} t^2 \, dt = \left[ \frac{t^3}{3} \right]_{0}^{1} = \frac{1}{3} \]
+            </div>
+            
+            <p><strong>Final Step: Combine all the paths</strong></p>
+            <p>To find the overall line integral, we sum the integrals for all paths \( A, B, C, \text{and } D \)[cite: 98, 99]:</p>
+            \[ \text{Total Integral} = \int_{D} + \int_{B} + \int_{C} + \int_{D} = 2 - \frac{5}{6} - 2 + \frac{1}{3} = -\frac{1}{2}. \]
+        </div>
+    </div>
+
+    <h4>3. The Fundamental Theorem of Line Integrals</h4>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> Two separate path lines, labeled \( c_1(t) \) and \( c_2(t) \). Both paths begin at a common starting point A and end at a common destination point B. This illustrates that for a conservative vector field, the path taken between two points does not change the value of the line integral.</p>
+    </div>
+
+    <p>We can compute \( \int \vec{f} \cdot d\vec{r} \) in general. However, for some special functions \( \vec{f} \), the line integrals along different paths between the same two points are equal.</p>
+
+    <div class="theorem">
+        <p><strong>Theorem: Fundamental Theorem of Line Integrals</strong></p>
+        <p>Consider a curve \( c(t) \) where \( a \le t \le b \). Suppose the vector field \( \vec{f} \) is the gradient of a scalar potential function \( F \), such that \( \vec{f} = \nabla F \). Then:</p>
+        \[ \int_{a}^{b} \vec{f} \cdot dc = F(c(b)) - F(c(a)) \]
+    </div>
+
+    <p><strong>Remark:</strong> Recall that for 1-variable functions, the Second Fundamental Theorem of Calculus establishes a similar relationship:</p>
+    \[ \int_{a}^{b} f'(x) \, dx = f(b) - f(a) \]
+
+</body>
+</html>
