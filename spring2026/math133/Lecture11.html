@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 11 - Movements in the Coordinate Plane</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 {
+            color: #5a6c7d;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 11: Movements in Coordinate Geometry</h3>
+
+    <h4>Translation</h4>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> We say that a point \(p' = (x', y')\) is obtained from \(p = (x, y)\) by <strong>translation</strong> if there are some \(a, b \in \mathbb{R}\) such that:</p>
+        \[x' = x + a\]
+        \[y' = y + b\]
+    </div>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> A function \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) is called a <strong>translation</strong> if \(f(x, y) = (x+a, y+b)\) for some fixed \(a\) and \(b\).</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Intuition:</strong> A translation moves a point \(a\) steps to the right and \(b\) steps upwards. This effectively increases the x-coordinate by \(a\) and the y-coordinate by \(b\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 1: Translating Specific Points</h5>
+        <p>Let the translation constants be \(a = 2\) and \(b = -1\). The translation function is defined as:</p>
+        \[f(x, y) = (x + 2, y - 1)\]
+        <p>Apply this function to the points \((0, 0)\), \((1, 0)\), and \((0, 1)\).</p>
+
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>\(f(0, 0) = (0 + 2, 0 - 1) = (2, -1)\)</li>
+                <li>\(f(1, 0) = (1 + 2, 0 - 1) = (3, -1)\)</li>
+                <li>\(f(0, 1) = (0 + 2, 1 - 1) = (2, 0)\)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Graph Description:</strong> The graph shows a set of points in the Cartesian plane. The original points—\((0,1)\) (green), \((0,0)\) (blue), and \((1,0)\) (red)—form a simple shape. After the translation \(f(x, y) = (x+2, y-1)\), these points shift right by 2 units and down by 1 unit to their new positions: \((2,0)\) (green), \((2,-1)\) (blue), and \((3,-1)\) (red).</p>
+    </div>
+
+    <h4>Properties of Translations</h4>
+
+    <div class="example">
+        <h5>Example 2: Preservation of Distance</h5>
+        <p>Let \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) be the translation \(f(x, y) = (x+2, y-1)\). Given two points \(P\) and \(Q\), is it true that the distance \(|PQ|\) is equal to the distance between their translated images \(|f(P)f(Q)|\)?</p>
+
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Fix coordinates \(P = (p_1, p_2)\) and \(Q = (q_1, q_2)\).</p>
+            <p>The translated points are:</p>
+            \[f(P) = (p_1 + 2, p_2 - 1)\]
+            \[f(Q) = (q_1 + 2, q_2 - 1)\]
+            <p>The distance between the translated points is:</p>
+            \[|f(P)f(Q)| = \sqrt{((p_1 + 2) - (q_1 + 2))^2 + ((p_2 - 1) - (q_2 - 1))^2}\]
+            \[= \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2}\]
+            \[= |PQ|\]
+            <p>Thus, translations preserve the distance between points.</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Translation of a Straight Line</h5>
+        <p>Suppose \(\ell\) is a straight line. Show that its image under translation \(f(\ell)\) is also a straight line.</p>
+
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Consider a non-vertical line expressed as \(y = mx + c\). A point \(P\) on this line has the form \((x, mx + c)\).</p>
+            <p>Applying the translation \(f(P) = (x+2, mx+c-1)\), let the new coordinates be \((x', y')\):</p>
+            \[x' = x + 2 \implies x = x' - 2\]
+            \[y' = mx + c - 1\]
+            <p>Substituting the expression for \(x\) into the equation for \(y'\):</p>
+            \[y' = m(x' - 2) + c - 1\]
+            \[y' = mx' - 2m + c - 1\]
+            <p>Since this resulting equation is in the form \(y' = mx' + C\), it is the equation of a straight line. For vertical lines \(x = a\), the translated image is \(x = a + 2\), which is also a vertical straight line.</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 4: Translation of a Circle</h5>
+        <p>Let \(\mathcal{C}\) be a circle in the plane. Show that its image \(f(\mathcal{C})\) is also a circle.</p>
+
+        <div class="solution">
+            <p><strong>Method 1: Algebraic Substitution</strong></p>
+            <p>Let the circle be defined by \((x-h)^2 + (y-k)^2 = r^2\) with center \((h, k)\) and radius \(r\). Using the translation \(f(x, y) = (x+2, y-1)\), we set \(x' = x+2\) and \(y' = y-1\), so \(x = x'-2\) and \(y = y'+1\). Substituting these into the circle equation:</p>
+            \[(x' - 2 - h)^2 + (y' + 1 - k)^2 = r^2\]
+            <p>This is a circle with center \((h+2, k-1)\) and the same radius \(r\).</p>
+
+            <p><strong>Method 2: Geometric Property</strong></p>
+            <p>Suppose circle \(\mathcal{C}\) has center \(P\) and radius \(r\). If \(Q\) is any point on \(\mathcal{C}\), then \(|PQ| = r\). Since translations preserve distance, \(|f(P)f(Q)| = |PQ| = r\). This implies that \(f(Q)\) lies on a circle with center \(f(P)\) and radius \(r\).</p>
+        </div>
+    </div>
+
+    <h3>Reflections</h3>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> A function \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) such that \(f(x, y) = (x, -y)\) is called a <strong>reflection about the x-axis</strong>.</p>
+    </div>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> Similarly, a function \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) such that \(f(x, y) = (-x, y)\) is called a <strong>reflection about the y-axis</strong>.</p>
+    </div>
+
+    <div class="important">
+        <p>Just like translations, reflections preserve distances, take lines to lines, and circles to circles. These facts are proved in the same way as they were for translations.</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 5: Minimizing Distance to a Line</h5>
+        <p>Given points \(P = (2, 4)\) and \(Q = (5, 7)\), find a point \(R\) on the x-axis such that the sum of distances \(|PR| + |RQ|\) is minimized.</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Let \(R = (x, 0)\). We want to minimize \(f(x) = \sqrt{(x-2)^2 + 4^2} + \sqrt{(x-5)^2 + 7^2}\).</p>
+            <p><strong>Geometrical Approach:</strong> Reflect point \(P\) across the x-axis to get \(P' = (2, -4)\). Because \(|PR| = |P'R|\), minimizing \(|PR| + |RQ|\) is identical to minimizing \(|P'R| + |RQ|\).</p>
+            <p>This sum is minimized when \(P'\), \(R\), and \(Q\) are collinear. The line connecting \(P'(2, -4)\) and \(Q(5, 7)\) has the equation:</p>
+            \[\frac{y - (-4)}{x - 2} = \frac{7 - (-4)}{5 - 2} = \frac{11}{3}\]
+            \[y + 4 = \frac{11}{3}(x - 2)\]
+            <p>Setting \(y = 0\) to find the intersection with the x-axis:</p>
+            \[4 = \frac{11}{3}(x - 2) \implies 12 = 11x - 22 \implies 11x = 34 \implies x = \frac{34}{11}\]
+            <p>The optimal point is \(R = (\frac{34}{11}, 0)\).</p>
+        </div>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A diagram showing the reflection of a point \((x, y)\) across the x-axis to \((x, -y)\). A second diagram illustrates the shortest path problem: points \(P\) and \(Q\) are in the first quadrant. \(P\) is reflected to \(P'\) in the fourth quadrant. A dashed line connects \(P'\) to \(Q\), crossing the x-axis at the point \(R\), which minimizes the total path length from \(P\) to \(Q\) via the axis.</p>
+    </div>
+</body>
+</html>
