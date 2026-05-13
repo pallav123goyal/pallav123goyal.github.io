@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 12: Parametrization of Surfaces</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        h3 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 8px; margin-top: 30px; font-size: 1.5em; }
+        h4 { color: #34495e; border-left: 4px solid #3498db; padding-left: 15px; margin-top: 25px; font-size: 1.3em; }
+        h5 { color: #5a6c7d; font-size: 1.1em; margin-top: 20px; }
+        .definition { background-color: #e8f5e8; padding: 15px; border: 1px solid #28a745; border-radius: 8px; margin: 15px 0; border-left: 5px solid #28a745; }
+        .theorem { background-color: #fff3cd; padding: 15px; border: 1px solid #ffc107; border-radius: 8px; margin: 15px 0; border-left: 5px solid #ffc107; }
+        .example { background-color: #f8f9fa; padding: 15px; border: 1px solid #6c757d; border-radius: 8px; margin: 15px 0; border-left: 5px solid #007bff; }
+        .important { background-color: #d1ecf1; padding: 15px; border: 1px solid #17a2b8; border-radius: 8px; margin: 15px 0; border-left: 5px solid #17a2b8; }
+        .visual-desc { background-color: #e9ecef; padding: 12px; border-left: 4px solid #6c757d; font-style: italic; margin: 15px 0; border-radius: 0 5px 5px 0; }
+        .solution { background-color: #f0f8f0; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745; }
+        .steps { background-color: #f1f3f4; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 12: Parametrization of Surfaces</h3>
+
+    <h4>Recall: Fundamental Theorem of Line Integrals</h4>
+
+    <div class="theorem">
+        <p><strong>Theorem:</strong> Suppose \(\vec{F} = \text{grad } F = \nabla F\). Then, along any path \(\vec{c}(t)\), \(a \le t \le b\),</p>
+        \[\int_c \vec{F} \cdot d\vec{c} = F(\vec{c}(b)) - F(\vec{c}(a))\]
+    </div>
+
+    <p>This theorem essentially states that the line integral of a gradient field depends only on the endpoints \(\vec{c}(b)\) and \(\vec{c}(a)\), and not on the path itself.</p>
+
+    <div class="example">
+        <h5>Example 1: Evaluation of a Line Integral</h5>
+        <p>Suppose \(F(x, y, z) = x^2 - y^2 - \sin z\). Integrate \(\nabla F\) along the semicircular curve joining \((2, 0, 0)\) and \((-1, 1, 0)\) in the \(xy\)-plane.</p>
+        
+        <div class="visual-desc">
+            <p><strong>Visual Description:</strong> A 3D coordinate system. A path is drawn as a semi-circle in the \(xy\)-plane (where \(z=0\)). It starts at \(x=2\) on the positive \(x\)-axis and curves through the first and second quadrants to end at the point \((-1, 1)\).</p>
+        </div>
+
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>By the Fundamental Theorem of Line Integrals:</p>
+            \[\int_c \nabla F \cdot d\vec{c} = F(-1, 1, 0) - F(2, 0, 0)\]
+            <p>Step-by-step evaluation:</p>
+            <ul>
+                <li>\(F(-1, 1, 0) = (-1)^2 - (1)^2 - \sin(0) = 1 - 1 - 0 = 0\)</li>
+                <li>\(F(2, 0, 0) = (2)^2 - (0)^2 - \sin(0) = 4 - 0 - 0 = 4\)</li>
+            </ul>
+            <p>Therefore, the integral result is \(0 - 4 = -4\).</p>
+        </div>
+    </div>
+
+    <div class="important">
+        <p><strong>Corollary:</strong> The integral of \(\nabla F\) along any closed loop is <strong>zero</strong>. For example, the integral along the unit circle in the \(xy\)-plane is zero because the starting and ending points are identical.</p>
+    </div>
+
+    <h3>Parametrization of Surfaces</h3>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A curved surface \(S\) is shown in 3D space. At various points on the surface, vectors labeled \(\vec{n}\) (the normal vector) point outward, perpendicular to the surface. This represents the orientation needed for flux calculations.</p>
+    </div>
+
+    <p>Our goal is to integrate scalar or vector-valued functions over 2D surfaces. For vector-valued functions, this allows us to compute the <strong>flux</strong> through a surface. The first step is defining the surface using parameters.</p>
+
+    <h4>Transition from Curves to Surfaces</h4>
+    <p>Recall that a curve is parametrized by a single variable: \(\vec{c}(t) = (x(t), y(t), z(t))\). For a 2D surface, we require <strong>two</strong> parameters, typically \(u\) and \(v\):</p>
+    \[\vec{r}(u, v) = (x(u, v), y(u, v), z(u, v))\]
+
+    <div class="example">
+        <h5>Example 2: Parametrizing the Unit Sphere</h5>
+        <p>Consider the sphere \(x^2 + y^2 + z^2 = 1\). We can represent this in two ways:</p>
+        <p><strong>1. Cartesian Charts:</strong> Solving for \(z\) gives two functions \(z = \pm\sqrt{1 - x^2 - y^2}\). This requires two separate "patches" to cover the whole sphere. The bounds are \(-1\le x \le 1, -\sqrt{1-x^2}\le y \le \sqrt{1-x^2}\).</p>
+        <p><strong>2. Spherical Coordinates:</strong> A more efficient single parametrization using angles \(\phi\) and \(\theta\):</p>
+        <ul>
+            <li>\(x = \sin \phi \cos \theta\)</li>
+            <li>\(y = \sin \phi \sin \theta\)</li>
+            <li>\(z = \cos \phi\)</li>
+        </ul>
+        <p>Where \(0 \le \phi \le \pi\) and \(0 \le \theta \le 2\pi\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Identifying a Surface</h5>
+        <p>Identify the surface \(\vec{r}(u, v) = (u \cos v, u \sin v, u)\) for \(0 \le u \le 1\).</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>We see that \(x = u \cos v\) and \(y = u \sin v\). Therefore, \(x^2 + y^2 = u^2(\cos^2 v + \sin^2 v) = u^2\).</p>
+            <p>Since \(z = u\), we substitute to find \(x^2 + y^2 = z^2\). This is the equation of a <strong>cone</strong>.</p>
+        </div>
+    </div>
+    
+        <div class="example">
+        <h5>Example 4: Identifying a Surface (Complex Example)</h5>
+        <p>Identify the surface \( \vec{r}(u, v) = (u \cos v, u \sin v, u^2 + v^2)\) for \(0 \le u, 0 \le v \le 2\pi\).</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>From \(x = u \cos v\) and \(y = u \sin v\), we know \(x^2 + y^2 = u^2\).</p>
+            <p>Substitute into the \(z\) equation: \(z = u^2 + v^2 \implies z = x^2 + y^2 + v^2 \implies v^2 = z - x^2 - y^2\).</p>
+            <p>Also, \(\frac{y}{x} = \frac{u \sin v}{u \cos v} = 	\tan v\). Thus, \(v = 	\tan^{-1}(\frac{y}{x})\).</p>
+            <p>Combining these, the Cartesian relation is \(	\tan(\sqrt{z - x^2 - y^2}) = \frac{y}{x}\).</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 5: Parametrizing a Cylinder</h5>
+        <p>Parametrize the surface \(x^2 + z^2 = 4\) where \(y \ge 0\).</p>
+        <div class="visual-desc">
+            <p><strong>Visual Description:</strong> A cylinder centered on the \(y\)-axis. The cross-section in the \(xz\)-plane is a circle with radius 2. The surface extends along the positive \(y\)-axis.</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Since the circle is in the \(xz\)-plane with radius 2, we use:</p>
+            <ul>
+                <li>\(x = 2 \cos u\)</li>
+                <li>\(z = 2 \sin u\)</li>
+                <li>\(y = v\)</li>
+            </ul>
+            <p>With domains \(0 \le u \le 2\pi\) and \(v \ge 0\).</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 6: Parametrizing a Hyperboloid</h5>
+        <p>Parametrize \(x^2 + y^2 - z^2 = 1\).</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Let \(x = u \cos v\) and \(y = u \sin v\). The equation becomes \(u^2 - z^2 = 1\).</p>
+            <p>Using the identity \(\sec^2 w - \tan^2 w = 1\), we can set \(u = \sec w\) and \(z = \tan w\). The final parametrization is:</p>
+            \[\vec{r}(v, w) = (\sec w \cos v, \sec w \sin v, \tan w)\]
+        </div>
+    </div>
+    
+        <div class="example">
+        <h5>Example 7: Parametrizing a Plane</h5>
+        <p>Parametrize the plane \(x + 2y + 3z = 6\).</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Solve for one variable, e.g., \(y = \frac{6 - x - 3z}{2}\).</p>
+            <p>Using \(x\) and \(z\) as parameters:</p>
+            <ul>
+                <li>\(x = x\)</li>
+                <li>\(y = 3 - 0.5x - 1.5z\)</li>
+                <li>\(z = z\)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Tangent Planes to Parametrized Surfaces</h4>
+    <div class="steps">
+        <p><strong>Procedure for finding a Tangent Plane:</strong></p>
+        <ol>
+            <li>Find partial derivative vectors \(\vec{r}_u = \frac{\partial \vec{r}}{\partial u}\) and \(\vec{r}_v = \frac{\partial \vec{r}}{\partial v}\). These are tangent to the surface.</li>
+            <li>Calculate the normal vector using the cross product: \(\vec{n} = \vec{r}_u \times \vec{r}_v\).</li>
+            <li>Use the point \(\vec{r}(u_0, v_0)\) and the normal vector \(\vec{n}\) to write the plane equation.</li>
+        </ol>
+    </div>
+
+</body>
+</html>
