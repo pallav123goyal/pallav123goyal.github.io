@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 4</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        p { margin-bottom: 1em; }
+    </style>
+</head>
+<body>
+
+    <h3>Math 10B - Quiz 4 (Spring 2026)</h3>
+
+    <div class="example">
+        <h5>Problem 1</h5>
+        <p>Consider the curve \(c(t) = (\sin(3t), \cos(3t), 4t)\) for \(t \in [0, \pi]\). Find the expression for the unit tangent vector to this curve.</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>First, we find the velocity vector \(c'(t)\) by differentiating each component of the curve with respect to \(t\):</p>
+            \[c'(t) = \left( \frac{d}{dt}\sin(3t), \frac{d}{dt}\cos(3t), \frac{d}{dt}4t \right) = (3\cos(3t), -3\sin(3t), 4)\]
+            
+            <p>Next, we calculate the magnitude of the velocity vector, which represents the speed along the curve:</p>
+            \[\|c'(t)\| = \sqrt{(3\cos(3t))^2 + (-3\sin(3t))^2 + 4^2}\]
+            \[\|c'(t)\| = \sqrt{9\cos^2(3t) + 9\sin^2(3t) + 16}\]
+            
+            <p>Using the trigonometric identity \(\cos^2(\theta) + \sin^2(\theta) = 1\), the expression simplifies to:</p>
+            \[\|c'(t)\| = \sqrt{9(1) + 16} = \sqrt{25} = 5\]
+            
+            <p>The unit tangent vector \(\mathbf{T}(t)\) is obtained by dividing the velocity vector by its magnitude:</p>
+            \[\mathbf{T}(t) = \frac{c'(t)}{\|c'(t)\|} = \left( \frac{3}{5}\cos(3t), -\frac{3}{5}\sin(3t), \frac{4}{5} \right)\]
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Problem 2</h5>
+        <p>Consider the function \(f(x,y,z) = xy + yz + zx\) and the curve \(c(t) = (2t, t, -2t)\) for \(0 \le t \le 2\).</p>
+        
+        <h4>(a) Path Integral Setup</h4>
+        <p>Set up the path integral of the function \(f\) along the curve \(c\).</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>To set up the path integral \(\int_c f \, ds\), we use the formula \(\int_a^b f(c(t)) \|c'(t)\| \, dt\).</p>
+            <p>First, we evaluate the function \(f\) along the path by substituting the components of \(c(t)\):</p>
+            \[f(c(t)) = (2t)(t) + (t)(-2t) + (-2t)(2t) = 2t^2 - 2t^2 - 4t^2 = -4t^2\]
+            
+            <p>Then, we find the magnitude of the velocity vector \(c'(t) = (2, 1, -2)\):</p>
+            \[\|c'(t)\| = \sqrt{2^2 + 1^2 + (-2)^2} = \sqrt{4 + 1 + 4} = \sqrt{9} = 3\]
+            
+            <p>Substituting these into the integral from \(t = 0\) to \(t = 2\):</p>
+            \[\int_0^2 (-4t^2)(3) \, dt = \int_0^2 -12t^2 \, dt\]
+        </div>
+
+        <h4>(b) Integral Evaluation</h4>
+        <p>Evaluate the integral found in part (a).</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>We evaluate the definite integral using the power rule for integration:</p>
+            \[\int_0^2 -12t^2 \, dt = \left[ -12 \cdot \frac{t^3}{3} \right]_0^2 = \left[ -4t^3 \right]_0^2\]
+            \[= (-4 \cdot 2^3) - (-4 \cdot 0^3) = -32 - 0 = -32\]
+        </div>
+    </div>
+
+</body>
+</html>
