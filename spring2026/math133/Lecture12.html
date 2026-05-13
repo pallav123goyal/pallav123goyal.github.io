@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 12 - Rotations and Isometries</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Lecture 12: Rotations and Isometries</h3>
+
+<p>In the previous lecture, we discussed translations and reflections. A key observation regarding these transformations is that they preserve distances. Specifically, for any two points \(P\) and \(Q\) in the plane, the distance between them is equal to the distance between their images under the transformation \(f\):</p>
+
+\[ |PQ| = |f(P)f(Q)| \]
+
+<p>This property defines a specific class of geometric movements.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> Given any map \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\), we say that \(f\) is an <strong>isometry</strong> if for any two points \(P\) and \(Q\), the following equality holds:</p>
+    \[ |PQ| = |f(P)f(Q)| \]
+</div>
+
+<p>Translations and reflections are fundamental examples of isometries because they do not stretch, shrink, or distort the plane.</p>
+
+<div class="important">
+    <p><strong>Hard Exercise:</strong> Prove that any isometry of \(\mathbb{R}^2\) is a bijective function.</p>
+</div>
+
+<h4>Non-Examples of Isometries</h4>
+<p>To clarify the concept, consider maps that do not preserve distance:</p>
+<ul>
+    <li><strong>Constant Map:</strong> \(f(x,y) = (3,4)\). Here, every point is mapped to a single coordinate. The distance between any two images is always zero, regardless of the original distance.</li>
+    <li><strong>Dilation:</strong> \(f(x,y) = (2x, 2y)\). This transformation scales all distances by a factor of 2, thus it is not an isometry.</li>
+</ul>
+
+<h3>Trigonometry Review</h3>
+
+<div class="visual-desc">
+    <p><strong>Visual Description:</strong> A right-angled triangle is positioned in a coordinate system. The hypotenuse represents a radius \(r\) extending from the origin to a point \((x, y)\). The horizontal leg along the x-axis has length \(x\), and the vertical leg parallel to the y-axis has length \(y\). The angle formed between the x-axis and the hypotenuse is labeled \(\theta\).</p>
+</div>
+
+<p>Suppose a point \((x, y)\) lies on a circle of radius \(r\) (defined by \(x^2 + y^2 = r^2\)) and on a line passing through the origin with slope \(m\). The slope is defined as:</p>
+
+\[ m = \frac{\text{rise}}{\text{run}} = \frac{y}{x} = \tan\theta \]
+
+<p>Using the radius \(r\) and the angle \(\theta\), the coordinates are expressed as:</p>
+<ul>
+    <li>\(x = r \cos\theta\)</li>
+    <li>\(y = r \sin\theta\)</li>
+</ul>
+
+<p>Conversely, given the coordinates, the radius and angle are found via:</p>
+\[ r = \sqrt{x^2 + y^2} \]
+\[ \theta = \tan^{-1}\left(\frac{y}{x}\right) \]
+
+<h3>Rotations around the Origin</h3>
+
+<p>We define a rotation by fixing an angle \(\theta\). The transformation \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) is defined by:</p>
+\[ f(x,y) = (x \cos\theta - y \sin\theta, \,\, x \sin\theta + y \cos\theta) \]
+
+<div class="example">
+    <h5>Example: Rotating Points by \(\frac{\pi}{6}\)</h5>
+    <p>Let \(\theta = \frac{\pi}{6}\). Recalling our unit circle values: \(\cos(\frac{\pi}{6}) = \frac{\sqrt{3}}{2}\) and \(\sin(\frac{\pi}{6}) = \frac{1}{2}\). Consider points \(P = (1, 0)\), \(Q = (0, 1)\), and \(R = (-1, 0)\).</p>
+    
+    <div class="solution">
+        <p><strong>Step 1: Calculate the images.</strong></p>
+        <ul>
+            <li>\(f(P) = (1 \cdot \frac{\sqrt{3}}{2} - 0 \cdot \frac{1}{2}, \,\, 1 \cdot \frac{1}{2} + 0 \cdot \frac{\sqrt{3}}{2}) = (\frac{\sqrt{3}}{2}, \frac{1}{2})\)</li>
+            <li>\(f(Q) = (0 \cdot \frac{\sqrt{3}}{2} - 1 \cdot \frac{1}{2}, \,\, 0 \cdot \frac{1}{2} + 1 \cdot \frac{\sqrt{3}}{2}) = (-\frac{1}{2}, \frac{\sqrt{3}}{2})\)</li>
+            <li>\(f(R) = (-1 \cdot \frac{\sqrt{3}}{2} - 0 \cdot \frac{1}{2}, \,\, -1 \cdot \frac{1}{2} + 0 \cdot \frac{\sqrt{3}}{2}) = (-\frac{\sqrt{3}}{2}, -\frac{1}{2})\)</li>
+        </ul>
+
+        <p><strong>Step 2: Verify distance preservation.</strong></p>
+        <p>The original distance \(|PQ| = \sqrt{(1-0)^2 + (0-1)^2} = \sqrt{2}\). The distance between images is:</p>
+        \[ |f(P)f(Q)| = \sqrt{\left(\frac{\sqrt{3}}{2} - (-\frac{1}{2})\right)^2 + \left(\frac{1}{2} - \frac{\sqrt{3}}{2}\right)^2} = \sqrt{2} \]
+        <p>The distance is preserved, confirming the isometry property for these points.</p>
+
+        <div class="visual-desc">
+            <p><strong>Visual Description:</strong> In a coordinate plane, the original points \(P, Q,\) and \(R\) sit on the unit circle at 0, 90, and 180 degrees respectively. Their images \(f(P), f(Q),\) and \(f(R)\) appear on the same circle, but each is shifted 30 degrees counter-clockwise to the 30, 120, and 210-degree positions.</p>
+        </div>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Takeaway:</strong> The formula \(f(x,y) = (x \cos\theta - y \sin\theta, x \sin\theta + y \cos\theta)\) performs an anti-clockwise rotation around the origin.</p>
+</div>
+
+<h3>Deriving the Rotation Formula</h3>
+
+<h4>1. Trigonometric Approach</h4>
+<p>Let a point \((x, y)\) have polar coordinates \((r, \phi)\), where \(x = r \cos\phi\) and \(y = r \sin\phi\). Rotating this point by \(\theta\) yields a new point \((h, k)\) with the same radius but angle \(\phi + \theta\):</p>
+\[ h = r \cos(\phi + \theta) = r(\cos\phi \cos\theta - \sin\phi \sin\theta) = x \cos\theta - y \sin\theta \]
+\[ k = r \sin(\phi + \theta) = r(\sin\phi \cos\theta + \cos\phi \sin\theta) = y \cos\theta + x \sin\theta \]
+
+<h4>2. Complex Number Approach</h4>
+<p>Using Euler's identity \(e^{i\theta} = \cos\theta + i \sin\theta\), we view the point \((x, y)\) as the complex number \(z = x + iy = r e^{i\phi}\). Rotating \(z\) by \(\theta\) is achieved by multiplying by \(e^{i\theta}\):</p>
+\[ z_{new} = r e^{i\phi} \cdot e^{i\theta} = (x + iy)(\cos\theta + i \sin\theta) \]
+\[ = (x \cos\theta - y \sin\theta) + i(x \sin\theta + y \cos\theta) \]
+
+<h4>3. Euclidean Geometry Approach</h4>
+
+<div class="important">
+    <p><strong>Takeaway:</strong> In the complex plane, rotation is simply multiplication by the complex unit vector corresponding to the desired angle.</p>
+</div>
+
+<div class="theorem">
+    <p><strong>Theorem:</strong> Rotation around the origin by any angle \(\theta\) is an isometry.</p>
+    <p><strong>Proof:</strong></p>
+    <p>Let \(P = (x_1, y_1)\) and \(Q = (x_2, y_2)\) be any two points in \(\mathbb{R}^2\). The squared distance between them is:</p>
+    \[ |PQ|^2 = (x_1 - x_2)^2 + (y_1 - y_2)^2 \]
+    <p>Let the images under rotation be \(f(P) = (x_1', y_1')\) and \(f(Q) = (x_2', y_2')\). According to the rotation formula:</p>
+    \[ x_i' = x_i \cos\theta - y_i \sin\theta \]
+    \[ y_i' = x_i \sin\theta + y_i \cos\theta \]
+    <p>The squared distance between the images is \(|f(P)f(Q)|^2 = (x_1' - x_2')^2 + (y_1' - y_2')^2\). First, we calculate the differences:</p>
+    \[ x_1' - x_2' = (x_1 - x_2)\cos\theta - (y_1 - y_2)\sin\theta \]
+    \[ y_1' - y_2' = (x_1 - x_2)\sin\theta + (y_1 - y_2)\cos\theta \]
+    <p>Let \( \Delta x = x_1 - x_2 \) and \( \Delta y = y_1 - y_2 \). Then:</p>
+    \[ |f(P)f(Q)|^2 = (\Delta x \cos\theta - \Delta y \sin\theta)^2 + (\Delta x \sin\theta + \Delta y \cos\theta)^2 \]
+    <p>Expanding the squares:</p>
+    \[ = (\Delta x^2 \cos^2\theta + \Delta y^2 \sin^2\theta - 2\Delta x \Delta y \cos\theta \sin\theta) + (\Delta x^2 \sin^2\theta + \Delta y^2 \cos^2\theta + 2\Delta x \Delta y \sin\theta \cos\theta) \]
+    <p>The cross terms cancel out:</p>
+    \[ = \Delta x^2(\cos^2\theta + \sin^2\theta) + \Delta y^2(\sin^2\theta + \cos^2\theta) \]
+    <p>Since \(\cos^2\theta + \sin^2\theta = 1\), we have:</p>
+    \[ = \Delta x^2(1) + \Delta y^2(1) = (x_1 - x_2)^2 + (y_1 - y_2)^2 = |PQ|^2 \]
+    <p>Taking the square root of both sides, we find \(|f(P)f(Q)| = |PQ|\). Thus, rotation is an isometry.</p>
+</div>
+
+</body>
+</html>
