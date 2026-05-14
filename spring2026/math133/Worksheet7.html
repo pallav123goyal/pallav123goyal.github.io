@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 133 - Worksheet 7: Isometries</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {load: ['[tex]/ams']}
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        .example {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .important {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border: 1px solid #b8daff;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        .solution {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px dashed #ced4da;
+            background-color: #f8f9fa;
+        }
+        h5 {
+            margin-top: 0;
+            color: #0056b3;
+            font-size: 1.2em;
+        }
+        .points {
+            font-weight: bold;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Math 133: Worksheet 7</h3>
+    <p><strong>Spring 2026</strong></p>
+    <p><strong>Due:</strong> Sunday, May 24, by 11:59pm on Gradescope.</p>
+
+    <div class="important">
+        <p><strong>Note:</strong> An isometry is a transformation that preserves distances between points. These problems explore how isometries are determined by their action on specific points and how to classify them.</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 1 <span class="points">(3 + 3 + 2 + 4 + 2 points)</span></h5>
+        <p>Suppose \(A\), \(B\), and \(C\) are points in the plane which do not lie in a line. Let \(f\) be an isometry.</p>
+        
+        <div class="solution">
+            <p><strong>(a)</strong> Explain why \(f(A)\), \(f(B)\), and \(f(C)\) cannot lie in a line.</p>
+            
+            <p><strong>(b)</strong> What is the relationship between \(\Delta f(A)f(B)f(C)\) and \(\Delta ABC\)?</p>
+            
+            <p><strong>(c)</strong> Suppose two points \(P\) and \(Q\) are equidistant from \(A\), so \(|AP| = |AQ|\). What does this mean about the point \(A\) in relationship to \(P\) and \(Q\)?</p>
+            
+            <p><strong>(d)</strong> Suppose \(P\) and \(Q\) are also equidistant from \(B\) and from \(C\). What does this say about \(A\), \(B\), and \(C\)? (Hint: Because of our starting assumption, this means that \(P = Q\), so a point \(P\) is uniquely determined by its distances from three points which don't lie in a line.)</p>
+            
+            <p><strong>(e)</strong> Let \(P\) be a point for which you know the distances to \(A\), \(B\), and \(C\). What is the relationship between \(f(P)\) and \(f(A)\), \(f(B)\), and \(f(C)\)?</p>
+        </div>
+        <p>Conclusion: You have now shown that an isometry \(f\) is completely determined by where it sends three points \(A\), \(B\), and \(C\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 2 <span class="points">(3 + 3 + 2 + 3 + 4 points)</span></h5>
+        <p>Consider the isometry defined by the formula:</p>
+        \[f(x,y) = \left( \frac{-3}{5}x + \frac{4}{5}y, \frac{4}{5}x + \frac{3}{5}y \right)\]
+
+        <div class="solution">
+            <p><strong>(a)</strong> Compute \(f(1,0)\), \(f(0,0)\), and \(f(0,1)\).</p>
+            
+            <p><strong>(b)</strong> Compute the fixed points of \(f\).</p>
+            
+            <p><strong>(c)</strong> Using part (b), describe what the transformation \(f\) is (e.g., translation, rotation, reflection).</p>
+            
+            <p><strong>(d)</strong> What is the relationship between the line segment \((1,0)f(1,0)\) and the line \(y=2x\)?</p>
+            
+            <p><strong>(e)</strong> Can you say anything in general about the relationship between the line segment \(Pf(P)\) and the line \(y=2x\)?</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Problem 3 <span class="points">(3 + 2 + 2 points)</span></h5>
+        <p>Consider the transformation \(f(x,y) = (3x+y, -y+2)\).</p>
+        
+        <div class="solution">
+            <p><strong>(a)</strong> Compute the fixed points of \(f\).</p>
+            
+            <p><strong>(b)</strong> Is \(f\) an isometry?</p>
+            
+            <p><strong>(c)</strong> Is \(f\) a translation, rotation, reflection, glide reflection, or none of these? Justify your answer.</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Problem 4 <span class="points">(4 + 4 points)</span></h5>
+        <p>Let \(A=(0,1)\), \(B=(0,0)\), and \(C=(1,0)\). Suppose \(f\) is an isometry.</p>
+        
+        <div class="solution">
+            <p><strong>(a)</strong> Suppose that \(f(A)=(1.8,3)\), \(f(B)=(1.8,2)\) and \(f(C)=(2.8,2)\). Is \(f\) a translation, a reflection, or a rotation? Give the formula for \(f\).</p>
+            
+            <p><strong>(b)</strong> Suppose \(f(A)=(0.4,1.8)\), \(f(B)=(1,1)\) and \(f(C)=(1.8,1.6)\). Explain why the isometry \(f\) is not a translation or a reflection. (Hint: Problem 2(e) may help.)</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Problem 5 <span class="points">(6 points)</span></h5>
+        <p>Write down 3 facts that you know from linear algebra and explain them in a couple of sentences each. These could be from Math 31, Math 131, or elsewhere. If any of the facts have a geometrical significance, feel free to describe a picture to explain.</p>
+    </div>
+
+</body>
+</html>
