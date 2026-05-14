@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 13: Glide Reflections and Fixed Points</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 13: Glide Reflections and Fixed Points</h3>
+
+    <h4>Review of Isometries</h4>
+    <p>Recall that a map \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) is called an <strong>isometry</strong> if it preserves distances. Specifically, for any points \(P\) and \(Q\), the distance between them remains constant after the transformation:</p>
+    \[|PQ| = |T(P)T(Q)|\]
+    <p>Common examples of isometries include translations, reflections, and rotations.</p>
+
+    <div class="theorem">
+        <p><strong>Theorem:</strong> All isometries preserve angles. That is, for points \(P\), \(Q\), and \(R\), \(\angle PQR = \angle T(P)T(Q)T(R)\).</p>
+        <p><strong>Proof:</strong> Let \(T\) be an isometry. Because \(T\) preserves distances, we have \(|PQ| = |T(P)T(Q)|\), \(|PR| = |T(P)T(R)|\), and \(|QR| = |T(Q)T(R)|\). By SSS (Side-Side-Side) congruence, \(\Delta PQR \cong \Delta T(P)T(Q)T(R)\). Consequently, the corresponding angles must be equal: \(\angle PQR = \angle T(P)T(Q)T(R)\).</p>
+    </div>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> Maps \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) that preserve angles are called <strong>conformal maps</strong>.</p>
+    </div>
+
+    <h3>Glide Reflections</h3>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> A map \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) is called a <strong>glide reflection</strong> if it is the result of a reflection followed by a translation in the direction of the line of reflection.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Note on Slope:</strong> Any translation can be viewed as \(f(x,y) = (x+a, y+b)\). We can think of this translation as having a "slope" of \(\frac{b}{a}\). If the slope of the line of reflection is equal to the slope of the translation (\(\frac{b}{a}\)), then the transformation is a glide reflection.</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 1: Identifying a Glide Reflection</h5>
+        <p>Consider the map \(f(x,y) = (x+3, -y)\). Is this a glide reflection?</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>1. The map involves a reflection \((x,y) \mapsto (x, -y)\), which is a reflection about the x-axis. The slope of the x-axis is 0.</p>
+            <p>2. The map involves a translation \((x, -y) \mapsto (x+3, -y)\). Here, \(a=3\) and \(b=0\). The slope of this translation is \(\frac{0}{3} = 0\).</p>
+            <p>3. Since the slopes of the reflection line and the translation match, this is a <strong>glide reflection</strong>.</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 2: A Non-Glide Reflection</h5>
+        <p>Consider the map \(g(x,y) = (x, -y+3)\). Is this a glide reflection?</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>1. The reflection is \((x,y) \mapsto (x, -y)\), about the x-axis (slope = 0).</p>
+            <p>2. The translation is \((x, -y) \mapsto (x, -y+3)\). Here, \(a=0\) and \(b=3\). The slope is undefined (\(\infty\)).</p>
+            <p>3. The slopes do not match; therefore, this is <strong>not</strong> a glide reflection.</p>
+        </div>
+    </div>
+
+    <div class="theorem">
+        <p><strong>Theorem:</strong> Glide reflections are isometries.</p>
+        <p><strong>Proof:</strong> A glide reflection \(f\) is the composition of a reflection \(g\) and a translation \(h\) (\(f = h \circ g\)). For any points \(P, Q\):</p>
+        \[|f(P)f(Q)| = |h(g(P))h(g(Q))| = |g(P)g(Q)| = |PQ|\]
+        <p>The first equality holds because translations are isometries, and the second holds because reflections are isometries. Thus, the composition is an isometry.</p>
+    </div>
+
+    <h3>Fixed Points</h3>
+
+    <div class="definition">
+        <p><strong>Definition:</strong> Given a map \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\), a point \(P\) is called a <strong>fixed point</strong> if \(f(P) = P\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Finding Fixed Points</h5>
+        <p>Find fixed points for the following maps:</p>
+        <ul>
+            <li><strong>a) Reflection:</strong> \(f(x,y) = (x, -y)\)</li>
+            <li><strong>b) Translation:</strong> \(g(x,y) = (x+1, y-2)\)</li>
+            <li><strong>c) Glide Reflection:</strong> \(h(x,y) = (x+3, -y)\)</li>
+            <li><strong>d) Reflection about \(y=1\):</strong> \(i(x,y) = (x, 2-y)\)</li>
+        </ul>
+        <div class="solution">
+            <p><strong>Solutions:</strong></p>
+            <p><strong>a)</strong> Setting \((x, -y) = (x, y)\) gives \(x=x\) and \(-y=y \Rightarrow y=0\). Fixed points: all points on the x-axis \((x, 0)\).</p>
+            <p><strong>b)</strong> Setting \((x+1, y-2) = (x, y)\) gives \(x+1=x\) (impossible). Result: No fixed points.</p>
+            <p><strong>c)</strong> Setting \((x+3, -y) = (x, y)\) gives \(x+3=x\) (impossible). Result: No fixed points.</p>
+            <p><strong>d)</strong> Setting \((x, 2-y) = (x, y)\) gives \(2-y=y \Rightarrow 2=2y \Rightarrow y=1\). Fixed points: all points on the line \(y=1\).</p>
+        </div>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Visual Description:</strong> A diagram illustrates the reflection \(i(x,y) = (x, 2-y)\). It shows a horizontal dashed line at \(y=1\). A point \((x,y)\) above the line is a distance \(\alpha = y-1\) from the line. Its image \((x, y')\) is shown at an equal distance \(\beta = y-1\) below the line, resulting in \(y' = 1 - (y-1) = 2-y\).</p>
+    </div>
+
+    <h3>Determining Isometry Type</h3>
+
+    <div class="example">
+        <h5>Example 4: Identifying \(f \circ g\)</h5>
+        <p>Consider \(f(x,y) = (y,x)\) and \(g(x,y) = (x, -y)\). Identify the composition \(f \circ g\).</p>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>The composition is \(f(g(x,y)) = f(x, -y) = (-y, x)\).</p>
+            <p>To find the type of isometry, find the fixed points: \((-y, x) = (x, y) \Rightarrow -y=x\) and \(x=y\). This implies \(x=0, y=0\). The only fixed point is the origin \((0,0)\).</p>
+            <p>This suggests a rotation. Recall the rotation matrix for an angle \(\theta\):</p>
+            \[h(x,y) = (x \cos\theta - y \sin\theta, x \sin\theta + y \cos\theta)\]
+            <p>Equating this to \((-y, x)\):</p>
+            <ul>
+                <li>\(\cos\theta = 0\)</li>
+                <li>\(\sin\theta = 1\)</li>
+            </ul>
+            <p>This gives \(\theta = \pi/2\). Therefore, the composition is a <strong>rotation by 90 degrees anti-clockwise</strong>.</p>
+        </div>
+    </div>
+
+    <div class="important">
+        <h5>Summary Table: Identifying Isometries by Fixed Points</h5>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fixed Points</th>
+                    <th>Isometry Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>None</td>
+                    <td>Translation or Glide Reflection</td>
+                </tr>
+                <tr>
+                    <td>A Line</td>
+                    <td>Reflection</td>
+                </tr>
+                <tr>
+                    <td>A Single Point</td>
+                    <td>Rotation</td>
+                </tr>
+                <tr>
+                    <td>All Points (Entire Plane)</td>
+                    <td>Identity</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+
+    <div class="example">
+        <h5>Example: Identifying the map \( f(x,y) = (-x, -y) \)</h5>
+        <div class="solution">
+            <p><strong>Step 1: Check if it is a translation.</strong></p>
+            <p>A translation has the form \( (x+a, y+b) \). Here, the coefficients of \( x \) and \( y \) are \(-1\), not \(1\). Therefore, it is not a translation.</p>
+
+            <p><strong>Step 2: Find the fixed points.</strong></p>
+            <p>We solve for \( f(x,y) = (x,y) \):</p>
+            \[ 
+            \begin{cases} 
+            -x = x \\
+            -y = y 
+            \end{cases}
+            \]
+            <p>This implies \( 2x = 0 \) and \( 2y = 0 \), so \( x=0 \) and \( y=0 \). The only fixed point is the origin \( (0,0) \).</p>
+
+            <p><strong>Step 3: Conclusion from the flowchart.</strong></p>
+            <p>Since there is exactly <strong>one fixed point</strong>, this isometry must be a <strong>rotation</strong>.</p>
+
+            <p><strong>Step 4: Determine the angle of rotation.</strong></p>
+            <p>Recall the general rotation formula for an angle \( \theta \): \( (x \cos\theta - y \sin\theta, x \sin\theta + y \cos\theta) \). Comparing this to our map \( (-x, -y) \):</p>
+            <ul>
+                <li>\( \cos\theta = -1 \)</li>
+                <li>\( \sin\theta = 0 \)</li>
+            </ul>
+            <p>This corresponds to \( \theta = \pi \) (or \( 180^\circ \)). Thus, the transformation is a rotation by 180 degrees about the origin.</p>
+            
+            <div class="visual-desc">
+                <p><strong>Diagram Description:</strong> A coordinate plane showing a point \( P(x,y) \) and its image \( P'(-x,-y) \) mirrored across the origin, illustrating a 180-degree rotation.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
