@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA 261 - Lecture 13: Areas of Parametrized Surfaces</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 13: Areas of Parametrized Surfaces</h3>
+
+    <h4>Cross Products</h4>
+    <p>Given vectors \(\vec{a}\) and \(\vec{b}\), the cross product \(\vec{a} \times \vec{b}\) is perpendicular to both \(\vec{a}\) and \(\vec{b}\). The magnitude is given by:</p>
+    \[ ||\vec{a} \times \vec{b}|| = ||\vec{a}|| ||\vec{b}|| \sin \theta \]
+    <p>The magnitude of the cross product gives the area of the parallelogram formed by vectors \(\vec{a}\) and \(\vec{b}\).</p>
+
+    <div class="visual-desc">
+        Visual Description: A diagram illustrating vectors \(\vec{a}\) and \(\vec{b}\) originating from a single point, forming a parallelogram with an interior angle \(\theta\).
+    </div>
+
+    <h4>Tangent and Normal Vectors</h4>
+    <p>Given a parametrized surface \(\vec{r}(u,v) = \langle f(u,v), g(u,v), h(u,v) \rangle\), we can find a tangent vector \(T_u\) by differentiating with respect to \(u\):</p>
+    \[ T_u = \left\langle \frac{\partial f}{\partial u}, \frac{\partial g}{\partial u}, \frac{\partial h}{\partial u} \right\rangle \]
+    <p>Similarly, we can find \(T_v\) by differentiating with respect to \(v\). The cross product \(T_u \times T_v\) serves as a normal vector to the tangent plane at a specific point on the surface.</p>
+
+    <div class="example">
+        <h5>Example 1: Finding a Tangent Plane</h5>
+        <p>Find the equation of the tangent plane to the surface \((x, y, z) = (2u, u^2 + 2u, v^2)\) at the point \((0, 2, 1)\).</p>
+        <div class="solution">
+            <p><strong>Step 1: Compute tangent vectors.</strong></p>
+            \[ T_u = \langle 2, 2u+2, 0 \rangle, \quad T_v = \langle 0, 0, 2v \rangle \]
+            
+            <p><strong>Step 2: Compute the cross product \(T_u \times T_v\).</strong></p>
+            \[ T_u \times T_v = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 2 & 2u+2 & 0 \\ 0 & 0 & 2v \end{vmatrix} \]
+            \[ = \mathbf{i} [(2u+2)(2v) - 0] - \mathbf{j} [2(2v) - 0] + \mathbf{k} [2(0) - 0] \]
+            \[ = 4v(u+1)\mathbf{i} - 4v\mathbf{j} + 0\mathbf{k} \]
+
+            <p><strong>Step 3: Evaluate at the point (0, 2, 1).</strong></p>
+            <p>From the parametrization: \(2u = 0 \Rightarrow u = 0\). Then \(0^2 + 2(0) = 0\), which does not match \(y=2\). Re-examining the point \((0, 2, 1)\): \(v^2 = 1 \Rightarrow v = 1\). If the point is meant to be mapped from \(u=0, v=1\), the coordinates would be \((0, 0, 1)\). Assuming the point provided corresponds to \(u=0, v=1\):</p>
+            \[ \vec{n} = T_u \times T_v = 4(1)(0+1)\mathbf{i} - 4(1)\mathbf{j} = \langle 4, -4, 0 \rangle \]
+            
+            <p><strong>Step 4: Form the plane equation.</strong></p>
+            \[ 4(x - 0) - 4(y - 2) + 0(z - 1) = 0 \Rightarrow 4x - 4y + 8 = 0 \Rightarrow x - y + 2 = 0 \]
+        </div>
+    </div>
+
+    <h4>Regular and Irregular Points</h4>
+    <div class="definition">
+        <strong>Definition:</strong> A point on a parametrized surface is called <strong>regular</strong> if the normal vector \(T_u \times T_v \neq \vec{0}\). If \(T_u \times T_v = \vec{0}\), the point is <strong>irregular</strong> (or singular).
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Cone Tangent Plane and Singularity</h5>
+        <p>Find the tangent plane to the cone \(x^2 + y^2 = z^2\) at \((3, 4, 5)\) and \((0, 0, 0)\).</p>
+        <div class="solution">
+            <p>Using polar parametrization: \(x = r \cos \theta, y = r \sin \theta, z = r\):</p>
+            \[ T_r = \langle \cos \theta, \sin \theta, 1 \rangle, \quad T_\theta = \langle -r \sin \theta, r \cos \theta, 0 \rangle \]
+            \[ T_r \times T_\theta = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \cos \theta & \sin \theta & 1 \\ -r \sin \theta & r \cos \theta & 0 \end{vmatrix} = \langle -r \cos \theta, -r \sin \theta, r \rangle \]
+            <p>At \((3, 4, 5)\), \(r=5, \cos \theta = 3/5, \sin \theta = 4/5\). The normal is \(\langle -3, -4, 5 \rangle\). The plane is:</p>
+            \[ -3(x-3) - 4(y-4) + 5(z-5) = 0 \]
+            <p>At \((0, 0, 0)\), \(r=0 \Rightarrow T_r \times T_\theta = \langle 0, 0, 0 \rangle\). This is an irregular point; no unique tangent plane exists at the vertex of the cone.</p>
+        </div>
+    </div>
+
+    <div class="visual-desc">
+        Visual Description: A sketch of a double cone meeting at the origin. A smooth tangent plane is shown touching the side of the cone at (3,4,5), while the origin is highlighted as a sharp point where a plane cannot be uniquely defined.
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Checking for Irregular Points on a Graph</h5>
+        <p>Find all irregular points on the graph of \(f(x,y) = x^2 + y^2 - 4x - 2y\).</p>
+        <div class="solution">
+            <p>Any graph \(z = f(x,y)\) can be parametrized as \(\vec{r}(x,y) = \langle x, y, f(x,y) \rangle\).</p>
+            \[ T_x = \langle 1, 0, f_x \rangle = \langle 1, 0, 2x-4 \rangle \]
+            \[ T_y = \langle 0, 1, f_y \rangle = \langle 0, 1, 2y-2 \rangle \]
+            \[ T_x \times T_y = \langle -f_x, -f_y, 1 \rangle = \langle -(2x-4), -(2y-2), 1 \rangle \]
+            <p>Because the \(\mathbf{k}\) component is constant at 1, the normal vector can never be \(\vec{0}\). Thus, there are no irregular points on this surface.</p>
+        </div>
+    </div>
+
+    <h4>Surface Area of Parametrized Surfaces</h4>
+    <div class="important">
+        <strong>Theorem: Surface Area Integral</strong><br>
+        The area of a surface \(S\) parametrized by \(\vec{r}(u, v)\) over a region \(D\) is:
+        \[ \text{Area}(S) = \iint_D ||T_u \times T_v|| \, du \, dv \]
+    </div>
+
+    <div class="example">
+        <h5>Example 4: Calculating Surface Area</h5>
+        <p>Set up an integral to compute the area of the surface defined by \(\vec{r}(u,v) = \langle e^u \cos v, e^u \sin v, u \rangle\) for \(0 \le u \le 1\) and \(0 \le v \le \pi\).</p>
+        <div class="solution">
+            <p><strong>Step 1: Find tangent vectors.</strong></p>
+            \[ T_u = \langle e^u \cos v, e^u \sin v, 1 \rangle, \quad T_v = \langle -e^u \sin v, e^u \cos v, 0 \rangle \]
+            
+            <p><strong>Step 2: Compute the cross product.</strong></p>
+            \[ T_u \times T_v = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ e^u \cos v & e^u \sin v & 1 \\ -e^u \sin v & e^u \cos v & 0 \end{vmatrix} = \langle -e^u \cos v, -e^u \sin v, e^{2u} \rangle \]
+            
+            <p><strong>Step 3: Calculate the magnitude.</strong></p>
+            \[ ||T_u \times T_v|| = \sqrt{(-e^u \cos v)^2 + (-e^u \sin v)^2 + (e^{2u})^2} \]
+            \[ = \sqrt{e^{2u}(\cos^2 v + \sin^2 v) + e^{4u}} = \sqrt{e^{2u} + e^{4u}} = e^u \sqrt{1 + e^{2u}} \]
+            
+            <p><strong>Step 4: Set up and evaluate the integral.</strong></p>
+            \[ \text{Area} = \int_0^1 \int_0^\pi e^u \sqrt{1 + e^{2u}} \, dv \, du = \pi \int_0^1 e^u \sqrt{1 + e^{2u}} . du \]
+        </div>
+    </div>
+    
+ <div class="example">
+        <h5>Example 2: Area of a Plane Bounded by a Cylinder</h5>
+        <p>Compute the area on the plane \(x + y + z = 2\) bounded by the cylinder \(x^2 + y^2 \le 1\).</p>
+
+        <div class="solution">
+            <p><strong>Step 1: Parametrize the surface.</strong></p>
+            <p>To compute the area of the portion of the plane within the cylinder, we use polar coordinates for the region \(D\) defined by \(x^2 + y^2 \le 1\). The parametrization \(\vec{r}(r, \theta)\) is:</p>
+            <ul>
+                <li>\(x = r \cos \theta\)</li>
+                <li>\(y = r \sin \theta\)</li>
+                <li>\(z = 2 - x - y = 2 - r \cos \theta - r \sin \theta\)</li>
+            </ul>
+            <p>The parameter bounds are \(0 \le \theta \le 2\pi\) and \(0 \le r \le 1\).</p>
+
+            <div class="visual-desc">
+                Visual Description: A 3D coordinate system showing a vertical cylinder centered at the origin with radius 1. A slanted plane \(x + y + z = 2\) cuts through the cylinder, creating an elliptical surface area inside the cylinder's walls.
+            </div>
+
+            <p><strong>Step 2: Compute tangent vectors \(T_r\) and \(T_\theta\).</strong></p>
+            <p>We take the partial derivatives of the parametrization \(\vec{r}(r, \theta) = \langle r \cos \theta, r \sin \theta, 2 - r \cos \theta - r \sin \theta \rangle\):</p>
+            \[ T_r = \frac{\partial \vec{r}}{\partial r} = \langle \cos \theta, \sin \theta, -\cos \theta - \sin \theta \rangle \]
+            \[ T_\theta = \frac{\partial \vec{r}}{\partial \theta} = \langle -r \sin \theta, r \cos \theta, r \sin \theta - r \cos \theta \rangle \]
+
+            <p><strong>Step 3: Compute the cross product \(T_r \times T_\theta\).</strong></p>
+            <p>The normal vector is found using the determinant of the cross product matrix:</p>
+            \[ T_r \times T_\theta = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \cos \theta & \sin \theta & -(\cos \theta + \sin \theta) \\ -r \sin \theta & r \cos \theta & r(\sin \theta - \cos \theta) \end{vmatrix} \]
+            
+            <p>Calculating the components individually:</p>
+            <p><strong>i-component:</strong> \(\sin \theta [r(\sin \theta - \cos \theta)] - [r \cos \theta (-(\cos \theta + \sin \theta))]\)</p>
+            \[ = r \sin^2 \theta - r \sin \theta \cos \theta + r \cos^2 \theta + r \cos \theta \sin \theta = r(\sin^2 \theta + \cos^2 \theta) = r \]
+            
+            <p><strong>j-component:</strong> \(-\left( \cos \theta [r(\sin \theta - \cos \theta)] - [-r \sin \theta (-(\cos \theta + \sin \theta))] \right)\)</p>
+            \[ = -(r \cos \theta \sin \theta - r \cos^2 \theta - r \sin \theta \cos \theta - r \sin^2 \theta) = -(-r(\cos^2 \theta + \sin^2 \theta)) = r \]
+            
+            <p><strong>k-component:</strong> \(\cos \theta (r \cos \theta) - (-r \sin \theta)(\sin \theta) = r \cos^2 \theta + r \sin^2 \theta = r \)</p>
+            
+            \[ T_r \times T_\theta = \langle r, r, r \rangle \]
+
+            <p><strong>Step 4: Compute the magnitude and evaluate the integral.</strong></p>
+            <p>The magnitude of the normal vector represents the differential area element \(dS\):</p>
+            \[ ||T_r \times T_\theta|| = \sqrt{r^2 + r^2 + r^2} = \sqrt{3r^2} = r\sqrt{3} \]
+            
+            <p>Now, integrate over the region \(D\):</p>
+            \[ \text{Area}(S) = \int_{0}^{2\pi} \int_{0}^{1} r\sqrt{3} \, dr \, d\theta \]
+            \[ \text{Area}(S) = \sqrt{3} \int_{0}^{2\pi} \left[ \frac{1}{2}r^2 \right]_{0}^{1} \, d\theta \]
+            \[ \text{Area}(S) = \sqrt{3} \int_{0}^{2\pi} \frac{1}{2} \, d\theta = \sqrt{3} \left( \frac{1}{2} \cdot 2\pi \right) = \pi\sqrt{3} \]
+        </div>
+    </div>
+
+    <h4>Scalar Surface Integrals</h4>
+    <p>A surface integral of a scalar function \(f(x, y, z)\) over a surface \(S\) is the 3D version of a line integral. It is defined by:</p>
+    \[ \iint_S f(x, y, z) \, dS = \iint_D f(\vec{r}(u,v)) ||T_u \times T_v|| \, du \, dv \]
+    <p>If \(f(x, y, z) = 1\), the integral simply yields the surface area of \(S\). If \(f\) represents a mass density, the integral yields the total mass of the surface.</p>
+
+</body>
+</html>
