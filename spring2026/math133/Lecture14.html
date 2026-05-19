@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 14 - Introduction to Vectors</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+    </style>
+</head>
+<body>
+
+<h3>Lecture 14: Introduction to Vectors</h3>
+
+<p>One distinct downside of standard coordinate geometry is that algebraic computations can quickly become highly elaborate, tedious, and cumbersome. Vector geometry serves as a powerful solution to streamline calculations and elegantly represent transformations on plane figures.</p>
+
+<h3>Geometric Translations and Isometries</h3>
+<p>Consider a directed line segment \(OP\) in the Cartesian plane where the initial point is anchored at the origin \(O = (0,0)\) and the terminal point resides at \(P = (x,y)\). Suppose we define a rigid translation transformation \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) by:</p>
+\[f(x,y) = (x+a, y+b)\]
+
+<p>Under this translation, the initial point \(O\) and the terminal point \(P\) are mapped onto their respective image points \(O'\) and \(P'\):</p>
+\[O' = f(0,0) = (a,b)\]
+\[P' = f(x,y) = (x+a, y+b)\]
+
+<p>Let us mathematically examine the structural properties preserved during this translation by verifying the geometric slope parameters of both paths:</p>
+\[\text{Slope of } OP = \frac{y - 0}{x - 0} = \frac{y}{x}\]
+\[\text{Slope of } O'P' = \frac{(y+b) - b}{(x+a) - a} = \frac{y}{x}\]
+
+<p>Because their slopes are mathematically equivalent, the lines containing segments \(OP\) and \(O'P'\) share the same angle of inclination, meaning they are strictly parallel (\(OP \parallel O'P'\)). Furthermore, since geometric translations are rigid distance-preserving mappings (isometries), the absolute metric lengths remain perfectly unchanged:</p>
+\[|OP| = |O'P'|\]
+
+<div class="example">
+    <h5>Example 1: Structural Proof of the Geometric Parallelogram</h5>
+    <p>Show that the quadrilateral vertices \(OPP'O'\) constructed under a linear translation form a valid geometric parallelogram.</p>
+    
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A handwritten sketch depicting a classic parallelogram labeled counter-clockwise with vertices \(O\) at the bottom-left, \(P\) at the bottom-right, \(P'\) at the top-right, and \(O'\) at the top-left. A dashed diagonal transversal line is mapped from \(O\) to \(P'\). Matching single tick marks are placed on the horizontal opposite segments \(O'P'\) and \(OP\) to illustrate equivalence. Angle markers are sketched around the diagonal intersection points to visually reference alternate interior geometric angles.</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> To formally demonstrate that \(OPP'O'\) is a parallelogram, we need to show that both sets of opposite spatial line segments are parallel. We have already established that \(OP \parallel O'P'\). Now, we must prove that the remaining sides satisfy \(OO' \parallel PP'\).</p>
+        
+        <h6>Approach 1: Direct Coordinate Verification</h6>
+        <p>We can analytically verify the statement by calculating the algebraic lines' gradients for segments \(OO'\) and \(PP'\):</p>
+        \[\text{Slope of } OO' = \frac{b - 0}{a - 0} = \frac{b}{a}\]
+        \[\text{Slope of } PP' = \frac{(y+b) - y}{(x+a) - x} = \frac{b}{a}\]
+        <p>Since both lines yield an identical slope of \(\frac{b}{a}\), they must be strictly parallel (\(OO' \parallel PP'\)). Because both pairs of opposite edges are parallel, the shape constitutes a true parallelogram.</p>
+        
+        <h6>Approach 2: Coordinate-Free Euclidean Proof</h6>
+        <p>Alternatively, we can show parallelism via synthetic Euclidean logic by evaluating triangles \(\Delta OPP'\) and \(\Delta P'O'O\) divided by the shared transversal diagonal path segment \(OP'\):</p>
+        <ol>
+            <li>We know from translation properties that line lengths match: \(|OP| = |O'P'|\).</li>
+            <li>The internal transversal edge is shared identically by reflexive properties: \(|OP'| = |OP'|\).</li>
+            <li>Since \(OP \parallel O'P'\), the alternate interior angles cut by the diagonal must match exactly: \(\angle POP' = \angle O'P'O\).</li>
+        </ol>
+        <p>By applying the Side-Angle-Side (SAS) congruence criterion, we conclude that:</p>
+        \[\Delta OPP' \cong \Delta P'O'O\]
+        <p>Because corresponding parts of congruent triangles are identical (CPCTC), the matching remaining alternate interior angle dimensions must also be equal:</p>
+        \[\angle OP'P = \angle P'OO'\]
+        <p>Since these matching interior alternate angles are defined along the transversal line \(OP'\) separating segments \(OO'\) and \(PP'\), it follows from geometric law that \(OO' \parallel PP'\), completing our synthetic proof.</p>
+    </div>
+</div>
+
+<h3>Foundational Concepts and Vector Rules</h3>
+
+<div class="definition">
+    <p><strong>Definition: Equivalent Oriented Segments:</strong> Two oriented directed line segments \(\vec{PQ}\) and \(\vec{P'Q'}\) are defined to be formally <strong>equivalent</strong> if and only if they simultaneously fulfill all three of the following independent criteria:</p>
+    <ol>
+        <li><strong>Length:</strong> They have the exact same geometric magnitude length as absolute segments (\(|PQ| = |P'Q'|\)).</li>
+        <li><strong>Slope:</strong> They have the identical coordinate line gradient, making them parallel (\(PQ \parallel P'Q'\)).</li>
+        <li><strong>Orientation:</strong> They point in the identical direction sense (they point toward the same terminal quadrant).</li>
+    </ol>
+</div>
+
+<div class="important">
+    <p><strong>Important:</strong> Any two equivalent directed line segments specify the exact same vector. Hence, a vector is uniquely governed solely by its absolute length, line slope, and orientation direction. It operates independently of its precise initial spatial starting position or terminal ending point coordinates.</p>
+</div>
+
+<div class="definition">
+    <p><strong>Definition: Vector Magnitude/Length:</strong> Given a general coordinate vector represented component-wise as \(\vec{v} = \langle v_1, v_2 \rangle\), its structural metric length is mathematically specified by the Pythagorean theorem:</p>
+    \[|\vec{v}| = \sqrt{v_1^2 + v_2^2}\]
+</div>
+
+<p>In standard coordinate physics and mathematics, it is regular convention to graph structural vectors with their initial tail pinned at the coordinate plane origin \((0,0)\) and their terminal arrowhead extending outward to the spatial coordinate position \((v_1, v_2)\).</p>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A Cartesian grid coordinate system displaying an arrowed vector line labeled \(\vec{v}\) starting precisely at origin \((0,0)\) and extending at an angle up and right, terminating directly at a marked dot point labeled with coordinates \((v_1, v_2)\).</p>
+</div>
+
+<h3>Vector Arithmetic Operations</h3>
+<p>Unlike fixed static points in geometric space, <strong>vectors can be dynamically added and subtracted together!</strong> This unique property allows complex geometric motions to be evaluated via simple, structured algebraic rules.</p>
+
+<div class="definition">
+    <p><strong>Definition: Vector Addition (Parallelogram Law):</strong> Let two spatial vectors be defined in component format as \(\vec{v} = \langle a, b \rangle\) and \(\vec{w} = \langle c, d \rangle\). Geometrically, their resultant vector sum \(\vec{v} + \vec{w}\) is defined as the directed diagonal vector pointing across the unique parallelogram whose adjacent base edges are outlined by vectors \(\vec{v}\) and \(\vec{w}\).</p>
+</div>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A Cartesian graph containing two primary vectors emerging from origin \(O\): a solid red vector \(\vec{v} = \langle a, b \rangle\) mapping along the bottom to point \(Q\), and a solid blue vector \(\vec{w} = \langle c, d \rangle\) mapping up and left toward point \(P\). Dashed red and blue lines are constructed from points \(P\) and \(Q\) respectively to meet at a terminal vertex \(R(x,y)\), outlining a balanced parallelogram. A long, bold black dashed line vector originating at \(O\) extends diagonally across the center to terminate directly at point \(R\), labeled as the resultant sum \(\vec{v} + \vec{w}\).</p>
+</div>
+
+<p>Let us analytically calculate the exact coordinates of the terminal vertex \(R(x,y)\) generated by the diagonal path sum \(\vec{OR} = \vec{v} + \vec{w}\). Based on the parallel properties of our parallelogram construct, we state the following slope equations:</p>
+
+<ol>
+    <li>Since line segment \(PR \parallel OQ\), their geometric line slopes must be identical:
+    \[\frac{y - d}{x - c} = \frac{b}{a} \implies a(y - d) = b(x - c) \implies bx - ay = bc - ad \quad \text{--- (Equation 1)}\]
+    </li>
+    <li>Since line segment \(QR \parallel OP\), their geometric line slopes must also be identical:
+    \[\frac{y - b}{x - a} = \frac{d}{c} \implies c(y - b) = d(x - a) \implies dx - cy = ad - bc \quad \text{--- (Equation 2)}\]
+    </li>
+</ol>
+
+<p>Solving this system of simultaneous linear equations for the unknown coordinate variables \(x\) and \(y\) reveals:</p>
+\[x = a + c\]
+\[y = b + d\]
+
+<p>Thus, we can write vector addition algebraically via component-wise addition:</p>
+\[\vec{OR} = \vec{v} + \vec{w} = \langle a + c, b + d \rangle\]
+
+<p>This algebraic consistency allows us to represent the addition path interchangeably via head-to-tail placement compositions:</p>
+\[\vec{OR} = \vec{OQ} + \vec{QR} = \vec{OP} + \vec{PR}\]
+
+<p><strong>Vector Interpretation of Mappings:</strong> Using this notation, an algebraic plane coordinate translation mapping \(f(x,y) = (x+a, y+b)\) can be interpreted as a simple vector sum. Let vector \(\vec{v} = \langle a, b \rangle\) represent the tracking shift rule, and let vector \(\vec{w} = \langle x, y \rangle\) serve as an arbitrary input vector. The operation becomes:</p>
+\[f(\vec{w}) = \vec{w} + \vec{v}\]
+<p><em>Historical Note:</em> The term "Vector" comes literally from the Latin word meaning "carrier" or "one who conveys".</p>
+
+<h4>Vector Subtraction Geometric Rules</h4>
+<p>Let vectors be defined in standard component orientation position as \(\vec{v} = \vec{OQ} = \langle v_1, v_2 \rangle\) and \(\vec{w} = \vec{OP} = \langle w_1, w_2 \rangle\). Geometrically, subtracting vector \(\vec{w}\) from vector \(\vec{v}\) is achieved by adding the negative inverted vector (\(-\vec{w}\)) to \(\vec{v}\).</p>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A geometric vector construction showing vector \(\vec{w}\) pointing into the first quadrant toward point \(P\), and its exact inverse directional negation \(-\vec{w}\) stretching down into the third quadrant with equal length toward point \(P'\). Vector \(\vec{v}\) points to point \(Q\). The subtraction result \(\vec{v} - \vec{w}\) is drawn from the origin to a point \(R\), forming vector \(\vec{OR}\). A parallel validation line shows that \(\vec{OR}\) possesses the identical length, slope, and direction arrow as the direct displacement line segment drawn from point \(P\) to point \(Q\) (\(\vec{PQ}\)).</p>
+</div>
+
+<p>Algebraically, vector subtraction is executed by subtracting matching linear components:</p>
+\[\vec{v} - \vec{w} = \langle v_1 - w_1, v_2 - w_2 \rangle = \vec{OR}\]
+
+<p>Because the resulting origin-centered vector \(\vec{OR}\) shares perfect geometric length alignment, slope alignment, and direction sense with the directed line segment running directly from point \(P\) to point \(Q\) (\(|\vec{OR}| = |\vec{PQ}|\)), we can write vector subtraction directly as the directional displacement vector between the two points:</p>
+\[\vec{v} - \vec{w} = \vec{PQ}\]
+
+<h3>Scalar Multiplication and Dilations</h3>
+<p>Let us choose coordinate points at the origin \(O = (0,0)\) and a generic location \(P = (x,y)\). If we construct a scaled point located at \(P' = (3x, 3y)\), it is mathematically incorrect to write this relationship as a direct multiplication of points (e.g., \(P' = 3P\) is undefined). However, utilizing precise vector notation, we can declare this scalar relationship as:</p>
+\[\vec{OP'} = 3\vec{OP}\]
+
+<p>We can verify the length of this scaled vector analytically using the magnitude formula:</p>
+\[|\vec{OP'}| = \sqrt{(3x - 0)^2 + (3y - 0)^2} = \sqrt{9x^2 + 9y^2} = 3\sqrt{x^2 + y^2} = 3|\vec{OP}|\]
+
+<div class="definition">
+    <p><strong>Definition: Geometric Plane Dilation:</strong> A coordinate transformation function \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) defined by mapping components to a scaling factor:</p>
+    \[f(x,y)=(rx,rx)\]
+    <p>for a choice of real number constant \(r \in \mathbb{R}\) is called a <strong>dilation</strong>. Using vector component notation, this operation is expressed directly via scalar vector multiplication:</p>
+    \[f(\vec{v}) = r\vec{v}\]
+</div>
+
+<div class="example">
+    <h5>Example 2: Isometry Conditions for Plane Dilations</h5>
+    <p>Determine the exact real number values of the scalar parameter \(r\) for which a dilation transformation \(f(\vec{v}) = r\vec{v}\) forms a true rigid isometry.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong> For a plane transformation function to be classified as a valid distance-preserving isometry, it must maintain all absolute vector lengths unchanged, meaning \(|f(\vec{v})| = |\vec{v}|\) must hold true for all vectors.</p>
+        <p>Let us compute the absolute length of our dilated transformation vector:</p>
+        \[|f(\vec{v})| = \sqrt{(rx)^2 + (ry)^2} = \sqrt{r^2(x^2 + y^2)} = |r|\sqrt{x^2 + y^2} = |r| \cdot |\vec{v}|\]
+        <p>Setting this scaling magnitude equal to our original unscaled vector length requirement yields:</p>
+        \[|r| \cdot |\vec{v}| = |\vec{v}| \implies |r| = 1 \implies r = \pm 1\]
+        <p>Thus, a geometric dilation acts as a rigid, distance-preserving isometry if and only if \(r = 1\) (which represents the identity mapping) or \(r = -1\) (which represents a point reflection centered directly through the origin).</p>
+    </div>
+</div>
+
+</body>
+</html>
