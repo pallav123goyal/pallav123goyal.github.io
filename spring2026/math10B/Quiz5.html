@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 5 Solutions</title>
+    <script>
+        window.MathJax = {
+            options: {
+                enableAssistiveMml: true
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Math 10B - Quiz 5 (Spring 2026)</h3>
+
+<div class="example">
+    <h4>Problem 1</h4>
+    <p>Parametrize the line segment joining the point \( (1, 2, 3) \) to the point \( (3, -1, 3) \).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>To parametrize a line segment from a starting point \( P_0 \) to an ending point \( P_1 \), we use the vector-valued function \( \mathbf{r}(t) = \mathbf{r}_0 + t(\mathbf{r}_1 - \mathbf{r}_0) \) for the interval \( 0 \le t \le 1 \).</p>
+        
+        <div class="steps">
+            <p><strong>Step-by-Step Derivation:</strong></p>
+            <ol>
+                <li>Assign the initial position vector: \( \mathbf{r}_0 = \langle 1, 2, 3 \rangle \).</li>
+                <li>Assign the final position vector: \( \mathbf{r}_1 = \langle 3, -1, 3 \rangle \).</li>
+                <li>Determine the direction vector \( \mathbf{v} = \mathbf{r}_1 - \mathbf{r}_0 \):
+                    \[ \mathbf{v} = \langle 3 - 1, -1 - 2, 3 - 3 \rangle = \langle 2, -3, 0 \rangle \]
+                </li>
+                <li>Formulate the parametric equations by combining the components:
+                    \[ x(t) = 1 + 2t \]
+                    \[ y(t) = 2 - 3t \]
+                    \[ z(t) = 3 \]
+                </li>
+            </ol>
+        </div>
+        <p>The final parametrization is \( \mathbf{r}(t) = \langle 1+2t, 2-3t, 3 \rangle \) for \( 0 \le t \le 1 \).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h4>Problem 2</h4>
+    <p>Set up an integral to evaluate the following line integral along the straight line path from \( (1, 2, 3) \) to \( (3, -1, 3) \):</p>
+    \[ \int yz \, dx + x^2 \, dy + e^{xyz} \, dz \]
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the parametrization from Problem 1, we find the differentials with respect to \( t \):</p>
+        <ul>
+            <li>\( dx = \frac{d}{dt}(1+2t) \, dt = 2 \, dt \)</li>
+            <li>\( dy = \frac{d}{dt}(2-3t) \, dt = -3 \, dt \)</li>
+            <li>\( dz = \frac{d}{dt}(3) \, dt = 0 \, dt \)</li>
+        </ul>
+        <p>Substitute these expressions and the parametric forms of \( x, y, \) and \( z \) into the integral:</p>
+        \[ \int_{0}^{1} \left( (2-3t)(3)(2) + (1+2t)^2(-3) + e^{(1+2t)(2-3t)(3)}(0) \right) dt \]
+        <p><strong>Setup Result:</strong></p>
+        \[ \int_{0}^{1} \left( 6(2-3t) - 3(1+2t)^2 \right) dt \]
+    </div>
+</div>
+
+<div class="example">
+    <h4>Problem 3</h4>
+    <p>Evaluate the integral that you set up in the previous problem.</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, simplify the integrand by expanding the terms:</p>
+        \[ 6(2-3t) - 3(1 + 4t + 4t^2) = 12 - 18t - 3 - 12t - 12t^2 \]
+        \[ = -12t^2 - 30t + 9 \]
+        
+        <div class="steps">
+            <p><strong>Integration Process:</strong></p>
+            <p>Compute the definite integral from \( 0 \) to \( 1 \):</p>
+            \[ \int_{0}^{1} (-12t^2 - 30t + 9) \, dt = \left[ -4t^3 - 15t^2 + 9t \right]_{0}^{1} \]
+            <p>Applying the Fundamental Theorem of Calculus:</p>
+            \[ (-4(1)^3 - 15(1)^2 + 9(1)) - (-4(0)^3 - 15(0)^2 + 9(0)) \]
+            \[ = -4 - 15 + 9 = -10 \]
+        </div>
+        <p><strong>Final Answer:</strong> The value of the line integral is \( -10 \).</p>
+    </div>
+</div>
+
+</body>
+</html>
