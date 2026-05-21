@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 15: Linear Algebra</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 15: Linear Algebra</h3>
+
+    <h3>Vector Geometry and Linear Combinations</h3>
+    <p>Recall from the previous lecture that given vectors \(\vec{v}\) and \(\vec{w}\), we can perform fundamental operations such as vector addition (\(\vec{v} + \vec{w}\)) and scalar multiplication (\(c\vec{v}\), where \(c \in \mathbb{R}\)). These operations form the defining core rules of a vector space.</p>
+    
+    <p>We observe an foundational one-to-one correspondence between the following sets:</p>
+    <ul>
+        <li>Points in a plane \(S\)</li>
+        <li>Ordered pairs of real numbers \(\mathbb{R}^2\)</li>
+        <li>Vectors whose tail is situated at the origin</li>
+    </ul>
+
+    <div class="definition">
+        <p><strong>Definition 7:</strong> Given vectors \(\vec{v}\) and \(\vec{w}\), we define a <strong>linear combination</strong> as a vector of the form
+        \[a\vec{v} + b\vec{w}\]
+        where \(a, b \in \mathbb{R}\).</p>
+    </div>
+
+    <p>Suppose the scalar constants \(a\) and \(b\) are both positive values greater than \(1\). We can visualize this linear combination geometrically utilizing the parallelogram rule.</p>
+
+    <div class="visual-desc">
+        <p><strong>Figure 6 Description:</strong> A vector geometry diagram depicting a linear combination in the two-dimensional coordinate plane. Two vectors, labeled \(\vec{v}\) and \(\vec{w}\), originate from the origin. The vector \(\vec{v}\) points towards the lower-right of the quadrant, while \(\vec{w}\) points towards the upper-right. Scaled versions of these vectors, \(a\vec{v}\) and \(\vec{b}\vec{w}\), extend along the respective lines of action. Dashed lines complete a parallelogram from the tips of \(a\vec{v}\) and \(b\vec{w}\). The diagonal vector stretching from the origin to the opposite corner of this parallelogram represents the resultant linear combination vector, labeled \(a\vec{v} + b\vec{w}\).</p>
+    </div>
+
+    <h3>Linear Independence and Spanning Sets</h3>
+    
+    <div class="definition">
+        <p><strong>Definition 8:</strong> Vectors \(\vec{v}\) and \(\vec{w}\) are <strong>linearly independent</strong> if they are not parallel. This is logically equivalent to stating that neither vector is a scalar multiple of the other.</p>
+        <p>Conversely, vectors that are parallel to one another are called <strong>linearly dependent</strong>.</p>
+    </div>
+
+    <div class="definition">
+        <p><strong>Definition 9:</strong> Vectors \(\vec{v}\) and \(\vec{w}\) form a <strong>spanning set</strong> if every vector in \(\mathbb{R}^2\) can be written as a linear combination of these vectors.</p>
+    </div>
+
+    <div class="example">
+        <h5>Question: Spanning Property of Independent Vectors</h5>
+        <p>Show that if \(\vec{v}\) and \(\vec{w}\) are linearly independent, then they span \(\mathbb{R}^2\).</p>
+        
+        <div class="solution">
+            <p><strong>Algebraic Solution:</strong></p>
+            <p>Let \(\vec{v} = (v_1, v_2)\) and \(\vec{w} = (w_1, w_2)\). Since \(\vec{v}\) and \(\vec{w}\) are linearly independent, they are not parallel, which implies that they don't have the same slope. This is equivalent to saying that \(v_1w_2-v_2w_1\neq 0\).
+            <p>Now consider an arbitrary target vector \(\vec{u} = (u_1, u_2) \in \mathbb{R}^2\). We seek scalars \(a, b \in \mathbb{R}\) satisfying the vector equation:</p>
+            \[a\vec{v} + b\vec{w} = \vec{u}\]
+            <p>Expressed in component matrix form, this yields the linear system:</p>
+            \[av_1+bw_1=u_1\]
+            \[av_2+bw_2=u_2.\]
+            <p>We can solve these equations to get:</p>
+            \[a=\frac{u_1w_2-u_2w_1}{v_1w_2-v_2w_1}, b=\frac{u_2v_1-u_1v_2}{v_1w_2-v_2w_1},\]
+            <p>where we can be sure that the denominator is non-zero because of the linear independence conditions.</p>
+        </div>
+
+        <div class="solution">
+            <p><strong>Geometric Solution:</strong></p>
+            <p>Fix any vector \(\vec{u} \in \mathbb{R}^2\) with its tail anchored at the origin. Since \(\vec{v}\) and \(\vec{w}\) are not parallel, we can construct the following geometry:</p>
+            <p>Draw a line passing through the head of \(\vec{u}\) that runs parallel to vector \(\vec{v}\). This constructed line will intersect the line running through the origin in the direction of \(\vec{w}\) at a unique intersection point, which we label \(P\).</p>
+            <p>Because the segment \(\vec{OP}\) lies directly along the \(\vec{w}\)-line, it can be written as a scalar multiple: \(\vec{OP} = b\vec{w}\) for some scalar \(b \in \mathbb{R}\).</p>
+            <p>Next, consider the displacement vector \(\vec{u} - \vec{OP}\), which points from point \(P\) to the head of \(\vec{u}\). By our parallel line construction, this displacement is parallel to \(\vec{v}\), meaning \(\vec{u} - \vec{OP} = a\vec{v}\) for some scalar \(a \in \mathbb{R}\).</p>
+            <p>Rearranging this yields \(\vec{u} = a\vec{v} + b\vec{w}\). Therefore, every vector \(\vec{u} \in \mathbb{R}^2\) can be uniquely structured as a linear combination of \(\vec{v}\) and \(\vec{w}\), demonstrating that they span the space. \(\square\)</p>
+        </div>
+    </div>
+
+    <div class="visual-desc">
+        <p><strong>Figure 7 Description:</strong> A coordinate geometry diagram visualizing the geometric proof. A vector \(\vec{u}\) is shown extending into space. From the tip of \(\vec{u}\), a line is drawn parallel to vector \(\vec{v}\) until it intersects a line extending along vector \(\vec{w}\) at a point \(P\). The segment from the origin to \(P\) is marked as \(b\vec{w}\), and the segment from \(P\) to the tip of \(\vec{u}\) is marked as the parallel shift vector \(a\vec{v}\), visually demonstrating the vector addition \(\vec{u} = a\vec{v} + b\vec{w}\).</p>
+    </div>
+
+    <h3>Linear Transformations</h3>
+    
+    <div class="definition">
+        <p><strong>Definition 10:</strong> A <strong>linear transformation</strong> is a function \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) such that for any vector \(\vec{v} = \langle v_1, v_2 \rangle\), the components of the output vector \(T(\vec{v})\) are linear combinations of the input variables \(v_1\) and \(v_2\). Crucially, the constants forming these linear combinations are completely independent of \(\vec{v}\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Question: Linearity Analysis</h5>
+        <p>Determine whether the functions \(f(x, y) = (rx, ry)\), \(g(x, y) = (-x, y)\), and \(h(x, y) = (x + a, y + b)\) are linear transformations.</p>
+        
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Recall that a transformation \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) is strictly linear if and only if it preserves the zero vector and respects vector addition and scalar multiplication: \(T(\vec{0}) = \vec{0}\) and \(T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v})\) for all vectors and scalars.</p>
+            
+            <ul>
+                <li><strong>Analysis of \(f(x, y) = (rx, ry)\):</strong> This function represents scalar dilation by a factor of \(r\). It is a linear transformation. In standard matrix form, it is written as:
+                \[f\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} r & 0 \\ 0 & r \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\]
+                </li>
+                
+                <li><strong>Analysis of \(g(x, y) = (-x, y)\):</strong> This transformation represents a geometric reflection across the vertical y-axis. It is a linear transformation. In standard matrix form, it is written as:
+                \[g\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}\]
+                </li>
+                
+                <li><strong>Analysis of \(h(x, y) = (x + a, y + b)\):</strong> This function represents a vector translation. This is not a linear transformation since we can't express the output as a linear combination of the input with coefficients independent of the input.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>Affine Transformations</h3>
+    
+    <div class="definition">
+        <p><strong>Definition 11:</strong> An <strong>affine transformation</strong> is a function \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) of the mathematical form:
+        \[T(\vec{x}) = A\vec{x} + \vec{b}\]
+        where \(A\) is a constant \(2 \times 2\) matrix and \(\vec{b} \in \mathbb{R}^2\) is a constant displacement vector. Equivalently, an affine transformation can be characterized as a linear transformation followed immediately by a vector translation.</p>
+    </div>
+
+    <h4>Matrix Representations</h4>
+    <p>Every linear mapping \(T: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) can be uniquely modeled via matrix multiplication using a standard \(2 \times 2\) matrix:</p>
+    \[T\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix}ax+by\\cx+dy\end{pmatrix}\]
+    <p>for real constant coefficients \(a, b, c, d\).
+    
+    <p>Expanding the general matrix formulation for an affine mapping where matrix \(A\) and displacement vector \(\vec{b}\) are defined as:</p>
+    \[A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad \vec{b} = \begin{pmatrix} p \\ q \end{pmatrix}\]
+    <p>Applying this to a vector \(\vec{x} = \begin{pmatrix} x \\ y \end{pmatrix}\) yields the explicit algebraic coordinate form:</p>
+    \[T\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} p \\ q \end{pmatrix} = \begin{pmatrix} ax + by + p \\ cx + dy + q \end{pmatrix}\]
+
+    <div class="example">
+        <h5>Example 2.1: Rotation Matrices</h5>
+        <p><strong>Fact:</strong> Rotation matrices describe rigid rotations of the coordinate plane. In linear algebra, a counterclockwise rotation by an angle \(\theta\) centered about the origin is defined by the matrix:</p>
+        \[A = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}\]
+        <p>If a point \(P = (x, y)\) is treated as a column vector, matrix multiplication provides the coordinates of the newly rotated point:</p>
+        \[A \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x\cos \theta - y\sin \theta \\ x\sin \theta + y\cos \theta \end{pmatrix}\]
+        <p>Geometrically, this matrix action uniformly spins every point in the plane about the origin by the specified angle \(\theta\). Because distances are preserved, a pure rotation matrix serves as an archetype of an <strong>isometry</strong>.</p>
+    </div>
+
+    <div class="important">
+        <p><strong>Definition:</strong> Given a standard matrix \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\), the scalar determinant is calculated using the formula:</p>
+        \[\det(A) = ad - bc\]
+    </div>
+    
+    The determinant has a few geometric interpretations. Firstly, it is equal to the signed area of the parallelogram that is determined by the vectors \(\langle a,b\rangle\) and \(\langle c,d\rangle\). Secondly, as a corollary of the previous fact, the determinant is zero exactly when these two vectors are linearly independent. Finally, the determinant being non-zero is equivalent to the associated linear transformation being <strong>invertible</strong>.
+</body>
+</html>
