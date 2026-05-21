@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 133 - Worksheet 8</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h3>Math 133 — Winter 2026</h3>
+        <h4>Worksheet 8</h4>
+        <p><strong>Due on Gradescope by 11:59pm Sunday, June 7.</strong></p>
+        <p><strong>Your name:</strong> ____________________________________</p>
+        <p><strong>The names of other people you worked on this with:</strong> ____________________________________</p>
+    </header>
+
+    <main>
+        <div class="important">
+            <p><strong>Important Instruction:</strong> You should use the GeoGebra applet at link <a href="https://www.geogebra.org/m/rngva6gy">https://www.geogebra.org/m/rngva6gy</a> for problems 2-4 on this worksheet.</p>
+            <p>The blanks next to \(a\), \(b\), \(c\), \(d\) correspond to the matrix:</p>
+            \[A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}\]
+            <p>Let \(\vec{v} = (x,y)\) be a vector in \(\mathbb{R}^{2}\). We will consider the linear transformation \(f: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}\) defined by the matrix \(A\):</p>
+            \[f(x,y) = f(\vec{v}) = A\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} a & b \\ c & d \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix}\]
+        </div>
+
+        <h3>Problem 1</h3>
+        <p><em>(3 + 3 + 3 points)</em> Rewrite the given transformation in the form \(f\left(\begin{bmatrix} x \\ y \end{bmatrix}\right) = A\begin{bmatrix} x \\ y \end{bmatrix} + \vec{b}\), for some \(2 \times 2\) matrix \(A\) and some vector \(\vec{b}\):</p>
+        <ul>
+            <li><strong>(a)</strong> The transformation from problem 2 from Worksheet 7.</li>
+            <li><strong>(b)</strong> The transformation from problem 3 from Worksheet 7.</li>
+            <li><strong>(c)</strong> The transformation from problem 4(a) from Worksheet 7.</li>
+        </ul>
+
+        <h3>Problem 2</h3>
+        <p><em>(2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 points)</em> The GeoGebra applet is set with \(a = c = 1\); \(b = 3\), and \(d = -1\). This corresponds to the matrix:</p>
+        \[A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} 1 & 3 \\ 1 & -1 \end{bmatrix}\]
+        
+        <ol type="a">
+            <li>The vector \(\vec{v} = \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 2 \\ 4 \end{bmatrix}\) is marked with a blue point in the applet. Compute \(A\vec{v}\) by hand. What does \(A\vec{v}\) correspond to in the applet?</li>
+            <li>Move the blue point to \(\vec{v} = (2,2)\). Compute \(A\vec{v}\) by hand. What does this correspond to in the applet?</li>
+            <li>Move the blue point to \(\vec{v} = (2,-2)\). What is \(A\vec{v}\)?</li>
+            <li>Move the blue point to \(\vec{v} = (3,1)\). (Zoom in if the applet doesn't click the point into place.) What is \(A\vec{v}\)? Move the point to \(\vec{v} = (6,2)\); what is \(f(6,2)\)?</li>
+            <li>Algebraically, can you write \(A\vec{v} = r\vec{v}\) for some \(r \in \mathbb{R}\) for the points below? If so, give the value of \(r\). If not, why not?
+                <ol type="i">
+                    <li>\(\vec{v} = (2,4)\)</li>
+                    <li>\(\vec{v} = (2,2)\)</li>
+                    <li>\(\vec{v} = (2,-2)\)</li>
+                    <li>\(\vec{v} = (3,1)\)</li>
+                </ol>
+            </li>
+            <li>Explain how you can determine whether \(A\vec{v} = r\vec{v}\) for some \(r\) graphically for parts (i)–(iv) above.</li>
+            <li>Based on what you see by moving the blue point around, is \(f\) an isometry? (Justify.)</li>
+            <li>Find the determinant of \(A\) algebraically.</li>
+        </ol>
+
+        <h3>Problem 3</h3>
+        <p><em>(2 + 2 + 2 + 2 + 2 points)</em> Change the matrix in the applet to \(A = \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}\) by filling in the blanks for \(a, b, c, d\).</p>
+        <ol type="a">
+            <li>Compute \(A\vec{v}\) for \(\vec{v} = (1,2)\), \((0,1)\) and \((1,0)\).</li>
+            <li>Do any of these have the property that \(A\vec{v} = r\vec{v}\) for some \(r \in \mathbb{R}\)?</li>
+            <li>What line(s) have the property that any point \(\vec{v}\) on the line has \(A\vec{v}\) on the same line?</li>
+            <li>Based on what you see by moving the blue point around, is \(f\) an isometry? Describe why or why not.</li>
+            <li>Find the determinant of \(A\) algebraically.</li>
+        </ol>
+
+        <h3>Problem 4</h3>
+        <p><em>(2 + 2 + 2 points)</em> Change the matrix in the applet to:</p>
+        \[A = \begin{bmatrix} 0.707 & -0.707 \\ 0.707 & 0.707 \end{bmatrix}\]
+        <ol type="a">
+            <li>Based on what you see by moving the blue point around, what line(s) have the property that any point \(\vec{v}\) on the line has \(A\vec{v}\) on the same line?</li>
+            <li>Based on what you see by moving the blue point around, is \(A\) an isometry? Describe why or why not.</li>
+            <li>Find the determinant of \(A\) algebraically.</li>
+        </ol>
+
+        <h3>Problem 5</h3>
+        <p><em>(3 + 3 + 3 points)</em> Recall how to compute eigenvalues and eigenvectors.</p>
+        <div class="important">
+            <p><strong>Note:</strong> Here is a nice video on eigenvectors and eigenvalues, along with their geometric interpretation (no need to watch past 13:00): <a href="https://www.youtube.com/watch?v=PFDu9oVAE-g&t=0s&ab_channel=3Blue1Brown">3Blue1Brown</a></p>
+        </div>
+        <ol type="a">
+            <li>Compute the eigenvalues of the matrix from problem 1 by hand. Which vectors from problem one would be eigenvectors? Explain your answer.</li>
+            <li>Compute the eigenvalues of the matrix from problem 2 by hand. Find eigenvectors either algebraically or geometrically. Explain your answer.</li>
+            <li>Compute the eigenvalues of the matrix from problem 3 by hand. Find eigenvectors either algebraically or geometrically. Explain your answer.</li>
+        </ol>
+
+        <h3>Problem 6</h3>
+        <p><em>(2 + 2 + 2 + 2 points)</em> The Euclidean length \(l_{\mathbb{R}}(\gamma)\) of a curve \(\gamma\) in \(\mathbb{R}^{2}\), parametrized by the differentiable vector-valued function \(\gamma(t) = (x(t), y(t))\) for \(a \le t \le b\) is the arc length, given by the formula:</p>
+        \[l_{\mathbb{R}}(\gamma) = \int_{a}^{b} \sqrt{[x'(t)]^{2} + [y'(t)]^{2}} \, dt\]
+        <p><strong>FACT:</strong> This length is independent of the parametrization.</p>
+        
+        <ol type="a">
+            <li>Consider the curve \(\gamma(t) = (\cos(t), \sin(t))\) for \0 \le t \le 2\pi\). Describe the curve and compute its Euclidean length.</li>
+            <li>Consider the curve \(\gamma(t) = (2t+1, 3t-2)\) for \(-1 \le t \le 2\). Describe the curve and compute its Euclidean length.</li>
+            <li>What sort of curve is \(\gamma(t) = (ct, dt)\), where \(c\) and \(d\) are real numbers? Compute its Euclidean length for \(a \le t \le b\).</li>
+            <li>Compute the distance from \(\gamma(a)\) to \(\gamma(b)\) in part (c) using the definition of distance between two points given in class (the distance formula). How does this compare to your answer in (c)?</li>
+        </ol>
+        
+        <div class="theorem">
+            <p><strong>FACT:</strong> The line segment \(PQ\) is the shortest curve going from \(P\) to \(Q\) in the Cartesian plane! See the optional exercise at the end for a proof.</p>
+        </div>
+
+        <h3>Problem 7</h3>
+        <p><em>(3 + 3 + 3 points)</em> Let \(\mathbb{H}^{2}\) denote the Cartesian plane \(\mathbb{R}^{2}\) with \(y > 0\). The hyperbolic length \(l_{\mathbb{H}}(\gamma)\) of a curve \(\gamma\) in \(\mathbb{H}^{2}\) parametrized by the differentiable vector-valued function \(\gamma(t) = (x(t), y(t))\) for \(a \le t \le b\) is defined by the formula:</p>
+        \[l_{\mathbb{H}}(\gamma) = \int_{a}^{b} \frac{\sqrt{[x'(t)]^{2} + [y'(t)]^{2}}}{y(t)} \, dt\]
+        
+        <ol type="a">
+            <li>Consider the curve \(\gamma(t) = (\cos(t), \sin(t))\) for \(\pi/4 \le t \le 3\pi/4\). Describe the curve and compute its hyperbolic length. (You can look up the integral.)</li>
+            <li>Consider the curve \(\gamma(t) = \left(t, \frac{1}{\sqrt{2}}\right)\) for \(-\frac{1}{\sqrt{2}} \le t \le \frac{1}{\sqrt{2}}\). Describe the curve and compute its hyperbolic length.</li>
+            <li>Consider the curve \(\gamma(t) = (2,t)\) for \(1 \le t \le 2\). Describe the curve and compute its hyperbolic length.</li>
+        </ol>
+        
+        <div class="warning">
+            <p><strong>FACT:</strong> The line segment \(PQ\) is not always the shortest curve between the points \(P\) and \(Q\) using hyperbolic length!</p>
+        </div>
+
+        <h3>Problem 8</h3>
+        <p><em>(3 + 3 points)</em> Consider the \(2 \times 2\) matrices:</p>
+        \[A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \quad \text{and} \quad B = \begin{bmatrix} p & q \\ r & s \end{bmatrix}\]
+        <ol type="a">
+            <li>Show that \(\det(AB) = \det(A)\det(B)\).</li>
+            <li>Show that \((AB)^{T} = B^{T}A^{T}\).</li>
+        </ol>
+
+        <h3>Problem 9</h3>
+        <p><em>(2 + 2 + 2 points)</em> Determine whether the affine transformation \(f\left(\begin{bmatrix} x \\ y \end{bmatrix}\right) = A\begin{bmatrix} x \\ y \end{bmatrix} + \vec{w}\) given below is an isometry.</p>
+        <ol type="a">
+            <li>\(A = \begin{bmatrix} 1 & 1 \\ 0 & -1 \end{bmatrix}\), \(\vec{w} = \begin{bmatrix} -1 \\ 2 \end{bmatrix}\)</li>
+            <li>\(A = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}\), \(\vec{w} = \begin{bmatrix} 7 \\ -2 \end{bmatrix}\)</li>
+            <li>\(A = \begin{bmatrix} \frac{\sqrt{3}}{2} & \frac{1}{2} \\ \frac{1}{2} & -\frac{\sqrt{3}}{2} \end{bmatrix}\), \(\vec{w} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}\)</li>
+        </ol>
+
+        <hr>
+
+        <h4>Optional Exercise</h4>
+        <p>The goal of this exercise is to rigorously prove that the line segment \(PQ\) is the shortest curve from point \(P\) to point \(Q\) in Euclidean geometry. Consider a differentiable curve \(\gamma\) from \(P\) to \(Q\). We want to show that the Euclidean length \(l_{\mathbb{R}}(\gamma)\) defined in problem 6 is greater than or equal to the Euclidean length of the line segment \(PQ\).</p>
+        
+        <ol type="a">
+            <li>Let \(P = (x_{1}, y_{1})\) and let \(Q = (x_{1}, y_{2})\), so \(PQ\) lies on the vertical line of equation \(x = x_{1}\). Show that the Euclidean length \(l_{\mathbb{R}}(\gamma)\) is greater than or equal to \(|y_{2} - y_{1}|\), the Euclidean length of the line segment \(PQ\).</li>
+            <li>In the general case, let \(f(x,y) = (\cos(\theta)x - \sin(\theta)y, \, \sin(\theta)x + \cos(\theta)y)\) be a rotation such that \(f(P)\) and \(f(Q)\) lie on the same vertical line. Show that the curve \(f(\gamma)\) from \(f(P)\) to \(f(Q)\) has the same Euclidean length as \(\gamma\).</li>
+            <li>Combine parts (a) and (b) to conclude that \(l_{\mathbb{R}}(\gamma) \ge l_{\mathbb{R}}(PQ)\).</li>
+        </ol>
+    </main>
+
+</body>
+</html>
