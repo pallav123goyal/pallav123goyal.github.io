@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 14 - Surface Integrals</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <h3>Lecture 15: Surface Integrals (Continued) &amp; Green's Theorem</h3>
+
+    <div class="important">
+        <h4>Recall: Surface Integrals</h4>
+        <p>Let \(S\) be a parametrized surface. Given a scalar-valued function \(f\), its surface integral over \(S\) is defined as:</p>
+        <p>\[\iint_{S}f(x,y,z)\,dS = \iint_{D}f(\vec{r}(u,v))\,\|T_{u}\times T_{v}\|\,dudv\]</p>
+        <p>Given a vector-valued function \(\vec{F}\), its surface integral (flux) over \(S\) is defined as:</p>
+        <p>\[\iint_{S}\vec{F}\cdot d\vec{S} = \iint_{D}\vec{F}(\vec{r}(u,v))\cdot(T_{u}\times T_{v})\,dudv\]</p>
+    </div>
+
+    <div class="definition">
+        <h4>Definition: Orientation of a Surface</h4>
+        <p>Given a parametrized surface, a fixed continuous choice of a unit normal vector field at each point is called an <strong>orientation</strong> of the surface.</p>
+        <p>For a closed surface or a geometric boundary, we typically distinguish between two types of orientations:</p>
+        <ul>
+            <li><strong>Outward normal:</strong> The normal vectors point away from the region enclosed by the surface.</li>
+            <li><strong>Inward normal:</strong> The normal vectors point toward the interior of the region enclosed by the surface.</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h4>Worked Example 1: Flux Through a Closed Hemisphere</h4>
+        <h5>Problem Statement</h5>
+        <p>Integrate the vector field \(\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}\) along the outward normal of the solid hemisphere bounded by \(x^{2}+y^{2}+z^{2}=1\) above the \(xy\)-plane.</p>
+        
+        <div class="visual-desc">
+            <p><strong>Visual Description of the Surface:</strong> A three-dimensional diagram showing a hemisphere centered at the origin sitting completely on top of the \(xy\)-plane. The surface \(S\) consists of two separate boundary components: the dome-shaped outer hemispherical shell labeled \(S_1\), where outward normal arrows point radially outwards and upwards into space, and the flat circular base labeled \(S_2\) resting on the \(xy\)-plane, where outward normal arrows point vertically downwards along the negative \(z\)-axis.</p>
+        </div>
+
+        <h5>Solution</h5>
+        <p>To compute the total flux, we split the surface integral into two parts corresponding to the two distinct faces of the boundary: \(S_{1}\) (the hemispherical dome part) and \(S_{2}\) (the flat circular bottom disc part).</p>
+
+        <h6>Part 1: The Hemispherical Shell (\(S_{1}\))</h6>
+        <p>We parametrize the spherical shell using spherical coordinates with radius \(\rho = 1\):</p>
+        <p>\[x = \sin\phi\cos\theta\]</p>
+        <p>\[y = \sin\phi\sin\theta\]</p>
+        <p>\[z = \cos\phi\]</p>
+        <p>Where the domain constraints for a hemisphere lying above the \(xy\)-plane are given by:</p>
+        <p>\[0 \le \theta \le 2\pi, \quad 0 \le \phi \le \frac{\pi}{2}\]</p>
+        
+        <p>Next, we find the tangent vectors by taking partial derivatives with respect to the parameters \(\theta\) and \(\phi\):</p>
+        <p>\[T_{\theta} = \langle -\sin\phi\sin\theta, \, \sin\phi\cos\theta, \, 0 \rangle\]</p>
+        <p>\[T_{\phi} = \langle \cos\phi\cos\theta, \, \cos\phi\sin\theta, \, -\sin\phi \rangle\]</p>
+
+        <p>We calculate the cross product to determine the normal vector orientation:</p>
+        <p>\[T_{\theta} \times T_{\phi} = \begin{vmatrix} \hat{i} &amp; \hat{j} &amp; \hat{k} \\ -\sin\phi\sin\theta &amp; \sin\phi\cos\theta &amp; 0 \\ \cos\phi\cos\theta &amp; \cos\phi\sin\theta &amp; -\sin\phi \end{vmatrix}\]</p>
+        <p>\[= -\sin^{2}\phi\cos\theta\hat{i} - \sin^{2}\phi\sin\theta\hat{j} - \sin\phi\cos\phi\hat{k}\]</p>
+
+        <div class="warning">
+            <p><strong>Warning:</strong> We need to carefully check if we should use \(T_{\theta} \times T_{\phi}\) or \(T_{\phi} \times T_{\theta}\). For the outward normal configuration of this hemisphere, the \(\hat{k}\) component must always be positive (pointing upward away from the origin). Therefore, we reverse the direction by choosing:</p>
+            <p>\[T_{\phi} \times T_{\theta} = \sin^{2}\phi\cos\theta\hat{i} + \sin^{2}\phi\sin\theta\hat{j} + \sin\phi\cos\phi\hat{k}\]</p>
+        </div>
+
+        <p>Now, we substitute our parametrization variables directly into the vector field equation \(\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}\):</p>
+        <p>\[\vec{F} = \sin\phi\cos\theta\hat{i} + \sin\phi\sin\theta\hat{j} + \cos\phi\hat{k}\]</p>
+
+        <p>Compute the dot product \(\vec{F} \cdot (T_{\phi} \times T_{\theta})\):</p>
+        <p>\[\vec{F} \cdot (T_{\phi} \times T_{\theta}) = \sin^{3}\phi\cos^{2}\theta + \sin^{3}\phi\sin^{2}\theta + \sin\phi\cos^{2}\phi\]</p>
+        <p>\[= \sin^{3}\phi(\cos^{2}\theta + \sin^{2}\theta) + \sin\phi\cos^{2}\phi\]</p>
+        <p>\[= \sin^{3}\phi + \sin\phi\cos^{2}\phi = \sin\phi(\sin^{2}\phi + \cos^{2}\phi) = \sin\phi\]</p>
+
+        <p>Evaluating the double integral over the specified parameter boundaries yields:</p>
+        <p>\[\int_{0}^{2\pi}\int_{0}^{\pi/2} \sin\phi \, d\phi d\theta = \left(\int_{0}^{2\pi} d\theta\right) \left( \int_{0}^{\pi/2} \sin\phi \, d\phi \right) = 2\pi \cdot [-\cos\phi]_{0}^{\pi/2} = 2\pi(0 - (-1)) = 2\pi\]</p>
+
+        <h6>Part 2: The Circular Bottom Base (\(S_{2}\))</h6>
+        <p>The flat base lies flat on the \(xy\)-plane. We can easily parametrize this disk utilizing standard polar coordinates:</p>
+        <p>\[x = r\cos\theta, \quad y = r\sin\theta, \quad z = 0\]</p>
+        <p>Where parameters range within the boundary constraints:</p>
+        <p>\[0 \le r \le 1, \quad 0 \le \theta \le 2\pi\]</p>
+
+        <p>The corresponding tangent vectors are calculated as follows:</p>
+        <p>\[T_{r} = \langle \cos\theta, \, \sin\theta, \, 0 \rangle\]</p>
+        <p>\[T_{\theta} = \langle -r\sin\theta, \, r\cos\theta, \, 0 \rangle\]</p>
+
+        <p>Computing their cross product yields:</p>
+        <p>\[DT_{r} \times T_{\theta} = \begin{vmatrix} \hat{i} &amp; \hat{j} &amp; \hat{k} \\ \cos\theta &amp; \sin\theta &amp; 0 \\ -r\sin\theta &amp; r\cos\theta &amp; 0 \end{vmatrix} = r\hat{k}\]</p>
+        <p>Since the outward orientation for the bottom surface of this solid region must point straight down (along the negative \(z\)-axis direction), we select the flipped vector:</p>
+        <p>\[T_{\theta} \times T_{r} = -r\hat{k}\]</p>
+
+        <p>Evaluating the vector field along this bottom interface where \(z=0\):</p>
+        <p>\[\vec{F} = r\cos\theta\hat{i} + r\sin\theta\hat{j} + 0\hat{k}\]</p>
+        <p>Therefore, the dot product simplifies elegantly to zero:</p>
+        <p>\[\vec{F} \cdot (T_{\theta} \times T_{r}) = \langle r\cos\theta, r\sin\theta, 0 \rangle \cdot \langle 0, 0, -r \rangle = 0\]</p>
+        <p>The total net flux across the entire closed hemisphere surface boundary is simply the sum of both individual components:</p>
+        <p>\[\text{Total Flux} = \iint_{S_1} \vec{F} \cdot d\vec{S} + \iint_{S_2} \vec{F} \cdot d\vec{S} = 2\pi + 0 = 2\pi\]</p>
+    </div>
+
+    <div class="example">
+        <h4>Worked Example 2: Flux Through a Cylindrical Wall</h4>
+        <h5>Problem Statement</h5>
+        <p>Consider the vector field \(\vec{F} = \sqrt{y}\,\hat{i}\). Compute the outward flux of \(\vec{F}\) passing through the open cylindrical surface wall defined by \(x^{2} + z^{2} = 1\), restricted to the region where \(0 \le x \le 1\) and \(0 \le y \le 1\).</p>
+        
+        <div class="visual-desc">
+            <p><strong>Visual Description of the Surface:</strong> A 3D graph showing a portion of a cylinder oriented along the \(y\)-axis. The circular cross-section is in the \(xz\)-plane, but since \(x \ge 0\), it forms a semi-cylinder wall extending from \(y = 0\) to \(y = 1\). Normal arrows point radially outward away from the central \(y\)-axis through the curved cylindrical surface skin.</p>
+        </div>
+
+        <h5>Solution</h5>
+        <p>We choose a cylindrical parameter alignment adapted to the \(xz\)-plane cross-section profile:</p>
+        <p>\[x = \cos\theta, \quad y = y, \quad z = \sin\theta\]</p>
+        <p>Given that \(x \ge 0\), the angle parameter \(\theta\) is restricted to quadrants I and IV:</p>
+        <p>\[0 \le y \le 1, \quad -\frac{\pi}{2} \le \theta \le \frac{\pi}{2}\]</p>
+
+        <p>We find the respective partial derivative vectors:</p>
+        <p>\[T_{y} = \langle 0, \, 1, \, 0 \rangle\]</p>
+        <p>\[T_{\theta} = \langle -\sin\theta, \, 0, \, \cos\theta \rangle\]</p>
+
+        <p>The normal vector is determined via the cross product:</p>
+        <p>\[T_{y} \times T_{\theta} = \begin{vmatrix} \hat{i} &amp; \hat{j} &amp; \hat{k} \\ 0 &amp; 1 &amp; 0 \\ -\sin\theta &amp; 0 &amp; \cos\theta \end{vmatrix} = \cos\theta\hat{i} + \sin\theta\hat{k}\]</p>
+        <p>Since \(x = \cos\theta\) is positive in the interval \([-\frac{\pi}{2}, \frac{\pi}{2}]\), the \(\hat{i}\) component of this vector is positive. This matches our required outward orientation pointing away from the \(y\)-axis centerline.</p>
+
+        <p>Evaluating our field structure \(\vec{F}\) inside this parameter subspace gives:</p>
+        <p>\[\vec{F} = \sqrt{y}\hat{i} + 0\hat{j} + 0\hat{k}\]</p>
+        <p>\[\vec{F} \cdot (T_{y} \times T_{\theta}) = \langle \sqrt{y}, 0, 0 \rangle \cdot \langle \cos\theta, 0, \sin\theta \rangle = \sqrt{y}\cos\theta\]</p>
+
+        <p>We integrate this expression across the parameter space boundaries:</p>
+        <p>\[\int_{-\pi/2}^{\pi/2} \int_{0}^{1} \sqrt{y}\cos\theta \, dy d\theta = \left( \int_{0}^{1} y^{1/2} \, dy \right) \left( \int_{-\pi/2}^{\pi/2} \cos\theta \, d\theta \right)\]</p>
+        <p>\[= \left[ \frac{2}{3}y^{3/2} \right]_{0}^{1} \cdot \left[ \sin\theta \right]_{-\pi/2}^{\pi/2} = \left( \frac{2}{3} - 0 \right) \cdot \left( 1 - (-1) \right) = \frac{2}{3} \cdot 2 = \frac{4}{3}\]</p>
+    </div>
+
+    <div class="theorem">
+        <h4>Green's Theorem in the Plane</h4>
+        <p><strong>Definition:</strong> A simple closed curve \(C\) in a plane is a continuous path that starts and ends at the same point (closed) and does not intersect itself anywhere along its run (simple—creating a clear single continuous loop boundary).</p>
+        
+        <p>By standard convention, we always define boundary tracking paths using a <strong>positive orientation</strong>. Walking along a positively oriented path keeps the enclosed interior surface region \(D\) consistently on your left-hand side. This matches a counter-clockwise trajectory for simple shapes.</p>
+
+        <p><strong>Theorem Statement:</strong> Let \(D\) be a simple region in the \(xy\)-plane whose boundary is a piecewise smooth, simple closed curve \(C\) with positive (counter-clockwise) orientation. If \(P(x,y)\) and \(Q(x,y)\) have continuous partial derivatives on an open region containing \(D\), then:</p>
+        <p>\[\oint_{C} P\,dx + Q\,dy = \iint_{D} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA\]</p>
+        <p>Where \(\partial D\) explicitly denotes the oriented boundary curve enclosing region \(D\).</p>
+    </div>
+
+    <div class="important">
+        <h4>Why is Green's Theorem Useful?</h4>
+        <p>Green's Theorem connects line integrals along a closed loop directly to double integrals over the region enclosed by that loop. This allows us to convert difficult line integrals into simpler double integrals over plain planar domains (or vice versa).</p>
+    </div>
+
+    <div class="example">
+        <h4>Worked Example 3: Applying Green's Theorem</h4>
+        <h5>Problem Statement</h5>
+        <p>Compute the line integral \(\oint_{C} (x^{2}e^{x})\,dx + (\sin y)\,dy\) along the unit circle defined by \(x^{2} + y^{2} = 1\).</p>
+
+        <h5>Solution</h5>
+        <p>Let us define our functions component-wise from the line integral structure:</p>
+        <p>\[P(x,y) = x^{2}e^{x}, \quad Q(x,y) = \sin y\]</p>
+        
+        <p>Next, we compute the required partial derivatives for Green's Theorem formula:</p>
+        <p>\[\frac{\partial Q}{\partial x} = 0, \quad \frac{\partial P}{\partial y} = 0\]</p>
+
+        <p>Applying Green's Theorem transforms our line integral equation as follows:</p>
+        <p>\[\oint_{C} P\,dx + Q\,dy = \iint_{D} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA\]</p>
+        <p>\[= \iint_{D} (0 - 0) \, dA = 0\]</p>
+        <p>Thus, the value of the line integral around the entire closed circular loop path is exactly \(0\).</p>
+    </div>
+
+</body>
+</html>
