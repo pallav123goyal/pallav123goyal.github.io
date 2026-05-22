@@ -106,22 +106,22 @@
 
     <div class="example">
         <h5>Example 1: Finding a Tangent Plane</h5>
-        <p>Find the equation of the tangent plane to the surface \((x, y, z) = (2u, u^2 + 2u, v^2)\) at the point \((0, 2, 1)\).</p>
+        <p>Find the equation of the tangent plane to the surface \((x, y, z) = (2u, u^2 + 2v, v^2)\) at the point \((0, 2, 1)\).</p>
         <div class="solution">
             <p><strong>Step 1: Compute tangent vectors.</strong></p>
-            \[ T_u = \langle 2, 2u+2, 0 \rangle, \quad T_v = \langle 0, 0, 2v \rangle \]
+            \[ T_u = \langle 2, 2u, 0 \rangle, \quad T_v = \langle 0, 2, 2v \rangle \]
             
             <p><strong>Step 2: Compute the cross product \(T_u \times T_v\).</strong></p>
-            \[ T_u \times T_v = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 2 & 2u+2 & 0 \\ 0 & 0 & 2v \end{vmatrix} \]
-            \[ = \mathbf{i} [(2u+2)(2v) - 0] - \mathbf{j} [2(2v) - 0] + \mathbf{k} [2(0) - 0] \]
-            \[ = 4v(u+1)\mathbf{i} - 4v\mathbf{j} + 0\mathbf{k} \]
+            \[ T_u \times T_v = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 2 & 2u & 0 \\ 0 & 2 & 2v \end{vmatrix} \]
+            \[ = \mathbf{i} [(2u)(2v) - (0)(2)] - \mathbf{j} [(2)(2v) - (0)(0)] + \mathbf{k} [(2)(2) - (2u)(0)] \]
+            \[ = 4uv\mathbf{i} - 4v\mathbf{j} + 4\mathbf{k} \]
 
             <p><strong>Step 3: Evaluate at the point (0, 2, 1).</strong></p>
-            <p>From the parametrization: \(2u = 0 \Rightarrow u = 0\). Then \(0^2 + 2(0) = 0\), which does not match \(y=2\). Re-examining the point \((0, 2, 1)\): \(v^2 = 1 \Rightarrow v = 1\). If the point is meant to be mapped from \(u=0, v=1\), the coordinates would be \((0, 0, 1)\). Assuming the point provided corresponds to \(u=0, v=1\):</p>
-            \[ \vec{n} = T_u \times T_v = 4(1)(0+1)\mathbf{i} - 4(1)\mathbf{j} = \langle 4, -4, 0 \rangle \]
+            <p>From the parametrization: \(2u = 0 \Rightarrow u = 0\). Then \(0^2 + 2v = 2 \Rightarrow v = 1\). Then,</p>
+            \[ \vec{n} = T_u \times T_v = 4(0)(1)\mathbf{i} - 4(1)\mathbf{j} + 4\mathbf{k} = \langle 0, -4, 4 \rangle \]
             
             <p><strong>Step 4: Form the plane equation.</strong></p>
-            \[ 4(x - 0) - 4(y - 2) + 0(z - 1) = 0 \Rightarrow 4x - 4y + 8 = 0 \Rightarrow x - y + 2 = 0 \]
+            \[ 0(x - 0) - 4(y - 2) + 4(z - 1) = 0 \Rightarrow -4y + 4z + 4 = 0.\]
         </div>
     </div>
 
