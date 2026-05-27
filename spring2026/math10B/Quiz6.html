@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 6</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            },
+            loader: {
+                load: ['input/tex-full', 'output/chtml']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" async></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .example {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Math 10B - Quiz 6 (Winter 2026)</h3>
+
+<div class="example">
+    <h5>Problem 1 (3 points)</h5>
+    <p>Find a parametrization for the surface \(x^{2}-y^{2}-z^{2}=1\).</p>
+    <p><strong>Hint:</strong> The above equation can be rewritten as \(x^{2}-(y^{2}+z^{2})=1\). The \(y^{2}+z^{2}\) term should motivate some nice substitution.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Following the hint, we rewrite the equation as:</p>
+        \[x^{2} = 1 + (y^{2} + z^{2})\]
+        
+        <p>We notice that \(y^2 + z^2\) can be modeled as the cross-sectional radius squared. If we choose a trigonometric substitution for standard parameterized circles, we can set:</p>
+        \[y = r\cos(v)\]
+        \[z = r\sin(v)\]
+        
+        <p>Substituting these definitions back into our equation yields:</p>
+        \[x^{2} = 1 + r^2\]
+        \[x^{2} -r^2 = 1\]
+        
+        <p>Using the trigonometric identity \(\sec^2(u) - \tan^{2}(u) = 1\), we obtain:</p>
+        \[x =\sec(u), r=\tan(u).\]
+        
+        <p>Therefore, the complete trigonometric vector function parameterization representing both sheets of the hyperboloid is given by:</p>
+        \[\vec{r}(u, v) = \left(\sec(u),\, \tan(u)\cos(v),\, \tan(u)\sin(v)\right)\]
+        <p>with the parameter domain limits bounded by \(u \in [0, \frac{\pi}{2}) \cup (\frac{\pi}{2}, \pi]\) and \(v \in [0, 2\pi]\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 2</h5>
+    <p>Consider the parametrized surface \(S\) defined via \(\vec{r}(u,v) = (u+v, e^{u}, e^{v})\) for \(u\in[0,1]\) and \(v\in[0,2]\).</p>
+    
+    <h4>(a) (2 points) Find expressions for \(T_{u}\) and \(T_{v}\).</h4>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The standard partial derivatives with respect to each parameter coordinate yield the tangent vectors:</p>
+        \[T_{u} = \frac{\partial \vec{r}}{\partial u} = (1,\, e^{u},\, 0)\]
+        \[T_{v} = \frac{\partial \vec{r}}{\partial v} = (1,\, 0,\, e^{v})\]
+    </div>
+
+    <h4>(b) (3 points) Compute the equation of the tangent plane to \(S\) at the point (1, e, 1).</h4>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <h5>Step 1: Determine the target parameter values \((u, v)\)</h5>
+        <p>To match the given coordinate point \((x, y, z) = (1, e, 1)\) with our parametrization \((u+v, e^{u}, e^{v})\), we construct the component system:</p>
+        <ol>
+            <li>\(u + v = 1\)</li>
+            <li>\(e^{u} = e \implies u = 1\)</li>
+            <li>\(e^{v} = 1 \implies v = 0\)</li>
+        </ol>
+        <p>Verifying with the first equation shows \(1 + 0 = 1\), confirming that the point matches parameters \((u, v) = (1, 0)\).</p>
+
+        <h5>Step 2: Evaluate the tangent vectors at \((1, 0)\)</h5>
+        \[T_{u}(1,0) = (1,\, e^{1},\, 0) = (1,\, e,\, 0)\]
+        \[T_{v}(1,0) = (1,\, 0,\, e^{0}) = (1,\, 0,\, 1)\]
+
+        <h5>Step 3: Calculate the normal vector \(\vec{n}\)</h5>
+        <p>The normal vector orthogonal to the plane is found by taking the cross product of our evaluated tangent vectors:</p>
+        \[\vec{n} = T_{u}(1,0) \times T_{v}(1,0) = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & e & 0 \\ 1 & 0 & 1 \end{vmatrix}\]
+        \[\vec{n} = \vec{i}(e \cdot 1 - 0) - \vec{j}(1 \cdot 1 - 0) + \vec{k}(0 - e \cdot 1) = (e,\, -1,\, -e)\]
+
+        <h5>Step 4: Establish the equation of the tangent plane</h5>
+        <p>Using the point-normal definition of a plane \(a(x - x_0) + b(y - y_0) + c(z - z_0) = 0\) at the point \((1, e, 1)\):</p>
+        \[e(x - 1) - 1(y - e) - e(z - 1) = 0\]
+        <p>Expanding the linear distribution yields:</p>
+        \[ex - e - y + e - ez + e = 0\]
+        <p>Simplifying the values results in the standard form plane equation:</p>
+        \[ex - y - ez = -e\]
+    </div>
+
+    <h4>(c) (2 points) Set up an integral to compute the area of the surface \(S\). (You don't need to evaluate it.)</h4>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The standard definition mapping formula for finding surface area is given by:</p>
+        \[\text{Area}(S) = \iint_D \|T_{u} \times T_{v}\| \,dA\]
+        
+        <h5>Step 1: Compute the general cross product vector function</h5>
+        \[T_{u} \times T_{v} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & e^{u} & 0 \\ 1 & 0 & e^{v} \end{vmatrix} = (e^{u}e^{v},\, -e^{v},\, -e^{u}) = (e^{u+v},\, -e^{v},\, -e^{u})\]
+        
+        <h5>Step 2: Obtain the magnitude expression</h5>
+        \[\|T_{u} \times T_{v}\| = \sqrt{(e^{u+v})^{2} + (-e^{v})^{2} + (-e^{u})^{2}} = \sqrt{e^{2u+2v} + e^{2v} + e^{2u}}\]
+        
+        <h5>Step 3: Set up the bounded iterated integral</h5>
+        <p>Using the parameter region bounds given by \(u \in [0, 1]\) and \(v \in [0, 2]\), the complete double integral expression is:</p>
+        \[\text{Area}(S) = \int_{0}^{2} \int_{0}^{1} \sqrt{e^{2u+2v} + e^{2v} + e^{2u}} \,du\,dv\]
+    </div>
+</div>
+
+</body>
+</html>
