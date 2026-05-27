@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 16 - Green's theorem</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 16: Green's Theorem</h3>
+
+    <div class="definition">
+        <p><strong>Recall:</strong> Let \(C\) be a simple closed curve in the plane with positive (counterclockwise) orientation.</p>
+    </div>
+
+    <div class="theorem">
+        <p><strong>Theorem (Green's Theorem):</strong> Given a vector field \(\mathbf{F}(x,y) = P(x,y)\hat{i} + Q(x,y)\hat{j}\) where \(P\) and \(Q\) have continuous partial derivatives on an open region containing \(D\), we have the equality:</p>
+        \[\oint_{C^{+}} P \, dx + Q \, dy = \iint_{D} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA\]
+        <p>where \(D\) is the plane region enclosed by the curve \(C\). This can also be written in shorthand notation as:</p>
+        \[\iint_{D} (Q_x - P_y) \, dA\]
+    </div>
+
+    <h4>Worked Examples and Applications</h4>
+
+    <div class="example">
+        <h5>Example 1: Evaluating a Line Integral Enclosing a Trapezoidal Region</h5>
+        <p>Evaluate the line integral \(\oint_{C} 2xy \, dx + xy^2 \, dy\) along the closed curve \(C\).</p>
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description of the Curve \(C\):</strong> The region \(D\) is a four-sided polygonal domain (a trapezoid) in the first quadrant of the Cartesian plane. The boundary curve \(C\) consists of four directed line segments forming a counterclockwise loop:
+        <ul>
+            <li>A horizontal lower segment along the x-axis from the origin \((0,0)\) to \((2,0)\), parameterized by \(y = 0\).</li>
+            <li>A vertical right segment going upward from \((2,0)\) to \((2,3)\), parameterized by \(x = 2\).</li>
+            <li>A slanted upper boundary segment going down and left from \((2,3)\) to \((0,2)\), along the line \(y = 2 + \frac{x}{2}\).</li>
+            <li>A vertical left segment going downward along the y-axis from \((0,2)\) back to the origin \((0,0)\), parameterized by \(x = 0\).</li>
+        </ul>
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> If we were to compute this line integral directly, we would need to set up and evaluate a sum of four separate line integrals, one corresponding to each straight line segment of the boundary.</p>
+        <p>Instead, we can apply Green's Theorem. Identify the component functions of the vector field:</p>
+        \[P(x,y) = 2xy \quad \text{and} \quad Q(x,y) = xy^2\]
+        <p>Next, compute the required partial derivatives:</p>
+        \[\frac{\partial Q}{\partial x} = y^2 \quad \text{and} \quad \frac{\partial P}{\partial y} = 2x\]
+        <p>By Green's Theorem, the line integral is equivalent to the double integral over the enclosed region \(D\):</p>
+        \[\iint_{D} (Q_x - P_y) \, dA = \iint_{D} (y^2 - 2x) \, dA\]
+        <p>To evaluate the double integral, we establish the bounding inequalities for the region \(D\):</p>
+        \[0 \le x \le 2\]
+        \[0 \le y \le 2 + \frac{x}{2}\]
+        <p>Setting up the iterated integral yields:</p>
+        \[\int_{0}^{2} \int_{0}^{2+\frac{x}{2}} (y^2 - 2x) \, dy \, dx\]
+        <p>First, integrate with respect to \(y\):</p>
+        \[\int_{0}^{2} \left[ \frac{y^3}{3} - 2xy \right]_{y=0}^{y=2+\frac{x}{2}} dx = \int_{0}^{2} \left( \frac{1}{3}\left(2 + \frac{x}{2}\right)^3 - 2x\left(2 + \frac{x}{2}\right) \right) dx\]
+        <p>Expanding the algebraic terms inside the integrand gives:</p>
+        \[\int_{0}^{2} \frac{x^3 - 12x^2 - 48x + 64}{24} \, dx\]
+        <p>Evaluating this single integral with respect to \(x\) over the limits from 0 to 2 results in the final value:</p>
+        \[\text{Result} = \frac{1}{6}\]
+    </div>
+
+    <div class="example">
+        <h5>Example 2: Verification of Green's Theorem on a Unit Circle</h5>
+        <p>Verify Green's Theorem for the vector field components \(P(x,y) = x\) and \(Q(x,y) = xy\), where the curve \(C^+\) is the positively oriented unit circle \(x^2 + y^2 = 1\).</p>
+    </div>
+
+    <div class="solution">
+        <p><strong>Step 1: Line Integral Evaluation</strong></p>
+        <p>We parameterize the unit circle \(C^+\) using standard polar angle \(\theta\):</p>
+        \[x = \cos\theta, \quad y = \sin\theta, \quad 0 \le \theta \le 2\pi\]
+        <p>The differentials are given by:</p>
+        \[dx = -\sin\theta \, d\theta, \quad dy = \cos\theta \, d\theta\]
+        <p>Substituting the parameterization into the component functions yields:</p>
+        \[P(\cos\theta, \sin\theta) = \cos\theta\]
+        \[Q(\cos\theta, \sin\theta) = \cos\theta\sin\theta\]
+        <p>Setting up the line integral with respect to \(\theta\):</p>
+        \[\oint_{C^+} P \, dx + Q \, dy = \int_{0}^{2\pi} \left( \cos\theta(-\sin\theta) + \cos\theta\sin\theta(\cos\theta) \right) d\theta\]
+        \[= \int_{0}^{2\pi} \left( -\cos\theta\sin\theta + \cos^2\theta\sin\theta \right) d\theta\]
+        <p>We evaluate this by using the substitution \(u = \cos\theta\), which gives \(du = -\sin\theta \, d\theta\):</p>
+        \[= \left[ \frac{\cos^2\theta}{2} - \frac{\cos^3\theta}{3} \right]_{0}^{2\pi} = \left(\frac{1}{2} - \frac{1}{3}\right) - \left(\frac{1}{2} - \frac{1}{3}\right) = 0\]
+
+        <p><strong>Step 2: Double Surface Integral Evaluation</strong></p>
+        <p>We evaluate the double integral \(\iint_{D} (Q_x - P_y) \, dA\) over the interior of the unit disk \(D\). Given \(Q(x,y) = xy\) and \(P(x,y) = x\), we find:</p>
+        \[Q_x = y, \quad P_y = 0 \implies Q_x - P_y = y\]
+        <p>Switching to polar coordinates where \(x = r\cos\theta\), \(y = r\sin\theta\), and \(dA = r \, dr \, d\theta\), the region \(D\) is described by \(0 \le r \le 1\) and \(0 \le \theta \le 2\pi\):</p>
+        \[\iint_{D} y \, dA = \int_{0}^{2\pi} \int_{0}^{1} (r\sin\theta) \, r \, dr \, d\theta = \int_{0}^{2\pi} \int_{0}^{1} r^2\sin\theta \, dr \, d\theta\]
+        <p>Integrating with respect to \(r\):</p>
+        \[\int_{0}^{2\pi} \left[ \frac{r^3}{3} \right]_{0}^{1} \sin\theta \, d\theta = \int_{0}^{2\pi} \frac{1}{3}\sin\theta \, d\theta\]
+        <p>Integrating with respect to \(\theta\):</p>
+        \[= \left[ -\frac{1}{3}\cos\theta \right]_{0}^{2\pi} = -\frac{1}{3}(1 - 1) = 0\]
+        <p>Since both the line integral and the double surface integral equal \(0\), Green's Theorem is verified.</p>
+    </div>
+
+    <div class="example">
+        <h5>Example 3: Line Integral Around a Centered Square Boundary</h5>
+        <p>Consider a square region with vertices at \((-2,-2)\), \((-2,2)\), \((2,2)\), and \((2,-2)\). Evaluate the following integrals along its boundary curve \(C\):</p>
+        <p>a) \(\oint_{C} x \, dx + y \, dy\)</p>
+        <p>b) \(\oint_{C} y \, dx - x \, dy\)</p>
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description of the Square Boundary:</strong> The region is a square centered at the origin \((0,0)\) of the Cartesian plane. Its sides are aligned parallel to the coordinate axes, extending from \(-2\) to \(2\) along both the x and y dimensions. The four vertices are located at \((-2,2)\) in Quadrant II, \((2,2)\) in Quadrant I, \((2,-2)\) in Quadrant IV, and \((-2,-2)\) in Quadrant III.
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> Instead of performing direct calculations across the four independent vertical and horizontal paths, we transform the line integrals into double surface integrals over the interior square region via Green's Theorem.</p>
+        
+        <p><strong>Part a) Calculation:</strong></p>
+        <p>Here, \(P = x\) and \(Q = y\). Evaluating the integrand for the double integral yields:</p>
+        \[Q_x = \frac{\partial}{\partial x}(y) = 0, \quad P_y = \frac{\partial}{\partial y}(x) = 0 \implies Q_x - P_y = 0\]
+        \[\oint_{C} x \, dx + y \, dy = \iint_{D} 0 \, dA = 0\]
+
+        <p><strong>Part b) Calculation:</strong></p>
+        <p>Here, \(P = y\) and \(Q = -x\). Computing the partial derivatives gives:</p>
+        \[Q_x = \frac{\partial}{\partial x}(-x) = -1, \quad P_y = \frac{\partial}{\partial y}(y) = 1 \implies Q_x - P_y = -1 - 1 = -2\]
+        <p>Applying Green's Theorem:</p>
+        \[\oint_{C} y \, dx - x \, dy = \iint_{D} -2 \, dA = -2 \iint_{D} dA\]
+        <p>The remaining expression is simply \(-2\) multiplied by the total area of the square. Since each side of the square has a length of \(4\), the area is \(4 \times 4 = 16\):</p>
+        \[= -2 \times (\text{Area of Square}) = -2(16) = -32\]
+    </div>
+
+    <h3>Area Formulas Derived from Green's Theorem</h3>
+
+    <div class="important">
+        <p>Following the structural logic of the previous example, we can formulate a general method to calculate the plane area of any enclosed region \(D\) bounded by a simple closed curve \(C\).</p>
+        <p>If we set components such that \(Q_x - P_y = 1\), the double integral simplifies directly to the surface area of \(D\). For instance, choosing \(P = -y\) and \(Q = 0\) produces \(Q_x - P_y = 1\). Similarly, choosing \(P = 0\) and \(Q = x\) gives \(Q_x - P_y = 1\). If we select a symmetric combination where \(P = -\frac{1}{2}y\) and \(Q = \frac{1}{2}x\), then:</p>
+        \[Q_x - P_y = \frac{1}{2} - \left(-\frac{1}{2}\right) = 1\]
+        <p>This yields the standard area formulas via line integrals:</p>
+        \[\text{Area}(D) = \oint_{C} x \, dy = -\oint_{C} y \, dx = \frac{1}{2} \oint_{C} x \, dy - y \, dx\]
+    </div>
+
+    <div class="example">
+        <h5>Example 4: Area Enclosed by a Parametric Curve</h5>
+        <p>Compute the area enclosed inside the parametric curve \(C(t)\) defined by:</p>
+        \[\mathbf{c}(t) = \sin(2t)\hat{i} + \sin(t)\hat{j} \quad \text{for } 0 \le t \le \pi\]
+    </div>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> We apply the symmetric boundary coordinate area formula:</p>
+        \[\text{Area} = \frac{1}{2} \oint_{C} x \, dy - y \, dx\]
+        <p>From the parametric vector equation, the coordinates and their corresponding differentials are:</p>
+        \[x = \sin(2t) \implies dx = 2\cos(2t) \, dt\]
+        \[y = \sin(t) \implies dy = \cos(t) \, dt\]
+        <p>Recall the trigonometric double-angle identity: \(\sin(2t) = 2\sin(t)\cos(t)\). Substituting these parametric forms into our line integral expressions produces:</p>
+        \[\text{Area} = \frac{1}{2} \int_{0}^{\pi} \left( \sin(2t)\cos(t) - \sin(t) \cdot 2\cos(2t) \right) dt\]
+        <p>Expanding using identities transforms the integral to:</p>
+        \[= \frac{1}{2} \int_{0}^{\pi} \left( 2\sin(t)\cos^2(t) - 2\sin(t)(\cos^2(t) - \sin^2(t)) \right) dt\]
+        \[= \frac{1}{2} \int_{0}^{\pi} 2\sin^3(t) \, dt = \int_{0}^{\pi} \sin^3(t) \, dt\]
+        <p>To integrate \(\sin^3(t)\), we split off one \(\sin(t)\) factor and use the identity \(\sin^2(t) = 1 - \cos^2(t)\):</p>
+        \[= \int_{0}^{\pi} \sin^2(t)\sin(t) \, dt = \int_{0}^{\pi} (1 - \cos^2(t))\sin(t) \, dt\]
+        <p>Using substitution with \(u = \cos(t)\) and \(du = -\sin(t) \, dt\), the integration evaluates to:</p>
+        \[= \left[ -\cos(t) + \frac{\cos^3(t)}{3} \right]_{0}^{\pi} = \left( 1 - \frac{1}{3} \right) - \left( -1 + \frac{1}{3} \right) = \frac{2}{3} + \frac{2}{3} = \frac{4}{3}\]
+        <p>Thus, the enclosed plane area is \(\frac{4}{3}\).</p>
+    </div>
+
+    <h3>Generalizations of Green's Theorem</h3>
+    <p>Green's Theorem bridges a line integral around a closed curve to a double integral over a flat two-dimensional region. This concept serves as a multi-variable version of the Fundamental Theorem of Calculus, which states that the integral of a derivative over an interval is determined by the values of the function at its boundaries:</p>
+    \[\int_{a}^{b} F'(x) \, dx = F(b) - F(a)\]
+    <p>When extending these multi-variable relationships into higher three-dimensional dimensional space (\(\mathbb{R}^3\)), we utilize generalized differential operations on vector fields \(\mathbf{F} = \langle P, Q, R \rangle\):</p>
+    
+    <ul>
+        <li><strong>Divergence:</strong> Related to the vector dot product, denoted as \(\text{div }\mathbf{F} = \nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\).</li>
+        <li><strong>Curl:</strong> Related to the vector cross product, denoted as \(\text{curl }\mathbf{F} = \nabla \times \mathbf{F} = \left\langle \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}, \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}, \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right\rangle\).</li>
+    </ul>
+    <p>These operations form the mathematical foundation for Stokes' Theorem and the Divergence Theorem, which generalize boundary relationships across higher dimensions.</p>
+
+</body>
+</html>
