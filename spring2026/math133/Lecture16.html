@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 16 - Isometric linear transformations</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+
+        .solution {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px dashed #6c757d;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-left: 5px solid #6c757d;
+            margin: 15px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <h3>Lecture 16: When are Transformations Isometries?</h3>
+        
+        <h4>Recall: Vector Representation and Length</h4>
+        <p>A vector is an oriented line segment. Given a vector \(\vec{v}\) from the origin \((0,0)\) to \((x,y)\), the length of \(\vec{v}\) is defined by:</p>
+        \[||\vec{v}|| = \sqrt{x^{2}+y^{2}}\]
+        
+        <p>Consider \(\vec{v}\) as the matrix:</p>
+        \[\vec{v} = \begin{bmatrix} x \\ y \end{bmatrix}\]
+        
+        <p>Then, its transpose is \(\vec{v}^{T} = \begin{bmatrix} x & y \end{bmatrix}\). We can consider the product:</p>
+        \[\vec{v}^{T}\vec{v} = \begin{bmatrix} x & y \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} x^{2}+y^{2} \end{bmatrix} = ||\vec{v}||^{2}\]
+        
+        <p>Hence, we have a handy matrix format for vector length:</p>
+        \[||\vec{v}|| = \sqrt{\vec{v}^{T}\vec{v}}\]
+        
+        <div class="warning">
+            <strong>Warning:</strong> The orders of multiplication matter. If we instead multiplied \(\vec{v}\vec{v}^{T}\), we would get a completely different size matrix:
+            \[\vec{v}\vec{v}^{T} = \begin{bmatrix} x \\ y \end{bmatrix} \begin{bmatrix} x & y \end{bmatrix} = \begin{bmatrix} x^{2} & xy \\ xy & y^{2} \end{bmatrix} \neq \vec{v}^{T}\vec{v}\]
+            This output is a \(2 \times 2\) matrix, not a \(1 \times 1\) single-element scalar value!
+        </div>
+
+        <h4>Linear and Affine Transformations</h4>
+        <div class="definition">
+            <strong>Definition:</strong> A function \(f: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}\) is called a <strong>linear transformation</strong> or a map if it can be written as:
+            \[f(\vec{v}) = A\vec{v}\]
+            where \(A\) is a fixed \(2 \times 2\) matrix.
+        </div>
+        
+        <p>If we write \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) and \(\vec{v} = \begin{pmatrix} x \\ y \end{pmatrix}\), then this mapping looks like:</p>
+        \[f\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} ax+by \\ cx+dy \end{pmatrix}\]
+        
+        <p>Notice that each component of the output is just a linear combination of \(x\) and \(y\). Because of this setup, any true linear map must send the origin to the origin:</p>
+        \[f\begin{pmatrix} 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\]
+
+        <div class="definition">
+            <strong>Definition:</strong> A function \(f: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}\) is called an <strong>affine transformation</strong> if it looks like:
+            \[f(\vec{v}) = A\vec{v} + \vec{w}\]
+            where \(A\vec{v}\) is the linear part, and adding the vector \(\vec{w}\) gives a rigid translation shift.
+        </div>
+        
+        <div class="important">
+            <strong>Important:</strong> For this formula to work consistently, both the matrix \(A\) and the translation vector \(\vec{w}\) must be fixed constants that do not change based on what vector \(\vec{v}\) you plug into the function.
+        </div>
+
+        <h3>When is a Transformation an Isometry?</h3>
+        <div class="definition">
+            <strong>Definition:</strong> A mapping function \(f: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}\) is called an <strong>isometry</strong> if it preserves the distance between any two points. That means if you pick any points \(P\) and \(Q\), the distance between their transformed locations matches the initial distance exactly:
+            \[|PQ| = |f(P)f(Q)|\]
+        </div>
+
+        <p>Examples of isometries include standard reflections, rotations, and translations. On the other hand, rescaling/scaling actions by any factor \(\lambda \neq \pm 1\) do not keep lengths the same, so they are not isometries.</p>
+        
+        <p>Since general affine transformations are made by doing a linear map and then adding a translation vector, and translations naturally preserve distances on their own, finding out if an affine map is an isometry boils down to looking at just its linear map part. So, let's look closely at the linear map format \(f(\vec{v}) = A\vec{v}\).</p>
+
+        <div class="theorem">
+            <strong>Lemma:</strong> A linear map \(f(\vec{v}) = A\vec{v}\) is an isometry if and only if it keeps the length of every single vector exactly the same. That is:
+            \[|A\vec{v}|| = ||\vec{v}||\]
+        </div>
+
+        <h5>Proof:</h5>
+        <p>Let's check this step-by-step from both sides:</p>
+        
+        <p><strong>Part 1:</strong> Assume \(f\) is an isometry. Suppose a vector \(\vec{v}\) starts at the origin \(O\) and goes out to a point \(P\).</p>
+        
+        <p>If we apply our linear transformation, we get the new points:</p>
+        \[f(O) = A\begin{bmatrix} 0 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}\]
+        \[f(P) = A\vec{v}\]
+        
+        <p>Since \(f\) preserves distances, the original length of line segment \(OP\) must equal the final distance between the mapped points \(f(O)\) and \(f(P)\):</p>
+        \[|OP| = |f(O)f(P)|\]
+        
+        <p>By our setup, the original distance \(|OP|\) is just the length of our vector, \(||\vec{v}||\). The new distance \(|f(O)f(P)|\) is the length of the transformed vector, \(||A\vec{v}||\). Putting those together proves the first part: \(||\vec{v}|| = ||A\vec{v}||\) works for every vector.</p>
+
+        <div class="visual-desc">
+            <strong>Visual Description of Vector Mapping:</strong> A diagram showing a vector arrow \(\vec{v}\) drawn from an origin point labeled \(O\) to a terminal point labeled \(P\). A separate point labeled \(Q\) is shown nearby in the coordinate space.
+        </div>
+
+        <p><strong>Part 2:</strong> Now let's assume that \(||A\vec{v}|| = ||\vec{v}||\) is true for all vectors. Let \(P\) and \(Q\) be any two random points in space.</p>
+        
+        <p>Let \(\vec{v}\) be the vector that points from \(P\) directly to \(Q\). To find the distance between their new transformed positions, let's look at the vector connecting \(f(P)\) to \(f(Q)\):</p>
+        \[\text{Vector from } f(P) \text{ to } f(Q) = f(Q) - f(P)\]
+        \[= A\vec{Q} - A\vec{P} = A(\vec{Q} - \vec{P})\]
+        \[= A\vec{v} = f(\vec{v})\]
+        
+        <p>The distance between the new points is just the length of this difference vector, which is \(||A\vec{v}||\). Because we assumed matrix multiplication doesn't change a vector's length, we know:</p>
+        \[||A\vec{v}|| = ||\vec{v}||\]
+        
+        <p>Since the original vector length \(||\vec{v}||\) is exactly the starting line segment distance \(|PQ|\), we get \(|PQ| = |f(P)f(Q)|\). This proves that the map \(f\) is an isometry. \(\blacksquare\)</p>
+
+        <h3>Orthogonal Matrices</h3>
+        <p>To fully pinpoint isometries, we need to find all matrices \(A\) where \(||A\vec{v}|| = ||\vec{v}||\) works for every vector. Let's write things out with elements:</p>
+        \[A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad \vec{v} = \begin{pmatrix} x \\ y \end{pmatrix}\]
+        
+        <p>The transformed vector is:</p>
+        \[A\vec{v} = \begin{pmatrix} ax+by \\ cx+dy \end{pmatrix}\]
+        
+        <p>Using our scalar length formulas, this means:</p>
+        \[||\vec{v}|| = \sqrt{x^{2}+y^{2}}\]
+        \[||A\vec{v}|| = \sqrt{(ax+by)^{2} + (cx+dy)^{2}}\]
+        
+        <p>To keep lengths equal, we must satisfy:</p>
+        \[\sqrt{x^{2}+y^{2}} = \sqrt{(ax+by)^{2} + (cx+dy)^{2}}\]
+        
+        <p>We can solve this by squaring both sides and grouping the \(x\) and \(y\) terms together. Or, we can use our slick matrix transpose tricks from earlier to simplify things: </p>
+        \[||\vec{v}||^{2} = \vec{v}^{T}\vec{v}\]
+        \[||A\vec{v}||^{2} = (A\vec{v})^{T}(A\vec{v}) = \vec{v}^{T}A^{T}A\vec{v}\]
+        
+        <p>Setting these two equal to each other gives:</p>
+        \[\vec{v}^{T}\vec{v} = \vec{v}^{T}A^{T}A\vec{v}\]
+        
+        <p>We can insert a standard identity matrix \(I\) on the left to make the terms line up directly:</p>
+        \[\vec{v}^{T}I\vec{v} = \vec{v}^{T}A^{T}A\vec{v}\]
+        
+        <p>Since this has to work out perfectly no matter what vector \(\vec{v}\) we pick, the inner matrix operators must match exactly. This gives us a key matrix requirement: \(A^{T}A = I\).</p>
+
+        <div class="definition">
+            <strong>Definition:</strong> A real square matrix \(A\) is called <strong>orthogonal</strong> if its transpose multiplied by itself equals the identity matrix:
+            \[A^{T}A = I\]
+        </div>
+
+        <div class="theorem">
+            <strong>Theorem (Main Conclusion):</strong> An affine transformation \(f(\vec{v}) = A\vec{v} + \vec{w}\) is an isometry if and only if its structural transformation matrix \(A\) is an orthogonal matrix.
+        </div>
+
+        <h3>Examples and Properties</h3>
+        
+        <div class="example">
+            <h5>Example 1: Analyzing a Shearing Map</h5>
+            <p>Let's look at a linear transformation given by the rule:</p>
+            \[f\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ x+y \end{pmatrix}\]
+            <p>This is a horizontal shear map along the vertical y-axis direction. Is this transformation an isometry?</p>
+            
+            <div class="solution">
+                <strong>Step-by-Step Solution:</strong>
+                <p>First, let's extract the system matrix \(A\) from our rule. Rewriting it as a matrix multiplication gives:</p>
+                \[f\begin{pmatrix} x \\ y \end{pmatrix} = \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix} \begin{pmatrix} x \\ y \end{pmatrix} \implies A = \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix}\]
+                
+                <p>Next, find the transpose by flipping the rows and columns:</p>
+                \[A^{T} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}\]
+                
+                <p>Now let's check if it's orthogonal by computing the product \(A^{T}A\):</p>
+                \[A^{T}A = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix} = \begin{bmatrix} (1\cdot1 + 1\cdot1) & (1\cdot0 + 1\cdot1) \\ (0\cdot1 + 1\cdot1) & (0\cdot0 + 1\cdot1) \end{bmatrix} = \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}\]
+                
+                <p>Let's check this resulting matrix against the standard \(2 \times 2\) identity matrix:</p>
+                \[\begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix} \neq \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\]
+                
+                <p>Since \(A^{T}A \neq I\), the matrix is not orthogonal. Therefore, this shearing map is <strong>not</strong> an isometry.</p>
+            </div>
+        </div>
+
+        <h4>What does an Orthogonal Matrix Mean Geometrically?</h4>
+        <p>Let's check out what happens with the rows and columns of an orthogonal matrix. Take a general matrix:</p>
+        \[A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \implies A^{T} = \begin{bmatrix} a & c \\ b & d \end{bmatrix}\]
+        
+        <p>Multiplying them together to set up our identity requirement gives:</p>
+        \[A^{T}A = \begin{bmatrix} a & c \\ b & d \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a^{2}+c^{2} & ab+cd \\ ab+cd & b^{2}+d^{2} \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\]
+        
+        <p>Matching up the individual entries gives us three specific scalar equations:</p>
+        <ol>
+            <li>\(a^{2} + c^{2} = 1\)</li>
+            <li>\(b^{2} + d^{2} = 1\)</li>
+            <li>\(ab + cd = 0\)</li>
+        </ol>
+        
+        <p>If we view the columns of matrix \(A\) as two separate vectors, \(\vec{v}_{1} = \begin{bmatrix} a \\ c \end{bmatrix}\) and \(\vec{v}_{2} = \begin{bmatrix} b \\ d \end{bmatrix}\), these three equations tell us something neat via vector dot products:</p>
+        \[\vec{v}_{1} \cdot \vec{v}_{1} = a^{2}+c^{2} = 1 \implies ||\vec{v}_{1}|| = 1\]
+        \[\vec{v}_{2} \cdot \vec{v}_{2} = b^{2}+d^{2} = 1 \implies ||\vec{v}_{2}|| = 1\]
+        \[\vec{v}_{1} \cdot \vec{v}_{2} = ab+cd = 0 \implies \vec{v}_{1} \perp \vec{v}_{2}\]
+        
+        <div class="theorem">
+            <strong>Corollary:</strong> The column vectors of any orthogonal matrix are always perpendicular to each other. On top of that, because each column vector has a unit length of exactly 1, they form an <strong>orthonormal basis</strong> for \(\mathbb{R}^{2}\).
+        </div>
+
+        <h4>Inverses of Orthogonal Matrices</h4>
+        <p>Recall that the inverse of a square matrix \(A\) is another matrix written as \(A^{-1}\) that satisfies \(A^{-1}A = A A^{-1} = I\). If you think of \(A\) as a linear map action, then \(A^{-1}\) represents the exact undo/inverse action of that map.</p>
+        
+        <p>For any regular \(2 \times 2\) matrix \(A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}\), the inverse is found using the formula:</p>
+        \[A^{-1} = \frac{1}{ad-bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}\]
+        
+        <p>The bottom scaling factor \(ad-bc\) is called the <strong>determinant</strong> of \(A\), written as \(\det(A)\). This formula shows that finding a matrix inverse only makes sense when the determinant isn't zero! A matrix is invertible if and only if \(\det(A) \neq 0\).</p>
+        
+        <div class="important">
+            <strong>Remark:</strong> Since an orthogonal matrix satisfies \(A^{T}A = I\), multiplying both sides by the inverse matrix \(A^{-1}\) gives a fantastic shortcut:
+            \[A^{T} = A^{-1}\]
+            This means that for any orthogonal linear transformation matrix, finding its inverse map is incredibly easy—it is completely identical to its transpose matrix!
+        </div>
+    </main>
+
+</body>
+</html>
