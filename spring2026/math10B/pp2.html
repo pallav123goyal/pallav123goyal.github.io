@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Practice Problems 2: Line and Surface Integrals</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>MATH 10B Practice Problems 2</h3>
+
+    <h3>Section 1: Line and Path Integrals</h3>
+
+    <div class="example">
+        <h5>Problem 1: Intersection of Surfaces</h5>
+        <p>Find a parametrization for the intersection of the surfaces \(y^{2}+z^{2}=1\) and \(z=x\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 2: Intersection of Planes</h5>
+        <p>Find a parametrization for the intersection of the planes \(x+y+z=1\) and \(2x-y+z=2\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 3: Path Integrals of Scalar Functions</h5>
+        <p>Compute the path integrals of the following functions \(f\) along the respective paths \(c\):</p>
+        <ul>
+            <li>\(f(x,y,z)=x \cos z\) and \(c\) is the path \((t, t^{2}, 0)\) for \(0 \le t \le 1\).</li>
+            <li>\(f(x,y)=y^{2}\) and \(c\) is the graph of \(y=e^{x}\) for \(0 \le x \le 1\).</li>
+            <li>\(f(x,y,z)=yz\) and \(c\) is the straight line path from the point \((1,3,2)\) to the point \((4,0,2)\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 4: Parallelogram Integral</h5>
+        <p>Set up an integral for the function \(f(x,y)=x^{2}+y\) along the sides of the parallelogram with vertices \((0,0)\), \((2, 3)\), \((2, 5)\) and \((4,8)\), moving counter-clockwise.</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 5: Path Length</h5>
+        <p>Find the length of the path given by \(c(t)=(t^{2},t,3)\) for \(0 \le t \le 3\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 6: Vector Field Integration</h5>
+        <p>Integrate the function \(f(x,y,z)=y\mathbf{i}+x\mathbf{j}\) along the following paths:</p>
+        <ul>
+            <li>The unit circle centred at the origin integrating counterclockwise.</li>
+            <li>The straight line path from \((1, 2)\) to \((-1,4)\).</li>
+            <li>The path \(c(t)=(t^{3},t^{2}-1)\) for \(0 \le t \le 2\).</li>
+            <li>The graph of the function \(f(x)=\sin(x)\) for \(0 \le x \le \pi\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 7: Specific Line Integrals</h5>
+        <p>Compute the following line integrals:</p>
+        <p>1. \(\int_{C}2xy \, dx + x^{2} \, dy\), where \(C\) is the boundary of the square with vertices \((\pm1, \pm1)\).</p>
+        <p>2. \(\int_{C}x^{2} \, dx - xy \, dy + dz\), where \(C\) is the parabola \(z=x^{2}\), \(y=0\) for \(-1 \le x \le 2\).</p>
+        <p>3. \(\int_{C}yz \, dx + xz \, dy + xy \, dz\), where \(C\) is the path \((t,t^{2},t^{3})\) for \(-2 \le t \le 3\).</p>
+        <p>4. \(\int_{C}2xyz \, dx + x^{2}z \, dy + x^{2}y \, dz\), where \(C\) is any path joining the point \((1,1,1)\) to the point \((2,1,-1)\).</p>
+        <div class="important">
+            <p><strong>Think about:</strong> Why don't we need to know the specific path \(C\) to compute the last integral?</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Problem 8: Work Done by a Force</h5>
+        <p>Set up an integral to compute the work done by the force \(\mathbf{F}(x,y,z)=x\mathbf{i}+xy\mathbf{j}+xyz\mathbf{k}\) along the path obtained by the intersection of the cylinder \(x^{2}+y^{2}=4\) and the plane \(x+y+z=3\).</p>
+    </div>
+
+    <h3>Section 2: Surface Integrals of Scalar Functions and Vector Fields</h3>
+
+    <div class="example">
+        <h5>Problem 9: Surface Parametrizations</h5>
+        <p>Find a parametrization for the following surfaces:</p>
+        <ul>
+            <li>The graph of the surface \(f(x,y)=3x^{2}+8xy\) above the unit circle in the \(xy\)-plane.</li>
+            <li>The part of the plane \(z=x+2\) inside the cylinder \(x^{2}+y^{2}=1\).</li>
+            <li>The part of the sphere \(x^{2}+y^{2}+z^{2}=4\) above the plane \(z=\sqrt{2}\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 10: Tangent Planes</h5>
+        <p>Find the equations of the tangent planes to the following surfaces at the respective points:</p>
+        <ul>
+            <li>The surface \((e^{u}\sin v, u^{2}-v^{2}, \sqrt{1+\ln(u)})\) at the point \((e, 1-\frac{\pi^{2}}{4}, 1)\).</li>
+            <li>The hyperboloid \(x^{2}+y^{2}-z^{2}=25\) at the point \((3, 4, 0)\).</li>
+            <li>The graph of the function \(f(x,y)=xy\sqrt{x^{2}+y^{2}}\) above the point \((5, 12)\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 11: Surface Areas</h5>
+        <p>Compute the areas of the following surfaces:</p>
+        <ul>
+            <li>The surface parametrized by \((e^{u}\sin v, e^{u}\cos v, v)\) for \((u,v) \in [0,1] 	\times [0,\pi]\).</li>
+            <li>The surface defined by \(z=xy\) and \(x^{2}+y^{2} \le 2\).</li>
+            <li>The part of the plane \(2x+y+z=4\) inside the cylinder \(y^{2}+z^{2}=4\).</li>
+            <li>The graph of the function \(f(x,y)=(x+y)^{3/2}\) for \(x \ge 0\), \(y \ge 0\) and \(x+y \le 2\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 12: Integrals of Scalar Functions over Surfaces</h5>
+        <ul>
+            <li>The function \(f(x,y,z)=x-y\) over the surface \(S\) given by \(2z=y^{2}\), \(0 \le x, y \le 1\).</li>
+            <li>The function \(f(x,y,z)=x^{2}z\) over the part of the cylinder \(x^{2}+y^{2}=1\) between the planes \(z=0\) and \(z=4\) such that \(x \ge 0\).</li>
+            <li>The function \(f(x,y,z)=x^{2}\) over the triangular region \(S\) with endpoints \((3,0,0)\), \((0,3, 0)\) and \((0,0,3)\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 13: Flux of Vector Fields</h5>
+        <p>Compute the flux for the following vector fields \(\mathbf{F}\) across the respective surfaces:</p>
+        <ul>
+            <li>\(\mathbf{F}=x\mathbf{i}+y\mathbf{j}+z^{2}\mathbf{k}\) across the surface given by \((2 \sin u, 3 \cos u, v)\) with \(0 \le u \le 2\pi\) and \(0 \le v \le 1\).</li>
+            <li>\(\mathbf{F}=y\mathbf{i}-x\mathbf{j}\) out of sphere \(x^{2}+y^{2}+z^{2}=9\).</li>
+            <li>\(\mathbf{F}=\mathbf{i}+x\mathbf{j}+z\mathbf{k}\) out of the cube with vertices \((\pm1, \pm1, \pm1)\).</li>
+            <li>\(\mathbf{F}=-xy^{2}\mathbf{i}+z\mathbf{j}\) across the graph of \(f(x,y)=xy\) with the upper unit normal, \(0 < x, y \le 2\).</li>
+        </ul>
+    </div>
+
+    <h3>Section 3: Green's, Stokes' and Gauss' Theorems</h3>
+
+    <div class="example">
+        <h5>Problem 14: Verifying Green's Theorem</h5>
+        <ul>
+            <li>\(P(x,y)=xy^{2}\), \(Q(x,y)=-yx^{2}\) where the region is the disc of radius 1 centred at the origin.</li>
+            <li>\(P(x,y)=x-y\), \(Q(x,y)=x+y\) where the region is the square with vertices \((\pm1, \pm1)\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 15: Cycloid Area</h5>
+        <p>Evaluate the area bounded by the cycloid whose equations are given by \(x=	\theta-\sin \theta\) and \(y=1-\cos \theta\) for \(0 \le 	\theta \le 2\pi\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 16: Semicircular Line Integral</h5>
+        <p>Evaluate the line integral \(\int_{C}e^{x}\sin y \, dx + e^{x}\cos y \, dy\), where \(C\) is the boundary of the semicircular region given by \(x^{2}+y^{2} \le 1\) and \(x \ge 0\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 17: Green's Theorem for Area</h5>
+        <p>Use Green's theorem to evaluate the area of:</p>
+        <ul>
+            <li>The triangle whose vertices are given by \((1,3)\), \((3, 4)\) and \((2,0)\).</li>
+            <li>The circle \(x^{2}+y^{2}=a^{2}\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 18: Verifying Stokes' Theorem</h5>
+        <ul>
+            <li>\(\mathbf{F}=xyz\mathbf{i}+xy\mathbf{j}+x\mathbf{k}\) and \(S\) is the triangle with vertices \((0,0,0)\), \((2, 1, 5)\) and \((1, 1, 3)\).</li>
+            <li>\(\mathbf{F}=z\mathbf{i}+x\mathbf{j}+(2xz+2xy)\mathbf{k}\) and \(S\) is the surface \(z=1-x^{2}-y^{2}\) with \(z \ge 0\).</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 19: Stokes' Theorem Application</h5>
+        <p>Evaluate the integral \(\iint_{S}(
+\nabla 	\times \mathbf{F}) \cdot d\mathbf{S}\), where \(S\) is the hemisphere given by \(x^{2}+y^{2}+z^{2}=1\) and \(z \ge 0\) and \(\mathbf{F}=y\mathbf{i}-x\mathbf{j}+zx^{3}y^{2}\mathbf{k}\). Use the outward normal.</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 20: Plane Circular Path Integration</h5>
+        <p>Compute the integral of the vector field \(\mathbf{F}=2y\mathbf{i}-z\mathbf{j}+2x\mathbf{k}\) along the circular path of radius 3 centered at \((4, 1, 1)\) in the plane \(x-2y-2z=0\). You can use either orientation.</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 21: Conservative Vector Fields</h5>
+        <p>For the following vector fields \(\mathbf{F}\), check that they are conservative and find a potential function \(G\) such that \(\mathbf{F}=
+\nabla G\). Use that to evaluate the integral of \(\mathbf{F}\) on the straight line path from \((0,0,0)\) to \((1, 2, 3)\):</p>
+        <ul>
+            <li>\(\mathbf{F}=\langle e^{x}\cos y, -e^{x}\sin y, -\pi \rangle\)</li>
+            <li>\(\mathbf{F}=\langle x^{2}+3x, \sin(y), 2e^{z} \rangle\)</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <h5>Problem 22: Verifying Gauss' Theorem</h5>
+        <p>Verify Gauss' theorem for the vector field \(\mathbf{F}=x\mathbf{i}+xy\mathbf{j}+xyz\mathbf{k}\) for the region bounded by the cube with vertices \((\pm1, \pm1, \pm1)\). </p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 23: Flux out of a Ball</h5>
+        <p>Compute the flux of the vector field \(\mathbf{F}=(1-x)\mathbf{i}+(2-y)\mathbf{j}+(3-z)\mathbf{k}\) out of the unit ball \(x^{2}+y^{2}+z^{2}=1\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Problem 24: Surface Integral across a Graph</h5>
+        <p>Compute the surface integral of the vector field \(\mathbf{F}=x^{2}y\mathbf{i}+(xz+y^{2})\mathbf{j}+xyz^{2}\mathbf{k}\) across the graph of the function \(g(x,y)=xy+2\) over the rectangle \([0,2] \times [0,3]\).</p>
+    </div>
+
+</body>
+</html>
