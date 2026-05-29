@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 17 - Classifying Orthogonal Matrices</title>
+    <script>
+        MathJax = {
+            options: {
+                enableAssistiveMml: true
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            loader: { load: ['ui/menu', 'output/chtml'] }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        .steps {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border: 1px solid #9c27b0;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #9c27b0;
+        }
+        .solution {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px dashed #6c757d;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .visual-desc {
+            background-color: #e2e3e5;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            margin: 10px 0;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lecture 17: Classifying Orthogonal Matrices</h1>
+    </header>
+
+    <main>
+        <h3>Review and Motivation</h3>
+        <p>Recall that given an affine transformation \(f: \mathbb{R}^2 \rightarrow \mathbb{R}^2\) defined by \(f(\vec{v}) = A\vec{v} + \vec{w}\), where \(A\) is a \(2 \times 2\) matrix and \(\vec{w}\) is a shift vector, \(f\) is a rigid isometry exactly when the matrix \(A\) is an orthogonal matrix.</p>
+        
+        <div class="definition">
+            <p><strong>Definition:</strong> A matrix \(A\) is orthogonal if and only if \(A^T A = I\) where \(I\) is the identity matrix.</p>
+        </div>
+
+        <p>In particular, if \(A\) is an orthogonal matrix, then \(A\) is always invertible, and its transpose equals its inverse: \(A^{-1} = A^T\)</p>
+
+        <h4>Determining the Determinant of Orthogonal Matrices</h4>
+        <p>A natural geometric and algebraic question arises: If \(A\) is orthogonal, what is its determinant, \(\det(A)\)?</p>
+        <p>Recall that for a general \(2 \times 2\) matrix \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\), the determinant is given by \(\det(A) = ad - bc\). Furthermore, the transpose is \(A^T = \begin{pmatrix} a & c \\ b & d \end{pmatrix}\), and its determinant is also \(\det(A^T) = ad - cb = \det(A)\).</p>
+        <p>Since \(A\) is orthogonal, we can take the determinant of both sides of the identity equation:</p>
+        <p>\[A^T A = I\]</p>
+        <p>\[\det(A^T A) = \det(I)\]</p>
+        <p>Using the multiplicative property of determinants, \(\det(AB) = \det(A)\det(B)\), we can expand this to:</p>
+        <p>\[\det(A^T)\det(A) = \det(I)\]</p>
+        <p>Since \(\det(A^T) = \det(A)\) and the determinant of the standard identity matrix \(I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\) is exactly \(1\), we obtain:</p>
+        <p>\[\det(A)^2 = 1\]</p>
+        <p>Taking the square root of both sides leads to the core algebraic classification constraint:</p>
+        <p>\[\det(A) = \pm 1\]</p>
+        <p>This leaves us with two distinct geometric cases to analyze.</p>
+
+        <h3>Case I: Orthogonal Matrices with \(\det(A) = 1\)</h3>
+        <p>Suppose that \(A\) is an orthogonal matrix and \(\det(A) = 1\). Let \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\), so that \(\det(A) = ad - bc = 1\).</p>
+        <p>Using the standard matrix algebraic inverse formula, we can express the inverse as:</p>
+        <p>\[A^{-1} = \frac{1}{\det(A)} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}\]</p>
+        <p>However, because \(A\) is orthogonal, we also know that:</p>
+        <p>\[A^{-1} = A^T = \begin{pmatrix} a & c \\ b & d \end{pmatrix}\]</p>
+        <p>By equating the entries of the two expressions for \(A^{-1}\), we get the following systems of equations:</p>
+        <p>\[d = a\]</p>
+        <p>\[-b = c \implies c = -b\]</p>
+        <p>\[-c = b\]</p>
+        <p>\[a = d\]</p>
+        <p>Substituting these relations back into our expression for \(A\), we find that any orthogonal matrix with a determinant of \(1\) must look exactly like this:</p>
+        <p>\[A = \begin{pmatrix} a & b \\ -b & a \end{pmatrix}\]</p>
+        <p>Furthermore, evaluating the constraint \(\det(A) = 1\) on this structured form yields:</p>
+        <p>\[\det(A) = a^2 - (b)(-b) = a^2 + b^2 = 1\]</p>
+        <p>This means that the coordinates \((a, b)\) specify a geometric coordinate point lying on the unit circle equation \(x^2 + y^2 = 1\).</p>
+
+        <div class="visual-desc">
+            <p><strong>Visual Description:</strong> A Cartesian coordinate graph showing a perfectly centered circle around the origin with a labeled radius equation \(x^2 + y^2 = 1\). This indicates that the parameters \(a\) and \(b\) parameterize points on this circle boundary.</p>
+        </div>
+
+        <p>Using standard polar coordinates, any point on the unit circle can be parameterized by an angle parameter \(\theta\) such that:</p>
+        <p>\[a = \cos\theta\]</p>
+        <p>\[b = \sin\theta\]</p>
+        <p>Substituting these parametric trigonometric definitions back into our structural matrix form gives the classic rotation matrix specification:</p>
+        <p>\[A = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix}\]</p>
+        <p>This algebraic structure represents a rigid rotation transformation acting counterclockwise in the coordinate plane by an angle of \(\theta\).</p>
+
+        <div class="theorem">
+            <p><strong>Theorem (Classification of Case I):</strong> Given a linear plane isometry whose matrix transformation determinant is equal to \(1\), it must geometrically be a standard rotation.</p>
+        </div>
+
+        <h3>Case II: Orthogonal Matrices with \(\det(A) = -1\)</h3>
+        <p>Now consider the second case where the orthogonal matrix determinant satisfies \(\det(A) = -1\). Using the inverse matrix formula again:</p>
+        <p>\[A^{-1} = \frac{1}{\det(A)} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \frac{1}{-1} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \begin{pmatrix} -d & b \\ c & -a \end{pmatrix}\]</p>
+        <p>Since \(A\) is orthogonal, we equate this matrix to its transpose:</p>
+        <p>\[A^{-1} = A^T = \begin{pmatrix} a & c \\ b & d \end{pmatrix}\]</p>
+        <p>Equating components gives the following direct relationships:</p>
+        <p>\[-d = a \implies d = -a\]</p>
+        <p>\[b = c \implies c = b\]</p>
+        <p>\[c = b\]</p>
+        <p>\[-a = d\]</p>
+        <p>Therefore, our structural matrix format can be written as:</p>
+        <p>\[A = \begin{pmatrix} a & b \\ b & -a \end{pmatrix}\]</p>
+        <p>Evaluating the determinant constraint again yields \(\det(A) = -a^2 - b^2 = -1\), which simplifies to:</p>
+        <p>\[a^2 + b^2 = 1\]</p>
+        <p>Just like Case I, the parameters lie on a unit circle and can be parameterized by an angle \(\theta\) such that \(a = \cos\theta\) and \(b = \sin\theta\). Substituting these values into our structural form gives:</p>
+        <p>\[A = \begin{pmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{pmatrix}\]</p>
+        <p>What does this specific algebraic matrix represent from a geometric perspective?</p>
+
+        <div class="example">
+            <p><strong>Worked Example: Analyzing Geometric Behaviors for Specific Values of \(\theta\)</strong></p>
+            <div class="solution">
+                <h5>Subcase 1: Let \(\theta = 0\)</h5>
+                <p>Substituting \(\theta = 0\) into our general case formula gives:</p>
+                <p>\[A = \begin{pmatrix} \cos(0) & \sin(0) \\ \sin(0) & -\cos(0) \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\]</p>
+                <p>Applying this matrix to an arbitrary coordinate vector yields:</p>
+                <p>\[\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ -y \end{pmatrix}\]</p>
+                <p>This transformation maps \((x, y) \rightarrow (x, -y)\), which represents a standard geometric reflection across the horizontal x-axis.</p>
+
+                <h5>Subcase 2: Let \(\theta = \frac{\pi}{2}\)</h5>
+                <p>Substituting \(\theta = \frac{\pi}{2}\) into our general formula gives:</p>
+                <p>\[A = \begin{pmatrix} \cos(\frac{\pi}{2}) & \sin(\frac{\pi}{2}) \\ \sin(\frac{\pi}{2}) & -\cos(\frac{\pi}{2}) \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\]</p>
+                <p>Applying this matrix to an arbitrary vector yields:</p>
+                <p>\[\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} y \\ x \end{pmatrix}\]</p>
+                <p>This transformation interchanges the x and y coordinates, representing a geometric reflection across the identity line \(y = x\).</p>
+
+                <h5>Subcase 3: Let \(\theta = \pi\)</h5>
+                <p>Substituting \(\theta = \pi\) into our general formula gives:</p>
+                <p>\[A = \begin{pmatrix} \cos(\pi) & \sin(\pi) \\ \sin(\pi) & -\cos(\pi) \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix}\]</p>
+                <p>Applying this matrix to an arbitrary vector yields:</p>
+                <p>\[\begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -x \\ y \end{pmatrix}\]</p>
+                <p>This transformation changes the sign of the x-coordinate, representing a geometric reflection across the vertical y-axis.</p>
+            </div>
+        </div>
+
+        <h4>Decomposing the General Geometric Transformation</h4>
+        <p>To understand what this transformation represents for an arbitrary angle \(\theta\), we can use two different analytical approaches.</p>
+
+        <h5>Approach 1: Geometric Composition</h5>
+        <p>Notice that our general matrix can be factored by splitting it into a product of a baseline reflection matrix and a classic rotation matrix:</p>
+        <p>\[\begin{pmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix}\]</p>
+        <p>This factorization shows that the matrix operation is equivalent to first performing a standard counterclockwise rotation by an angle \(\theta\), followed by a standard reflection across the horizontal x-axis.</p>
+
+        <div class="visual-desc">
+            <p><strong>Visual Description:</strong> A conceptual multi-stage transformation map. It starts with a circle of points labeled counterclockwise from A to H. The first step shows a counterclockwise rotation by an angle \(\theta\), which shifts the positions of all letters along the circle boundary. The second step shows a horizontal reflection across the x-axis, flipping the top and bottom halves of the circle. The final result reverses the original orientation of the points, changing the order from counterclockwise to clockwise. This composition of a rotation and a reflection always results in a net reflection across a specific line.</p>
+        </div>
+
+        <h5>Approach 2: Algebraic Fixed-Point Analysis</h5>
+        <p>To verify if this composition is equivalent to a pure reflection, we can solve for its fixed points. A transformation is a reflection if it has a line of invariant fixed points. We set up the matrix equation \(A\vec{v} = \vec{v}\):</p>
+        <p>\[\begin{pmatrix} \cos\theta & \sin\theta \\ \sin\theta & -\cos\theta \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix}\]</p>
+        <p>This matrix equation expands to the following system of linear equations:</p>
+        <p>\[x\cos\theta + y\sin\theta = x \implies x(\cos\theta - 1) + y\sin\theta = 0 \quad \text{--- Equation 1}\]</p>
+        <p>\[x\sin\theta - y\cos\theta = y \implies x\sin\theta - y\cos\theta - y = 0 \implies x\sin\theta - y(\cos\theta + 1) = 0 \quad \text{--- Equation 2}\]</p>
+        <p>We can check if these equations are linearly dependent. Multiplying Equation 1 by \(\sin\theta\) and Equation 2 by \(\cos\theta - 1\) gives:</p>
+        <p>From Equation 1 multiplied by \(\sin\theta\):</p>
+        <p>\[x\sin\theta(\cos\theta - 1) + y\sin^2\theta = 0\]</p>
+        <p>From Equation 2 multiplied by \(\cos\theta - 1\):</p>
+        <p>\[x\sin\theta(\cos\theta - 1) - y(\cos\theta + 1)(\cos\theta - 1) = 0 \implies x\sin\theta(\cos\theta - 1) - y(\cos^2\theta - 1) = 0\]</p>
+        <p>Since \(\cos^2\theta - 1 = -\sin^2\theta\), the second expression simplifies to:</p>
+        <p>\[x\sin\theta(\cos\theta - 1) + y\sin^2\theta = 0\]</p>
+        <p>Because both equations simplify to the exact same expression, they describe the same line. Any point satisfying the linear equation \(x(\cos\theta - 1) + y\sin\theta = 0\) remains fixed under the transformation. Since this is the equation of a straight line passing through the origin, the transformation represents a pure reflection across this line.</p>
+
+        <h3>Summary of Planar Isometries</h3>
+        <div class="important">
+            <p><strong>Key Takeaway:</strong> Every rigid isometry of the two-dimensional plane can be completely classified into one of the following basic geometric transformations:</p>
+            <p>1. A pure rotation about a center point (when the matrix component has a determinant of \(1\)), potentially followed by a translation.</p>
+            <p>2. A pure reflection across an axis line (when the matrix component has a determinant of \(-1\)), potentially followed by a translation.</p>
+        </div>
+        
+        <h3>Revisiting the Notion of Distance</h3>
+        <p>Let us shift our focus back to analyzing spatial metric distances within the plane. Given two standard coordinate points \(P = (x_1, y_1)\) and \(Q = (x_2, y_2)\), the traditional Euclidean distance formula gives the straight-line length separating them:</p>
+        <p>\[|PQ| = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]</p>
+        <p>While this allows us to measure lengths of straight line segments directly, a natural geometric question arises: How do we measure the length of a non-straight, winding curve?</p>
+
+        <div class="visual-desc">
+            <p><strong>Visual Description:</strong> A technical diagram illustrating a continuous, curved trajectory labeled \(\gamma(t)\) moving through a coordinate plane. The curve begins at a starting boundary position point labeled \(P\) and winds smoothly before terminating at a final position point labeled \(Q\).</p>
+        </div>
+
+        <p>Suppose that a continuous parameterized curve path \(\gamma(t)\) joins the two target coordinates \(P\) and \(Q\). We can define the boundary conditions such that the parameter variable value \(t\) begins at a fixed tracking value \(a\) and concludes at a value \(b\):</p>
+        <p>\[\gamma(a) = P\]</p>
+        <p>\[\gamma(b) = Q\]</p>
+        <p>Physically, the parameter variable \(t\) can be interpreted as elapsed tracking time, meaning \(\gamma(t) = (x(t), y(t))\) represents the precise spatial coordinate position of a particle moving over time.</p>
+
+        <h4>Determining Velocity and Speed</h4>
+        <p>Taking the component-wise time derivative of our position parameterization gives the vector velocity components:</p>
+        <p>\[\gamma'(t) = (x'(t), y'(t))\]</p>
+        <p>In a physical system, this derivative vector directly denotes the instantaneous velocity of the particle. The scalar magnitude of this velocity vector gives the instantaneous speed of motion:</p>
+        <p>\[|\gamma'(t)| = \sqrt{x'(t)^2 + y'(t)^2}\]</p>
+        <p>From fundamental physics principles, we know that if an object moves at a completely uniform constant speed, the total distance traversed is computed simply as:</p>
+        <p>\[\text{Distance} = \text{Speed} \times \text{Time}\]</p>
+        <p>However, when dealing with a general curve path where the instantaneous speed varies continuously across the time interval, simple multiplication is insufficient. Instead, we must sum up infinitely tiny segments of distance using definite integration.</p>
+
+        <div class="definition">
+            <p><strong>Definition (Euclidean Length of a Curve):</strong> Given a smooth parameterized curve trajectory \(\gamma(t)\) defined over the closed tracking domain interval \([a, b]\), its total net arc length \(L(\gamma)\) is defined as the integration of its speed magnitude function:</p>
+            <p>\[L(\gamma) = \int_{a}^{b} \sqrt{x'(t)^2 + y'(t)^2} \, dt\]</p>
+        </div>
+
+        <h3>Worked Example</h3>
+        <div class="example">
+            <p><strong>Example Problem:</strong> Consider a curve trajectory tracking path defined by the parameterization \(\gamma(t) = (t, 3t)\) over the uniform tracking interval where \(1 \leq t \leq 2\). Calculate the exact total Euclidean length of this path.</p>
+            
+            <div class="solution">
+                <h5>Solution Procedure:</h5>
+                <p>First, identify the individual position coordinate functions from the parametric vector component format:</p>
+                <p>\[x(t) = t\]</p>
+                <p>\[y(t) = 3t\]</p>
+                
+                <p>Next, calculate their respective first-order time derivatives with respect to \(t\):</p>
+                <p>\[x'(t) = 1\]</p>
+                <p>\[y'(t) = 3\]</p>
+                
+                <p>Substitute these constant derivative expressions back into the core arc length integration formula setup:</p>
+                <p>\[L(\gamma) = \int_{1}^{2} \sqrt{(1)^2 + (3)^2} \, dt\]</p>
+                <p>\[L(\gamma) = \int_{1}^{2} \sqrt{1 + 9} \, dt = \int_{1}^{2} \sqrt{10} \, dt\]</p>
+                
+                <p>Evaluating this definite integral over the interval boundaries gives:</p>
+                <p>\[L(\gamma) = \left[ \sqrt{10} \, t \right]_{1}^{2} = \sqrt{10}(2) - \sqrt{10}(1) = \sqrt{10}\]</p>
+
+                <h5>Alternative Verification via the Distance Formula:</h5>
+                <p>Since the derivative terms are completely independent of time \(t\), the speed is completely constant and the trajectory forms a straight line segment. We can cross-check this result using the standard distance formula by finding the initial and final endpoint coordinates:</p>
+                <p>At the start boundary where \(t = 1\):</p>
+                <p>\[\gamma(1) = (1, 3(1)) = (1, 3)\]</p>
+                <p>At the terminal boundary where \(t = 2\):</p>
+                <p>\[\gamma(2) = (2, 3(2)) = (2, 6)\]</p>
+                
+                <p>Applying the standard straight-line Euclidean metric formula directly to these two endpoint coordinate positions yields:</p>
+                <p>\[\text{Distance} = \sqrt{(2 - 1)^2 + (6 - 3)^2} = \sqrt{1^2 + 3^2} = \sqrt{1 + 9} = \sqrt{10}\]</p>
+                <p>Both methods yield the exact same value of \(\sqrt{10}\), verifying our integration framework.</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
