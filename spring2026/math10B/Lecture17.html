@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 17: Stokes' Theorem</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            h4 {
+                font-size: 1.2em;
+            }
+            h5 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 17 - Stokes' Theorem</h3>
+
+    <h4>Reminder: Vector Calculus Operations</h4>
+    <p>Given a three-dimensional vector field \(\mathbf{F}(x,y,z) = F_1(x,y,z)\hat{i} + F_2(x,y,z)\hat{j} + F_3(x,y,z)\hat{k}\), we define two fundamental differential operators:</p>
+
+    <h5>1. Divergence</h5>
+    <p>The divergence of a vector field measures the net flow out of a given point per unit volume.</p>
+    <div class="definition">
+        <strong>Definition:</strong> The divergence of \(\mathbf{F}\) is a scalar field denoted by \(\text{div }\mathbf{F}\) or \(\nabla \cdot \mathbf{F}\), calculated as:
+        \[\text{div }\mathbf{F} = \nabla \cdot \mathbf{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}\]
+        This can be conceptually represented as the dot product of the del operator \(\nabla = \left(\frac{\partial}{\partial x}\hat{i} + \frac{\partial}{\partial y}\hat{j} + \frac{\partial}{\partial z}\hat{k}\right)\) with the vector field \(\mathbf{F}\).
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description of Divergence Diagrams:</strong> The handwritten notes illustrate a field with arrows spreading outwards radially away from a common central area, labeled as "High divergence," symbolizing an expanding fluid source point.
+    </div>
+
+    <h5>2. Curl</h5>
+    <p>The curl of a vector field measures the tendency of the field to rotate or circulate about a given point.</p>
+    <div class="definition">
+        <strong>Definition:</strong> The curl of \(\mathbf{F}\) is a vector field denoted by \(\text{curl }\mathbf{F}\) or \(\nabla \times \mathbf{F}\), computed via the cross product of the del operator and the field:
+        \[\text{curl }\mathbf{F} = \nabla \times \mathbf{F} = \left(\frac{\partial}{\partial x}\hat{i} + \frac{\partial}{\partial y}\hat{j} + \frac{\partial}{\partial z}\hat{k}\right) \times \mathbf{F}\]
+        \[= \left(\frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z}\right)\hat{i} + \left(\frac{\partial F_1}{\partial z} - \frac{\partial F_3}{\partial x}\right)\hat{j} + \left(\frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y}\right)\hat{k}\]
+    </div>
+
+    <div class="visual-desc">
+        <strong>Visual Description of Curl Diagrams:</strong> The notes showcase a set of field lines forming concentric swirling paths around a central axis, annotated as "High curl," modeling localized fluid vortex circulation.
+    </div>
+
+    <div class="example">
+        <h5>Worked Example 1</h5>
+        <p>Given the vector field \(\mathbf{F}(x,y,z) = x^2\hat{i} + xz\hat{j} - e^{xz}\hat{k}\), compute both \(\text{div }\mathbf{F}\) and \(\text{curl }\mathbf{F}\).</p>
+        
+        <div class="solution">
+            <strong>Solution:</strong>
+            <p>First, we evaluate the divergence by calculating the respective partial derivatives:</p>
+            \[\text{div }\mathbf{F} = \frac{\partial}{\partial x}(x^2) + \frac{\partial}{\partial y}(xz) + \frac{\partial}{\partial z}(-e^{xz})\]
+            \[= 2x + 0 - xe^{xz} = 2x - xe^{xz}\]
+            
+            <p>Next, we determine the curl using the matrix determinant expansion formulation:</p>
+            \[\text{curl }\mathbf{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ x^2 & xz & -e^{xz} \end{vmatrix}\]
+            \[= \left( \frac{\partial}{\partial y}(-e^{xz}) - \frac{\partial}{\partial z}(xz) \right)\hat{i} - \left( \frac{\partial}{\partial x}(-e^{xz}) - \frac{\partial}{\partial z}(x^2) \right)\hat{j} + \left( \frac{\partial}{\partial x}(xz) - \frac{\partial}{\partial y}(x^2) \right)\hat{k}\]
+            \[= (0 - x)\hat{i} - (-ze^{xz} - 0)\hat{j} + (z - 0)\hat{k}\]
+            \[= -x\hat{i} + ze^{xz}\hat{j} + z\hat{k}\]
+        </div>
+    </div>
+
+    <h3>Stokes' Theorem</h3>
+    <p>Let \(\mathbf{F}\) be a continuous vector-valued function with continuous partial derivatives, and let \(S\) be a smooth parametrized surface bounded by a closed piece-wise smooth boundary curve denoted by \(\partial S\).</p>
+    
+    <div class="theorem">
+        <strong>Theorem (Stokes' Theorem):</strong> Stokes' Theorem states that the surface integral of the curl of a vector field over a surface \(S\) is exactly equal to the line integral of the vector field along its boundary curve \(\partial S\) traversed with consistent orientation:
+        \[\iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \int_{\partial S} \mathbf{F} \cdot d\mathbf{r}\]
+        This states that the "Integral of \(\nabla \times \mathbf{F}\) on surface \(S\)" is equal to the "Integral of \(\mathbf{F}\) on boundary curve \(\partial S\)."
+    </div>
+
+    <p>This theorem can be viewed as a higher-dimensional generalization of the Fundamental Theorem of Calculus, which states that the integral of a derivative over a region depends only on the values of the function at the region's boundaries: \(\int_{a}^{b} f'(x)dx = f(b) - f(a)\).</p>
+
+    <div class="visual-desc">
+        <strong>Visual Description of Surface Bounded Curve Orientation:</strong> A 3D dome-like topological surface structure \(S\) is shown with regular upward-pointing normal unit vectors \(\hat{n}\). The bottom edge forms an enclosing horizontal boundary loop path \(\partial S\). A consistent direction indicator arrow is drawn along this outer boundary curve following counterclockwise rotation rules.
+    </div>
+
+    <div class="important">
+        <strong>Important: Right-Hand Rule for Surface Orientation</strong>
+        <p>To establish compatible orientations between the bounding contour line and the surface region, apply the right-hand thumb rule. If you wrap your right hand's fingers along the path of the curve \(\partial S\), your outstretched thumb points directly in the direction of the chosen surface normal vector \(\hat{n}\).</p>
+    </div>
+
+    <div class="example">
+        <h5>Worked Example 2</h5>
+        <p>Compute the line integral \(\int_{\partial S} -y^2 dx + x^2 dy - z^2 dz\) where the closed curve path is defined by the intersection of the cylinder \(x^2 + y^2 = 1\) and the tilted plane \(x + y + z = 1\), traversed in a counter-clockwise direction when looking down from above.</p>
+        
+        <div class="visual-desc">
+            <strong>Visual Description of Tilted Planar Cylinder Cut:</strong> An upright circular cylinder along the vertical z-axis (\(x^2 + y^2 = 1\)) is sliced obliquely by an upper plane boundary defined by \(x + y + z = 1\). The resulting intersection track forms a stretched ellipse loop curve tracking around the cylinder perimeter.
+        </div>
+
+        <div class="steps">
+            <strong>Method 1: Direct Line Integral Computation Strategy</strong>
+            <p>To evaluate directly, we parametrize the boundary circle path projected onto the \(xy\)-plane:</p>
+            <ul>
+                <li>\(x = \cos\theta\)</li>
+                <li>\(y = \sin\theta\)</li>
+                <li>Bounds: \(0 \le \theta \le 2\pi\)</li>
+                <li>Using the planar formula, \(z = 1 - x - y = 1 - \cos\theta - \sin\theta\)</li>
+            </ul>
+            <p>Taking differentials gives:</p>
+            <ul>
+                <li>\(dx = -\sin\theta \, d\theta\)</li>
+                <li>\(dy = \cos\theta \, d\theta\)</li>
+                <li>\(dz = (\sin\theta - \cos\theta) \, d\theta\)</li>
+            </ul>
+            <p>Substituting these into our path integral yields:</p>
+            \[\int_{0}^{2\pi} -\sin^2\theta (-\sin\theta \, d\theta) + \int_{0}^{2\pi} \cos^2\theta (\cos\theta \, d\theta) - \int_{0}^{2\pi} (1 - \cos\theta - \sin\theta)^2 (\sin\theta - \cos\theta) \, d\theta\]
+            <p>While fully viable, computing this explicit integral directly becomes tedious. Instead, we can apply Stokes' Theorem!</p>
+        </div>
+
+        <div class="solution">
+            <strong>Method 2: Evaluation using Stokes' Theorem</strong>
+            <p>We convert the boundary path problem to an integrated curl evaluation across the bounded surface region:</p>
+            \[\int_{\partial S} \mathbf{F} \cdot d\mathbf{r} = \iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S}\]
+            <p>Here, the vector field is defined as \(\mathbf{F} = -y^2\hat{i} + x^2\hat{j} - z^2\hat{k}\). We compute the curl vector field:</p>
+            \[\nabla \times \mathbf{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ -y^2 & x^2 & -z^2 \end{vmatrix}\]
+            \[= (0 - 0)\hat{i} - (0 - 0)\hat{j} + \left( \frac{\partial}{\partial x}(x^2) - \frac{\partial}{\partial y}(-y^2) \right)\hat{k}\]
+            \[= (2x - (-2y))\hat{k} = (2x + 2y)\hat{k}\]
+
+            <p>Now, we parameterize the elliptical interior surface cap lying inside the cutting plane \(x+y+z=1\) using cylindrical coordinate projections:</p>
+            <ul>
+                <li>\(x = r\cos\theta\)</li>
+                <li>\(y = r\sin\theta\)</li>
+                <li>\(z = 1 - r\cos\theta - r\sin\theta\)</li>
+                <li>Parameter bounds: \(0 \le r \le 1\) and \(0 \le \theta \le 2\pi\)</li>
+            </ul>
+            
+            <p>We compute the standard tangent vectors along our surface grid:</p>
+            \[\mathbf{T}_r = \langle \cos\theta, \sin\theta, -\cos\theta - \sin\theta \rangle\]
+            \[\mathbf{T}_\theta = \langle -r\sin\theta, r\cos\theta, r\sin\theta - r\cos\theta \rangle\]
+            
+            <p>Computing their cross product gives the normal area differential vector element:</p>
+            \[\mathbf{T}_r \times \mathbf{T}_\theta = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \cos\theta & \sin\theta & -\cos\theta - \sin\theta \\ -r\sin\theta & r\cos\theta & r\sin\theta - r\cos\theta \end{vmatrix} = r\hat{i} + r\hat{j} + r\hat{k}\]
+            
+            <p>Next, calculate the dot product inside the double integral:</p>
+            \[(\nabla \times \mathbf{F}) \cdot (\mathbf{T}_r \times \mathbf{T}_\theta) = \langle 0, 0, 2x + 2y \rangle \cdot \langle r, r, r \rangle = (2x + 2y)r\]
+            <p>Substituting the parameterized coordinates \(x\) and \(y\):</p>
+            \[= (2r\cos\theta + 2r\sin\theta)r = 2r^2(\cos\theta + \sin\theta)\]
+
+            <p>Setting up the final iterated double integral bounds:</p>
+            \[\int_{0}^{2\pi} \int_{0}^{1} 2r^2(\cos\theta + \sin\theta) \, dr \, d\theta\]
+            <p>Evaluating the radial inside component first:</p>
+            \[\int_{0}^{1} 2r^2(\cos\theta + \sin\theta) \, dr = \left[ \frac{2}{3}r^3(\cos\theta + \sin\theta) \right]_{0}^{1} = \frac{2}{3}(\cos\theta + \sin\theta)\]
+            <p>Now, evaluating the outermost angular integral across a full periodic cycle:</p>
+            \[\int_{0}^{2\pi} \frac{2}{3}(\cos\theta + \sin\theta) \, d\theta = \frac{2}{3} \left[ \sin\theta - \cos\theta \right]_{0}^{2\pi} = \frac{2}{3} [ (0 - 1) - (0 - 1) ] = 0\]
+            <p>Thus, the value of the integral is <strong>0</strong>.</p>
+        </div>
+    </div>
+
+    <h4>Connection to Green's Theorem</h4>
+    <p>Stokes' Theorem provides a direct higher-dimensional visualization extension of Green's Theorem when restricted to a flat planar surface environment.</p>
+    
+    <div class="important">
+        <p>Consider a vector field restricted to the two-dimensional \(xy\)-plane: \(\mathbf{F} = P(x,y)\hat{i} + Q(x,y)\hat{j}\), over a flat surface region \(S\) embedded horizontally. Applying Stokes' Theorem:</p>
+        \[\int_{\partial S} \mathbf{F} \cdot d\mathbf{r} = \int_{\partial S} P\,dx + Q\,dy = \iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S}\]
+        <p>Evaluating the curl matrix structure for this planar vector field:</p>
+        \[\nabla \times \mathbf{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q & 0 \end{vmatrix} = \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\hat{k} = (Q_x - P_y)\hat{k}\]
+        <p>Since the upward unit normal vector matching our standard horizontal plane is simply \(\hat{n} = \hat{k}\), the right-hand area element simplifies to \(d\mathbf{S} = \hat{k}\,dS\). The expression becomes:</p>
+        \[\iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \iint_{S} (Q_x - P_y)\hat{k} \cdot \hat{k}\,dS = \iint_{S} \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA\]
+        <p>This yields exactly the statement of Green's Theorem, demonstrating that Green's Theorem is a special case of Stokes' Theorem for flat, two-dimensional regions.</p>
+    </div>
+
+    <div class="example">
+        <h5>Worked Example 3</h5>
+        <p>Compute the line integral of the field \(\mathbf{F} = yz\hat{i} + xz\hat{j} + xy\hat{k}\) along a triangular loop path connecting the vertices \((0,0,1)\), \((0,1,0)\), and \((1,0,0)\).</p>
+        
+        <div class="visual-desc">
+            <strong>Visual Description of the Triangular Surface Patch:</strong> The diagram sketches three coordinate axes with points marked on each axis at an isolated unit distance from the origin. Connecting these three coordinates forms a flat, slanted triangle face suspended across the positive octant space.
+        </div>
+
+        <div class="solution">
+            <strong>Solution:</strong>
+            <p>Instead of dividing our line integral computation manually into three separate line segments along each edge of the triangle, we evaluate it using Stokes' Theorem. First, let's determine the curl of the vector field:</p>
+            \[\nabla \times \mathbf{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ yz & xz & xy \end{vmatrix}\]
+            \[= \left(\frac{\partial}{\partial y}(xy) - \frac{\partial}{\partial z}(xz)\right)\hat{i} - \left(\frac{\partial}{\partial x}(xy) - \frac{\partial}{\partial z}(yz)\right)\hat{j} + \left(\frac{\partial}{\partial x}(xz) - \frac{\partial}{\partial y}(yz)\right)\hat{k}\]
+            \[= (x - x)\hat{i} - (y - y)\hat{j} + (z - z)\hat{k} = \mathbf{0}\]
+            <p>Since the curl is identically zero everywhere (\(\nabla \times \mathbf{F} = \mathbf{0}\)), the surface integral of the curl over the triangular face must evaluate to zero:</p>
+            \[\iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \iint_{S} \mathbf{0} \cdot d\mathbf{S} = 0\]
+            <p>Therefore, the value of the line integral is <strong>0</strong>.</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Worked Example 4</h5>
+        <p>Evaluate the same problem scenario but with a modified vector field given by \(\mathbf{G} = y^2\hat{i} + z\hat{j} + x\hat{k}\) over the identical planar surface triangular path bounded by vertices \((1,0,0)\), \((0,1,0)\), and \((0,0,1)\).</p>
+
+<div class="solution">
+    <h5>Solution</h5>
+    
+    <div class="steps">
+        <p><strong>Step 1: Compute the Curl of \(\mathbf{F}\)</strong></p>
+        <p>We apply the curl operator using the standard determinant formulation:</p>
+        \[
+        \nabla \times \mathbf{F} = \begin{vmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        y^2 & z^2 & x^2
+        \end{vmatrix}
+        \]
+        <p>Computing each individual component:</p>
+        <ul>
+            <li>\(\hat{i}\)-component: \(\frac{\partial}{\partial y}(x^2) - \frac{\partial}{\partial z}(z^2) = 0 - 2z = -2z\)</li>
+            <li>\(\hat{j}\)-component: \(\frac{\partial}{\partial z}(y^2) - \frac{\partial}{\partial x}(x^2) = 0 - 2x = -2x\)</li>
+            <li>\(\hat{k}\)-component: \(\frac{\partial}{\partial x}(z^2) - \frac{\partial}{\partial y}(y^2) = 0 - 2y = -2y\)</li>
+        </ul>
+        <p>Therefore, the curl vector field is:</p>
+        \[ \nabla \times \mathbf{F} = \langle -2z, -2x, -2y \rangle \]
+    </div>
+
+    <div class="steps">
+        <p><strong>Step 2: Parametrize the Triangular Surface</strong></p>
+        <p>The surface \(S\) is the portion of the plane passing through the points \((1,0,0)\), \((0,1,0)\), and \((0,0,1)\). The structural equation for this plane is:</p>
+        \[ x + y + z = 1 \implies z = 1 - x - y \]
+        <p>We map this explicit surface parameterization over the two-dimensional shadow region \(D\) projected onto the \(xy\)-plane:</p>
+        \[ \mathbf{r}(x,y) = \langle x, y, 1 - x - y \rangle \]
+        
+        <p>To find the normal vector, we calculate the partial derivatives with respect to the coordinates:</p>
+        \[ \mathbf{r}_x = \langle 1, 0, -1 \rangle \]
+        \[ \mathbf{r}_y = \langle 0, 1, -1 \rangle \]
+        
+        <p>The fundamental cross product yields the upward-pointing normal vector element:</p>
+        \[
+        \mathbf{r}_x \times \mathbf{r}_y = \begin{vmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        1 & 0 & -1 \\
+        0 & 1 & -1
+        \end{vmatrix} = \hat{i}(0 - (-1)) - \hat{j}(-1 - 0) + \hat{k}(1 - 0) = \langle 1, 1, 1 \rangle
+        \]
+        <p>Because the \(\hat{k}\) component is positive, this coordinate matching aligns naturally with the required counterclockwise boundary rotation under the right-hand rule.</p>
+    </div>
+
+    <div class="steps">
+        <p><strong>Step 3: Establish Integration Bounds over Region \(D\)</strong></p>
+        <p>The flat projection domain \(D\) in the \(xy\)-plane forms a triangle bounded by the lines \(x = 0\), \(y = 0\), and the linear boundary curve \(x + y = 1\), which rewrites as \(y = 1 - x\).</p>
+
+        <div class="visual-desc">
+            Visual Description: A two-dimensional coordinate plot showing region D shaded in light blue within the first quadrant. The vertical axis is labeled y and the horizontal axis is labeled x. The triangular space is bounded on the left by the y-axis, on the bottom by the x-axis, and on the upper right by a downward sloping line labeled y equals 1 minus x, terminating at intercepts (1,0) and (0,1).
+        </div>
+        <p>Thus, expressing the region as a Type I domain yields the matching iterated limits:</p>
+        \[ 0 \le x \le 1 \]
+        \[ 0 \le y \le 1 - x \]
+    </div>
+
+    <div class="steps">
+        <p><strong>Step 4: Explicit Integration and Iteration Setup</strong></p>
+        <p>By Stokes' Theorem, we translate the vector path structure into a scalar double integral:</p>
+        \[ \iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \iint_{D} (\nabla \times \mathbf{F}) \cdot (\mathbf{r}_x \times \mathbf{r}_y) \, dA \]
+        <p>Evaluating the vector dot product across our domain parameters:</p>
+        \[ \langle -2z, -2x, -2y \rangle \cdot \langle 1, 1, 1 \rangle = -2z - 2x - 2y = -2(x + y + z) \]
+        <p>Since every point sits precisely on the constraint plane surface where \(x + y + z = 1\), the integrand simplifies directly:</p>
+        \[ -2(1) = -2 \]
+        
+        <p>We now execute the iterated calculus operations manually without relying on external geometric area shortcuts:</p>
+        \[ \int_{0}^{1} \int_{0}^{1-x} -2 \, dy \, dx \]
+        
+        <p>First, integrate the inner expression with respect to \(y\):</p>
+        \[ \int_{0}^{1-x} -2 \, dy = \Big[ -2y \Big]_{0}^{1-x} = -2(1 - x) - 0 = -2 + 2x \]
+        
+        <p>Next, integrate the resulting single-variable formula with respect to \(x\):</p>
+        \[ \int_{0}^{1} (-2 + 2x) \, dx = \Big[ -2x + x^2 \Big]_{0}^{1} \]
+        <p>Evaluating between the explicit bounds:</p>
+        \[ \left( -2(1) + (1)^2 \right) - \left( -2(0) + (0)^2 \right) = -2 + 1 = -1 \]
+    </div>
+
+    <p><strong>Final Answer:</strong></p>
+    \[ \oint_{C} \mathbf{F} \cdot d\mathbf{r} = -1. \]
+</div>
