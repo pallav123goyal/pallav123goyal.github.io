@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 133 - Sample Final Exam</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h3>MATH 133 Sample Final Exam</h3>
+        <p><strong>University of California, Riverside</strong></p>
+        <p><strong>Name:</strong> ___________________________ &nbsp;&nbsp;&nbsp;&nbsp; <strong>Student ID:</strong> ___________________________</p>
+    </header>
+
+    <section aria-labelledby="instructions-heading">
+        <h4 id="instructions-heading">1. Instructions</h4>
+        <div class="important">
+            <p><strong>Important:</strong> Please review the following test-taking guidelines carefully.</p>
+            <ul>
+                <li>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</li>
+                <li>If you have questions at any point, please raise your hand.</li>
+                <li>In every question (unless stated otherwise), you are supposed to justify your answers as precisely as possible.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section aria-labelledby="questions-heading">
+        <h3 id="questions-heading">2. Questions</h3>
+
+        <h4 id="sec1-heading">1. Important Theorems and Definitions (5 points each)</h4>
+        
+        <h5 id="q1a-heading">(a) Pythagorean Theorem</h5>
+        <div class="example">
+            <p>What are the hypotheses of the Pythagorean theorem? What is the conclusion?</p>
+        </div>
+
+        <h5 id="q1b-heading">(b) Parallel Axiom</h5>
+        <div class="example">
+            <p>What are the hypotheses of the Parallel Axiom? What is the conclusion? (We gave two equivalent formulations of the parallel axiom in lecture, so you can use either one.)</p>
+        </div>
+
+        <h5 id="q1c-heading">(c) Thales Theorem</h5>
+        <div class="example">
+            <p>What are the hypotheses of Thales theorem? What is the conclusion?</p>
+        </div>
+
+        <h5 id="q1d-heading">(d) SSS Congruence Theorem</h5>
+        <div class="example">
+            <p>State the SSS congruence theorem.</p>
+        </div>
+
+        <h4>2. True or False Questions (8 points each)</h4>
+        <p>For each of the following statements, determine if it is true or false, and provide a brief proof or counterexample for your claim. Credit on these questions is based on your justification.</p>
+
+        <h5 id="q2a-heading">(a) Segment Constructibility</h5>
+        <div class="example">
+            <p>Given a line segment of length \(1\), a line segment of length \(\sqrt{\pi}+\frac{3}{2}\) is constructible using compass and straightedge.</p>
+        </div>
+
+        <h5 id="q2b-heading">(b) Linear Composition</h5>
+        <div class="example">
+            <p>The composition of any two linear transformations of \(\mathbb{R}^{2}\) is an affine transformation of \(\mathbb{R}^{2}.\)</p>
+        </div>
+
+        <h5 id="q2c-heading">(c) Isometries</h5>
+        <div class="example">
+            <p>Dilation is an isometry in Euclidean geometry.</p>
+        </div>
+
+        <h5 id="q2d-heading">(d) Set Mapping</h5>
+        <div class="example">
+            <p>The transformation \(f(x,y)=\left(\cos\left(\frac{5\pi}{6}\right)x-\sin\left(\frac{5\pi}{6}\right)y, \; \sin\left(\frac{5\pi}{6}\right)x+\cos\left(\frac{5\pi}{6}\right)y\right)\) sends the set of points \((x,y)\in\mathbb{R}^{2}\) satisfying the equation \((x-3)^{2}+(y+1)^{2}=49\) to a line in \(\mathbb{R}^2\).</p>
+        </div>
+
+        <h4>3. Short Answer / Constructions</h4>
+
+        <h5 id="q3a-heading">(a) Geometric Segment Construction (14 points)</h5>
+        <div class="example">
+            <p>Given line segments \(AB\) and \(CD\) that are not parallel or perpendicular to each other and do not intersect, construct a line segment of length \(|CD| - |AB|\). List all your steps.</p>
+            
+            <p>You may use the following tools:</p>
+            <ul>
+                <li>Can draw a circle of radius \(r\) with center \(Z\) (Compass Axiom 3)</li>
+                <li>Can draw a straight line through any two points and can extend any line segment (Straightedge Axioms 1–2)</li>
+                <li>Can draw a parallel line to a line through a point \(P\) (Axiom 5)</li>
+                <li>Can draw a perpendicular line to a line \(L\) through a point \(P\) (the point \(P\) can be on the line or not)</li>
+                <li>Can bisect an angle</li>
+            </ul>
+            <p>Justify why your construction works correctly.</p>
+        </div>
+
+        <h5 id="q3b-heading">(b) Transformation Analysis 1 (12 points)</h5>
+        <div class="example">
+            <p>Let \(f\left(\begin{bmatrix}x\\ y\end{bmatrix}\right)=\begin{bmatrix}-1&1\\ 0&-1\end{bmatrix}\begin{bmatrix}x\\ y\end{bmatrix}+\begin{bmatrix}2\\ 0\end{bmatrix}\) be a transformation of \(\mathbb{R}^{2}.\)</p>
+            <ol>
+                <li>Compute \(f(1,2)\) and \(f(-3,4)\).</li>
+                <li>Determine whether \(f\) is an isometry.</li>
+                <li>Find all fixed points of \(f\).</li>
+                <li>Is \(f\) a translation, reflection, rotation, glide reflection, or none of the above?</li>
+            </ol>
+        </div>
+
+        <h5 id="q3c-heading">(c) Transformation Analysis 2 (12 points)</h5>
+        <div class="example">
+            <p>Let \(f(x,y)=(-y+2,-x-2)\) be a transformation of \(\mathbb{R}^{2}.\)</p>
+            <ol>
+                <li>Compute \(f(1,2)\) and \(f(-3,4)\).</li>
+                <li>Determine whether \(f\) is an isometry.</li>
+                <li>Find all fixed points of \(f\).</li>
+                <li>Is \(f\) a translation, reflection, rotation, glide reflection, or none of the above?</li>
+            </ol>
+        </div>
+
+        <h4>4. Short Proofs</h4>
+
+        <h5 id="q4a-heading">(a) Quadrilateral Properties (14 points)</h5>
+        <div class="example">
+            <p>In this problem, you will show that if opposite sides of a quadrilateral \(ABCD\) have the same length, then the quadrilateral is a parallelogram. You can use any results from class, worksheets, or the midterm.</p>
+            <ol>
+                <li>Explain why \(\Delta ABC \cong \Delta CDA\).</li>
+                <li>Explain why \(\angle CBA + \angle BAD = \pi\).</li>
+                <li>Explain why you can conclude that \(BC \parallel AD\).</li>
+                <li>Determine what properties complete the proof of this statement.</li>
+            </ol>
+        </div>
+        
+        <h5 id="q4b-heading">(b) Midpoint Coordinates (6 points)</h5>
+        <div class="example">
+            <p>Consider two points \((a,b)\) and \((c,d)\) in the Cartesian plane. Show that the midpoint of these points has coordinates \(\left(\frac{a+c}{2}, \frac{b+d}{2}\right)\).</p>
+        </div>
+
+        <h5 id="q4c-heading">(c) Circle Tangency (6 points)</h5>
+        <div class="example">
+            <p>Show that the line \(3x+4y-5=0\) is tangent to the circle \(x^{2}+y^{2}=1\).</p>
+        </div>
+    </section>
+
+</body>
+</html>
