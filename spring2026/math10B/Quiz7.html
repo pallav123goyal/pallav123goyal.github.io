@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 10B - Quiz 7</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Math Display Customizations */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Math 10B - Quiz 7 (Spring 2026)</h3>
+
+<h3>Problem 1 (5 points)</h3>
+    <p>
+        Set up the surface integral for the function \(f(x,y,z) = e^x + y^2 z\) on the surface of the graph of the function \(g(x,y) = x^3 + e^y\) over the rectangle \((x,y) \in [0,2] \times [0,3]\). Find the surface differential element by parameterizing in terms of \(x\) and \(y\).
+    </p>
+
+    <h4>Step-by-Step Solution</h4>
+    <div class="solution">
+        <h5>Step 1: Parameterize the surface</h5>
+        <p>
+            We choose \(x\) and \(y\) as our parameters to describe the surface \(z = x^3 + e^y\). The vector parameterization equation \(\mathbf{r}(x,y)\) representing any point on this surface is:
+        </p>
+        \[\mathbf{r}(x,y) = x\mathbf{\hat{i}} + y\mathbf{\hat{j}} + (x^3 + e^y)\mathbf{\hat{k}}\]
+        <p>
+            The limits for our parameters are defined directly by the rectangular region: \(x \in [0,2]\) and \(y \in [0,3]\).
+        </p>
+
+        <h5>Step 2: Compute the tangent vectors</h5>
+        <p>
+            To construct the normal vector, we find the partial derivatives of our parameterization vector with respect to each independent variable:
+        </p>
+        \[\mathbf{r}_x = \frac{\partial \mathbf{r}}{\partial x} = 1\mathbf{\hat{i}} + 0\mathbf{\hat{j}} + 3x^2\mathbf{\hat{k}}\]
+        \[\mathbf{r}_y = \frac{\partial \mathbf{r}}{\partial y} = 0\mathbf{\hat{i}} + 1\mathbf{\hat{j}} + e^y\mathbf{\hat{k}}\]
+
+        <h5>Step 3: Calculate the normal vector via the cross product</h5>
+        <p>
+            The standard cross product of the tangent vectors yields a vector perpendicular to the surface:
+        </p>
+        \[\mathbf{r}_x \times \mathbf{r}_y = \begin{vmatrix} \mathbf{\hat{i}} & \mathbf{\hat{j}} & \mathbf{\hat{k}} \\ 1 & 0 & 3x^2 \\ 0 & 1 & e^y \end{vmatrix}\]
+        \[= \mathbf{\hat{i}}(0 - 3x^2) - \mathbf{\hat{j}}(e^y - 0) + \mathbf{\hat{k}}(1 - 0)\]
+        \[= -3x^2\mathbf{\hat{i}} - e^y\mathbf{\hat{j}} + 1\mathbf{\hat{k}}\]
+
+        <h5>Step 4: Construct the magnitude of the normal vector for the scalar surface element</h5>
+        <p>
+            Since we are evaluating a scalar surface integral, we require the magnitude of the cross product vector to find our differential area component \(dS = \|\mathbf{r}_x \times \mathbf{r}_y\| \, dy \, dx\):
+        </p>
+        \[\|\mathbf{r}_x \times \mathbf{r}_y\| = \sqrt{(-3x^2)^2 + (-e^y)^2 + (1)^2} = \sqrt{9x^4 + e^{2y} + 1}\]
+        \[dS = \sqrt{1 + 9x^4 + e^{2y}} \, dy \, dx\]
+
+        <h5>Step 5: Substitute the parameterized variables into the integrand and set up the limits</h5>
+        <p>
+            We transform the target function \(f(x,y,z) = e^x + y^2 z\) into the parameter space by replacing \(z\) with its definition along the surface, \(z = x^3 + e^y\):
+        </p>
+        \[f(\mathbf{r}(x,y)) = e^x + y^2(x^3 + e^y)\]
+        <p>
+            Combining the converted integrand, the parameterized magnitude factor, and the rectangular coordinate boundaries, the full surface integral becomes:
+        </p>
+        \[\int_{0}^{2} \int_{0}^{3} \left(e^x + y^2(x^3 + e^y)\right) \sqrt{1 + 9x^4 + e^{2y}} \, dy \, dx\]
+    </div>
+
+    <h3>Problem 2 (5 points)</h3>
+    <p>
+        Set up the surface integral for the function \(\mathbf{F}(x,y,z) = x^2 y \mathbf{\hat{i}} + e^y \mathbf{\hat{j}} + \sin(xy) \mathbf{\hat{k}}\) on the cylinder \(x^2 + y^2 = 9\) between \(z = 2\) and \(z = 4\). Use the outward normal direction.
+    </p>
+    
+    <h4>Step-by-Step Solution</h4>
+    <div class="solution">
+        <h5>Step 1: Parameterize the cylindrical surface</h5>
+        <p>
+            The cylinder expression \(x^2 + y^2 = 9\) points to a fixed radius of \(r = 3\). We choose standard cylindrical coordinates \(\theta\) and \(z\) as our parameter space variables. The parameterization position vector \(\mathbf{r}(\theta, z)\) is:
+        </p>
+        \[\mathbf{r}(\theta, z) = 3\cos(\theta)\mathbf{\hat{i}} + 3\sin(\theta)\mathbf{\hat{j}} + z\mathbf{\hat{k}}\]
+        <p>
+            The boundaries for these parameter constraints are defined by \(\theta \in [0, 2\pi]\) and \(z \in [2, 4]\).
+        </p>
+
+        <h5>Step 2: Find the normal tangent cross product vector</h5>
+        <p>
+            To compute the directed normal vector piece, we first calculate the respective partial derivative tangent vectors:
+        </p>
+        \[\frac{\partial \mathbf{r}}{\partial \theta} = -3\sin(\theta)\mathbf{\hat{i}} + 3\cos(\theta)\mathbf{\hat{j}} + 0\mathbf{\hat{k}}\]
+        \[\frac{\partial \mathbf{r}}{\partial z} = 0\mathbf{\hat{i}} + 0\mathbf{\hat{j}} + 1\mathbf{\hat{k}}\]
+        <p>
+            Taking the cross product of these partials establishes our normal direction vector:
+        </p>
+        \[\frac{\partial \mathbf{r}}{\partial \theta} \times \frac{\partial \mathbf{r}}{\partial z} = \begin{vmatrix} \mathbf{\hat{i}} & \mathbf{\hat{j}} & \mathbf{\hat{k}} \\ -3\sin(\theta) & 3\cos(\theta) & 0 \\ 0 & 0 & 1 \end{vmatrix} = 3\cos(\theta)\mathbf{\hat{i}} + 3\sin(\theta)\mathbf{\hat{j}} + 0\mathbf{\hat{k}}\]
+        <p>
+            Notice that this normal orientation vector points directly outward away from the \(z\)-axis center line (since components match the signs of \(x\) and \(y\)), successfully complying with the "outward normal" requirement. Thus, \(d\mathbf{\mathbf{S}} = (3\cos(\theta)\mathbf{\hat{i}} + 3\sin(\theta)\mathbf{\hat{j}}) \, dz \, d\theta\).
+        </p>
+
+        <h5>Step 3: Evaluate the vector field \(\mathbf{F}\) on the surface</h5>
+        <p>
+            Substituting \(x = 3\cos(\theta)\), \(y = 3\sin(\theta)\), and \(z = z\) into the vector equation \(\mathbf{F}(x,y,z)\):
+        </p>
+        \[\mathbf{F}(\mathbf{r}(\theta,z)) = (3\cos(\theta))^2(3\sin(\theta))\mathbf{\hat{i}} + e^{3\sin(\theta)}\mathbf{\hat{j}} + \sin(9\cos(\theta)\sin(\theta))\mathbf{\hat{k}}\]
+        \[\mathbf{F}(\mathbf{r}(\theta,z)) = 27\cos^2(\theta)\sin(\theta)\mathbf{\hat{i}} + e^{3\sin(\theta)}\mathbf{\hat{j}} + \sin(9\cos(\theta)\sin(\theta))\mathbf{\hat{k}}\]
+
+        <h5>Step 4: Compute the dot product \(\mathbf{F} \cdot \left(\frac{\partial \mathbf{r}}{\partial \theta} \times \frac{\partial \mathbf{r}}{\partial z}\right)\)</h5>
+        <p>
+            Performing the algebraic dot product leaves us with a scalar expression ready for direct single-plane evaluation:
+        </p>
+        \[\mathbf{F} \cdot \left(\frac{\partial \mathbf{r}}{\partial \theta} \times \frac{\partial \mathbf{r}}{\partial z}\right) = \left(27\cos^2(\theta)\sin(\theta)\right)(3\cos(\theta)) + \left(e^{3\sin(\theta)}\right)(3\sin(\theta)) + \left(\sin(9\cos(\theta)\sin(\theta))\right)(0)\]
+        \[= 81\cos^3(\theta)\sin(\theta) + 3\sin(\theta)e^{3\sin(\theta)}\]
+
+        <h5>Step 5: Final double integral integration setup</h5>
+        <p>
+            Assembling limits and our dot product scalar together, the comprehensive surface integral setup becomes:
+        </p>
+        \[\int_{0}^{2\pi} \int_{2}^{4} \left(81\cos^3(\theta)\sin(\theta) + 3\sin(\theta)e^{3\sin(\theta)}\right) \, dz \, d\theta\]
+    </div>
+
+</body>
+</html>
