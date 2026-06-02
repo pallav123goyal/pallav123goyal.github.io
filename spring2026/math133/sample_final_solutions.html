@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 133 - Sample Final Exam Solutions</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h3>MATH 133 Sample Final Exam - Solutions</h3>
+    </header>
+
+    <section aria-labelledby="instructions-heading">
+        <h3 id="instructions-heading">1. Instructions</h3>
+        <div class="important">
+            <p><strong>Solutions Guide:</strong> The following text contains complete, rigorous solutions and step-by-step geometric arguments for the sample final exam questions.</p>
+        </div>
+    </section>
+
+    <section aria-labelledby="questions-heading">
+        <h3 id="questions-heading">2. Questions and Solutions</h3>
+
+        <h4 id="sec1-heading">1. Important Theorems and Definitions (5 points each)</h4>
+        
+        <h5 id="q1a-heading">(a) Pythagorean Theorem</h5>
+        <div class="example">
+            <p>What are the hypotheses of the Pythagorean theorem? What is the conclusion?</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li><strong>Hypothesis:</strong> Given a right triangle in Euclidean plane geometry with side lengths \(a\), \(b\), and \(c\), where \(c\) is the length of the hypotenuse (the side opposite the right angle).</li>
+                <li><strong>Conclusion:</strong> The square of the length of the hypotenuse is equal to the sum of the squares of the lengths of the other two sides: \[a^2 + b^2 = c^2\]</li>
+            </ul>
+        </div>
+
+        <h5 id="q1b-heading">(b) Parallel Axiom</h5>
+        <div class="example">
+            <p>What are the hypotheses of the Parallel Axiom? What is the conclusion? (We gave two equivalent formulations of the parallel axiom in lecture, so you can use either one.)</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li><strong>Hypothesis:</strong> Given a straight line \(L\) and a point \(P\) not on \(L\).</li>
+                <li><strong>Conclusion:</strong> There exists exactly one straight line \(L'\) in the same plane that passes through \(P\) and is parallel to \(L\) (meaning \(L\) and \(L'\) do not intersect).</li>
+            </ul>
+        </div>
+
+        <h5 id="q1c-heading">(c) Thales Theorem</h5>
+        <div class="example">
+            <p>What are the hypotheses of Thales theorem? What is the conclusion?</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li><strong>Hypothesis:</strong> Given a triangle \(ABC\) and points \(D\) and \(E\) on the segments \(AB\) and \(AC\) respectively chosen such that \(DE\) is parallel to \(BC\).</li>
+                <li><strong>Conclusion:</strong> The following equality holds: \(\frac{|AD|}{|DB|}=\frac{|AE|}{|EC|}\).</li>
+            </ul>
+        </div>
+
+        <h5 id="q1d-heading">(d) SSS Congruence Theorem</h5>
+        <div class="example">
+            <p>State the SSS congruence theorem.</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>If three sides of one triangle are equal in length to three sides of another triangle, then the two triangles are congruent. That is, if \(\Delta ABC\) and \(\Delta A'B'C'\) satisfy \(AB = A'B'\), \(BC = B'C'\), and \(CA = C'A'\), then \(\Delta ABC \cong \Delta A'B'C'\).</p>
+        </div>
+
+        <h4>2. True or False Questions (8 points each)</h4>
+        <p>For each of the following statements, determine if it is true or false, and provide a brief proof or counterexample for your claim. Credit on these questions is based on your justification.</p>
+
+        <h5 id="q2a-heading">(a) Segment Constructibility</h5>
+        <div class="example">
+            <p>Given a line segment of length \(1\), a line segment of length \(\sqrt{\pi}+\frac{3}{2}\) is constructible using compass and straightedge.</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong> <strong>FALSE</strong></p>
+            <p><strong>Justification:</strong> If the given length was constructible, so would be \(\sqrt{\pi}\). This would imply that \(\pi=(\sqrt{\pi})^2\) is constructible. However, that is not the case, as argued in class.</p>
+        </div>
+
+        <h5 id="q2b-heading">(b) Linear Composition</h5>
+        <div class="example">
+            <p>The composition of any two linear transformations of \(\mathbb{R}^{2}\) is an affine transformation of \(\mathbb{R}^{2}.\)</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong> <strong>TRUE</strong></p>
+            <p><strong>Justification:</strong> Every linear transformation is automatically an affine transformation where the translation vector is the zero vector \(\mathbf{0}\). Formally, if \(f(\mathbf{x}) = A\mathbf{x}\) and \(g(\mathbf{x}) = B\mathbf{x}\) are two linear transformations represented by matrices \(A\) and \(B\), their composition is \((f \circ g)(\mathbf{x}) = A(B\mathbf{x}) = (AB)\mathbf{x}\).</p>
+            <p>Since \((AB)\mathbf{x}\) is linear, it can be written in the standard affine form \(M\mathbf{x} + \mathbf{v}\) with \(M = AB\) and \(\mathbf{v} = \mathbf{0}\). Thus, it is an affine transformation.</p>
+        </div>
+
+        <h5 id="q2c-heading">(c) Isometries</h5>
+        <div class="example">
+            <p>Dilation is an isometry in Hyperbolic geometry.</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong> <strong>TRUE</strong></p>
+            <p><strong>Justification:</strong> Given a dilation \(f\) by a factor of \(r>0\) and a curve \(\gamma(t)=(x(t),y(t))\), we have that the length of \(f(\gamma(t))\) is given by:</p>
+				\[\int_a^b \frac{\sqrt{(rx'(t))^2 + (ry'(t))^2}}{ry(t)}dt=\int_a^b \frac{\sqrt{r^2(x'(t)^2 + y'(t)^2)}}{ry(t)}dt=\int_a^b \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)}dt,\]
+				<p>which is equal to the length of \(\gamma(t)\), showing that \(f\) is an isometry.</p>
+        </div>
+
+        <h5 id="q2d-heading">(d) Set Mapping</h5>
+        <div class="example">
+            <p>The transformation \(f(x,y)=\left(\cos\left(\frac{5\pi}{6}\right)x-\sin\left(\frac{5\pi}{6}\right)y, \; \sin\left(\frac{5\pi}{6}\right)x+\cos\left(\frac{5\pi}{6}\right)y\right)\) sends the set of points \((x,y)\in\mathbb{R}^{2}\) satisfying the equation \((x-3)^{2}+(y+1)^{2}=49\) to a line in \(\mathbb{R}^2\).</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong> <strong>FALSE</strong></p>
+            <p><strong>Justification:</strong> The given transformation \(f(x,y)\) represents a counterclockwise rotation about the origin by an angle of \(\frac{5\pi}{6}\). Rotations are rigid motions (isometries) of \(\mathbb{R}^2\).</p>
+            <p>The original set of points given by \((x-3)^{2}+(y+1)^{2}=49\) is a circle centered at \((3, -1)\) with radius \(7\). Because an isometry maps circles to circles of the same radius, the image under \(f\) will be a circle centered at the rotated point \(f(3, -1)\) with radius \(7\), not a line.</p>
+        </div>
+
+        <h4>3. Short Answer / Constructions</h4>
+
+        <h5 id="q3a-heading">(a) Geometric Segment Construction (14 points)</h5>
+        <div class="example">
+            <p>Given line segments \(AB\) and \(CD\) that are not parallel or perpendicular to each other and do not intersect, construct a line segment of length \(|CD| - |AB|\). List all your steps.</p>
+            
+            <p>You may use the following tools:</p>
+            <ul>
+                <li>Can draw a circle of radius \(r\) with center \(Z\) (Compass Axiom 3)</li>
+                <li>Can draw a straight line through any two points and can extend any line segment (Straightedge Axioms 1–2)</li>
+                <li>Can draw a parallel line to a line through a point \(P\) (Axiom 5)</li>
+                <li>Can draw a perpendicular line to a line \(L\) through a point \(P\) (the point \(P\) can be on the line or not)</li>
+                <li>Can bisect an angle</li>
+            </ul>
+            <p>Justify why your construction works correctly.</p>
+        </div>
+<div class="solution">
+            <p><strong>Solution / Construction Steps:</strong></p>
+            <div class="steps">
+                <p><em>Note: Since a collapsible compass cannot directly "hold" a radius to be moved to an isolated point, we must transport the length of \(AB\) onto the line containing \(CD\) by constructing a parallelogram.</em></p>
+                <ol>
+                    <li>Use the straightedge to draw the line \(\overleftrightarrow{CD}\) extending through segment \(CD\).</li>
+                    <li>Draw a straight line through points \(A\) and \(C\) to form the transversal line \(\overleftrightarrow{AC}\).</li>
+                    <li>Using Axiom 5, construct a line through point \(B\) that is parallel to \(\overleftrightarrow{AC}\).</li>
+                    <li>Construct a line through point \(C\) that is parallel to the line \(\overleftrightarrow{AB}\).</li>
+                    <li>Let \(B'\) be the intersection point of the line through \(B\) (parallel to \(\overleftrightarrow{AC}\)) and the line through \(C\) (parallel to \(\overleftrightarrow{AB}\)). The quadrilateral \(ACBB'\) forms a parallelogram, meaning \(|CB'| = |AB|\).</li>
+                    <li>Now, plant the fixed compass tip at point \(C\) and open it to pass exactly through the newly constructed point \(B'\). Draw a circle centered at \(C\) with radius \(|CB'|\) (which is exactly equal to \(|AB|\)).</li>
+                    <li>Let \(E\) be the intersection point of this circle with the interior of the segment \(CD\) (assuming \(|CD| > |AB|\)).</li>
+                    <li>The remaining segment \(ED\) is the desired segment of length \(|CD| - |AB|\).</li>
+                    
+            (Students are expected to also draw the accompanying picture in the exam.)
+                </ol>
+            </div>
+            <p><strong>Justification:</strong></p>
+            <p>By constructing \(CB' \parallel AB\) and \(BB' \parallel AC\), the quadrilateral \(ACBB'\) is a parallelogram by definition. In any parallelogram, opposite sides are equal in length, which rigorously guarantees that \(|CB'| = |AB|\) without ever lifting the compass from the page to transfer a measurement.</p>
+            <p>When the circle is drawn centered at \(C\) passing through \(B'\), its radius is exactly \(|CB'| = |AB|\). Therefore, the intersection point \(E\) on segment \(CD\) satisfies \(|CE| = |AB|\). Because \(E\) lies strictly on the interior of segment \(CD\), the lengths add component-wise along the line:
+            \[|CD| = |CE| + |ED|\]
+            Substituting \(|CE| = |AB|\) yields:
+            \[|CD| = |AB| + |ED| \implies |ED| = |CD| - |AB|\]
+            Thus, the segment \(ED\) is exactly the required length.</p>
+        </div>
+
+        <h5 id="q3b-heading">(b) Transformation Analysis 1 (12 points)</h5>
+        <div class="example">
+            <p>Let \(f\left(\begin{bmatrix}x\\ y\end{bmatrix}\right)=\begin{bmatrix}-1&1\\ 0&-1\end{bmatrix}\begin{bmatrix}x\\ y\end{bmatrix}+\begin{bmatrix}2\\ 0\end{bmatrix}\) be a transformation of \(\mathbb{R}^{2}.\)</p>
+            <ol>
+                <li>Compute \(f(1,2)\) and \(f(-3,4)\).</li>
+                <li>Determine whether \(f\) is an isometry.</li>
+                <li>Find all fixed points of \(f\).</li>
+                <li>Is \(f\) a translation, reflection, rotation, glide reflection, or none of the above?</li>
+            </ol>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li><strong>Computations:</strong>
+                    <ul>
+                        <li>For \(\begin{bmatrix}1 \\ 2\end{bmatrix}\): \[f\left(\begin{bmatrix}1\\ 2\end{bmatrix}\right) = \begin{bmatrix}-1&1\\ 0&-1\end{bmatrix}\begin{bmatrix}1\\ 2\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}-1(1)+1(2)\\ 0(1)-1(2)\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}1\\ -2\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}3\\ -2\end{bmatrix}\]</li>
+                        <li>For \(\begin{bmatrix}-3 \\ 4\end{bmatrix}\): \[f\left(\begin{bmatrix}-3\\ 4\end{bmatrix}\right) = \begin{bmatrix}-1&1\\ 0&-1\end{bmatrix}\begin{bmatrix}-3\\ 4\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}-1(-3)+1(4)\\ 0(-3)-1(4)\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}7\\ -4\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}9\\ -4\end{bmatrix}\]</li>
+                    </ul>
+                </li>
+                <li><strong>Isometry Verification:</strong>
+                    <p>An affine transformation \(f(\mathbf{x}) = A\mathbf{x} + \mathbf{b}\) is an isometry if and only if its matrix component \(A\) is orthogonal, meaning \(A^T A = I\).</p>
+                    \[A^T A = \begin{bmatrix}-1 & 0 \\ 1 & -1\end{bmatrix} \begin{bmatrix}-1 & 1 \\ 0 & -1\end{bmatrix} = \begin{bmatrix}(-1)(-1)+0 & (-1)(1)+0 \\ (1)(-1)+0 & (1)(1)+(-1)(-1)\end{bmatrix} = \begin{bmatrix}1 & -1 \\ -1 & 2\end{bmatrix} \neq \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix}\]
+                    <p>Since \(A^T A \neq I\), the transformation does not preserve distances and is <strong>not an isometry</strong>.</p>
+                </li>
+                <li><strong>Fixed Points:</strong>
+                    <p>Set \(f(\mathbf{x}) = \mathbf{x}\):</p>
+                    \[\begin{bmatrix}-1&1\\ 0&-1\end{bmatrix}\begin{bmatrix}x\\ y\end{bmatrix} + \begin{bmatrix}2\\ 0\end{bmatrix} = \begin{bmatrix}x\\ y\end{bmatrix} \implies \begin{matrix} -x + y + 2 = x \\ -y = y \end{matrix}\]
+                    <p>From the second equation, \(-y = y \implies 2y = 0 \implies y = 0\).</p>
+                    <p>Substitute \(y = 0\) into the first equation: \(-x + 0 + 2 = x \implies 2 = 2x \implies x = 1\).</p>
+                    <p>Thus, there is exactly one fixed point at \(\begin{bmatrix}1 \\ 0\end{bmatrix}\).</p>
+                </li>
+                <li><strong>Classification:</strong>
+                    <p>Because \(f\) is not an isometry, it cannot be a translation, reflection, rotation, or glide reflection. Therefore, it is <strong>none of the above</strong>.</p>
+                </li>
+            </ol>
+        </div>
+
+        <h5 id="q3c-heading">(c) Transformation Analysis 2 (12 points)</h5>
+        <div class="example">
+            <p>Let \(f(x,y)=(-y+2,-x-2)\) be a transformation of \(\mathbb{R}^{2}.\)</p>
+            <ol>
+                <li>Compute \(f(1,2)\) and \(f(-3,4)\).</li>
+                <li>Determine whether \(f\) is an isometry.</li>
+                <li>Find all fixed points of \(f\).</li>
+                <li>Is \(f\) a translation, reflection, rotation, glide reflection, or none of the above?</li>
+            </ol>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>First, rewrite \(f\) in matrix-vector form:</p>
+            \[f\left(\begin{bmatrix}x \\ y\end{bmatrix}\right) = \begin{bmatrix}0 & -1 \\ -1 & 0\end{bmatrix}\begin{bmatrix}x \\ y\end{bmatrix} + \begin{bmatrix}2 \\ -2\end{bmatrix}\]
+            <ol>
+                <li><strong>Computations:</strong>
+                    <ul>
+                        <li>\(f(1,2) = (-2+2, -1-2) = (0, -3)\)</li>
+                        <li>\(f(-3,4) = (-4+2, -(-3)-2) = (-2, 1)\)</li>
+                    </ul>
+                </li>
+                <li><strong>Isometry Verification:</strong>
+                    <p>Check the matrix components \(A = \begin{bmatrix}0 & -1 \\ -1 & 0\end{bmatrix}\):</p>
+                    \[A^T A = \begin{bmatrix}0 & -1 \\ -1 & 0\end{bmatrix}\begin{bmatrix}0 & -1 \\ -1 & 0\end{bmatrix} = \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} = I\]
+                    <p>Since \(A\) is orthogonal, \(f\) <strong>is an isometry</strong>.</p>
+                </li>
+                <li><strong>Fixed Points:</strong>
+                    <p>Set \(f(x,y) = (x,y)\):</p>
+                    \[\begin{matrix} -y + 2 = x \\ -x - 2 = y \end{matrix} \implies \begin{matrix} x + y = 2 \\ x + y = -2 \end{matrix}\]
+                    <p>This system yields a clear contradiction (\(2 = -2\)). Therefore, there are <strong>no fixed points</strong>.</p>
+                </li>
+                <li><strong>Classification:</strong>
+                    <p>Since this is an isometry of \(\mathbb{R}^2\) without any fixed points which is not a translation, it must be a glide reflection. </p>
+                </li>
+            </ol>
+        </div>
+
+        <h4>4. Short Proofs</h4>
+
+        <h5 id="q4a-heading">(a) Quadrilateral Properties (14 points)</h5>
+        <div class="example">
+            <p>In this problem, you will show that if opposite sides of a quadrilateral \(ABCD\) have the same length, then the quadrilateral is a parallelogram. You can use any results from class, worksheets, or the midterm.</p>
+            <ol>
+                <li>Explain why \(\Delta ABC \cong \Delta CDA\).</li>
+                <li>Explain why \(\angle CBA + \angle BAD = \pi\).</li>
+                <li>Explain why you can conclude that \(BC \parallel AD\).</li>
+                <li>Determine what properties complete the proof of this statement.</li>
+            </ol>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li>We are given that opposite sides are equal, so \(AB = CD\) and \(BC = DA\). Consider the diagonal line segment \(AC\), which is shared by both triangles (\(AC = CA\)). By the <strong>SSS Congruence Theorem</strong>, it follows directly that \(\Delta ABC \cong \Delta CDA\).</li>
+                <li>From the triangle congruence established above, corresponding angles are equal: \(\angle BCA = \angle DAC\) and \(\angle BAC = \angle DCA\). The total interior sum of triangle \(\Delta ABC\) is \(\angle ABC + \angle BCA + \angle BAC = \pi\). Substituting the congruent matches yields \(\angle CBA + \angle DAC + \angle BAC = \pi\). Since \(\angle BAD = \angle BAC + \angle DAC\), substitution gives \(\angle CBA + \angle BAD = \pi\).</li>
+                <li>The angles \(\angle CBA\) and \(\angle BAD\) form consecutive interior angles relative to lines \(BC\) and \(AD\) cut by the transversal line \(AB\). Since their sum is \(\pi\) (supplementary), the <strong>Consecutive Interior Angles Theorem</strong> establishes that \(BC \parallel AD\).</li>
+                <li>To complete the proof that \(ABCD\) is a parallelogram, we must also show that \(AB \parallel CD\). This follows symmetrically by showing that consecutive angles \(\angle BCD + \angle CBA = \pi\) using corresponding angle substitutions from the same triangle congruence, or noting that alternate interior angles \(\angle BAC = \angle DCA\) implies \(AB \parallel CD\) via the <strong>Alternate Interior Angles Theorem</strong>. Once both pairs of opposite sides are proven parallel, the definition of a parallelogram is fully satisfied.</li>
+            </ol>
+        </div>
+        
+        <h5 id="q4b-heading">(b) Midpoint Coordinates (6 points)</h5>
+        <div class="example">
+            <p>Consider two points \((a,b)\) and \((c,d)\) in the Cartesian plane. Show that the midpoint of these points has coordinates \(\left(\frac{a+c}{2}, \frac{b+d}{2}\right)\).</p>
+        </div>
+        <div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Let \(P = (a,b)\) and \(Q = (c,d)\). The vector pointing from \(P\) to \(Q\) is given by \(\vec{PQ} = \begin{bmatrix}c-a \\ d-b\end{bmatrix}\). The midpoint \(M\) lies exactly halfway along this vector path starting from point \(P\):</p>
+            \[M = P + \frac{1}{2}\vec{PQ} = \left(a + \frac{1}{2}(c-a), \; b + \frac{1}{2}(d-b)\right)\]
+            \[M = \left(a + \frac{c}{2} - \frac{a}{2}, \; b + \frac{d}{2} - \frac{b}{2}\right) = \left(\frac{a+c}{2}, \; \frac{b+d}{2}\right)\]
+            <p>This confirms the standard algebraic coordinates of the midpoint.</p>
+        </div>
+
+        <h5 id="q4c-heading">(c) Circle Tangency (6 points)</h5>
+        <div class="example">
+            <p>Show that the line \(3x+4y-5=0\) is tangent to the circle \(x^{2}+y^{2}=1\).</p>
+        </div>
+<div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>A line is tangent to a circle if and only if the system of equations formed by the line and the circle has exactly one unique solution (a single point of intersection).</p>
+            
+            <p>From the given line equation, isolate \(x\):</p>
+            \[3x + 4y - 5 = 0 \implies 3x = 5 - 4y \implies x = \frac{5 - 4y}{3}\]
+
+            <p>The circle equation is \(x^2 + y^2 = 1\). Substituting our expression for \(x\) gives:</p>
+            \[\left(\frac{5 - 4y}{3}\right)^2 + y^2 = 1\]
+
+            \[\frac{(5 - 4y)^2}{9} + y^2 = 1\]
+            <p>Multiply the entire equation by \(9\) to clear the denominator:</p>
+            \[(25 - 40y + 16y^2) + 9y^2 = 9\]
+            <p>Combine like terms:</p>
+            \[25y^2 - 40y + 25 = 9\]
+            <p>Subtract \(9\) from both sides to set the quadratic equation to zero:</p>
+            \[25y^2 - 40y + 16 = 0\]
+
+            <p>We notice that the left side is a perfect square trinomial:</p>
+            \[(5y - 4)^2 = 0\]
+            <p>Taking the square root of both sides yields a single, repeated linear equation:</p>
+            \[5y - 4 = 0 \implies y = \frac{4}{5}\]
+            
+            <p>Since this is a quadratic equation with a discriminant of zero (\(\Delta = (-40)^2 - 4(25)(16) = 1600 - 1600 = 0\)), it yields exactly <strong>one unique solution</strong> for \(y\).</p>
+
+            <p>Substitute \(y = \frac{4}{5}\) back into our isolated equation for \(x\):</p>
+            \[x = \frac{5 - 4\left(\frac{4}{5}\right)}{3} = \frac{5 - \frac{16}{5}}{3} = \frac{\frac{25}{5} - \frac{16}{5}}{3} = \frac{\frac{9}{5}}{3} = \frac{3}{5}\]
+
+            <p>The line and the circle intersect at exactly one unique point, \(\left(\frac{3}{5}, \frac{4}{5}\right)\). Because there is a unique point of intersection rather than two distinct points or none, the line is rigorously proven to be tangent to the circle.</p>
+        </div>
+ 
+         <h5 id="q4d-heading">(d) Hyperbolic distance (6 points)</h5>
+        <div class="example">
+            <p>Find the distance between the points \((2,3)\) and \((2,5)\) in the hyperbolic metric.</p>
+        </div>
+
+<div class="solution">
+            <p><strong>Solution:</strong></p>
+            <p>Vertical lines are geodesics in the hyperbolic plane. The given points thus lie on the geodesic \(x=2\). A parametrized equation of the geodesic joining them is given by \(\gamma(t)=(2,t)\) for \(3\leq t\leq 5\). Thus, the hyperbolic distance between the given points is:</p>
+            \[\int_3^5\frac{\sqrt{x'(t)^2+y'(t)^2}}{y(t)}dt=\int_3^5\frac{\sqrt{0+1}}{t}dt =  \Big[ \ln|t| \Big]_{3}^{5} = \ln(5) - \ln(3)=\ln\left(\frac{5}{3}\right).\]
+            </div>
+    </section>
+
+</body>
+</html>
