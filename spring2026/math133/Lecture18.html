@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA 428 - Lecture 18: Introduction to the Hyperbolic Metric</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Hierarchy Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Structural/Color-Coded Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+    </style>
+</head>
+<body>
+
+<h3>MA 428 - Lecture 18: Introduction to the Hyperbolic Metric</h3>
+
+<h3>1. Review of Euclidean Length and Geodesics</h3>
+<p>Let us begin by recalling the foundational notion of arc length from Euclidean plane geometry. Given a smooth curve \(\gamma(t)\) in the Cartesian plane \(\mathbb{R}^2\) parameterized over the closed interval \([a, b]\), such that:</p>
+\[\gamma(t) = (x(t), y(t)) \in \mathbb{R}^2, \quad a \le t \le b\]
+<p>its standard Euclidean length is defined by the following integral of the speed over time:</p>
+\[\mathcal{L}_E(\gamma) = \int_{a}^{b} \|\gamma'(t)\| \, dt = \int_{a}^{b} \sqrt{x'(t)^2 + y'(t)^2} \, dt\]
+
+<div class="definition">
+    <p><strong>Definition:</strong> Given two distinct points in a geometric space, a curve joining them is called a <strong>geodesic</strong> if it yields the shortest possible length among all continuous, piecewise smooth paths connecting those points.</p>
+</div>
+
+<p>In standard Euclidean geometry, a familiar fundamental fact is that the shortest path between any two points is uniquely given by a straight line segment. Consequently, straight lines serve as the geodesics of the Euclidean plane.</p>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A schematic drawing showing an arbitrary open region containing two distinct endpoints labeled \(P\) and \(Q\). Two separate smooth, wavy paths, denoted by \(\gamma_1\) and \(\gamma_2\), loop outward through the space to link \(P\) and \(Q\). A straight dashed line directly connects point \(P\) to point \(Q\), visually representing the minimal distance path (the Euclidean straight-line geodesic).</p>
+</div>
+
+<h3>2. Foundations of Non-Euclidean Geometry</h3>
+<p>In non-Euclidean geometry, the long-held classical assumptions of Euclid do not necessarily apply. We naturally ask a fundamental question: Can we develop coherent systems of "geometry" on other, non-flat surfaces?</p>
+
+<h4>I) Spherical Geometry</h4>
+<p>Spherical geometry is defined as the geometry realized on the two-dimensional surface of a sphere. In this mathematical system, the standard spatial entities are translated as follows:</p>
+<ul>
+    <li><strong>Points</strong> correspond to standard coordinate points on the spherical surface.</li>
+    <li><strong>"Lines"</strong> are defined to be the great circles of the sphere, which are the intersections of the sphere with planes passing directly through its center.</li>
+</ul>
+<p>Given any two distinct points on a sphere, it is always possible to connect them via a great circle arc. If the points are not antipodal (directly opposite), this great circle path is unique and yields the shortest path on the surface.</p>
+<p>However, spherical geometry exhibits starkly different properties compared to Euclidean geometry. First, we cannot extend these great circle "lines" indefinitely into infinite space because they are closed loops of finite circumference. Second, any two distinct great circles must intersect at two diametrically opposite points. As a direct consequence, there are no parallel lines in spherical geometry.</p>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A hand-drawn sketch of a three-dimensional sphere containing two intersecting great circles. The curves are drawn as solid arcs on the front visible face of the sphere and trace along the rear hidden surface as dashed lines, highlighting the key non-Euclidean fact that any two straight lines on a sphere must intersect.</p>
+</div>
+
+<h4>II) Hyperbolic Geometry</h4>
+<p>Hyperbolic geometry can be thought of intuitively as a geometry that is "curved inward" (having a constant negative Gaussian curvature), contrasting directly with the flat Euclidean plane and the positively curved sphere.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The <strong>hyperbolic plane</strong>, commonly denoted by \(\mathbb{H}^2\), is defined set-theoretically as the upper half-plane of the Cartesian coordinate system:</p>
+    \[\mathbb{H}^2 = \{(x, y) \in \mathbb{R}^2 : y > 0\}\]
+</div>
+<p>This setting is frequently referred to as the <strong>hyperbolic upper half-plane</strong>.</p>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A coordinate graph displaying a Cartesian plane where the entire region strictly above the horizontal x-axis (where \(y > 0\)) is shaded with diagonal parallel line strokes. This visually marks out the active domain of the hyperbolic upper half-plane \(\mathbb{H}^2\), leaving the lower half blank.</p>
+</div>
+
+<h3>3. The Hyperbolic Arc Length Element</h3>
+<p>To compute distances properly in the hyperbolic plane, we modify how length is measured by incorporating a scaling factor that depends on a point's vertical position.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> Given a piecewise smooth curve \(\gamma(t) = (x(t), y(t))\) in \(\mathbb{R}^2\) for \(a \le t \le b\) such that \(\gamma(t)\) lies completely within the upper half-plane \(\mathbb{H}^2\), we define the <strong>hyperbolic length</strong> of \(\gamma\), denoted by \(\mathcal{L}_{\mathbb{H}^2}(\gamma)\), as:</p>
+    \[\mathcal{L}_{\mathbb{H}^2}(\gamma) = \int_{a}^{b} \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)} \, dt\]
+</div>
+<p>Because the denominator is \(y(t)\), paths that are close to the horizontal boundary axis (where \(y\) is small) are assigned a much larger hyperbolic length compared to their standard Euclidean length. Conversely, moving higher up the half-plane (where \(y\) is large) dramatically decreases the hyperbolic length cost for an equivalent Euclidean displacement.</p>
+
+<h3>4. Isometries of the Hyperbolic Plane</h3>
+<p>An <strong>isometry</strong> is a transformation of a geometric space that completely preserves the distances between all pairs of points. Let us analyze which elementary coordinate transformations act as isometries within the hyperbolic metric system.</p>
+
+<h4>A) Horizontal and Vertical Translations</h4>
+<p>Suppose we apply a general rigid translation to an arbitrary path \(\gamma(t) = (x(t), y(t))\), shifting it horizontally by an amount \(a\) and vertically by an amount \(b\):</p>
+\[(x(t), y(t)) \mapsto (x(t) + a, y(t) + b)\]
+<p>To determine if this transformation preserves distances, we calculate the hyperbolic length of the newly translated path:</p>
+\[\int_{a}^{b} \frac{\sqrt{\left((x(t)+a)'\right)^2 + \left((y(t)+b)'\right)^2}}{y(t) + b} \, dt = \int_{a}^{b} \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t) + b} \, dt\]
+<p>By inspection, this resulting integral matches the original definition of \(\mathcal{L}_{\mathbb{H}^2}(\gamma)\) if and only if \(b = 0\). Therefore, horizontal translations are fully valid isometries of the hyperbolic plane, whereas vertical translations are explicitly not isometries due to the changing scale of the \(y\) denominator.</p>
+
+<h4>B) Reflections and Dilations</h4>
+<p>It can be easily verified as an exercise that a reflection across the vertical y-axis, given by the mapping \((x, y) \mapsto (-x, y)\), leaves the metric invariant since \((-x)' = -x'\), and squaring it yields \((-x')^2 = x'^2\) while \(y\) remains entirely unchanged. Thus, vertical reflections are hyperbolic isometries.</p>
+<p>Next, let us evaluate uniform dilations from the origin by a positive scale factor \(\lambda > 0\):</p>
+\[(x(t), y(t)) \mapsto (\lambda x(t), \lambda y(t))\]
+<p>Substituting this parameterization directly into our length integral gives:</p>
+\[\int_{a}^{b} \frac{\sqrt{(\lambda x'(t))^2 + (\lambda y'(t))^2}}{\lambda y(t)} \, dt = \int_{a}^{b} \frac{\lambda \sqrt{x'(t)^2 + y'(t)^2}}{\lambda y(t)} \, dt = \int_{a}^{b} \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)} \, dt\]
+<p>Since the constant factor \(\lambda\) cancels perfectly out of both the numerator and denominator, uniform dilations are proven to be valid isometries of the hyperbolic plane.</p>
+
+<h3>5. Inversion Across the Unit Circle</h3>
+<div class="definition">
+    <p><strong>Definition:</strong> Geometric inversion across the unit circle centered at the origin is a mapping \(f: \mathbb{H}^2 \to \mathbb{H}^2\) defined coordinate-wise by:</p>
+    \[f(x, y) = \left( \frac{x}{x^2 + y^2}, \frac{y}{x^2 + y^2} \right)\]
+</div>
+<p>To understand the behavior of this inversion map, it is highly instructive to explore how it transforms simple Euclidean geometric objects like lines.</p>
+
+<div class="example">
+    <h5>Example: Image of a Vertical Line Under Inversion</h5>
+    <p>Consider the vertical straight line defined by the equation \(x = 2\) in the upper half-plane. Determine the exact geometric image of this line when transformed by the unit circle inversion map \(f\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We begin by plugging the constant coordinate value \(x = 2\) directly into the definition of our inversion map to obtain the transformed coordinate functions, which we denote as variables \(a\) and \(b\):</p>
+        \[a = \frac{2}{y^2 + 4}, \quad b = \frac{y}{y^2 + 4}\]
+        <p>To deduce the implicit relationship connecting \(a\) and \(b\), we compute the sum of their squares:</p>
+        \[a^2 + b^2 = \frac{2^2}{(y^2 + 4)^2} + \frac{y^2}{(y^2 + 4)^2} = \frac{y^2 + 4}{(y^2 + 4)^2} = \frac{1}{y^2 + 4}\]
+        <p>Noticing from our initial expression that \(\frac{1}{y^2 + 4} = \frac{a}{2}\), we substitute this back into the equation to establish:</p>
+        \[a^2 + b^2 = \frac{a}{2} \implies a^2 - \frac{a}{2} + b^2 = 0\]
+        <p>We complete the square for the variable \(a\) by adding \(\frac{1}{16}\) to both sides of the equation:</p>
+        \[a^2 - \frac{a}{2} + \frac{1}{16} + b^2 = \frac{1}{16} \implies \left(a - \frac{1}{4}\right)^2 + b^2 = \frac{1}{16}\]
+        <p>This final equation represents a Euclidean circle possessing a radius of \(\frac{1}{4}\) and centered precisely at the coordinate point \((1/4, 0)\). In fact, the image of any straight line under the inversion map \(f\) is always a circle.</p>
+    </div>
+</div>
+
+<h4>Polar Coordinate Representation of Inversion</h4>
+<p>The transformation mechanics become significantly clearer when re-expressed in standard polar coordinates \((r, \theta)\), where the parameters relate to Cartesian variables via:</p>
+\[r = \sqrt{x^2 + y^2}, \quad \theta = \tan^{-1}\left(\frac{y}{x}\right)\]
+<p>Let us compute the new values resulting from applying the inversion mapping \(f(x,y)\):</p>
+\[r_{\text{new}} = \sqrt{\left(\frac{x}{x^2+y^2}\right)^2 + \left(\frac{y}{x^2+y^2}\right)^2} = \sqrt{\frac{x^2+y^2}{(x^2+y^2)^2}} = \sqrt{\frac{1}{x^2+y^2}} = \frac{1}{\sqrt{x^2+y^2}} = \frac{1}{r}\]
+\[\theta_{\text{new}} = \tan^{-1}\left(\frac{\frac{y}{x^2+y^2}}{\frac{x}{x^2+y^2}}\right) = \tan^{-1}\left(\frac{y}{x}\right) = \theta\]
+<p>Thus, written elegantly in polar form, the inversion mapping simply acts as:</p>
+\[(r, \theta) \mapsto \left(\frac{1}{r}, \theta\right)\]
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> A graph displaying the Cartesian upper half-plane with a prominent reference semicircle of radius 1 centered at the origin, marked with the equation \(x^2 + y^2 = 1\). An arbitrary vector extends outward from the origin at an angle \(\theta\) to an interior point inside the unit disk, marked with polar coordinates \((r, \theta)\). A dashed line extends further out along the exact same angular ray to its geometric inverse point situated outside the circle, explicitly labeled \((\frac{1}{r}, \theta)\).</p>
+</div>
+
+<p>This polar mapping explicitly demonstrates that under the inversion map \(f\):</p>
+<ul>
+    <li>Points positioned inside the unit disk are sent outside.</li>
+    <li>Points positioned outside the unit disk go inside.</li>
+    <li>Points residing exactly on the boundary circle curve \(x^2 + y^2 = 1\) stay completely fixed in place.</li>
+</ul>
+
+<div class="important">
+    <p><strong>Important Fact:</strong> The geometric inversion mapping \(f\) is a true distance-preserving isometry of the hyperbolic plane.</p>
+</div>
+
+<p>To explicitly show that the geometric inversion mapping \(f(r, \theta) = \left(\frac{1}{r}, \theta\right)\) acts as a distance-preserving isometry on the hyperbolic plane \(\mathbb{H}^2\), we must convert the hyperbolic arc length metric into polar coordinates and verify its invariance under the transformation mapping.</p>
+
+<p>We begin with the standard Cartesian coordinate definition of a curve \(\gamma(t) = (x(t), y(t))\) embedded completely within \(\mathbb{H}^2\). Its hyperbolic path length over the parameter interval \([a, b]\) is given by:</p>
+\[\mathcal{L}_{\mathbb{H}^2}(\gamma) = \int_{a}^{b} \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)} \, dt\]
+
+<p>To transition into standard polar coordinates, we define the spatial transformation parameters as follows:</p>
+\[x(t) = r(t)\cos(\theta(t)), \quad y(t) = r(t)\sin(\theta(t))\]
+
+<p>Applying the product rule and chain rule to differentiate both parameters with respect to time \(t\) yields the velocity components:</p>
+\[x'(t) = r'(t)\cos(\theta(t)) - r(t)\theta'(t)\sin(\theta(t))\]
+\[y'(t) = r'(t)\sin(\theta(t)) + r(t)\theta'(t)\cos(\theta(t))\]
+
+<p>Summing the squares of these two expressions causes the cross-multiplied transcendental terms to cancel out perfectly. Factoring out the shared elements reveals:</p>
+\[x'(t)^2 + y'(t)^2 = r'(t)^2\left(\cos^2(\theta(t)) + \sin^2(\theta(t))\right) + r(t)^2\theta'(t)^2\left(\sin^2(\theta(t)) + \cos^2(\theta(t))\right)\]
+
+<p>By applying the fundamental Pythagorean identity \(\sin^2\theta + \cos^2\theta = 1\), the radical expression simplifies concisely to:</p>
+\[x'(t)^2 + y'(t)^2 = r'(t)^2 + r(t)^2\theta'(t)^2\]
+
+<p>Substituting this simplified numerator along with the polar definition of the vertical height boundary \(y(t) = r(t)\sin(\theta(t))\) back into the arc length definition yields the definitive polar coordinate formula for hyperbolic length:</p>
+\[\mathcal{L}_{\mathbb{H}^2}(\gamma) = \int_{a}^{b} \frac{\sqrt{r'(t)^2 + r(t)^2\theta'(t)^2}}{r(t)\sin(\theta(t))} \, dt\]
+
+<div class="important">
+    <h5>Verification of Metric Invariance</h5>
+    <p>Now, let us analyze the behavior of this polar differential equation under a transformation given by the circle inversion mapping, setting a new radial position tracking variable \(R(t)\) defined by:</p>
+    \[R(t) = \frac{1}{r(t)} \implies r(t) = \frac{1}{R(t)}\]
+
+    <p>Differentiating this expression with respect to the temporal parameter \(t\) via the power rule provides the new radial velocity element:</p>
+    \[r'(t) = -\frac{1}{R(t)^2} \cdot R'(t) \implies r'(t)^2 = \frac{R'(t)^2}{R(t)^4}\]
+
+    <p>We substitute these new spatial parameters back into the radical expression within the polar length integral to calculate the resulting transformed metric format:</p>
+    \[\sqrt{r'(t)^2 + r(t)^2\theta'(t)^2} = \sqrt{\frac{R'(t)^2}{R(t)^4} + \left(\frac{1}{R(t)}\right)^2\theta'(t)^2} = \sqrt{\frac{R'(t)^2 + R(t)^2\theta'(t)^2}{R(t)^4}} = \frac{\sqrt{R'(t)^2 + R(t)^2\theta'(t)^2}}{R(t)^2}\]
+
+    <p>Finally, evaluating the entire integrand alongside the transformed denominator tracking bounds yields the new line element formulation:</p>
+    \[\frac{\sqrt{r'(t)^2 + r(t)^2\theta'(t)^2}}{r(t)\sin(\theta(t))} = \frac{\frac{\sqrt{R'(t)^2 + R(t)^2\theta'(t)^2}}{R(t)^2}}{\frac{1}{R(t)}\sin(\theta(t))} = \frac{\sqrt{R'(t)^2 + R(t)^2\theta'(t)^2}}{R(t)\sin(\theta(t))}\]
+
+    <p>Because the resulting mathematical composition of the metric in terms of the new position variable \(R(t)\) is completely identical to the initial expression using \(r(t)\), the geometric length evaluated along any path remains perfectly preserved. This completes the rigorous proof that circle inversion is an <strong>isometry</strong> of the hyperbolic plane.</p>
+</div>
+</body>
+</html>
