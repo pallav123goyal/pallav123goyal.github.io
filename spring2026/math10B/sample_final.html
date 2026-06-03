@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Sample Final Exam</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Title -->
+    <h3>MATH 10B: Sample Final Exam</h3>
+
+    <!-- Instructions Section -->
+    <div class="important">
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>The exam is 3 hours long. The maximum score is 150 points.</li>
+            <li>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</li>
+            <li>Circle your final answers when relevant.</li>
+            <li>Show all steps in your solutions and make your reasoning clear when asked for an explanation.</li>
+            <li>If you have questions at any point, please raise your hand.</li>
+        </ul>
+    </div>
+
+    <!-- Questions Section -->
+    <h3>Exam Questions</h3>
+
+    <!-- Question 1 -->
+    <div class="example">
+        <h5>Question 1 (20 points)</h5>
+        <p>Compute the integral of the function \(f(x,y,z)=xyz\) over the region enclosed by \(x^{2}+y^{2}+z^{2}=9\) below the xy-plane.</p>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="example">
+        <h5>Question 2 (20 points)</h5>
+        <p>Compute the area bound by the curves \(xy = 1\), \(xy=4\), \(y=x\) and \(y=4x\) in the first quadrant.</p>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="example">
+        <h5>Question 3 (25 points)</h5>
+        <p>Evaluate the integral:</p>
+        \[\int_{C}(xz+yz+xy)ds,\]
+        <p>where \(C\) is the curve obtained by the intersection of the plane \(z=1\) with the sphere \(x^{2}+y^{2}+z^{2}=5\).</p>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="example">
+        <h5>Question 4 (30 points)</h5>
+        <p>Find the surface area of the graph of the function \(f(x,y)=e^{x}\sin(y)\) above the region defined by \(0\le x\le1\) and \(0\le y\le2e^{2x}\).</p>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="example">
+        <h5>Question 5 (30 points)</h5>
+        <p>Compute the following line integral:</p>
+        \[\int_{C}2xe^{y}\sin zdx+x^{2}e^{y}\sin zdy+x^{2}e^{y}\cos zdz,\]
+        <p>where \(C\) consists of the straight line paths from \((0,0,0)\) to \((1, 1, 1)\), then from \((1, 1, 1)\) to \((2, 3, 5)\), and then finally from \((2,3,5)\) to \((3,1,\frac{\pi}{2})\).</p>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="example">
+        <h5>Question 6 (30 points)</h5>
+        <p>Consider the vector field \(\mathbf{F}=2e^{x}yz\hat{i}-e^{x}y^{2}z\hat{j}+z\hat{k}\). Compute the surface integral of this vector field across the sphere \(x^{2}+y^{2}+z^{2}=4\) using the outer normal.</p>
+    </div>
+
+</body>
+</html>

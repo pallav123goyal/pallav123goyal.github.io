@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Sample Final Exam Solutions</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>MATH 10B: Sample Final Exam - Solutions</h3>
+
+    <div class="important">
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li>The exam is 3 hours long. The maximum score is 150 points.</li>
+            <li>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</li>
+            <li>Circle your final answers when relevant.</li>
+            <li>Show all steps in your solutions and make your reasoning clear when asked for an explanation.</li>
+            <li>If you have questions at any point, please raise your hand.</li>
+        </ul>
+    </div>
+
+    <h3>Exam Questions and Solutions</h3>
+
+    <div class="example">
+        <h5>Question 1 (20 points)</h5>
+        <p>Compute the integral of the function \(f(x,y,z)=xyz\) over the region enclosed by \(x^{2}+y^{2}+z^{2}=9\) below the xy-plane.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(E\) be the region defined by \(x^2 + y^2 + z^2 \le 9\) and \(z \le 0\). We transform the triple integral \(\iiint_E xyz \, dV\) into spherical coordinates:</p>
+        \[x = \rho \sin\phi \cos\theta, \quad y = \rho \sin\phi \sin\theta, \quad z = \rho \cos\phi\]
+        <p>The Jacobian determinant for this transformation yields \(dV = \rho^2 \sin\phi \, d\rho \, d\phi \, d\theta\). The inequalities translate to the bounds:</p>
+        \[0 \le \rho \le 3, \quad 0 \le \theta \le 2\pi, \quad \frac{\pi}{2} \le \phi \le \pi\]
+        <p>Setting up the iterated integral:</p>
+        \[\int_{0}^{2\pi} \int_{\pi/2}^{\pi} \int_{0}^{3} (\rho \sin\phi \cos\theta)(\rho \sin\phi \sin\theta)(\rho \cos\phi) \rho^2 \sin\phi \, d\rho \, d\phi \, d\theta\]
+        \[= \left( \int_{0}^{2\pi} \cos\theta \sin\theta \, d\theta \right) \left( \int_{\pi/2}^{\pi} \sin^3\phi \cos\phi \, d\phi \right) \left( \int_{0}^{3} \rho^5 \, d\rho \right)\]
+        <p>Evaluating the \(\theta\)-integral first:</p>
+        \[\int_{0}^{2\pi} \cos\theta \sin\theta \, d\theta = \left[ \frac{1}{2}\sin^2\theta \right]_{0}^{2\pi} = 0\]
+        <p>Since the components decouple and the \(\theta\)-integral evaluates to zero, the final value of the triple integral is:</p>
+        \[\iiint_E xyz \, dV = 0\]
+    </div>
+
+    <div class="example">
+        <h5>Question 2 (20 points)</h5>
+        <p>Compute the area bound by the curves \(xy = 1\), \(xy=4\), \(y=x\) and \(y=4x\) in the first quadrant.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use a change of variables to simplify the region \(R\). Define the new variables \(u\) and \(v\) by:</p>
+        \[u = xy, \quad v = \frac{y}{x}\]
+        <p>Under this transformation, the boundary curves correspond to constant lines in the \(uv\)-plane:</p>
+        \[1 \le u \le 4, \quad 1 \le v \le 4\]
+        <p>To find the differential area element \(dx\,dy\), we solve for \(x\) and \(y\) directly to compute the Jacobian matrix:</p>
+        \[y = vx \implies u = x(vx) = vx^2 \implies x = u^{1/2}v^{-1/2}\]
+        \[y = v(u^{1/2}v^{-1/2}) = u^{1/2}v^{1/2}\]
+        <p>Computing the partial derivatives directly:</p>
+        \[\frac{\partial x}{\partial u} = \frac{1}{2}u^{-1/2}v^{-1/2}, \quad \frac{\partial x}{\partial v} = -\frac{1}{2}u^{1/2}v^{-3/2}\]
+        \[\frac{\partial y}{\partial u} = \frac{1}{2}u^{-1/2}v^{1/2}, \quad \frac{\partial y}{\partial v} = \frac{1}{2}u^{1/2}v^{-1/2}\]
+        <p>The Jacobian determinant \(J(u,v)\) is given by:</p>
+        \[\det\frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix} \frac{1}{2}u^{-1/2}v^{-1/2} & -\frac{1}{2}u^{1/2}v^{-3/2} \\ \frac{1}{2}u^{-1/2}v^{1/2} & \frac{1}{2}u^{1/2}v^{-1/2} \end{vmatrix}\]
+        \[= \left(\frac{1}{4}u^0 v^{-1}\right) - \left(-\frac{1}{4}u^0 v^{-1}\right) = \frac{1}{4v} + \frac{1}{4v} = \frac{1}{2v}\]
+        <p>Now, compute the area by integrating over the transformed region:</p>
+        \[\text{Area} = \iint_R dx \, dy = \int_{1}^{4} \int_{1}^{4} \left| \frac{1}{2v} \right| du \, dv\]
+        \[= \left( \int_{1}^{4} 1 \, du \right) \left( \int_{1}^{4} \frac{1}{2v} \, dv \right) = (4 - 1) \cdot \left[ \frac{1}{2}\ln|v| \right]_{1}^{4}\]
+        \[= 3 \cdot \frac{1}{2}(\ln 4 - \ln 1) = \frac{3}{2}\ln 4 = \frac{3}{2}(2\ln 2) = 3\ln 2\]
+    </div>
+
+    <div class="example">
+        <h5>Question 3 (25 points)</h5>
+        <p>Evaluate the integral:</p>
+        \[\int_{C}(xz+yz+xy)ds,\]
+        <p>where \(C\) is the curve obtained by the intersection of the plane \(z=1\) with the sphere \(x^{2}+y^{2}+z^{2}=5\).</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Substituting \(z=1\) into the equation of the sphere gives:</p>
+        \[x^2 + y^2 + 1 = 5 \implies x^2 + y^2 = 4\]
+        <p>Thus, the curve \(C\) is a horizontal circle of radius \(2\) resting on the horizontal plane \(z=1\). We parameterize \(C\) using parameter \(t \in [0, 2\pi]\):</p>
+        \[\mathbf{r}(t) = \langle 2\cos t, 2\sin t, 1 \rangle\]
+        <p>Find the differential arc length element \(ds = |\mathbf{r}'(t)|\,dt\):</p>
+        \[\mathbf{r}'(t) = \langle -2\sin t, 2\cos t, 0 \rangle \implies |\mathbf{r}'(t)| = \sqrt{(-2\sin t)^2 + (2\cos t)^2 + 0^2} = 2\]
+        \[ds = 2\,dt\]
+        <p>Substitute the parameterization equations into the integrand expression:</p>
+        \[xz + yz + xy = (2\cos t)(1) + (2\sin t)(1) + (2\cos t)(2\sin t) = 2\cos t + 2\sin t + 4\cos t \sin t\]
+        <p>Setting up and computing the scalar line integral:</p>
+        \[\int_{C}(xz+yz+xy)ds = \int_{0}^{2\pi} (2\cos t + 2\sin t + 4\cos t \sin t) \cdot 2 \, dt\]
+        \[= 4 \int_{0}^{2\pi} \cos t \, dt + 4 \int_{0}^{2\pi} \sin t \, dt + 8 \int_{0}^{2\pi} \cos t \sin t \, dt\]
+        <p>Evaluating each isolated definite integral individually over one full standard cycle period \([0, 2\pi]\):</p>
+        \[\int_{0}^{2\pi} \cos t \, dt = 0, \quad \int_{0}^{2\pi} \sin t \, dt = 0, \quad \int_{0}^{2\pi} \cos t \sin t \, dt = \left[ \frac{1}{2}\sin^2 t \right]_{0}^{2\pi} = 0\]
+        <p>Adding these individual zero terms together gives the final absolute scalar result value:</p>
+        \[\int_{C}(xz+yz+xy)ds = 0\]
+    </div>
+
+    <div class="example">
+        <h5>Question 4 (30 points)</h5>
+        <p>Find the surface area of the graph of the function \(f(x,y)=e^{x}\sin(y)\) above the region defined by \(0\le x\le1\) and \(0\le y\le2e^{2x}\).</p>
+    </div>
+<div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We parameterize the surface \(S\) directly using the independent variables \(x\) and \(y\) as parameters over the parameter region \(D\). The vector-valued position function mapping coordinates to the surface is:</p>
+        \[\mathbf{r}(x,y) = \langle x, y, e^x\sin y \rangle\]
+        <p>To find the differential surface area element \(dS\), we compute the partial tangent vectors by differentiating \(\mathbf{r}\) with respect to each parameter:</p>
+        \[\mathbf{r}_x = \frac{\partial \mathbf{r}}{\partial x} = \langle 1, 0, e^x\sin y \rangle\]
+        \[\mathbf{r}_y = \frac{\partial \mathbf{r}}{\partial y} = \langle 0, 1, e^x\cos y \rangle\]
+        <p>Next, we determine the normal vector to the surface by taking the cross product of these tangent vectors:</p>
+        \[\mathbf{r}_x \times \mathbf{r}_y = \begin{vmatrix} \mathbf{\hat{i}} & \mathbf{\hat{j}} & \mathbf{\hat{k}} \\ 1 & 0 & e^x\sin y \\ 0 & 1 & e^x\cos y \end{vmatrix}\]
+        \[= \mathbf{\hat{i}}(0 - e^x\sin y) - \mathbf{\hat{j}}(e^x\cos y - 0) + \mathbf{\hat{k}}(1 - 0)\]
+        \[= \langle -e^x\sin y, -e^x\cos y, 1 \rangle\]
+        <p>The magnitude of this cross product gives the standard scaling factor for the differential area element \(dS = |\mathbf{r}_x \times \mathbf{r}_y|\,dA\):</p>
+        \[|\mathbf{r}_x \times \mathbf{r}_y| = \sqrt{(-e^x\sin y)^2 + (-e^x\cos y)^2 + 1^2}\]
+        \[= \sqrt{e^{2x}\sin^2 y + e^{2x}\cos^2 y + 1} = \sqrt{e^{2x}(\sin^2 y + \cos^2 y) + 1} = \sqrt{e^{2x} + 1}\]
+        <p>Now, we set up and evaluate the double integral for the surface area over the given boundaries \(0 \le x \le 1\) and \(0 \le y \le 2e^{2x}\):</p>
+        \[A = \iint_D |\mathbf{r}_x \times \mathbf{r}_y| \, dA = \int_{0}^{1} \int_{0}^{2e^{2x}} \sqrt{e^{2x} + 1} \, dy \, dx\]
+        <p>Integrating out the inner variable \(y\) first:</p>
+        \[A = \int_{0}^{1} \sqrt{e^{2x} + 1} \cdot [y]_{0}^{2e^{2x}} \, dx = \int_{0}^{1} 2e^{2x}\sqrt{e^{2x} + 1} \, dx\]
+        <p>To evaluate the remaining single integral, we use substitution. Let \(u = e^{2x} + 1\), which gives \(du = 2e^{2x}\,dx\). We also adjust our integration limits: when \(x=0\), \(u=2\); when \(x=1\), \(u=e^2+1\).</p>
+        \[A = \int_{2}^{e^2+1} \sqrt{u} \, du = \left[ \frac{2}{3}u^{3/2} \right]_{2}^{e^2+1} = \frac{2}{3}\left((e^2+1)^{3/2} - 2\sqrt{2}\right)\]
+    </div>
+
+    <div class="example">
+        <h5>Question 5 (30 points)</h5>
+        <p>Compute the following line integral:</p>
+        \[\int_{C}2xe^{y}\sin zdx+x^{2}e^{y}\sin zdy+x^{2}e^{y}\cos zdz,\]
+        <p>where \(C\) consists of the straight line paths from \((0,0,0)\) to \((1, 1, 1)\), then from \((1, 1, 1)\) to \((2, 3, 5)\), and then finally from \((2,3,5)\) to \((3,1,\frac{\pi}{2})\).</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let the vector field component functions be defined by \(\mathbf{F} = \langle P, Q, R \rangle\), where:</p>
+        \[P = 2xe^y\sin z, \quad Q = x^2e^y\sin z, \quad R = x^2e^y\cos z\]
+        <p>We check if \(\mathbf{F}\) is a conservative vector field by finding a potential function \(f(x,y,z)\) such that \(\nabla f = \mathbf{F}\):</p>
+        \[\frac{\partial f}{\partial x} = 2xe^y\sin z \implies f(x,y,z) = x^2e^y\sin z + g(y,z)\]
+        <p>Differentiating \(f\) with respect to \(y\) and comparing it with \(Q\):</p>
+        \[\frac{\partial f}{\partial y} = x^2e^y\sin z + \frac{\partial g}{\partial y} = x^2e^y\sin z \implies \frac{\partial g}{\partial y} = 0 \implies g(y,z) = h(z)\]
+        <p>Differentiating with respect to \(z\) and comparing it with \(R\):</p>
+        \[\frac{\partial f}{\partial z} = x^2e^y\cos z + h'(z) = x^2e^y\cos z \implies h'(z) = 0 \implies h(z) = K\]
+        <p>Thus, \(\mathbf{F}\) is conservative with the scalar potential function \(f(x,y,z) = x^2e^y\sin z\). By the Fundamental Theorem for Line Integrals, the line integral along path \(C\) depends solely on the initial point \(A(0,0,0)\) and final endpoint \(B(3,1,\frac{\pi}{2})\):</p>
+        \[\int_{C} \mathbf{F} \cdot d\mathbf{r} = f(3,1,\frac{\pi}{2}) - f(0,0,0)\]
+        \[f(3,1,\frac{\pi}{2}) = (3)^2 e^1 \sin(\frac{\pi}{2}) = 9e\]
+        \[f(0,0,0) = (0)^2 e^0 \sin(0) = 0\]
+        \[\int_{C} \mathbf{F} \cdot d\mathbf{r} = 9e - 0 = 9e\]
+    </div>
+
+    <div class="example">
+        <h5>Question 6 (30 points)</h5>
+        <p>Consider the vector field \(\mathbf{F}=2e^{x}yz\hat{i}-e^{x}y^{2}z\hat{j}+z\hat{k}\). Compute the surface integral of this vector field across the sphere \(x^{2}+y^{2}+z^{2}=4\) using the outer normal.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Since the surface \(S\) is a smooth, closed sphere enclosing a compact volume solid region \(E\), we apply the Divergence (Gauss's) Theorem:</p>
+        \[\iint_{S} \mathbf{F} \cdot d\mathbf{S} = \iiint_{E} (\nabla \cdot \mathbf{F}) \, dV\]
+        <p>Compute the divergence scalar function field component \(\nabla \cdot \mathbf{F}\):</p>
+        \[\nabla \cdot \mathbf{F} = \frac{\partial}{\partial x}(2e^x yz) + \frac{\partial}{\partial y}(-e^x y^2 z) + \frac{\partial}{\partial z}(z)\]
+        \[= 2e^x yz - 2e^x yz + 1 = 1\]
+        <p>Substitute this simplified constant value back inside the integral:</p>
+        \[\iint_{S} \mathbf{F} \cdot d\mathbf{S} = \iiint_{E} 1 \, dV = \text{Volume}(E)\]
+        <p>The enclosed solid region \(E\) is a standard geometric sphere of radius \(R = 2\). Using the sphere volume formula:</p>
+        \[\text{Volume}(E) = \frac{4}{3}\pi R^3 = \frac{4}{3}\pi (2)^3 = \frac{32\pi}{3}\]
+        <p>Thus, the final total outward flux value across the closed spherical boundary surface is:</p>
+        \[\iint_{S} \mathbf{F} \cdot d\mathbf{S} = \frac{32\pi}{3}\]
+    </div>
+
+</body>
+</html>
