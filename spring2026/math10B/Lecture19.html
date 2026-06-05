@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH - Lecture 19: Gauss' / Divergence Theorem</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Lecture 19: Gauss' / Divergence Theorem</h3>
+    
+    <div class="theorem">
+        <strong>Theorem: Gauss' / Divergence Theorem</strong>
+        <p>Given a vector field \(\mathbf{F}\) and a solid region \(R\) enclosed by a boundary surface \(\partial R\) oriented with an outward unit normal vector, the theorem states:</p>
+        \[\iiint_{R} \nabla \cdot \mathbf{F} \, dV = \iint_{\partial R} \mathbf{F} \cdot d\mathbf{S}\]
+        <p>In conceptual terms, this means that the integral of the divergence of \(\mathbf{F}\) over the region \(R\) is exactly equal to the net integral flux of \(\mathbf{F}\) across its bounding surface.</p>
+    </div>
+
+    <h4>Worked Examples</h4>
+
+    <div class="example">
+        <h5>Example 1</h5>
+        <p>Consider the vector field \(\mathbf{F} = 2x\hat{\mathbf{i}} + y^2\hat{\mathbf{j}} + z^2\hat{\mathbf{k}}\). Compute the surface integral of \(\mathbf{F}\) over the unit sphere \(x^2 + y^2 + z^2 = 1\).</p>
+        
+        <div class="solution">
+            <strong>Solution:</strong>
+            <p>First, let's explore how we would set this up if we attempted to compute this surface integral directly. We begin by parametrizing the unit sphere surface using spherical coordinates:</p>
+            \[x = \sin\phi \cos\theta\]
+            \[y = \sin\phi \sin\theta\]
+            \[z = \cos\phi\]
+            <p>where the domain parameters range over \(0 \le \phi \le \pi\) and \(0 \le \theta \le 2\pi\).</p>
+            
+            <p>The standard tangent vectors with respect to our parameters \(\theta\) and \(\phi\) are:</p>
+            \[\mathbf{T}_\theta = \langle -\sin\phi \sin\theta, \sin\phi \cos\theta, 0 \rangle\]
+            \[\mathbf{T}_\phi = \langle \cos\phi \cos\theta, \cos\phi \sin\theta, -\sin\phi \rangle\]
+            
+            <p>Next, we compute the standard cross product normal vector element \(\mathbf{T}_\theta \times \mathbf{T}_\phi\):</p>
+            \[\mathbf{T}_\theta \times \mathbf{T}_\phi = \begin{vmatrix} 
+            \hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\ 
+            -\sin\phi\sin\theta & \sin\phi\cos\theta & 0 \\ 
+            \cos\phi\cos\theta & \cos\phi\sin\theta & -\sin\phi 
+            \end{vmatrix}\]
+            \[= -\sin^2\phi \cos\theta \hat{\mathbf{i}} - \sin^2\phi \sin\theta \hat{\mathbf{j}} - \sin\phi \cos\phi \hat{\mathbf{k}}\]
+            
+            <p>Since we require an outward normal direction, our properly oriented normal surface element points in the positive radial direction:</p>
+            \[\text{Outward normal element} = \sin^2\phi \cos\theta \hat{\mathbf{i}} + \sin^2\phi \sin\theta \hat{\mathbf{j}} + \sin\phi \cos\phi \hat{\mathbf{k}}\]
+            
+            <p>Finally, we would substitute the parametrization into the field \(\mathbf{F}\), compute the dot product \(\mathbf{F} \cdot (\mathbf{T}_\theta \times \mathbf{T}_\phi)\), and carry out the long double integral. This directly is quite computationally intensive.</p>
+
+            <p><strong>Alternative approach using Gauss' Theorem:</strong></p>
+            <p>Instead of the complex surface mapping, we can seamlessly evaluate this integral over the interior solid region of the unit sphere \(R\) bounded by \(x^2 + y^2 + z^2 = 1\) using the divergence theorem:</p>
+            \[\iint_{\partial R} \mathbf{F} \cdot d\mathbf{S} = \iiint_{R} \nabla \cdot \mathbf{F} \, dV\]
+            
+            <p>First, we compute the divergence of our field \(\mathbf{F} = 2x\hat{\mathbf{i}} + y^2\hat{\mathbf{j}} + z^2\hat{\mathbf{k}}\):</p>
+            \[\nabla \cdot \mathbf{F} = \frac{\partial}{\partial x}(2x) + \frac{\partial}{\partial y}(y^2) + \frac{\partial}{\partial z}(z^2) = 2 + 2y + 2z\]
+            
+            <p>We switch to spherical coordinate bounds to parametrize the solid ball region \(R\):</p>
+            \[x = r\sin\phi\cos\theta, \quad y = r\sin\phi\sin\theta, \quad z = r\cos\phi\]
+            <p>where \(0 \le r \le 1\), \(0 \le \phi \le \pi\), and \(0 \le \theta \le 2\pi\). Recall that the volume differential element is given by \(dV = r^2 \sin\phi \, dr \, d\theta \, d\phi\).</p>
+            
+            <p>Setting up our volume integral yields:</p>
+            \[\int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1} (2 + 2r\sin\phi\sin\theta + 2r\cos\phi) r^2 \sin\phi \, dr \, d\theta \, d\phi\]
+            
+            <p>We can separate this linear expression into three distinct integral components to compute independently:</p>
+            <ol>
+                <li>First term: \(\int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1} 2r^2 \sin\phi \, dr \, d\theta \, d\phi = \left( \int_{0}^{1} 2r^2 \, dr \right) \left( \int_{0}^{2\pi} d\theta \right) \left( \int_{0}^{\pi} \sin\phi \, d\phi \right) = \left(\frac{2}{3}\right) (2\pi) (2) = \frac{8\pi}{3}\)</li>
+                <li>Second term: \(\int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1} 2r^3 \sin^2\phi \sin\theta \, dr \, d\theta \, d\phi = 0\), due to the fact that \(\int_{0}^{2\pi} \sin\theta \, d\theta = 0\).</li>
+                <li>Third term: \(\int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1} 2r^3 \sin\phi \cos\phi \, dr \, d\theta \, d\phi = 0\), because \(\int_{0}^{\pi} \sin\phi \cos\phi \, d\phi = \left[ \frac{1}{2}\sin^2\phi \right]_0^\pi = 0\).</li>
+            </ol>
+            
+            <p>Summing up our three completed integral components yields:</p>
+            \[\text{Total Integral} = \frac{8\pi}{3} + 0 + 0 = \frac{8\pi}{3}\]
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 2</h5>
+        <p>Given the vector field \(\mathbf{F} = xy^2\hat{\mathbf{i}} + x^2y\hat{\mathbf{j}} + y\hat{\mathbf{k}}\). Compute the surface flux integral over the boundary of the cylinder defined by \(x^2 + y^2 = 1\) and bounded vertically by the planes \(z = 1\) and \(z = -1\).</p>
+        
+        <div class="visual-desc">
+            <strong>Visual Description of the Bounding Surface:</strong>
+            <p>The figure illustrates a three-dimensional vertical cylinder centered along the vertical z-axis. The total bounding closed surface is composed of three interconnected smooth pieces: a top flat circular boundary cap labeled \(S_1\) located on the plane \(z = 1\), a vertical curved outer wall labeled \(S_2\) satisfying the lateral surface constraint \(x^2 + y^2 = 1\), and a bottom flat circular boundary cap labeled \(S_3\) located on the plane \(z = -1\). The cartesian coordinate axes \(x\), \(y\), and \(z\) project out normally from the origin to establish the orientation framework.</p>
+        </div>
+
+        <div class="solution">
+            <strong>Solution:</strong>
+            <p>To evaluate this over each of the three pieces directly, one would have to parameterize via cylindrical coordinates:</p>
+            <ul>
+                <li>On the top disc surface \(S_1\), \(z = 1\) with \(r \le 1\).</li>
+                <li>On the lateral wall surface \(S_2\), \(r = 1\) with \(-1 \le z \le 1\).</li>
+                <li>On the bottom disc surface \(S_3\), \(z = -1\) with \(r \le 1\).</li>
+            </ul>
+            <p>For each separate surface, one needs to derive cross-products to find normal orientation vectors, compute individual surface integrals, and finally add them together. Alternatively, we can use Gauss' Theorem over the inner cylindrical volume \(R\).</p>
+            
+            <p>By applying Gauss' Theorem, the net surface flux is equivalent to the volume integral of the divergence over the solid interior:</p>
+            \[\iiint_{R} \nabla \cdot \mathbf{F} \, dV\]
+            
+            <p>Let's compute the divergence of our field \(\mathbf{F} = xy^2\hat{\mathbf{i}} + x^2y\hat{\mathbf{j}} + y\hat{\mathbf{k}}\):</p>
+            \[\nabla \cdot \mathbf{F} = \frac{\partial}{\partial x}(xy^2) + \frac{\partial}{\partial y}(x^2y) + \frac{\partial}{\partial z}(y) = y^2 + x^2\]
+            
+            <p>In cylindrical coordinates, we note that \(x^2 + y^2 = r^2\). The boundary conditions defining our solid cylindrical region \(R\) translate elegantly to:</p>
+            \[0 \le r \le 1, \quad 0 \le \theta \le 2\pi, \quad -1 \le z \le 1\]
+            <p>Accounting for the cylindrical volume expansion element Jacobian \(dV = r \, dr \, d\theta \, dz\), the integral becomes:</p>
+            \[\int_{-1}^{1} \int_{0}^{2\pi} \int_{0}^{1} (r^2) \cdot r \, dr \, d\theta \, dz = \int_{-1}^{1} \int_{0}^{2\pi} \int_{0}^{1} r^3 \, dr \, d\theta \, dz\]
+            
+            <p>Evaluating the decoupled pieces step-by-step:</p>
+            \[\int_{0}^{1} r^3 \, dr = \left[ \frac{r^4}{4} \right]_0^1 = \frac{1}{4}\]
+            \[\int_{0}^{2\pi} \frac{1}{4} \, d\theta = \frac{2\pi}{4} = \frac{\pi}{2}\]
+            \[\int_{-1}^{1} \frac{\pi}{2} \, dz = \frac{\pi}{2} \cdot \big(1 - (-1)\big) = \pi\]
+            <p>Thus, the final integrated value is \(\pi\).</p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h5>Example 3</h5>
+        <p>Suppose \(\mathbf{F} = x^3\hat{\mathbf{i}} + y^3z^2\hat{\mathbf{j}} + xyz\hat{\mathbf{k}}\). Integrate the vector field curl, \(\nabla \times \mathbf{F}\), over the closed surface of the sphere \(x^2 + y^2 + z^2 = 4\).</p>
+        
+        <div class="solution">
+            <strong>Solution Method I: Using Gauss' Theorem</strong>
+            <p>According to Gauss' theorem, the surface integral of a field over a closed boundary matches the volume integral of its divergence throughout the interior region \(R\):</p>
+            \[\iint_{\partial R} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \iiint_{R} \nabla \cdot (\nabla \times \mathbf{F}) \, dV\]
+            
+            <p>Let's first determine the curl field \(\nabla \times \mathbf{F}\) explicitly by setting up its determinant format:</p>
+            \[\nabla \times \mathbf{F} = \begin{vmatrix}
+            \hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\
+            \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+            x^3 & y^3z^2 & xyz
+            \end{vmatrix}\]
+            \[= \left( \frac{\partial}{\partial y}(xyz) - \frac{\partial}{\partial z}(y^3z^2) \right)\hat{\mathbf{i}} - \left( \frac{\partial}{\partial x}(xyz) - \frac{\partial}{\partial z}(x^3) \right)\hat{\mathbf{j}} + \left( \frac{\partial}{\partial x}(y^3z^2) - \frac{\partial}{\partial y}(x^3) \right)\hat{\mathbf{k}}\]
+            \[= (xz - 2y^3z)\hat{\mathbf{i}} - yz\hat{\mathbf{j}} + 0\hat{\mathbf{k}}\]
+            
+            <p>Now, we compute the divergence of this curl vector field:</p>
+            \[\nabla \cdot (\nabla \times \mathbf{F}) = \frac{\partial}{\partial x}(xz - 2y^3z) + \frac{\partial}{\partial y}(-yz) + \frac{\partial}{\partial z}(0)\]
+            \[= z - z + 0 = 0\]
+            <p>Since the integrand is zero everywhere, the entire triple volume integral naturally vanishes to zero.</p>
+
+            <strong>Solution Method II: Using Stokes' Theorem</strong>
+            <p>By Stokes' Theorem, we can relate the surface integral of a curl to a line integral traversing the boundary curve \(C\) of our surface layer:</p>
+            \[\iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_{C} \mathbf{F} \cdot d\mathbf{r}\]
+            <p>However, a complete spherical shell is a closed surface, meaning it possesses <strong>no boundary curve</strong> (\(C = \emptyset\)). Consequently, the line integral along the non-existent boundary path is zero, confirming our previous result.</p>
+        </div>
+    </div>
+
+    <h3>General Differential and Integral Vector Properties</h3>
+    
+    <div class="important">
+        <strong>Property 1: Divergence of a Curl</strong>
+        <p>For any twice continuously differentiable vector field \(\mathbf{F} = F_1\hat{\mathbf{i}} + F_2\hat{\mathbf{j}} + F_3\hat{\mathbf{k}}\), the divergence of its curl is identically zero:</p>
+        \[\nabla \cdot (\nabla \times \mathbf{F}) = 0\]
+        <p>This is easily verified by expanding the partial derivatives:</p>
+        \[\nabla \times \mathbf{F} = \left(\frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z}\right)\hat{\mathbf{i}} + \left(\frac{\partial F_1}{\partial z} - \frac{\partial F_3}{\partial x}\right)\hat{\mathbf{j}} + \left(\frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y}\right)\hat{\mathbf{k}}\]
+        <p>Taking the divergence yields a sum of mixed second-order partial derivatives that cancel out by Clairaut's Theorem: \(\nabla \cdot (\nabla \times \mathbf{F}) = 0\).</p>
+    </div>
+
+    <div class="important">
+        <strong>Property 2: Divergence-Free Vector Fields</strong>
+        <p>Conversely, if a vector field \(\mathbf{G}\) satisfies \(\nabla \cdot \mathbf{G} = 0\) on a simply connected domain, then \(\mathbf{G}\) must be the curl of some vector field \(\mathbf{F}\):</p>
+        \[\nabla \cdot \mathbf{G} = 0 \iff \mathbf{G} = \nabla \times \mathbf{F} \quad \text{for some field } \mathbf{F}\]
+        <p>Such a vector field \(\mathbf{G}\) is formally referred to as a <strong>divergence-free</strong> or <strong>solenoidal</strong> vector field.</p>
+    </div>
+
+    <div class="important">
+        <strong>Property 3: Curl of a Gradient</strong>
+        <p>For any scalar function \(f\), the curl of its gradient is identically zero:</p>
+        \[\nabla \times (\nabla f) = \mathbf{0}\]
+        <p>We see this immediately by representing the gradient field component layout:</p>
+        \[\nabla f = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right\rangle\]
+        <p>Computing the cross product determinant produces zero terms throughout due to the equality of cross-partial derivatives.</p>
+    </div>
+
+    <div class="important">
+        <strong>Property 4: Curl-Free Vector Fields</strong>
+        <p>Conversely, if a vector field \(\mathbf{G}\) satisfies \(\nabla \times \mathbf{G} = \mathbf{0}\) on a simply connected region, then \(\mathbf{G}\) must be the gradient of some scalar function \(f\):</p>
+        \[\nabla \times \mathbf{G} = \mathbf{0} \iff \mathbf{G} = \nabla f \quad \text{for some scalar function } f\]
+        <p>Recall that such a vector field \(\mathbf{G}\) is called a <strong>conservative</strong> or <strong>curl-free</strong> (irrotational) vector field.</p>
+    </div>
+
+</body>
+</html>
