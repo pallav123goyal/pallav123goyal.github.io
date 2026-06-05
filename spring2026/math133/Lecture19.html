@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 19: Hyperbolic Geometry</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <h3>Lecture 19: Hyperbolic Geometry</h3>
+        
+        <h4>1. Review and Metric Recall</h4>
+        <p>We begin by recalling the foundational framework of the hyperbolic upper half-plane model, denoted as \(\mathbb{H}^2\). Formally, the hyperbolic upper half-plane is defined as the set of points with positive vertical coordinates:</p>
+        
+        <div class="definition">
+            <strong>Definition:</strong> The hyperbolic upper half-plane \(\mathbb{H}^2\) is defined as:
+            \[\mathbb{H}^2 = \left\{ (x, y) \in \mathbb{R}^2 : y > 0 \right\}\]
+        </div>
+
+        <p>Given a piecewise smooth, parameterized curve \(\gamma(t) = (x(t), y(t))\) defined over the time interval \(a \le t \le b\), the hyperbolic arc length \(l_{\mathbb{H}}(\gamma)\) is computed by weighing the classical Euclidean speed by the reciprocal of the height \(y(t)\):</p>
+        
+        \[l_{\mathbb{H}}(\gamma) = \int_{a}^{b} \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)} \, dt\]
+
+        <p>Under this metric geometry, horizontal translations are acts of rigid motion (isometries) since they shift only the horizontal position without changing the height \(y\). Conversely, vertical translations are explicitly <strong>not</strong> isometries, as scaling or shifting along the vertical axis directly affects the local scale factor \(\frac{1}{y}\).</p>
+
+        <h4>2. Geometric Inversions and Isometries</h4>
+        <p>Another fundamental transformation of importance is geometric inversion centered about the unit circle. Let \(f: \mathbb{H}^2 \rightarrow \mathbb{H}^2\) denote this transformation, defined analytically in Cartesian coordinates as:</p>
+        
+        \[(x, y) \mapsto \left( \frac{x}{x^2+y^2}, \frac{y}{x^2+y^2} \right)\]
+        
+        <p>In standard polar coordinates \((r, \theta)\), this map is expressed via the radial reciprocal relationship:</p>
+        
+        \[(r, \theta) \mapsto \left( \frac{1}{r}, \theta \right)\]
+        
+        <p>Crucially, inversion about a circle constitutes a hyperbolic isometry. Furthermore, this mapping exhibits important topological properties: geometric inversion maps vertical lines to circles centered precisely on the boundary line (the \(x\)-axis), and maps circles centered on the \(x\)-axis to vertical lines.</p>
+
+        <h4>3. Geodesics in Hyperbolic Space</h4>
+        <p>Before analyzing paths of minimal distance in the upper half-plane, let us formally define a geodesic and review how they contrast across different traditional geometries.</p>
+
+        <div class="definition">
+            <strong>Definition:</strong> Given two distinct points \(P\) and \(Q\), a <strong>geodesic</strong> is a curve joining them that possesses the shortest possible length under the underlying space's metric.
+        </div>
+
+        <p>The core path trajectories for geodesics across classic geometric models are organized as follows:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Geometry Model</th>
+                    <th scope="col">Geodesic Paths</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Euclidean Geometry</strong></td>
+                    <td>Straight lines</td>
+                </tr>
+                <tr>
+                    <td><strong>Spherical Geometry</strong></td>
+                    <td>Great circles</td>
+                </tr>
+                <tr>
+                    <td><strong>Hyperbolic Geometry</strong></td>
+                    <td>Vertical straight lines and semicircles centered on the \(x\)-axis</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="theorem">
+            <strong>Proposition:</strong> Suppose \(P\) and \(Q\) are two points lying on the same vertical line in \(\mathbb{H}^2\), given by coordinates \(P = (x, y_1)\) and \(Q = (x, y_2)\) where \(y_1 > y_2\). Then, the hyperbolic geodesic joining them is the unique straight Euclidean vertical line segment connecting them.
+        </div>
+
+        <div class="solution">
+            <strong>Proof:</strong>
+            <p>Let \(\ell(t)\) be the parameterization of the Euclidean vertical line segment connecting the two points, defined as \(\ell(t) = (x, t)\) for \(y_2 \le t \le y_1\). Calculating its hyperbolic arc length yields:</p>
+            
+            \[l_{\mathbb{H}}(\ell) = \int_{y_2}^{y_1} \frac{\sqrt{0^2 + 1^2}}{t} \, dt = \int_{y_2}^{y_1} \frac{1}{t} \, dt\]
+            \[= \left[ \ln(t) \right]_{t=y_2}^{t=y_1} = \ln(y_1) - \ln(y_2) = \ln\left(\frac{y_1}{y_2}\right)\]
+
+            <p>Now consider any arbitrary alternate path \(\gamma(t) = (x(t), y(t))\) parameterized on the interval \(a \le t \le b\) such that \(\gamma(a) = Q\) and \(\gamma(b) = P\). This implies \(y(a) = y_2\) and \(y(b) = y_1\). The hyperbolic length of this alternate curve satisfies the following inequalities:</p>
+            
+            \[l_{\mathbb{H}}(\gamma) = \int_{a}^{b} \frac{\sqrt{x'(t)^2 + y'(t)^2}}{y(t)} \, dt \ge \int_{a}^{b} \frac{\sqrt{0 + y'(t)^2}}{y(t)} \, dt = \int_{a}^{b} \frac{|y'(t)|}{y(t)} \, dt\]
+            
+            <p>Applying the standard absolute value inequality \(|y'(t)| \ge y'(t)\) gives:</p>
+            
+            \[l_{\mathbb{H}}(\gamma) \ge \int_{a}^{b} \frac{y'(t)}{y(t)} \, dt\]
+
+            <p>We solve this integral via substitution. Let \(u = y(t)\), meaning \(du = y'(t) \, dt\). The indefinite form is given by \(\int \frac{1}{u} \, du = \ln(u) = \ln(y(t))\). Evaluating this across the boundary limits yields:</p>
+            
+            \[\int_{a}^{b} \frac{y'(t)}{y(t)} \, dt = \left[ \ln(y(t)) \right]_{t=a}^{t=b} = \ln(y(b)) - \ln(y(a)) = \ln(y_1) - \ln(y_2) = \ln\left(\frac{y_1}{y_2}\right)\]
+
+            <p>Consequently, we establish that \(l_{\mathbb{H}}(\gamma) \ge l_{\mathbb{H}}(\ell)\). This indicates that the vertical straight line segment \(\ell(t)\) realizes the absolute shortest path, proving that vertical lines are hyperbolic geodesics.</p>
+        </div>
+
+        <p>Using the properties of our geometric transformations, we can easily deduce the remaining geodesics. Because inversion about a circle acts as a global isometry, it maps geodesics onto other geodesics. Given that inversion sends vertical lines to semicircles centered on the \(x\)-axis, it follows that <strong>all semicircles whose centers rest on the \(x\)-axis are geodesics</strong>.</p>
+
+        <div class="theorem">
+            <strong>Proposition:</strong> Given any two arbitrary points \(P\) and \(Q\) in \(\mathbb{H}^2\) that do not lie on the same vertical line, there exists a unique semicircular geodesic centered on the \(x\)-axis that connects them.
+        </div>
+
+        <div class="steps">
+            <h5>Procedure: Constructing the Center of a Semicircular Geodesic</h5>
+            <p>To find the center point \(O = (x_0, 0)\) on the \(x\)-axis such that the corresponding semicircular arc passes through both points \(P\) and \(Q\), we must satisfy the equidistant radial condition:</p>
+            
+            \[|OP| = |OQ|\]
+            
+            <p>In practice, we determine the location of \(O\) geometrically by constructing the standard perpendicular bisector of the Euclidean line segment connecting \(P\) and \(Q\). The intersection of this perpendicular bisector line with the horizontal \(x\)-axis identifies the center \(O\).</p>
+        </div>
+
+        <div class="visual-desc">
+            <strong>Visual Description of Geodesic Configurations:</strong> 
+            The first diagram illustrates a family of geodesic curves radiating outward from a single point \(Q\) in the upper half-plane. A single vertical ray extends upward toward infinity from \(Q\). Accompanying it are multiple circular arcs of varying radii that all intersect at \(Q\) and terminate perpendicularly on the horizontal boundary line (the \(x\)-axis). This visualizes that through any given point, geodesics consist precisely of one vertical line and infinitely many semicircles centered on the \(x\)-axis.
+        </div>
+
+        <h4>4. Evaluation of Euclid's Axioms in \(\mathbb{H}^2\)</h4>
+        <p>Hyperbolic geometry was historically discovered during foundational attempts to analyze Euclid's Parallel Postulate. We review the validity of the five fundamental classical axioms within the upper half-plane model:</p>
+        
+        <ol>
+            <li><strong>First Axiom:</strong> Any two distinct points can be connected by a unique geodesic line. (<strong>True:</strong> Satisfied by either a vertical line or a unique semicircle centered on the \(x\)-axis).</li>
+            <li><strong>Second Axiom:</strong> Any geodesic line segment can be extended indefinitely in either direction. (<strong>True:</strong> As a path approaches the boundary line \(y=0\) or goes to positive vertical infinity, its total hyperbolic length grows infinitely large).</li>
+            <li><strong>Third Axiom:</strong> A circle can be drawn with any chosen center point and any arbitrary radius. (<strong>True</strong>).</li>
+            <li><strong>Fourth Axiom:</strong> All right angles are equal to one another. (<strong>True:</strong> The hyperbolic metric is conformal, meaning angles match their standard Euclidean measurements).</li>
+            <li><strong>Fifth Axiom (Parallel Postulate):</strong> Given a line and an external point not resting on it, there is a unique parallel line passing through that point. (<strong>False in Hyperbolic Space</strong>).</li>
+        </ol>
+
+        <div class="important">
+            <strong>Important Structural Difference:</strong> In the hyperbolic plane, given any geodesic line \(\ell\) and an external point \(P \notin \ell\), there exist <strong>infinitely many distinct parallel geodesics</strong> passing through \(P\) that never intersect \(\ell\).
+        </div>
+
+        <div class="visual-desc">
+            <strong>Visual Description of Parallel Postulate Violation:</strong>
+            The second diagram demonstrates the failure of Euclid's fifth axiom. A baseline geodesic is drawn as a circular arc rooted on the horizontal axis. Positioned above it is a single point \(P\). Passing through \(P\), multiple distinct geodesic lines are shown. One is a vertical straight line ray that clears the baseline arc entirely. The others are distinct semicircles of varying diameters that pass through \(P\) and land on different parts of the \(x\)-axis without ever intersecting the baseline geodesic. This visual proof confirms that infinitely many parallel lines can share a single point.
+        </div>
+
+        <p>A global comparison of the parallel property highlights the core distinction between the three primary geometries:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Geometric Paradigm</th>
+                    <th scope="col">Number of Parallel Geodesics Through an External Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Spherical Geometry</strong></td>
+                    <td>\(0\) (All great circles inevitably intersect)</td>
+                </tr>
+                <tr>
+                    <td><strong>Euclidean Geometry</strong></td>
+                    <td>\(1\) (Unique parallel line)</td>
+                </tr>
+                <tr>
+                    <td><strong>Hyperbolic Geometry</strong></td>
+                    <td>\(\infty\) (Infinitely many non-intersecting lines)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>5. Geometric Properties and Tessellations</h4>
+        <p>As a consequence of this hyperbolic curvature, shapes appear shrunken or compressed as they approach the boundary line. Crucially, the internal angles of figures are strictly constrained compared to their classical counterparts:</p>
+        
+        <div class="theorem">
+            <strong>Theorem:</strong> In the hyperbolic plane \(\mathbb{H}^2\), the sum of the interior angles of any triangle \(\Delta\) is strictly less than \(\pi\) radians (\(180^\circ\)):
+            \[\sum_{i=1}^{3} \theta_i < \pi\]
+        </div>
+
+        <p>This deficit in angle sums has profound structural implications for symmetric tiling patterns, known as tessellations. In a standard Euclidean plane, the regular polygons capable of creating a monohedral tiling are strictly limited by flat interior angle constraints to regular triangles, squares, and hexagons. Conversely, because the interior angles of hyperbolic polygons shrink continuously as their area expands, <strong>one can use regular \(n\)-gons of virtually any order to tile the hyperbolic plane</strong>, creating an infinite variety of symmetric tessellations.</p>
+    </main>
+
+</body>
+</html>
