@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 10B - Final Exam Solutions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.js" async></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid #000;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h3>MATH 10B Final Exam</h3>
+        <p><strong>Section:</strong> 20</p>
+        <p><strong>Institution:</strong> University of California, Riverside</p>
+        <p><strong>Date and Time:</strong> June 9th 2026, 8 AM - 11 AM</p>
+    </header>
+
+    <main>
+        <h3>1 Instructions</h3>
+        <div class="important">
+            <p>The exam is 3 hours long. The maximum score is 155 points.</p>
+            <p>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</p>
+            <p>Circle your final answers when relevant.</p>
+            <p>Show all steps in your solutions and make your reasoning clear when asked for an explanation.</p>
+            <p>If you have questions at any point, please raise your hand.</p>
+        </div>
+
+        <h3>2 Questions and Solutions</h3>
+
+        <h4>Question 1 (20 points)</h4>
+        <div class="example">
+            <p>Compute the volume of the region enclosed between the cylinder \(x^{2}+y^{2}=1\) and the surfaces \(x^{2}+y^{2}-z+2=0\) and \(z=0\).</p>
+        </div>
+        
+        <h5>Solution:</h5>
+        <div class="solution">
+            <p>To compute the volume of the region, we analyze the bounding surfaces in cylindrical coordinates \((r, \theta, z)\). The cylinder boundary is given by \(x^2 + y^2 = 1\), which simplifies to \(r = 1\). The lower bounding surface is the plane \(z = 0\). The upper bounding surface is given by \(x^2 + y^2 - z + 2 = 0\), which can be written as \(z = x^2 + y^2 + 2\). In cylindrical coordinates, this upper boundary is \(z = r^2 + 2\).</p>
+            
+            <p>The region of integration is a solid situated above the unit disk \(D = \{(r, \theta) \mid 0 \le r \le 1, 0 \le \theta \le 2\pi\}\) in the \(xy\)-plane, bounded below by \(z = 0\) and above by \(z = r^2 + 2\). The volume \(V\) is expressed by the triple integral over this cylindrical domain:</p>
+            
+            \[V = \int_{0}^{2\pi} \int_{0}^{1} \int_{0}^{r^2+2} r \, dz \, dr \, d\theta\]
+            
+            <p>First, we evaluate the innermost integral with respect to \(z\):</p>
+            
+            \[\int_{0}^{r^2+2} dz = \left[ z \right]_{0}^{r^2+2} = r^2 + 2\]
+            
+            <p>Substituting this result back into the volume formula yields:</p>
+            
+            \[V = \int_{0}^{2\pi} \int_{0}^{1} r(r^2 + 2) \, dr \, d\theta = \int_{0}^{2\pi} \int_{0}^{1} (r^3 + 2r) \, dr \, d\theta\]
+            
+            <p>Next, we evaluate the integral with respect to \(r\):</p>
+            
+            \[\int_{0}^{1} (r^3 + 2r) \, dr = \left[ \frac{r^4}{4} + r^2 \right]_{0}^{1} = \frac{1}{4} + 1 = \frac{5}{4}\]
+            
+            <p>Finally, we integrate with respect to \(\theta\):</p>
+            
+            \[V = \int_{0}^{2\pi} \frac{5}{4} \, d\theta = \frac{5}{4} \cdot [ \theta ]_{0}^{2\pi} = \frac{5}{4} \cdot 2\pi = \frac{5\pi}{2}\]
+            
+            <p><strong>Final Answer:</strong> The volume of the enclosed region is \(\frac{5\pi}{2}\).</p>
+        </div>
+
+        <h4>Question 2 (20 points)</h4>
+        <div class="example">
+            <p>Compute the following integral:</p>
+            \[\iint_{R}\cos(x+y)\sin(x-y)\,dx\,dy,\]
+            <p>where \(R\) is the region enclosed by the lines \(x+y=0\), \(x+y=\pi/2\), \(x-y=0\) and \(x-y=\pi/2\).</p>
+        </div>
+        
+        <h5>Solution:</h5>
+        <div class="solution">
+            <p>We use a change of variables to simplify the region of integration. Let \(u = x + y\) and \(v = x - y\). According to the boundaries of \(R\), the new region of integration \(G\) in the \(uv\)-plane is defined by a rectangular domain where \(0 \le u \le \pi/2\) and \(0 \le v \le \pi/2\).</p>
+            
+            <p>To convert the differential element \(dx\,dy\), we calculate the Jacobian of the transformation. Solving for \(x\) and \(y\) in terms of \(u\) and \(v\) yields:</p>
+            \[x = \frac{u+v}{2}, \quad y = \frac{u-v}{2}\]
+            
+            <p>The Jacobian determinant \(J\) is given by:</p>
+            \[J = \frac{\partial(x,y)}{\partial(u,v)} = \det \begin{pmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{pmatrix} = \det \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & -\frac{1}{2} \end{pmatrix} = \left(\frac{1}{2}\right)\left(-\frac{1}{2}\right) - \left(\frac{1}{2}\right)\left(\frac{1}{2}\right) = -\frac{1}{4} - \frac{1}{4} = -\frac{1}{2}\]
+            
+            <p>Taking the absolute value of the Jacobian, we have \(|J| = \frac{1}{2}\), which implies \(dx\,dy = \frac{1}{2}\,du\,dv\). We can now rewrite the integral in terms of \(u\) and \(v\):</p>
+            \[\iint_{R}\cos(x+y)\sin(x-y)\,dx\,dy = \int_{0}^{\pi/2} \int_{0}^{\pi/2} \cos(u)\sin(v) \cdot \frac{1}{2} \, du \, dv\]
+            
+            <p>Because the limits of integration are independent constants, we can split the double integral into the product of two independent single integrals:</p>
+            \[= \frac{1}{2} \left( \int_{0}^{\pi/2} \cos(u) \, du \right) \left( \int_{0}^{\pi/2} \sin(v) \, dv \right)\]
+            
+            <p>Evaluating each integral separately:</p>
+            \[\int_{0}^{\pi/2} \cos(u) \, du = \left[ \sin(u) \right]_{0}^{\pi/2} = \sin(\pi/2) - \sin(0) = 1\]
+            \[\int_{0}^{\pi/2} \sin(v) \, dv = \left[ -\cos(v) \right]_{0}^{\pi/2} = -\cos(\pi/2) - (-\cos(0)) = 0 + 1 = 1\]
+            
+            <p>Multiplying these results together along with the absolute Jacobian weight gives:</p>
+            \[= \frac{1}{2} \cdot 1 \cdot 1 = \frac{1}{2}\]
+            
+            <p><strong>Final Answer:</strong> The value of the double integral is \(\frac{1}{2}\).</p>
+        </div>
+
+        <h4>Question 3 (25 points)</h4>
+        <div class="example">
+            <p>Evaluate the integral of the vector field \(\mathbf{F}=x^{2}y\hat{\mathbf{i}}-2y\hat{\mathbf{j}}+xz^{2}\hat{\mathbf{k}}\) along the straight line from the point \((1,0,1)\) to the point \((1,3,2)\).</p>
+        </div>
+        
+        <h5>Solution:</h5>
+        <div class="solution">
+            <p>First, we find a parametric vector equation \(\mathbf{r}(t)\) for the directed straight line segment from \(\mathbf{P}_0 = (1,0,1)\) to \(\mathbf{P}_1 = (1,3,2)\). The direction vector \(\mathbf{v}\) is obtained by taking the difference between the endpoints:</p>
+            \[\mathbf{v} = (1 - 1)\hat{\mathbf{i}} + (3 - 0)\hat{\mathbf{j}} + (2 - 1)\hat{\mathbf{k}} = 0\hat{\mathbf{i}} + 3\hat{\mathbf{j}} + 1\hat{\mathbf{k}}\]
+            
+            <p>Thus, the parameterization of the path for \(0 \le t \le 1\) is:</p>
+            \[\mathbf{r}(t) = (1 + 0t)\hat{\mathbf{i}} + (0 + 3t)\hat{\mathbf{j}} + (1 + 1t)\hat{\mathbf{k}} = 1\hat{\mathbf{i}} + 3t\hat{\mathbf{j}} + (1+t)\hat{\mathbf{k}}\]
+            
+            <p>This yields the parametric components for coordinate substitution:</p>
+            \[x(t) = 1, \quad y(t) = 3t, \quad z(t) = 1 + t\]
+            
+            <p>Next, we compute the differential component vector \(d\mathbf{r} = \mathbf{r}'(t)\,dt\):</p>
+            \[\mathbf{r}'(t) = 0\hat{\mathbf{i}} + 3\hat{\mathbf{j}} + 1\hat{\mathbf{k}}\]
+            \[d\mathbf{r} = (0\hat{\mathbf{i}} + 3\hat{\mathbf{j}} + 1\hat{\mathbf{k}})\,dt\]
+            
+            <p>Now, we substitute the parametric expressions into the vector field equations to write \(\mathbf{F}\) solely in terms of \(t\):</p>
+            \[\mathbf{F}(\mathbf{r}(t)) = (1)^2(3t)\hat{\mathbf{i}} - 2(3t)\hat{\mathbf{j}} + (1)(1+t)^2\hat{\mathbf{k}} = 3t\hat{\mathbf{i}} - 6t\hat{\mathbf{j}} + (1+t)^2\hat{\mathbf{k}}\]
+            
+            <p>We evaluate the dot product \(\mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\):</p>
+            \[\mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) = (3t)(0) + (-6t)(3) + (1+t)^2(1) = -18t + (1 + 2t + t^2) = t^2 - 16t + 1\]
+            
+            <p>Finally, we integrate this expression over the parameter bounds \(0 \le t \le 1\):</p>
+            \[\int_{C} \mathbf{F} \cdot d\mathbf{r} = \int_{0}^{1} (t^2 - 16t + 1) \, dt = \left[ \frac{t^3}{3} - 8t^2 + t \right]_{0}^{1}\]
+            \[= \left( \frac{1}{3} - 8 + 1 \right) - 0 = \frac{1}{3} - 7 = -\frac{20}{3}\]
+            
+            <p><strong>Final Answer:</strong> The value of the line integral is \(-\frac{20}{3}\).</p>
+        </div>
+
+        <h4>Question 4 (30 points)</h4>
+        <div class="example">
+            <p>Compute the integral of the function \(f(x,y,z)=x\) on the surface of the triangle with vertices \((1,0,0)\), \((0,2,0)\) and \((0,0,3)\).</p>
+        </div>
+        
+        <h5>Solution:</h5>
+        <div class="solution">
+            <p>First, we explicitly determine the equation of the plane passing through the three points \(P(1,0,0)\), \(Q(0,2,0)\), and \(R(0,0,3)\). The intercept equation of a plane is structured as:</p>
+            \[\frac{x}{a} + \frac{y}{b} + \frac{z}{c} = 1\]
+            
+            <p>Substituting the given intercept values \(a=1\), \(b=2\), and \(c=3\), we obtain:</p>
+            \[\frac{x}{1} + \frac{y}{2} + \frac{z}{3} = 1\]
+            
+            <p>Multiplying the entire equation by 6 clears the fractional denominators, providing the standard algebraic expression of the plane:</p>
+            \[6x + 3y + 2z = 6\]
+            
+            <p>We now use the coordinates \(x\) and \(y\) directly as our parameters to map out the surface triangle. Isolating \(z\) as a dependent function of \(x\) and \(y\) yields:</p>
+            \[2z = 6 - 6x - 3y \implies z(x,y) = 3 - 3x - \frac{3}{2}y\]
+            
+            <p>This allows us to express the surface position vector field \(\mathbf{r}(x,y)\) explicitly in terms of independent coordinates \(x\) and \(y\):</p>
+            \[\mathbf{r}(x,y) = x\hat{\mathbf{i}} + y\hat{\mathbf{j}} + \left(3 - 3x - \frac{3}{2}y\right)\hat{\mathbf{k}}\]
+            
+            <p>To evaluate the surface differential element \(dS\), we determine the basic local tangent space vectors across the parametric grid by computing partial derivatives:</p>
+            \[\mathbf{r}_x = \frac{\partial \mathbf{r}}{\partial x} = 1\hat{\mathbf{i}} + 0\hat{\mathbf{j}} - 3\hat{\mathbf{k}}\]
+            \[\mathbf{r}_y = \frac{\partial \mathbf{r}}{\partial y} = 0\hat{\mathbf{i}} + 1\hat{\mathbf{j}} - \frac{3}{2}\hat{\mathbf{k}}\]
+            
+            <p>We then compute the cross product of these two normal-determining tangent vector fields to get the differential area normal scale vector:</p>
+            \[\mathbf{r}_x \times \mathbf{r}_y = \det \begin{pmatrix} \hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\ 1 & 0 & -3 \\ 0 & 1 & -\frac{3}{2} \end{pmatrix}\]
+            \[= \hat{\mathbf{i}}\left(0 \cdot \left(-\frac{3}{2}\right) - (-3) \cdot 1\right) - \hat{\mathbf{j}}\left(1 \cdot \left(-\frac{3}{2}\right) - (-3) \cdot 0\right) + \hat{\mathbf{k}}(1 \cdot 1 - 0 \cdot 0)\]
+            \[= 3\hat{\mathbf{i}} + \frac{3}{2}\hat{\mathbf{j}} + 1\hat{\mathbf{k}}\]
+            
+            <p>The differential scaling factor magnitude \(dS\) is found by evaluating the Euclidean length norm of this cross product vector:</p>
+            \[\|\mathbf{r}_x \times \mathbf{r}_y\| = \sqrt{3^2 + \left(\frac{3}{2}\right)^2 + 1^2} = \sqrt{9 + \frac{9}{4} + 1} = \sqrt{10 + \frac{9}{4}} = \sqrt{\frac{49}{4}} = \frac{7}{2}\]
+            \[dS = \|\mathbf{r}_x \times \mathbf{r}_y\| \, dx \, dy = \frac{7}{2} \, dx \, dy\]
+            
+            <p>The boundary limits of integration for the flat parameter region \(D\) are defined by projecting the triangle onto the \(xy\)-plane. Setting \(z=0\) in our plane equation gives the bounding hypotenuse line \(6x + 3y = 6 \implies y = 2 - 2x\). Thus, the region is bounded by \(0 \le x \le 1\) and \(0 \le y \le 2 - 2x\). We set up and compute the double integral for \(f(x,y,z) = x\):</p>
+            \[\iint_{S} x \, dS = \int_{0}^{1} \int_{0}^{2-2x} x \left(\frac{7}{2}\right) \, dy \, dx = \frac{7}{2} \int_{0}^{1} x \left[ y \right]_{0}^{2-2x} \, dx\]
+            \[= \frac{7}{2} \int_{0}^{1} x (2 - 2x) \, dx = \frac{7}{2} \int_{0}^{1} (2x - 2x^2) \, dx\]
+            \[= 7 \int_{0}^{1} (x - x^2) \, dx\]
+            
+            <p>Integrating with respect to \(x\) via the simple power rules:</p>
+            \[= 7 \left[ \frac{x^2}{2} - \frac{x^3}{3} \right]_{0}^{1} = 7 \left( \frac{1}{2} - \frac{1}{3} \right)\]
+            \[= 7 \left( \frac{3}{6} - \frac{2}{6} \right) = 7 \cdot \frac{1}{6} = \frac{7}{6}\]
+            
+            <p><strong>Final Answer:</strong> The evaluated value of the surface triangle integral is \(\frac{7}{6}\).</p>
+        </div>
+        
+        <h4>Question 5 (30 points)</h4>
+        <div class="example">
+            <p>Find the area enclosed by the parametrized curve \(\mathbf{r}(t)=\sin(2t)\hat{\mathbf{i}}+\sin(t)\hat{\mathbf{j}}\) for \(0\le t\le\pi\).</p>
+        </div>
+        
+        <h5>Solution:</h5>
+<div class="solution">
+            <p>To determine the total enclosed area within the boundary path after swapping coordinates, we apply the area formula coming from Green's Theorem:</p>
+            \[A = \frac{1}{2} \oint_{C} (x \, dy - y \, dx)\]
+            
+            <p>The vector components mapping the modified curve tracking parametric variables are:</p>
+            \[x(t) = \sin(2t), \quad y(t) = \sin(t)\]
+            
+            <p>We find their corresponding differential equations by taking derivatives with respect to \(t\):</p>
+            \[dx = 2\cos(2t) \, dt\]
+            \[dy = \cos(t) \, dt\]
+            
+            <p>Substituting these swapped expressions into our coordinate differential integrand produces:</p>
+            \[x \, dy - y \, dx = \sin(2t)\big(\cos(t)\big)\,dt - \sin(t)\big(2\cos(2t)\big)\,dt\]
+            \[= \big(\sin(2t)\cos(t) - 2\sin(t)\cos(2t)\big) \, dt\]
+            
+            <p>We substitute standard trigonometric single-angle definitions, using \(\sin(2t) = 2\sin(t)\cos(t)\) and explicitly expanding \(\cos(2t)\) using the identity \(\cos(2t) = \cos^2(t) - \sin^2(t)\):</p>
+            \[\big(2\sin(t)\cos(t)\big)\cos(t) - 2\sin(t)\big(\cos^2(t) - \sin^2(t)\big) = 2\sin(t)\cos^2(t) - 2\sin(t)\cos^2(t) + 2\sin^3(t)\]
+            
+            <p>The first two terms completely cancel each other out, leaving a remarkably clean reduction:</p>
+            \[= 2\sin^3(t)\]
+            
+            <p>Now, we insert this simplified expression back into our symmetric line integral over the parameter boundary constraints \(0 \le t \le \pi\):</p>
+            \[A = \frac{1}{2} \int_{0}^{\pi} 2\sin^3(t) \, dt = \int_{0}^{\pi} \sin^3(t) \, dt\]
+            
+            <p>To calculate the definite integral of \(\sin^3(t)\), we split the term into \(\sin^2(t)\sin(t) = (1 - \cos^2(t))\sin(t)\):</p>
+            \[A = \int_{0}^{\pi} (1 - \cos^2(t))\sin(t) \, dt\]
+            
+            <p>Using \(u\)-substitution, we set \(u = \cos(t)\), which gives \(du = -\sin(t)\,dt\), or \(\sin(t)\,dt = -du\). Evaluating the coordinate limits gives \(t=0 \implies u=1\) and \(t=\pi \implies u=-1\):</p>
+            \[A = \int_{1}^{-1} (1 - u^2)(-du) = \int_{-1}^{1} (1 - u^2) \, du = \left[ u - \frac{u^3}{3} \right]_{-1}^{1}\]
+            \[= \left( 1 - \frac{(1)^3}{3} \right) - \left( -1 - \frac{-1^3}{3} \right) = \left( 1 - \frac{1}{3} \right) - \left( -1 + \frac{1}{3} \right)\]
+            \[= \frac{2}{3} - \left(-\frac{2}{3}\right) = \frac{4}{3}\]
+            
+            <p><strong>Final Answer:</strong> The exact total absolute area enclosed within the modified parametric loop curve is \(\frac{4}{3}\).</p>
+        </div>
+
+<h4>Question 6 (30 points)</h4>
+        <div class="example">
+            <p>Compute the integral of the vector field \(\mathbf{F}=ze^{x^2}\hat{\mathbf{i}} + xe^{y}\hat{\mathbf{j}} + ze^{z^2} \hat{\mathbf{k}}\) along the boundary of the square with coordinates \((2,2,2), (-2,2,2), (-2,-2,2)\) and \( (2,-2,2)\) in the counterclockwise direction as viewed from the positive \(z\)-direction.</p>
+        </div>
+        
+        <h5>Solution:</h5>
+        <div class="solution">
+            <p>We apply Stokes' Theorem to translate the line boundary loop calculation into an equivalent flux integration of the field's curl over the flat square surface region \(S\) enclosed by \(C\):</p>
+            \[\oint_{C} \mathbf{F} \cdot d\mathbf{r} = \iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S}\]
+            
+<p>To formally compute the oriented surface area vector element \(d\mathbf{S}\), we parameterize the flat square surface region \(S\) explicitly using the independent standard horizontal Cartesian plane coordinates \(x\) and \(y\) as parameters, while fixing the vertical elevation constant at \(z = 2\):</p>
+            \[\mathbf{r}(x,y) = x\hat{\mathbf{i}} + y\hat{\mathbf{j}} + 2\hat{\mathbf{k}}, \quad \text{where } -2 \le x \le 2, \, -2 \le y \le 2\]
+            
+            <p>Next, we determine the standard local tangent basis vectors spanning across this parametric coordinate grid space by taking partial derivatives with respect to our variables:</p>
+            \[\mathbf{r}_x = \frac{\partial \mathbf{r}}{\partial x} = 1\hat{\mathbf{i}} + 0\hat{\mathbf{j}} + 0\hat{\mathbf{k}}\]
+            \[\mathbf{r}_y = \frac{\partial \mathbf{r}}{\partial y} = 0\hat{\mathbf{i}} + 1\hat{\mathbf{j}} + 0\hat{\mathbf{k}}\]
+            
+            <p>Now we compute the cross product:</p>
+            \[\mathbf{r}_x \times \mathbf{r}_y = \det \begin{pmatrix} \hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix} \]
+            \[= \Big[ \hat{\mathbf{i}}(0\cdot0 - 0\cdot1) - \hat{\mathbf{j}}(1\cdot0 - 0\cdot0) + \hat{\mathbf{k}}(1\cdot1 - 0\cdot0) \Big]  = \hat{\mathbf{k}} \]
+            <p>Because the boundary curve \(C\) is traversed in a counterclockwise direction when viewed from above, the standard right-hand rule requires the matching surface area unit normal vector to point straight upwards along the positive vertical coordinate axis and so the above normal vector has the correct sign.</p>
+            
+            <p>Now, we calculate the formal vector curl operation \(\nabla \times \mathbf{F}\) on the updated components:</p>
+            \[\nabla \times \mathbf{F} = \det \begin{pmatrix} \hat{\mathbf{i}} & \hat{\mathbf{j}} & \hat{\mathbf{k}} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ ze^{x^2} & xe^{y} & ze^{z^2} \end{pmatrix}\]
+            
+            <p>We expand this determinant formula along the individual rows:</p>
+            \[= \hat{\mathbf{i}} \left( \frac{\partial}{\partial y}\left(ze^{z^2}\right) - \frac{\partial}{\partial z}\left(xe^{y}\right) \right) - \hat{\mathbf{j}} \left( \frac{\partial}{\partial x}\left(ze^{z^2}\right) - \frac{\partial}{\partial z}\left(ze^{x^2}\right) \right) + \hat{\mathbf{k}} \left( \frac{\partial}{\partial x}\left(xe^{y}\right) - \frac{\partial}{\partial y}\left(ze^{x^2}\right) \right)\]
+            
+            <p>Evaluating each partial derivative component step-by-step:</p>
+            <ul>
+                <li>For the \(\hat{\mathbf{i}}\) component: \(\frac{\partial}{\partial y}\left(ze^{z^2}\right) = 0\) and \(\frac{\partial}{\partial z}\left(xe^{y}\right) = 0 \implies 0\hat{\mathbf{i}}\)</li>
+                <li>For the \(\hat{\mathbf{j}}\) component: \(\frac{\partial}{\partial x}\left(ze^{z^2}\right) = 0\) and \(\frac{\partial}{\partial z}\left(ze^{x^2}\right) = e^{x^2} \implies -e^{x^2}\hat{\mathbf{j}}\)</li>
+                <li>For the \(\hat{\mathbf{k}}\) component: \(\frac{\partial}{\partial x}\left(xe^{y}\right) = e^{y}\) and \(\frac{\partial}{\partial y}\left(e^{x^2}\right) = 0 \implies e^{y}\hat{\mathbf{k}}\)</li>
+            </ul>
+            
+            <p>Assembling these terms gives the curl vector field:</p>
+            \[\nabla \times \mathbf{F} = -e^{x^2}\hat{\mathbf{j}} + e^{y}\hat{\mathbf{k}}\]
+            
+            <p>Next, we evaluate the scalar dot product of this curl expression with our upwards oriented normal \(\hat{\mathbf{k}}\):</p>
+            \[(\nabla \times \mathbf{F}) \cdot (\mathbf{r}_x \times \mathbf{r}_y) = \big(-e^{x^2}\hat{\mathbf{j}} +e^{y}\hat{\mathbf{k}}\big) \cdot \big(\hat{\mathbf{k}}\big) = e^{y}\]
+            
+            <p>We set up the double integral over the flat square domain region bounds, where \(x\) runs from \(-2\) to \(2\) and \(y\) runs from \(-2\) to \(2\):</p>
+            \[\iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \int_{-2}^{2} \int_{-2}^{2} e^{y} \, dx \, dy\]
+            
+            <p>Since the limits of integration are independent constants and the integrand depends only on \(y\), we factor the double integral into two independent single variable integrals:</p>
+            \[= \left( \int_{-2}^{2} dx \right) \left( \int_{-2}^{2} e^{y} \, dy \right)\]
+            
+            <p>Evaluating each single definite integral part separately:</p>
+            \[\int_{-2}^{2} dx = [x]_{-2}^{2} = 2 - (-2) = 4\]
+            \[\int_{-2}^{2} e^{y} \, dy = [e^{y}]_{-2}^{2} = e^{2} - e^{-2}\]
+            
+            <p>Multiplying these terms together gives the final total value for the flux integral:</p>
+            \[= 4\left(e^{2} - e^{-2}\right)\]
+            
+            <p><strong>Final Answer:</strong> The exact value of the line integral around the square boundary is \(4\left(e^{2} - e^{-2}\right)\).</p>
+        </div>
+    </main>
+
+</body>
+</html>
