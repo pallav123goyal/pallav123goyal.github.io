@@ -407,15 +407,15 @@
             <p>Evaluating each partial derivative component step-by-step:</p>
             <ul>
                 <li>For the \(\hat{\mathbf{i}}\) component: \(\frac{\partial}{\partial y}\left(ze^{z^2}\right) = 0\) and \(\frac{\partial}{\partial z}\left(xe^{y}\right) = 0 \implies 0\hat{\mathbf{i}}\)</li>
-                <li>For the \(\hat{\mathbf{j}}\) component: \(\frac{\partial}{\partial x}\left(ze^{z^2}\right) = 0\) and \(\frac{\partial}{\partial z}\left(ze^{x^2}\right) = e^{x^2} \implies -e^{x^2}\hat{\mathbf{j}}\)</li>
+                <li>For the \(\hat{\mathbf{j}}\) component: \(\frac{\partial}{\partial x}\left(ze^{z^2}\right) = 0\) and \(\frac{\partial}{\partial z}\left(ze^{x^2}\right) = e^{x^2} \implies e^{x^2}\hat{\mathbf{j}}\)</li>
                 <li>For the \(\hat{\mathbf{k}}\) component: \(\frac{\partial}{\partial x}\left(xe^{y}\right) = e^{y}\) and \(\frac{\partial}{\partial y}\left(e^{x^2}\right) = 0 \implies e^{y}\hat{\mathbf{k}}\)</li>
             </ul>
             
             <p>Assembling these terms gives the curl vector field:</p>
-            \[\nabla \times \mathbf{F} = -e^{x^2}\hat{\mathbf{j}} + e^{y}\hat{\mathbf{k}}\]
+            \[\nabla \times \mathbf{F} = e^{x^2}\hat{\mathbf{j}} + e^{y}\hat{\mathbf{k}}\]
             
             <p>Next, we evaluate the scalar dot product of this curl expression with our upwards oriented normal \(\hat{\mathbf{k}}\):</p>
-            \[(\nabla \times \mathbf{F}) \cdot (\mathbf{r}_x \times \mathbf{r}_y) = \big(-e^{x^2}\hat{\mathbf{j}} +e^{y}\hat{\mathbf{k}}\big) \cdot \big(\hat{\mathbf{k}}\big) = e^{y}\]
+            \[(\nabla \times \mathbf{F}) \cdot (\mathbf{r}_x \times \mathbf{r}_y) = \big(e^{x^2}\hat{\mathbf{j}} +e^{y}\hat{\mathbf{k}}\big) \cdot \big(\hat{\mathbf{k}}\big) = e^{y}\]
             
             <p>We set up the double integral over the flat square domain region bounds, where \(x\) runs from \(-2\) to \(2\) and \(y\) runs from \(-2\) to \(2\):</p>
             \[\iint_{S} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \int_{-2}^{2} \int_{-2}^{2} e^{y} \, dx \, dy\]
