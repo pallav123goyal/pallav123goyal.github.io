@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 133 - Final Exam Solutions</title>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            options: {
+                enableAssistiveMml: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        
+        h3 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: #34495e; 
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: #5a6c7d; 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .theorem {
+            background-color: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #6c757d;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #007bff;
+        }
+        
+        .important {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border: 1px solid #17a2b8;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .visual-desc {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 4px solid #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2>MATH 133 Final Exam &amp; Solutions</h2>
+        <p><strong>Term:</strong> Spring 2026 | <strong>Institution:</strong> University of California, Riverside</p>
+        <p><strong>Date &amp; Time:</strong> June 12th 2026, 11:30 AM - 2:30 PM</p>
+    </div>
+
+    <h3>1 Instructions</h3>
+    <div class="important">
+        <p>The exam is 180 minutes long. The maximum score is 88 points.</p>
+        <p>Write your answers in the space provided. If you answer a question somewhere else in your answer script, indicate that clearly.</p>
+        <p>If you have questions at any point, please raise your hand.</p>
+        <p>In every question (unless stated otherwise), you are supposed to justify your answers as precisely as possible.</p>
+        <p>All questions pertain to Euclidean geometry, unless specified otherwise.</p>
+    </div>
+
+    <h3>2 Questions &amp; Solutions</h3>
+
+    <h4>1. Short Answer Type Questions</h4>
+    <p>State precise answers and draw pictures wherever relevant.</p>
+
+    <h5>(a) State Thales' theorem.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> State Thales' theorem (3 points).</p>
+    </div>
+    <div class="solution">
+                 Given a triangle \(ABC\) and points \(D\) and \(E\) on the segments \(AB\) and \(AC\) respectively chosen such that \(DE\) is parallel to \(BC\), the following equality holds:</p>
+                 \[ \frac{|AD|}{|DB|}=\frac{|AE|}{|EC|}.\]
+    </div>
+
+    <h5>(b) State the AAS congruence theorem.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> State the AAS congruence theorem (3 points).</p>
+    </div>
+    <div class="solution">
+        <p><strong>Theorem:</strong> The Angle-Angle-Side (AAS) congruence theorem states that if two angles and a non-included side of one triangle are equal to the corresponding two angles and non-included side of another triangle, then the two triangles are congruent.</p>
+    </div>
+
+    <h5>(c) What does it mean for two triangles to be similar?</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> What does it mean for two triangles to be similar? (3 points).</p>
+    </div>
+    <div class="solution">
+        <p><strong>Definition:</strong> Two triangles are similar if their corresponding angles are equal. That is, for \(\triangle ABC \sim \triangle DEF\), we have \(\angle A = \angle D\), \(\angle B = \angle E\), \(\angle C = \angle F\).</p>
+    </div>
+
+    <h5>(d) State the precise definition of a glide reflection.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> State the precise definition of a glide reflection (3 points).</p>
+    </div>
+    <div class="solution">
+        <p><strong>Definition:</strong> A glide reflection is an isometry of the Euclidean plane formed by the composition of a reflection across a line \(\ell\) and a translation by a vector \(\vec{v}\) that is parallel to \(\ell\). The order of the composition does not matter since the reflection and the parallel translation commute.</p>
+    </div>
+
+    <h4>2. True or False Statements</h4>
+    <p>State whether the following statements are true or false. In either case, explain the reasoning behind your answer by providing a proof or a counterexample.</p>
+
+    <h5>(a) The length \(\sqrt{23}\) is NOT constructible using a straightedge and a compass.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (5 points) The length \(\sqrt{23}\) is NOT constructible using a straightedge and a compass.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Answer:</strong> False.</p>
+        <p><strong>Reasoning:</strong> A length \(L\) is constructible if and only if it can be obtained from an initial unit length using a finite sequence of field operations (addition, subtraction, multiplication, division) and the extraction of square roots. Since 23 is a positive integer, it can be constructed by laying down 23 unit segments. Then, its square root \(\sqrt{23}\) can be constructed geometrically using a standard compass-and-straightedge method (for instance, constructing a semicircle over a diameter of length \(23 + 1 = 24\) and finding the altitude to the diameter at a distance of 1 from one end, which gives an altitude length of \(\sqrt{23 \cdot 1} = \sqrt{23}\)). Therefore, \(\sqrt{23}\) IS constructible.</p>
+    </div>
+
+    <h5>(b) Suppose \(T:\mathbb{R}^{2}\rightarrow\mathbb{R}^{2}\) is an isometry. Then, any triangle in the plane is congruent to its image under T.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (5 points) Suppose \(T:\mathbb{R}^{2}\rightarrow\mathbb{R}^{2}\) is an isometry. Then, any triangle in the plane is congruent to its image under T.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Answer:</strong> True.</p>
+        <p><strong>Reasoning:</strong> By definition, an isometry is a transformation that preserves distances between all pairs of points. Let \(\triangle ABC\) be any triangle in the plane, and let \(A' = T(A)\), \(B' = T(B)\), and \(C' = T(C)\) represent the vertices of its image under \(T\). Since \(T\) preserves distance, we have \(|A'B'| = |AB|\), \(|B'C'| = |BC|\), and \(|A'C'| = |AC|\). By the Side-Side-Side (SSS) congruence theorem, \(\triangle ABC \cong \triangle A'B'C'\). Thus, any triangle is always congruent to its image under an isometry.</p>
+    </div>
+
+    <h5>(c) The equation \((x-5)^{2}+y^{2}=64\) represents a geodesic in the hyperbolic upper half plane.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (5 points) The equation \((x-5)^{2}+y^{2}=64\) represents a geodesic in the hyperbolic upper half plane.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Answer:</strong> True.</p>
+        <p><strong>Reasoning:</strong> In the hyperbolic upper half plane model (\(\mathbb{H} = \{(x,y) \in \mathbb{R}^2 \mid y > 0\}\)), geodesics are precisely defined as either vertical Euclidean lines perpendicular to the boundary line \(y = 0\), or Euclidean semicircles whose centers lie on the boundary line \(y = 0\). The equation \((x-5)^{2}+y^{2}=64\) represents a Euclidean circle centered at \((5,0)\) with a radius of \(8\). The center of this circle lies exactly on the \(x\)-axis (\(y = 0\)). Restricting this equation to the upper half plane (\(y > 0\)) yields a semicircle perpendicular to the boundary line, which fits the precise definition of a hyperbolic geodesic.</p>
+    </div>
+
+    <h5>(d) The composition of two reflections in the plane is also a reflection.</h5>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (5 points) The composition of two reflections in the plane is also a reflection.</p>
+    </div>
+    <div class="solution">
+        <p><strong>Answer:</strong> False.</p>
+        <p><strong>Reasoning:</strong> Consider reflection across the \(x\)-axis followed by reflection across the \(y\)-axis. This sends a point \((x,y)\) to \((-x,-y)\), which corresponds to rotation by \(\pi\) and not a reflection.</p>
+    </div>
+
+    <h4>3. Geometric Construction</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (\(4+6\) points) Given the following line segment AB and point P, draw a line through P that makes an angle of \(30^{\circ}\) with AB. List the steps of your construction carefully and draw them (as best you can without an actual compass) on the figure below.</p>
+        <div class="visual-desc">
+            <p>Visual Description: A horizontal line segment with endpoint A on the left and endpoint B on the right. An isolated point P is positioned in the space above the line segment AB.</p>
+        </div>
+        <p>You may use the following tools:</p>
+        <ul>
+            <li>Can draw a circle of any radius \(r\) with any centre \(Z\) (compass Axiom 3)</li>
+            <li>Can draw a straight line through any two points and can extend any line segment (straightedge Axioms 1-2)</li>
+            <li>Can draw a parallel line to a line through a point P (Axiom 5)</li>
+            <li>Can draw a perpendicular line to a line through a point P (the point P can be on the line or not)</li>
+            <li>Can bisect an angle</li>
+        </ul>
+    </div>
+    <div class="steps">
+        <p><strong>Steps of Construction:</strong></p>
+        <ol>
+            <li><strong>Drop a perpendicular:</strong> Use the given perpendicular tool to construct a line \(\ell_1\) through point \(P\) that is perpendicular to the line segment \(AB\). Let the intersection point of \(\ell_1\) and \(AB\) be \(Q\).</li>
+            <li><strong>Construct an equilateral triangle on \(PQ\):</strong> 
+                <ul>
+                    <li>Draw a circle \(\mathcal{C}_1\) with center \(P\) and radius \(|PQ|\).</li>
+                    <li>Draw a circle \(\mathcal{C}_2\) with center \(Q\) and radius \(|PQ|\).</li>
+                    <li>Let one of the intersection points of \(\mathcal{C}_1\) and \(\mathcal{C}_2\) be \(S\). Connecting \(P\), \(Q\), and \(S\) forms an equilateral triangle \(\triangle PQS\) where \(\angle SPQ = 60^\circ\).</li>
+                </ul>
+            </li>
+            <li><strong>Bisect the angle:</strong> Use the given angle bisector tool to bisect \(\angle SPQ\). Let the bisecting be a line \(\ell_2\) that intersects the segment \(AB\) (after extending potentially) at a point \(C\). </li>
+        </ol>
+        <p>Then, in \(\triangle PCQ\), we have that \(\angle PQC = 90^\circ\) and \(\angle CPQ = 60^\circ\). Therefore, \(\angle PCQ = 30^\circ\), and thus, \(CP\) or \(\ell_2\) is the required line.</p>
+    </div>
+
+    <h4>4. Tangency of Linear and Quadratic Curves</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (5 points) Show that the line \(2x-y-2=0\) is tangent to the curve \(2y-x^{2}=0\). Find the coordinates of the point of tangency. You might use the following quadratic formula: Given \(ax^{2}+bx+c=0\) for some \(a\ne0\) we must have: \(x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}.\)</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, let's solve for \(y\) from the linear equation: </p>
+        \[2x - y - 2 = 0 \implies y = 2x - 2\]
+        <p>Substitute this expression for \(y\) into the equation of the quadratic curve:</p>
+        \[2(2x - 2) - x^2 = 0\]
+        \[4x - 4 - x^2 = 0\]
+        \[x^2 - 4x + 4 = 0\]
+        <p>Now, we solve for \(x\) using the quadratic formula or by factoring. Notice that the expression is a perfect square:</p>
+        \[(x - 2)^2 = 0 \implies x = 2\]
+        <p>Using the quadratic formula as suggested to check the discriminant (\(b^2 - 4ac\)):</p>
+        \[x = \frac{-(-4) \pm \sqrt{(-4)^2 - 4(1)(4)}}{2(1)} = \frac{4 \pm \sqrt{16 - 16}}{2} = \frac{4 \pm 0}{2} = 2\]
+        <p>Since the discriminant is exactly \(0\), there is exactly one real root (a double root). A single point of intersection between a line and a conic section confirms that the line is tangent to the curve.</p>
+        <p>To find the corresponding \(y\)-coordinate, substitute \(x = 2\) back into our linear expression:</p>
+        \[y = 2(2) - 2 = 4 - 2 = 2\]
+        <p>Thus, the line is tangent to the curve, and the coordinates of the point of tangency are \((2, 2)\).</p>
+    </div>
+
+    <h4>5. Plane Transformations</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> Let \(f(x,y)=(x-y+1,x+y-2)\) be a transformation of \(\mathbb{R}^{2}.\)</p>
+        <ul>
+            <li>(a) (2 points) Compute \(f(1,2)\) and \(f(-3,4)\)</li>
+            <li>(b) (3 points) Determine whether f is an isometry.</li>
+            <li>(c) (3 points) Find all fixed points of f.</li>
+            <li>(d) (3 points) Is f a translation, reflection, rotation, glide reflection, or none of the above? Justify your answer.</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p><strong>Part (a):</strong> Evaluate \(f(x,y)\) at the given points.</p>
+        <ul>
+            <li>For \((1,2)\): \(f(1,2) = (1 - 2 + 1, 1 + 2 - 2) = (0, 1)\)</li>
+            <li>For \((-3,4)\): \(f(-3,4) = (-3 - 4 + 1, -3 + 4 - 2) = (-6, -1)\)</li>
+        </ul>
+
+<p><strong>Part (b):</strong> We can write:</p>
+        \[f\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 1 & -1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} + \begin{bmatrix} 1 \\ -2 \end{bmatrix}\]
+        <p>An affine transformation is an isometry if and only if its linear core transformation matrix \(M\) is an <strong>orthogonal matrix</strong>. A matrix \(M\) is orthogonal if and only if \(M^T M = I\) (the identity matrix).</p>
+        <p>Let's compute \(M^T M\):</p>
+        \[M^T M = \begin{bmatrix} 1 & 1 \\ -1 & 1 \end{bmatrix} \begin{bmatrix} 1 & -1 \\ 1 & 1 \end{bmatrix} = \begin{bmatrix} (1)(1)+(1)(1) & (1)(-1)+(1)(1) \\ (-1)(1)+(1)(1) & (-1)(-1)+(1)(1) \end{bmatrix} = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}\]
+        <p>Since \(M^T M = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \neq \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\), the matrix \(M\) is <strong>NOT</strong> orthogonal and thus f is <strong>NOT</strong> an isometry.</p>
+        <p><strong>Part (c):</strong> A point \((x,y)\) is a fixed point if \(f(x,y) = (x,y)\). This yields a system of two linear equations:</p>
+        \[1)\quad x - y + 1 = x \implies -y + 1 = 0 \implies y = 1\]
+        \[2)\quad x + y - 2 = y \implies x - 2 = 0 \implies x = 2\]
+        <p>Substituting \(x = 2\) and \(y = 1\) back into the original transformation definition verification:</p>
+        \[f(2,1) = (2 - 1 + 1, 2 + 1 - 2) = (2, 1)\]
+        <p>Thus, there is exactly one fixed point, which is \((2, 1)\).</p>
+
+        <p><strong>Part (d):</strong> Translations, reflections, rotations, and glide reflections are all classified as Euclidean isometries. Since we proved in part (b) that \(f\) is not an isometry, it cannot belong to any of these categories. Therefore, \(f\) is <strong>none of the above</strong>.</p>
+    </div>
+
+    <h4>6. Linear Transformations and Perpendicularity</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> Recall that rotation anticlockwise in the plane by \(90^{\circ}\) is given by the matrix:
+        \[A=\begin{bmatrix}\cos(\pi/2)&-\sin(\pi/2)\\ \sin(\pi/2)&\cos(\pi/2)\end{bmatrix}=\begin{bmatrix}0&-1\\ 1&0\end{bmatrix}\]
+        Consider the linear transformation \(T:\mathbb{R}^{2}\rightarrow\mathbb{R}^{2}\) given by \(T(v)=Av\) for all \(v\in\mathbb{R}^{2}\).</p>
+        <ul>
+            <li>(a) (2 points) Let \(T(x,y)=(x^{\prime},y^{\prime})\). Express \(x^{\prime}\) and \(y^{\prime}\) in terms of \(x\) and \(y\). Also express \(x\) and \(y\) in terms of \(x^{\prime}\) and \(y^{\prime}\).</li>
+            <li>(b) (2 points) Consider the equation of a line \(y=mx+c\) with \(m\neq 0\). Use the previous part to turn this into an equation relating \(x^{\prime}\) and \(y^{\prime}.\)</li>
+            <li>(c) (3 points) We can view the equation obtained in the previous part as a line in the \(x^{\prime}y^{\prime}\) plane. What is its slope? <br>(Conclusion: Two lines are perpendicular exactly when the product of their slopes is -1.)</li>
+            <li>(d) (4 points) Consider points \(A=(-1,-1)\), \(B=(7,5)\) and \(C=(-4,3)\). Prove that \(\triangle ABC\) is a right triangle. (Hint: The above conclusion might be helpful.)</li>
+        </ul>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p><strong>Part (a):</strong> Compute the matrix multiplication:</p>
+        \[\begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} -y \\ x \end{bmatrix}\]
+        <p>Thus, the forward transformation equations are:</p>
+        \[x' = -y \quad \text{and} \quad y' = x\]
+        <p>To express \(x\) and \(y\) in terms of \(x'\) and \(y'\), rearrange the relations to yield:</p>
+        \[x = y' \quad \text{and} \quad y = -x'\]
+
+        <p><strong>Part (b):</strong> Substitute \(x = y'\) and \(y = -x'\) into the line equation \(y = mx + c\):</p>
+        \[-x' = m(y') + c\]
+        <p>Rearranging to write it in the standard slope-intercept form for the \(x'y'\) plane (solving for \(y'\)):</p>
+        \[m y' = -x' - c \implies y' = \left(-\frac{1}{m}\right)x' - \frac{c}{m}\]
+
+        <p><strong>Part (c):</strong> Looking at the equation \(y' = \left(-\frac{1}{m}\right)x' - \frac{c}{m}\), the coefficient of \(x'\) is the new slope. Therefore, the slope of the rotated line is:</p>
+        \[m' = -\frac{1}{m}\]
+        <p>Since \(T\) is a rotation by \(90^\circ\), the original line and its image are perpendicular, meaning their slopes satisfy \(m \cdot m' = m \cdot \left(-\frac{1}{m}\right) = -1\).</p>
+
+        <p><strong>Part (d):</strong> To show that \(\triangle ABC\) is a right triangle, we calculate the slopes of its three sides and check if any two multiply to \(-1\).</p>
+        <ul>
+            <li>Slope of side \(AB\): \[m_{AB} = \frac{5 - (-1)}{7 - (-1)} = \frac{6}{8} = \frac{3}{4}\]</li>
+            <li>Slope of side \(BC\): \[m_{BC} = \frac{3 - 5}{-4 - 7} = \frac{-2}{-11} = \frac{2}{11}\]</li>
+            <li>Slope of side \(AC\): \[m_{AC} = \frac{3 - (-1)}{-4 - (-1)} = \frac{4}{-3} = -\frac{4}{3}\]</li>
+        </ul>
+        <p>Now, evaluate the product of the slopes for lines \(AB\) and \(AC\):</p>
+        \[m_{AB} \cdot m_{AC} = \left(\frac{3}{4}\right) \cdot \left(-\frac{4}{3}\right) = -1\]
+        <p>Since the product of their slopes is \(-1\), the side \(AB\) is perpendicular to the side \(AC\) (\(AB \perp AC\)). This implies that \(\angle A = 90^\circ\), proving that \(\triangle ABC\) is a right triangle.</p>
+    </div>
+
+    <h4>7. Diagonals of Quadrilaterals</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> Let ABCD be a quadrilateral whose diagonals intersect at the point O. Suppose the diagonals of ABCD bisect each other, that is, \(|AO|=|CO|\) and \(|BO|=|DO|\).</p>
+        <ul>
+            <li>(a) (4 points) Show that \(|AB|=|CD|\) and \(AB \parallel CD\) (Hint: Show that some triangles are congruent.)</li>
+            <li>(b) (4 points) Show that \(|AD|=|BC|\) and \(AD \parallel BC\). (Hint: Show that some triangles are congruent.)</li>
+            <li>(c) (4 points) In addition, suppose \(\angle AOB=90^{\circ}\). Show that \(|AB|=|AD|.\) (Hint: Show that some triangles are congruent.)</li>
+        </ul>
+            </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+
+        <p><strong>Part (a):</strong> Consider \(\triangle AOB\) and \(\triangle COD\).</p>
+        <ul>
+            <li>We are given that \(|AO| = |CO|\) (diagonals bisect each other).</li>
+            <li>We are given that \(|BO| = |DO|\) (diagonals bisect each other).</li>
+            <li>The angles \(\angle AOB\) and \(\angle COD\) are vertical angles, so \(\angle AOB = \angle COD\).</li>
+        </ul>
+        <p>By the Side-Angle-Side (SAS) congruence theorem, \(\triangle AOB \cong \triangle COD\). From this congruence, matching corresponding parts yields:</p>
+        <ol>
+            <li>\(|AB| = |CD|\) (corresponding sides are equal).</li>
+            <li>\(\angle BAO = \angle DCO\) (corresponding interior angles are equal).</li>
+        </ol>
+        <p>Since the alternate interior angles \(\angle BAO\) and \(\angle DCO\) are equal with respect to the transversal line \(AC\), it follows that the lines are parallel: \(AB \parallel CD\).</p>
+
+        <p><strong>Part (b):</strong> Consider \(\triangle AOD\) and \(\triangle COB\).</p>
+        <ul>
+            <li>We are given that \(|AO| = |CO|\).</li>
+            <li>We are given that \(|DO| = |BO|\).</li>
+            <li>The angles \(\angle AOD\) and \(\angle COB\) are vertical angles, so \(\angle AOD = \angle COB\).</li>
+        </ul>
+        <p>By the Side-Angle-Side (SAS) congruence theorem, \(\triangle AOD \cong \triangle COB\). From this congruence, matching corresponding parts yields:</p>
+        <ol>
+            <li>\(|AD| = |BC|\) (corresponding sides are equal).</li>
+            <li>\(\angle DAO = \angle BCO\) (corresponding interior angles are equal).</li>
+        </ol>
+        <p>Since the alternate interior angles \(\angle DAO\) and \(\angle BCO\) are equal with respect to the transversal line \(AC\), it follows that the lines are parallel: \(AD \parallel BC\).</p>
+
+        <p><strong>Part (c):</strong> Consider \(\triangle AOB\) and \(\triangle AOD\).</p>
+        <ul>
+            <li>We are given that \(|BO| = |DO|\).</li>
+            <li>The side \(AO\) is shared by both triangles, so \(|AO| = |AO|\).</li>
+            <li>We are given that \(\angle AOB = 90^\circ\). Since \(\angle AOB\) and \(\angle AOD\) form a linear pair along the line segment \(BD\), we must have \(\angle AOD = 180^\circ - \angle AOB = 180^\circ - 90^\circ = 90^\circ\). Thus, \(\angle AOB = \angle AOD = 90^\circ\).</li>
+        </ul>
+        <p>By the Side-Angle-Side (SAS) congruence theorem, \(\triangle AOB \cong \triangle AOD\). Since these triangles are congruent, their corresponding hypotenuse sides must be equal: \(|AB| = |AD|\).</p>
+    </div>
+
+    <h4>8. Mid-point in Hyperbolic Upper Half Plane</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (7 points) Find the mid-point of the points (2, 4) and (2,9) in the hyperbolic upper half plane. (That is, find the coordinates of a point P that lies on the geodesic between these two points that is equidistant from both the points.)</p>
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>In the hyperbolic upper half plane model, the geodesic connecting two points with the same \(x\)-coordinate is a vertical Euclidean line segment. Here, both points \(A=(2,4)\) and \(B=(2,9)\) share the coordinate \(x = 2\), so the geodesic segment connecting them lies along the line \(x = 2\).</p>
+        <p>The hyperbolic distance formula along a vertical line line \(x = c\) between two values \(y_1\) and \(y_2\) simplifies beautifully to:</p>
+        \[d_{\mathbb{H}}((c, y_1), (c, y_2)) = \left| \ln\left(\frac{y_2}{y_1}\right) \right|\]
+        <p>Let the target midpoint be \(P = (2, y_M)\), where \(4 < y_M < 9\). For \(P\) to be the midpoint, the hyperbolic distance from \(A\) to \(P\) must equal the hyperbolic distance from \(P\) to \(B\):</p>
+        \[d_{\mathbb{H}}((2, 4), (2, y_M)) = d_{\mathbb{H}}((2, y_M), (2, 9))\]
+        \[\ln\left(\frac{y_M}{4}\right) = \ln\left(\frac{9}{y_M}\right)\]
+        <p>By taking the exponential of both sides, we eliminate the logarithms:</p>
+        \[\frac{y_M}{4} = \frac{9}{y_M}\]
+        \[y_M^2 = 36 \implies y_M = \sqrt{36} = 6 \quad (\text{since } y > 0 \text{ in the upper half plane})\]
+        <p>Thus, the coordinates of the hyperbolic midpoint \(P\) are \((2, 6)\).</p>
+    </div>
+
+    <h4>9. Bonus: Hyperbolic Square Construction</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (BONUS) (4 points) True or False. A hyperbolic rectangle with all corners in the plane (not at \(\infty\)) can be constructed using hyperbolic geodesics. (A rectangle is a \(4\)-gon all of whose sides are geodesics and are either parallel or perpendicular to each other.) </div>
+<div class="solution">
+        <p><strong>Answer:</strong> False.</p>
+        <p><strong>Reasoning:</strong> If all four angles of a \(4\)-gon \(ABCD\) are \(90^\circ\), the net sum of the angles is \(360^\circ\). If we join the geodesic \(AC\), then the sum of the angles of at least one of the two geodesic triangles \(\triangle ABC\) and \(\triangle BCD\) must be \(180^\circ\). But as discussed in class, this is not possible, since the angles of hyperbolic triangles always add up to less than \(180^\circ\). </div>
+
+    <h4>10. Bonus: Incircle of a Right Triangle</h4>
+    <div class="example">
+        <p><strong>Question Statement:</strong> (BONUS) (6 points) Consider the triangle ABC with points A = (0, 0), B = (3, 0) and C = (0, 4). Find an equation of a circle that is tangent to all sides of \(\triangle ABC\). (There are multiple such circles possible!)</p>
+    </div>
+
+<div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>If the radius of the circle is \(r\), since it must be tangent to both the \(x\) and \(y\) axes, the coordinates of the centre must be \((\pm r, \pm r)\). For simplicity, we suppose that the centre is \((r,r)\). Consequently, the standard equation of the circle can be expressed as:</p>
+        \[(x - r)^2 + (y - r)^2 = r^2\]
+        
+        <p>Expanding this equation gives:</p>
+        \[x^2 - 2xr + r^2 + y^2 - 2yr + r^2 = r^2\]
+        \[x^2 + y^2 - 2xr - 2yr + r^2 = 0\]
+
+        <p>The hypotenuse of the triangle connects the points \((3,0)\) and \((0,4)\). The equation of the line passing through these two points is given by:</p>
+        \[4x + 3y = 12 \implies x = \frac{12 - 3y}{4}\]
+
+        <p>For the circle to be tangent to the hypotenuse line, substituting this expression for \(x\) into the circle equation must result in a single, unique solution for \(y\) (where the discriminant of the resulting quadratic equation equals zero).</p>
+        
+        <p>Substituting \(x = \frac{12 - 3y}{4}\) into the expanded circle equation:</p>
+        \[\left(\frac{12 - 3y}{4}\right)^2 + y^2 - 2r\left(\frac{12 - 3y}{4}\right) - 2yr + r^2 = 0\]
+
+        <p>Multiply through by \(16\) to clear the denominator:</p>
+        \[(12 - 3y)^2 + 16y^2 - 8r(12 - 3y) - 32yr + 16r^2 = 0\]
+
+        <p>Expanding the algebraic terms:</p>
+        \[(144 - 72y + 9y^2) + 16y^2 - (96r - 24yr) - 32yr + 16r^2 = 0\]
+        \[25y^2 - 72y + 24yr - 32yr + 144 - 96r + 16r^2 = 0\]
+
+        <p>Grouping the terms by powers of \(y\):</p>
+        \[25y^2 - (72 + 8r)y + (16r^2 - 96r + 144) = 0\]
+
+        <p>For the line to be tangent to the circle, the discriminant \(\Delta = b^2 - 4ac\) of this quadratic equation in terms of \(y\) must equal zero. Here, the coefficients are:</p>
+        \[a = 25\]
+        \[b = -(72 + 8r)\]
+        \[c = 16r^2 - 96r + 144\]
+
+        <p>Setting the discriminant to zero:</p>
+        \[\Delta = [-(72 + 8r)]^2 - 4(25)(16r^2 - 96r + 144) = 0\]
+        \[64(r-9)^2 = (64)(25)(r^2 - 6r + 9)\]
+        \[(r-9)^2 = 25(r^2-6r+9)\]
+
+        <p>Expanding this out and rearranging yields:</p>
+        \[24r^2-168r +144= 0\]
+
+        <p>Dividing the entire equation by \(24\) simplifies it neatly to:</p>
+        \[r^2 - 7r + 6 = 0\]
+
+        <p>Factoring this quadratic equation gives:</p>
+        \[(r - 1)(r - 6) = 0\]
+
+        <p>Thus, we obtain two possible values for the radius: \(r = 1\) or \(r = 6\).</p>
+
+        <p>Substituting these back into our original format yields the equations for the two possible tangent circles:</p>
+        <ol>
+            <li>For \(r = 1\) (the incircle): 
+                \[(x - 1)^2 + (y - 1)^2 = 1 \implies x^2 + y^2 - 2x - 2y + 1 = 0\]
+            </li>
+            <li>For \(r = 6\) (the excircle opposite the origin): 
+                \[(x - 6)^2 + (y - 6)^2 = 36 \implies x^2 + y^2 - 12x - 12y + 36 = 0\]
+            </li>
+        </ol>
+    </div>
+
+</body>
+</html>
