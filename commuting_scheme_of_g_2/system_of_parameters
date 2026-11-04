@@ -25,8 +25,6 @@ q = {
 };
 s = i -> x_i - y_(sigma_(i-1));
 
-gbTrace=3;
-
 I = ideal q + ideal apply(1..14, s) + ideal (x_1, x_5);
 G = groebnerBasis(I, Strategy => "F4");
 
